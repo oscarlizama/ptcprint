@@ -1,0 +1,126 @@
+div.limitmenu{
+	margin-top: 100px;
+}
+#listpre{
+	border:3px;
+	border-color: black;
+	border-style: solid;
+}
+#prevista{
+	padding-left: 3px;
+	padding-right: 2px;
+	border-left: 3px;
+	border-right: 3px;
+}
+div.titulo-f{
+	margin-top: 68px;
+	background: black;
+	height: 70px;
+	color: white;
+	background-image: url(../img/bg-menu.jpg);
+	background-size: 600px 300px;	
+}
+div.titulo-pago{
+	margin-top: 20px;
+	background: rgb(12,53,90);
+	height: 100px;
+	color: white;
+	padding-left: 50px;
+	margin-left:0px;
+}
+div.titulo-pago-modal{
+	background: rgb(12,53,90);
+	height: 300px;
+	color: white;
+	padding-left: 50px;
+	margin-left:0px;
+}
+
+.cont_prod_fix{
+	
+	padding-left: 35px;
+}
+.btnCompras{	
+	margin-top: 50px;	
+	height: 60px;
+}
+.textdesc{
+	margin-top: 100px;
+	margin-bottom: 100px;
+}
+.btnCompraxl{
+	margin-left: 30px;
+}
+.espa_txt{
+	margin-top: 40px;
+}
+#paypal{
+	height: 40px;
+	width: 139px;
+}
+button.btnpay{
+	padding-left: 0px;
+	padding-right: 0px;
+}
+#canvasedi{
+	border: 10px;
+	border-style: solid;
+<<<<<<< HEAD
+	background-color: #808080;
+	}
+div.barher{	
+	background: rgb(12,53,90);
+	height: 70px;		
+}
+div.barherSM{	
+	background: rgb(12,53,90);
+	height: 140px;		
+}
+div.barlat{
+	background: rgb(12,53,90);
+	height: 440px;
+	width: 103px;
+	
+}
+div.barlatM{
+	background: rgb(12,53,90);
+	height: 480px;
+	width: 71px;
+	
+}
+span.iconp{
+	padding-top: 16px;
+	padding-left: 20px;
+	padding-right: 35px;
+}
+span.iconpl{
+	padding-top: 26px;
+	padding-left: 2px;	
+}
+
+.rojof{
+	color: red;
+}
+.azulf{
+	color: blue;
+}
+.moradof{
+	color: purple;
+}
+.amarillof{
+	color: yellow;
+}
+.verdef{
+	color: green;
+}
+.cafef{
+	color: brown;
+}
+.imgprevse{
+	border: 10px;
+	border-style: solid;
+	background-color: #808080;
+}
+=======
+	}
+>>>>>>> 83dc6a8a0941fe63494afe3138d69499e6f90399

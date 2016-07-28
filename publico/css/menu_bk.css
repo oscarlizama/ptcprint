@@ -1,0 +1,108 @@
+.glyph {
+    display: inline-block;
+    width: 9em;
+    margin: 1em;
+    text-align: center;
+    vertical-align: top;
+}
+.glyph .glyph-icon {
+    font-family:"Flaticon";
+    font-size: 64px;
+    line-height: 1;
+    color: #212121;
+    -webkit-transition: color 0.5s ease-out 0s;
+    -moz-transition: color 0.5s ease-out 0s;
+}
+.glyph .glyph-icon:before{
+    font-size: 40px;
+    margin-left: 0;
+    cursor: pointer;
+    margin-left: -110px;
+}
+.glyph .glyph-icon:hover{
+    color: #0091ea;
+    -webkit-transition: color 0.5s ease-out 0s;
+    -moz-transition: color 0.5s ease-out 0s;
+}
+.iconos-acc{
+    color: white;
+    -webkit-transition: color 0.5s ease-out 0s;
+    -moz-transition: color 0.5s ease-out 0s;
+    cursor: pointer;
+}
+.iconos-acc:hover{
+    color: #f50057;
+    -webkit-transition: color 0.5s ease-out 0s;
+    -moz-transition: color 0.5s ease-out 0s;
+}
+#menu-backend{
+    width: 100%;
+    height: 60px;
+    background-color: #0091ea;
+    position: fixed;
+    z-index: 999;
+}
+.texto-mb{
+    margin-top: 18px;
+    color: white;
+}
+div.opciones-menubk{
+    top: 60px;
+    background: #fafafa;
+    height: 100%;
+    width: 120px;
+    z-index: 998;
+    position: fixed;
+    left: -200px;
+}
+.op-bk{
+    left: -5px;
+    position: relative;
+    list-style: none;
+    z-index: 999;
+    margin-bottom: 50px;
+    margin-top: 15px;
+}
+div.dv-sub{
+    display: none;
+}
+ul.op-bk li{
+    margin-top: -25px;
+}
+li.sub-mbk ul{
+    position: absolute;
+    list-style: none;
+    margin-top: -96px;
+    margin-left: 70px;
+    max-width: 160px;
+    background-color: #fafafa;
+}
+li.sub-mbk ul li{
+    margin-left: 25px;
+    background-color: #fafafa;
+    cursor: pointer;
+}
+li.sub-mbk:hover .dv-sub{
+    display: block;
+}
+.nombre-opcion{
+    margin-left: -110px;
+}
+div.abrirmbk{
+    left : 0px;
+    -webkit-transition: 0.6s ease-in-out;
+    -moz-transition: 0.6s ease-in-out;
+    -o-transition: 0.6s ease-in-out;
+    transition: 0.6s ease-in-out;
+}
+div.cerrarmbk{
+    left: -200px;
+    -webkit-transition: 0.6s ease-in-out;
+    -moz-transition: 0.6s ease-in-out;
+    -o-transition: 0.6s ease-in-out;
+    transition: 0.6s ease-in-out;
+}
+#indexa{
+    text-decoration: none;
+    color: white !important;
+}
