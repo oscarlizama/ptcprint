@@ -21,12 +21,12 @@
 			<div class="col-lg-12" id="frm">
 				<div class="col-lg-6 col-md-6">
 					<p id="id_reg" class="hide"></p>
-					<input type="text" class="hide omitir" value="20" id="tbl">
+					<input type="text" class="hide omitir" value="20" id="tbl" autocomplete='off'>
 					<label for="" class="labels">Nombre</label>
-                    <input type="text" class="form-control input" id="nombre">
+                    <input type="text" class="form-control input" id="nombre" autocomplete='off'>
                     <br>
                     <label for="" class="labels">Enlace de la red social</label>
-                    <input type="text" class="form-control input" id="enlace">
+                    <input type="text" class="form-control input" id="enlace" autocomplete='off'>
                     <br>
                     
 				</div>
@@ -34,8 +34,8 @@
 					<output id="list"></output>
 					<label for="" class="labels">Logo</label>
 					<form method="post" id="formulario" enctype="multipart/form-data">
-                    	<input type="file" class="input" id="imagen" name="file">
-                    	<input type="text" class="input hide omitir" id="imagenb64" name="antigua" value="ninguna">
+                    	<input type="file" class="input" id="imagen" name="file" autocomplete='off'>
+                    	<input type="text" class="input hide omitir" id="imagenb64" name="antigua" value="ninguna" autocomplete='off'>
                     </form>
                     <br>
 				</div>
@@ -64,7 +64,7 @@
 		<div class="row">
 			<div class="col-lg-12">
 				<label for="" class="labels">Buscar</label>
-                <input type="text" class="form-control" id="buscar">
+                <input type="text" class="form-control" id="buscar" autocomplete='off'>
                 <br>
 			</div>
 			<div class="col-lg-12" id="tabla_div">
@@ -76,8 +76,10 @@
 							"<th><strong>Nombre</strong></th>".
 							"<th><strong></strong></th>".
 						"</tr>";
-				$sql = "SELECT * FROM redes_sociales WHERE estado_red=1";
-				foreach ($con->query($sql) as $datos) {
+				$sql = "SELECT * FROM redes_sociales WHERE estado_red=?";
+				$stmt = $con->prepare($sql);
+			    $stmt->execute(array(1));
+				while ($datos = $stmt->fetch(PDO::FETCH_BOTH)) {
 					$tabla .= 
 						"<tr>".
 							"<td>$datos[0]</td>".

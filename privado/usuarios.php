@@ -21,30 +21,32 @@
 			<div class="col-lg-12" id="frm">
 				<div class="col-lg-6 col-md-6">
 					<p id="id_reg" class="hide"></p>
-					<input type="text" class="hide omitir" name="usuarios[]" value="1" id="tbl">
+					<input type="text" class="hide omitir" name="usuarios[]" value="1" id="tbl" autocomplete='off'>
 					<label for="" class="labels">Nombres</label>
-                    <input type="text" class="form-control input" name="usuarios[]" id="nombre">
+                    <input type="text" class="form-control input" name="usuarios[]" id="nombre" autocomplete='off'>
                     <br>
                     <label for="" class="labels">Correo electrónico</label>
-                    <input type="text" class="form-control input" name="usuarios[]" id="correo">
+                    <input type="text" class="form-control input" name="usuarios[]" id="correo" autocomplete='off'>
                     <br>
                     <label for="" class="labels">Contraseña</label>
-                    <input type="password" class="form-control input" name="usuarios[]" id="clave">
+                    <input type="password" class="form-control input" name="usuarios[]" id="clave" autocomplete='off'>
                     <br>
                     <label for="" class="labels">Repita contraseña</label>
-                    <input type="password" class="form-control omitir input" name="usuarios[]" id="claver">
+                    <input type="password" class="form-control omitir input" name="usuarios[]" id="claver" autocomplete='off'>
                     <br>
 				</div>
 				<div class="col-lg-6 col-md-6">
 					<label for="" class="labels">Apellidos</label>
-                    <input type="text" class="form-control input" name="usuarios[]" id="apellido">
+                    <input type="text" class="form-control input" name="usuarios[]" id="apellido" autocomplete='off'>
                     <br>
                     <label for="" class="labels">Tipo de usuario</label>
                     <select class="form-control" name="usuarios[]" id="permiso">
                     	<option value="0" selected="">SELECCIONA UN PERMISO</option>
 						<?php 
-                            $sql = "SELECT * FROM permisos where estado_permiso=1";
-                            foreach ($con->query($sql) as $datos) {
+                            $sql = "SELECT * FROM permisos where estado_permiso=?";
+                            $stmt = $con->prepare($sql);
+			    			$stmt->execute(array(1));
+							while ($datos = $stmt->fetch(PDO::FETCH_BOTH)){
                                 echo "<option value='$datos[0]'>$datos[1]</option>";
                             }
                         ?>
@@ -76,7 +78,7 @@
 		<div class="row">
 			<div class="col-lg-12">
 				<label for="" class="labels">Buscar</label>
-                <input type="text" class="form-control" id="buscar">
+                <input type="text" class="form-control" id="buscar" autocomplete='off'>
                 <br>
 			</div>
 			<div class="col-lg-12" id="tabla_div">
@@ -90,8 +92,10 @@
 							"<th><strong>Correo electrónico</strong></th>".
 							"<th><strong></strong></th>".
 						"</tr>";
-				$sql = "SELECT id_usuario,nombre_usuario,apellido_usuario,correo_usuario FROM usuarios WHERE estado_usuario=1";
-				foreach ($con->query($sql) as $datos) {
+				$sql = "SELECT id_usuario,nombre_usuario,apellido_usuario,correo_usuario FROM usuarios WHERE estado_usuario=?";
+				$stmt = $con->prepare($sql);
+			    $stmt->execute(array(1));
+				while ($datos = $stmt->fetch(PDO::FETCH_BOTH)) {
 					$tabla .= 
 						"<tr>".
 							"<td>$datos[0]</td>".

@@ -78,7 +78,7 @@
           $ul_tabs .= "</ul>";
           $ul_tabs .= "<br>";
           $ul_tabs .= "<form method='post' id='formulario' enctype='multipart/form-data'>";
-            $ul_tabs .= "<input class='col-lg-1 form-control' placeholder='Archivo' id='filenombre' name='file' type='file'>";
+            $ul_tabs .= "<input class='col-lg-1 form-control' placeholder='Archivo' id='filenombre' name='file' type='file'autocomplete='off'>";
           $ul_tabs .= "</form>";
           $ul_tabs .= "<br>";
           $ul_tabs .= "<br>";
@@ -133,7 +133,7 @@
                   $tablas_div .= "</div>";
                   $tablas_div .= "<div class='col-lg-12'>";
                     $tablas_div .= "<input class='col-lg-12 form-control disabled hide' id='idconver$ids_conver[$f]' value=$ids_conver[$f]>"; 
-                    $tablas_div .= "<textarea name='' id='mensaje$ids_conver[$f]' rows='4' class='col-lg-12 form-control'></textarea>";
+                    $tablas_div .= "<textarea name='' id='mensaje$ids_conver[$f]' rows='4' class='col-lg-12 form-control estira' autocomplete='off'></textarea>";
                     $tablas_div .= "<div class='row'>";
                       $tablas_div .= "<div class='col-lg-12'>";
                         $tablas_div .= "<br>";
@@ -185,7 +185,7 @@
                     $tablas_div .= "<input class='col-lg-12 form-control hide disabled' name='id_cl' value=$id_cl>";
                     $tablas_div .= "<br>";
                     $tablas_div .= "<br>";
-                    $tablas_div .= "<textarea rows='4' name='mensaje' class='col-lg-12 form-control' placeholder='Cuerpo del mensaje'></textarea>";
+                    $tablas_div .= "<textarea rows='4' name='mensaje' class='col-lg-12 form-control estira' placeholder='Cuerpo del mensaje' autocomplete='off'></textarea>";
                     $tablas_div .= "<div class='col-lg-12'>";
                       $tablas_div .= "<br>";
                       $tablas_div .= "<button class='btn btn-primary col-lg-6 col-lg-offset-6'>Enviar</button>";
@@ -210,7 +210,7 @@
                     $tablas_div .= "<input class='col-lg-12 form-control hide disabled' name='id_cl' value=$id_cl>";
                     $tablas_div .= "<br>";
                     $tablas_div .= "<br>";
-                    $tablas_div .= "<textarea rows='4' name='mensaje' class='col-lg-12 form-control' placeholder='Cuerpo del mensaje'></textarea>";
+                    $tablas_div .= "<textarea rows='4' name='mensaje' class='col-lg-12 form-control estira' placeholder='Cuerpo del mensaje' autocomplete='off'></textarea>";
                     $tablas_div .= "<div class='col-lg-12'>";
                       $tablas_div .= "<br>";
                       $tablas_div .= "<button class='btn btn-primary col-lg-5 col-lg-offset-4'>Enviar</button>";

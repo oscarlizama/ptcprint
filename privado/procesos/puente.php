@@ -88,8 +88,19 @@
 			exit( "invalid");
 
 		if($_POST['accion'] == 1){
-			include 'insertar.php';
-			mthAgregar($tabla,$campos_tabla,$valores);
+			$error = "";
+			if (validarTexto($_POST['repetida'])){
+				if($valores[3] == $_POST['repetida']){
+					if(validar_clave($valores[3],$error)){
+						include 'registrarcliente.php';
+						agregarCliente($valores);
+					}else{
+						exit($error);
+					}
+				}else{
+					exit($error);
+				}
+			}
 		}
 		if($_POST['accion'] == 2){
 			include 'actualizar.php';

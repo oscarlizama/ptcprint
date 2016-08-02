@@ -21,13 +21,15 @@
 			<div class="col-lg-12" id="frm">
 				<div class="col-lg-6 col-md-6">
 					<p id="id_reg" class="hide"></p>
-					<input type="text" class="hide omitir" value="10" id="tbl">
+					<input type="text" class="hide omitir" value="10" id="tbl" autocomplete='off'>
 					<label for="" class="labels">Producto</label>
                     <select class="form-control" name="usuarios[]" id="prod">
                     	<option value="0" selected="">SELECCIONE EL PRODUCTO</option>
 						<?php 
-                            $sql = "SELECT * FROM productos where estado_producto=1";
-                            foreach ($con->query($sql) as $datos) {
+                            $sql = "SELECT * FROM productos where estado_producto=?";
+                            $stmt = $con->prepare($sql);
+			    			$stmt->execute(array(1));
+							while ($datos = $stmt->fetch(PDO::FETCH_BOTH)) {
                                 echo "<option value='$datos[0]'>$datos[1]</option>";
                             }
                         ?>
@@ -38,8 +40,8 @@
 					<output id="list"></output>
 					<label for="" class="labels">Imagen</label>
 					<form method="post" id="formulario" enctype="multipart/form-data">
-                    	<input type="file" class="input" id="imagen" name="file">
-                    	<input type="text" class="input hide omitir" id="imagenb64" name="antigua" value="ninguna">
+                    	<input type="file" class="input" id="imagen" name="file" autocomplete='off'>
+                    	<input type="text" class="input hide omitir" id="imagenb64" name="antigua" value="ninguna" autocomplete='off'>
                     </form>
                     <br>
 				</div>
@@ -81,8 +83,10 @@
 							"<th><strong>Miniatura</strong></th>".
 							"<th><strong></strong></th>".
 						"</tr>";
-				$sql = "SELECT id_foto_producto, P.nombre_producto, foto_producto FROM productos P, fotos_productos FP WHERE estado_foto_producto = 1 AND P.id_producto = FP.id_producto";
-				foreach ($con->query($sql) as $datos) {
+				$sql = "SELECT id_foto_producto, P.nombre_producto, foto_producto FROM productos P, fotos_productos FP WHERE estado_foto_producto = ? AND P.id_producto = FP.id_producto";
+				$stmt = $con->prepare($sql);
+			    $stmt->execute(array(1));
+				while ($datos = $stmt->fetch(PDO::FETCH_BOTH)) {
 					$tabla .= 
 						"<tr>".
 							"<td>$datos[0]</td>".

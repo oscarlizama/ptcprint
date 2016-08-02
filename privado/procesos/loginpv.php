@@ -4,11 +4,11 @@
 	if (isset($_POST['iniciar'])) {
 		$email = !empty($_POST['email']) ? trim($_POST['email']) : null;
 		$pass = !empty($_POST['pass']) ? trim($_POST['pass']) : null;
-		$usuario = "SELECT COUNT(correo_usuario) AS correo,id_usuario FROM usuarios WHERE correo_usuario=? AND clave_usuario=? AND estado_usuario=1";
+		$usuario = "SELECT clave_usuario,id_usuario FROM usuarios WHERE correo_usuario=? AND estado_usuario=?";
 		$stmt = $con->prepare($usuario);
-		$stmt->execute(array($email,$pass));
+		$stmt->execute(array($email,1));
 		$res_usuario = $stmt->fetch(PDO::FETCH_BOTH);
-		if ($res_usuario['correo']>0) {
+		if (password_verify($pass,$res_usuario[0])) {
 			$_SESSION['autenticadop'] = 'si';
 			$_SESSION['emailc'] = $email;
 			$_SESSION['idusr'] = $res_usuario[1];

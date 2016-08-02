@@ -21,15 +21,15 @@
 			<div class="col-lg-12" id="frm">
 				<div class="col-lg-6 col-md-6">
 					<p id="id_reg" class="hide"></p>
-					<input type="text" class="hide omitir" name="usuarios[]" value="15" id="tbl">
+					<input type="text" class="hide omitir" name="usuarios[]" value="15" id="tbl" autocomplete="off">
 					<label for="" class="labels">Nombre configuración</label>
-                    <input type="text" class="form-control input" name="usuarios[]" id="nombre">
+                    <input type="text" class="form-control input" name="usuarios[]" id="nombre" autocomplete="off">
                     <br>
                     <label for="" class="labels">Configuración</label>
-                    <input type="text" class="form-control input" name="usuarios[]" id="configuracion">
+                    <input type="text" class="form-control input" name="usuarios[]" id="configuracion" autocomplete="off">
                     <br>
                     <label for="" class="labels">Descripción</label>
-                    <textarea type="text" class="form-control input" name="usuarios[]" id="descripcion" rows="5"></textarea> 
+                    <textarea type="text" class="form-control input estira" name="usuarios[]" id="descripcion" rows="5" autocomplete="off"></textarea> 
                     <br>
                     <br>
 				</div>
@@ -58,7 +58,7 @@
 		<div class="row">
 			<div class="col-lg-12">
 				<label for="" class="labels">Buscar</label>
-                <input type="text" class="form-control" id="buscar">
+                <input type="text" class="form-control" id="buscar" autocomplete="off">
                 <br>
 			</div>
 			<div class="col-lg-12" id="tabla_div">
@@ -72,8 +72,10 @@
 							"<th><strong>Descripción</strong></th>".
 							"<th><strong></strong></th>".
 						"</tr>";
-				$sql = "SELECT * FROM configuraciones WHERE estado_configuracion=1";
-				foreach ($con->query($sql) as $datos) {
+				$sql = "SELECT * FROM configuraciones WHERE estado_configuracion=?";
+				$stmt = $con->prepare($sql);
+			    $stmt->execute(array(1));
+				while ($datos = $stmt->fetch(PDO::FETCH_BOTH))  {
 					$tabla .= 
 						"<tr>".
 							"<td>$datos[0]</td>".

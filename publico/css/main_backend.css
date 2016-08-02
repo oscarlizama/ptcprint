@@ -34,6 +34,12 @@ body{
     background-image: url(../img/bg-bk.jpg);
     background-size: 100%;
 }
+.estira{
+    max-width: 100%;
+    min-width: 80%;
+    max-height: 112px;
+    min-height: 80%;
+}
 .btn-scrud{
     background-color: #fafafa;
     border: solid 2px #01579b;

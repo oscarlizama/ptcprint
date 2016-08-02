@@ -19,13 +19,13 @@
 					<br>
 					<br>
 					<label for="inputEmail" class="labels-blanco">CORREO ELECTRÓNICO</label>
-					<input type="email" name="email" placeholder="Email" class="form-control text-center input-lg" required>
+					<input type="email" name="email" placeholder="Email" class="form-control text-center input-lg" required autocomplete='off'>
 					<br>
 					<br>
 					<label for="inputEmail" class="labels-blanco">CONTRASEÑA</label>
-					<input type="password" name="pass" placeholder="Contraseña" class="form-control text-center input-lg" required>
+					<input type="password" name="pass" placeholder="Contraseña" class="form-control text-center input-lg" required autocomplete='off'>
 					<br>
-					<a href="">OLVIDE MI CONTRASENIA</a>
+					<a href="recuperar.php">OLVIDÉ MI CONTRASENIA</a>
 					<br>
 					<br>
 					<button class="btn btn-primary btn-lg col-md-12 col-lg-12 col-xs-12 col-sm-12" name="iniciar">INICIAR SESIÓN</button>
@@ -33,6 +33,7 @@
 			</div>
 		</div>
 	</div>
+</div>
 	<?php include 'scripts.php';?>
 	<?php require 'procesos/loginpv.php';?>
 </body>

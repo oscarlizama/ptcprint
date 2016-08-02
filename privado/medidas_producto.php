@@ -21,13 +21,15 @@
 			<div class="col-lg-12" id="frm">
 				<div class="col-lg-6 col-md-6">
 					<p id="id_reg" class="hide"></p>
-					<input type="text" class="hide omitir" value="9" id="tbl">
+					<input type="text" class="hide omitir" value="9" id="tbl" autocomplete='off'>
 					<label for="" class="labels">Producto</label>
                     <select class="form-control" name="usuarios[]" id="prod">
                     	<option value="0" selected="">SELECCIONE EL PRODUCTO AL QUE DESEA AGREGAR MEDIDA</option>
 						<?php 
-                            $sql = "SELECT * FROM productos where estado_producto=1";
-                            foreach ($con->query($sql) as $datos) {
+                            $sql = "SELECT * FROM productos where estado_producto=?";
+                            $stmt = $con->prepare($sql);
+			    			$stmt->execute(array(1));
+							while ($datos = $stmt->fetch(PDO::FETCH_BOTH))  {
                                 echo "<option value='$datos[0]'>$datos[1]</option>";
                             }
                         ?>
@@ -36,7 +38,7 @@
 				</div>
 				<div class="col-lg-6 col-md-6">
 					<label for="" class="labels">Medidas del producto</label>
-                    <input type="text" class="form-control input" id="medida">
+                    <input type="text" class="form-control input" id="medida" autocomplete='off'>
                     <br>
 				</div>
 				<div class="col-lg-12">
@@ -65,7 +67,7 @@
 		<div class="row">
 			<div class="col-lg-12">
 				<label for="" class="labels">Buscar</label>
-                <input type="text" class="form-control" id="buscar">
+                <input type="text" class="form-control" id="buscar" autocomplete='off'>
                 <br>
 			</div>
 			<div class="col-lg-12" id="tabla_div">
@@ -78,8 +80,10 @@
 							"<th><strong>Medida del producto</strong></th>".
 							"<th><strong></strong></th>".
 						"</tr>";
-				$sql = "SELECT id_medida, P.nombre_producto, medida FROM medidas_producto M, productos P WHERE M.id_producto = P.id_producto AND estado_medida = 1";
-				foreach ($con->query($sql) as $datos) {
+				$sql = "SELECT id_medida, P.nombre_producto, medida FROM medidas_producto M, productos P WHERE M.id_producto = P.id_producto AND estado_medida = ?";
+				$stmt = $con->prepare($sql);
+			    $stmt->execute(array(1));
+				while ($datos = $stmt->fetch(PDO::FETCH_BOTH)) {
 					$tabla .= 
 						"<tr>".
 							"<td>$datos[0]</td>".

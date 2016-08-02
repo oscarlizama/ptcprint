@@ -81,12 +81,14 @@
           	//echo $cntmsj[0];
           	//UN FOR PARA PONER LAS CONVERSACIONES
           	for ($f=0; $f < $cntcvr[0]; $f++) { 
-            	$mensajecvr = "SELECT mensaje,emisor FROM mensajes WHERE id_conversacion=$ids_conver[$f]";
+            	$mensajecvr = "SELECT mensaje,emisor FROM mensajes WHERE id_conversacion=?";
             	$tablas_div .= "<div id='msj".($f + 1)."' class='tab-pane fade'>";
                 	$tablas_div .= "<div class='col-lg-6'>";
                   	$tablas_div .= "<div class='scroll-div'>";
                   	//SACO LOS MENSAJES QUE EL CLIENTE HA ENVIADO PARA LA COTIZACION
-            	foreach ($con->query($mensajecvr) as $mensajes) {
+            	      $stmt = $con->prepare($mensajecvr);
+                    $stmt->execute(array($ids_conver[$f]));
+                    while ($mensajes = $stmt->fetch(PDO::FETCH_BOTH)) {
                     if($mensajes[1] == 0){
                       	//POR CADA MENSAJE SE CREA UN PANEL PARA MOSTRARLO
                       	$tablas_div .= "<div class='panel panel-default col-lg-10'>";
@@ -109,7 +111,7 @@
                   	$tablas_div .= "</div>";
                   	$tablas_div .= "<div class='col-lg-12'>";
                   		$tablas_div .= "<input class='col-lg-12 form-control disabled hide' name='idconver$ids_conver[$f]' value=$ids_conver[$f]>";	
-                    $tablas_div .= "<textarea rows='4' id='mensaje$ids_conver[$f]' class='col-lg-12 form-control' placeholder='Cuerpo del mensaje'></textarea>";
+                    $tablas_div .= "<textarea rows='4' id='mensaje$ids_conver[$f]' class='col-lg-12 form-control estira' placeholder='Cuerpo del mensaje' autocomplete='off'></textarea>";
                     $tablas_div .= "<div class='row'>";
                       	$tablas_div .= "<div class='col-lg-12'>";
                         	$tablas_div .= "<br>";
@@ -122,7 +124,7 @@
                   $stmtar = $con->prepare($archivosctm);
                   $stmtar->execute(array($ids_conver[$f]));
                   $arcbool = $stmtar->fetch(PDO::FETCH_BOTH);
-                  $archivosclm = "SELECT * FROM archivos WHERE id_conversacion=$ids_conver[$f]";
+                  $archivosclm = "SELECT * FROM archivos WHERE id_conversacion=?";
                 	$tablas_div .= "<div class='col-lg-3'>";
                 		$tablas_div .= "<div class='panel panel-default'>";
                   			$tablas_div .= "<div class='panel-heading'>";
@@ -131,7 +133,9 @@
                   			$tablas_div .= "<div class='panel-body'>";
                         if($arcbool > 0){
                           $tablas_div .= "<ul>";
-                          foreach ($con->query($archivosclm) as $listaArchivos) {
+                          $stmt = $con->prepare($archivosclm);
+                          $stmt->execute(array($ids_conver[$f]));
+                          while ($listaArchivos = $stmt->fetch(PDO::FETCH_BOTH)){
                             $tablas_div .= "<li><a href='procesos/descarga_archivo.php?id=$listaArchivos[0]'>$listaArchivos[1]</a></li>";
                           }
                           $tablas_div .= "</ul>";

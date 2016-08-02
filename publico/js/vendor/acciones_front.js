@@ -1,6 +1,6 @@
-function insertar(tabla,valores){
+function insertar(tabla,valores,repetida){
 	var url = '../privado/procesos/puente.php';
-	var parametros = {"valores":valores,"tabla":tabla,"accion":1};
+	var parametros = {"valores":valores,"tabla":tabla,"accion":1,"repetida":repetida};
 	//alert("entra al insertar")
 	$.ajax({
 		type:'POST',
@@ -18,7 +18,7 @@ function insertar(tabla,valores){
 					location.reload();
 				break;
 				default: // Cuando ocurra un error en el server (no sea error del usuario)
-					swal("¡HUY!", "Lo sentimos estamos experimentando problemas con nuestro servidor", "warning");
+					swal("¡HUY!",d, "warning");
 					console.log(d);
 				break;
 			}
@@ -27,9 +27,9 @@ function insertar(tabla,valores){
 	return false;
 }
 
-function editar(tabla,valores){
+function editar(tabla,valores,repetida){
 	var url = '../privado/procesos/puente.php';
-	var parametros = {"valores":valores,"tabla":tabla, "accion":2};
+	var parametros = {"valores":valores,"tabla":tabla,"accion":2,"repetida":repetida};
 	$.ajax({
 		type:'POST',
 		url:url,
@@ -74,11 +74,11 @@ function valores(num){
 	//VALORES PARA LAS CONSULTAS
 	if (num == 0) {
 		//alert("entro aqui");
-		insertar(3,val);
+		insertar(3,val,$("#txtClaveR").val());
 	};
 	if (num == 1) {
 		val.push($("#id_reg").text());
-		editar(3,val);
+		editar(3,val,$("#txtClaveR").val());
 	};
 }
 //AQUI ESTAN LOS EVENTOS DE LOS BOTONES

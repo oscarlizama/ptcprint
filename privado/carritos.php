@@ -43,7 +43,7 @@
               //SI HAY MAS DE UN CARRITO A RELIZAR
               if ($cnt[0] > 0) {
                 //HAGO LA CONSULYA
-                $sql = "SELECT c.id_carrito,p.nombre_producto,cantidad,c.fecha_solicitud FROM (productos p INNER JOIN medidas_producto md ON p.id_producto = md.id_producto) INNER JOIN carritos c ON c.id_medida = md.id_medida WHERE c.estado_carrito=0 ORDER BY c.fecha_solicitud ASC";
+                $sql = "SELECT c.id_carrito,p.nombre_producto,cantidad,c.fecha_solicitud FROM (productos p INNER JOIN medidas_producto md ON p.id_producto = md.id_producto) INNER JOIN carritos c ON c.id_medida = md.id_medida WHERE c.estado_carrito=? ORDER BY c.fecha_solicitud ASC";
                 //CREO EL MODELO DE LA TABLA
                 $tabla = "<table class='table table-striped table-responsive tabla-info'>";
                       $tabla .= "<thead>";
@@ -56,7 +56,9 @@
                       $tabla .= "</thead>";
                       $tabla .= "<tbody>";
                       //LLENO LA TABLA CON TODOS LOS REGISTROS
-                      foreach ($con->query($sql) as $datos) {
+                      $stmt = $con->prepare($sql);
+                      $stmt->execute(array(0));
+                      while ($datos = $stmt->fetch(PDO::FETCH_BOTH))  {
                         $tabla .= "<tr>";
                               $tabla .= "<td>$datos[1]</td>";
                               $tabla .= "<td>$datos[2]</td>";
@@ -80,15 +82,15 @@
         <div class="col-lg-12">
           <?php 
             //VEO SI HAY PEDIDOS POR REALIZAR
-              $pedidocnt = "SELECT COUNT(p.id_pedido) FROM (pedidos p INNER JOIN archivos a ON p.id_archivo = a.id_archivo) INNER JOIN conversaciones c ON c.id_conversacion = a.id_conversacion WHERE p.estado_pedido=0";
+              $pedidocnt = "SELECT COUNT(p.id_pedido) FROM (pedidos p INNER JOIN archivos a ON p.id_archivo = a.id_archivo) INNER JOIN conversaciones c ON c.id_conversacion = a.id_conversacion WHERE p.estado_pedido=?";
               $stmtp = $con->prepare($pedidocnt);
-              $stmtp->execute(array());
+              $stmtp->execute(array(0));
               $cntp = $stmtp->fetch(PDO::FETCH_BOTH);
               $tabla = "";
               //SI HAY PEDIDOS ENTONCES PASO EL IF
               if ($cntp[0] > 0) {
                 //CREO LA CONSULTA PARA SABER QUE PEDIDOS HAY QUE HACER
-                $sql = "SELECT p.id_pedido,a.nombre_archivo,p.fecha_pedido FROM (pedidos p INNER JOIN archivos a ON p.id_archivo = a.id_archivo) INNER JOIN conversaciones c ON c.id_conversacion = a.id_conversacion WHERE p.estado_pedido=0 ORDER BY p.fecha_pedido ASC";
+                $sql = "SELECT p.id_pedido,a.nombre_archivo,p.fecha_pedido FROM (pedidos p INNER JOIN archivos a ON p.id_archivo = a.id_archivo) INNER JOIN conversaciones c ON c.id_conversacion = a.id_conversacion WHERE p.estado_pedido=? ORDER BY p.fecha_pedido ASC";
                 //CREO EL MODELO DE LA TABLA
                 $tabla = "<table class='table table-striped table-responsive tabla-info'>";
                       $tabla .= "<thead>";
@@ -100,7 +102,9 @@
                       $tabla .= "</thead>";
                       $tabla .= "<tbody>";
                       //LLENO LA TABLA CON LOS REGISTROS
-                      foreach ($con->query($sql) as $datos) {
+                      $stmt = $con->prepare($sql);
+                      $stmt->execute(array(0));
+                      while ($datos = $stmt->fetch(PDO::FETCH_BOTH)) {
                         $tabla .= "<tr>";
                               $tabla .= "<td>$datos[1]</td>";
                               $tabla .= "<td>$datos[2]</td>";
@@ -130,7 +134,7 @@
               //SI HAY MAS DE UNO ENTONCES PASA
               if ($cnt[0] > 0) {
                 //CREO LA CONSULTA PAR OBTENER
-                $sql = "SELECT c.id_carrito,p.nombre_producto,cantidad,c.fecha_solicitud FROM (productos p INNER JOIN medidas_producto md ON p.id_producto = md.id_producto) INNER JOIN carritos c ON c.id_medida = md.id_medida WHERE c.estado_carrito=1 ORDER BY c.fecha_solicitud ASC";
+                $sql = "SELECT c.id_carrito,p.nombre_producto,cantidad,c.fecha_solicitud FROM (productos p INNER JOIN medidas_producto md ON p.id_producto = md.id_producto) INNER JOIN carritos c ON c.id_medida = md.id_medida WHERE c.estado_carrito=? ORDER BY c.fecha_solicitud ASC";
                 //CREO EL MODELO DE LA TABLA
                 $tabla = "<table class='table table-striped table-responsive tabla-info'>";
                       $tabla .= "<thead>";
@@ -142,7 +146,9 @@
                       $tabla .= "</thead>";
                       $tabla .= "<tbody>";
                       //LLENO LA TABLA CON LOS REGISTROS
-                      foreach ($con->query($sql) as $datos) {
+                      $stmt = $con->prepare($sql);
+                      $stmt->execute(array(1));
+                      while ($datos = $stmt->fetch(PDO::FETCH_BOTH)) {
                         $tabla .= "<tr>";
                               $tabla .= "<td>$datos[1]</td>";
                               $tabla .= "<td>$datos[2]</td>";
@@ -164,15 +170,15 @@
         <div class="col-lg-12">
           <?php 
               //VEO SI HAY PEDIDOS PARA REALIZAR
-              $pedidocnt = "SELECT COUNT(p.id_pedido) FROM (pedidos p INNER JOIN archivos a ON p.id_archivo = a.id_archivo) INNER JOIN conversaciones c ON c.id_conversacion = a.id_conversacion WHERE p.estado_pedido=1";
+              $pedidocnt = "SELECT COUNT(p.id_pedido) FROM (pedidos p INNER JOIN archivos a ON p.id_archivo = a.id_archivo) INNER JOIN conversaciones c ON c.id_conversacion = a.id_conversacion WHERE p.estado_pedido=?";
               $stmtp = $con->prepare($pedidocnt);
-              $stmtp->execute(array());
+              $stmtp->execute(array(1));
               $cntp = $stmtp->fetch(PDO::FETCH_BOTH);
               $tabla = "";
               // SI HAY PEDIDOS HECHO ENTRA AL IF
               if ($cntp[0] > 0) {
                 //CREO LA CONSULTA
-                $sql = "SELECT p.id_pedido,a.nombre_archivo,p.fecha_pedido FROM (pedidos p INNER JOIN archivos a ON p.id_archivo = a.id_archivo) INNER JOIN conversaciones c ON c.id_conversacion = a.id_conversacion WHERE p.estado_pedido=1 ORDER BY p.fecha_pedido ASC";
+                $sql = "SELECT p.id_pedido,a.nombre_archivo,p.fecha_pedido FROM (pedidos p INNER JOIN archivos a ON p.id_archivo = a.id_archivo) INNER JOIN conversaciones c ON c.id_conversacion = a.id_conversacion WHERE p.estado_pedido=? ORDER BY p.fecha_pedido ASC";
                 //CREO EL MODELO DE LA TABLA
                 $tabla = "<table class='table table-striped table-responsive tabla-info'>";
                       $tabla .= "<thead>";
@@ -184,7 +190,9 @@
                       $tabla .= "</thead>";
                       $tabla .= "<tbody>";
                       ///SI HAY REGISTROS LOS PONGO EN LA TABLA
-                      foreach ($con->query($sql) as $datos) {
+                      $stmt = $con->prepare($sql);
+                      $stmt->execute(array(1));
+                      while ($datos = $stmt->fetch(PDO::FETCH_BOTH)) {
                         $tabla .= "<tr>";
                               $tabla .= "<td>$datos[1]</td>";
                               $tabla .= "<td>$datos[2]</td>";

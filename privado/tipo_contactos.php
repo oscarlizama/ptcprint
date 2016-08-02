@@ -21,9 +21,9 @@
 			<div class="col-lg-12" id="frm">
 				<div class="col-lg-6 col-md-6">
 					<p id="id_reg" class="hide"></p>
-					<input type="text" class="hide omitir" name="usuarios[]" value="16" id="tbl">
+					<input type="text" class="hide omitir" name="usuarios[]" value="16" id="tbl" autocomplete='off'>
 					<label for="" class="labels">Tipo de contacto</label>
-                    <input type="text" class="form-control input" name="usuarios[]" id="nombre">
+                    <input type="text" class="form-control input" name="usuarios[]" id="nombre" autocomplete='off'>
                     <br>
                     
 				</div>
@@ -64,8 +64,10 @@
 							"<th><strong>Tipo de contacto</strong></th>".
 							"<th><strong></strong></th>".
 						"</tr>";
-				$sql = "SELECT * FROM tipos_contacto WHERE estado_tipo_contacto=1";
-				foreach ($con->query($sql) as $datos) {
+				$sql = "SELECT * FROM tipos_contacto WHERE estado_tipo_contacto=?";
+				$stmt = $con->prepare($sql);
+			    $stmt->execute(array(1));
+				while ($datos = $stmt->fetch(PDO::FETCH_BOTH)) {
 					$tabla .= 
 						"<tr>".
 							"<td>$datos[0]</td>".

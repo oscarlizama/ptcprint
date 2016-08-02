@@ -238,13 +238,13 @@
             <div class="uk-vertical-align-middle">
             <!--FORMULARIO DE INICO DE SESIÓN-->
                <form action="../privado/procesos/logincliente.php" method="post">
-                  <h4 class="uk-text-center"><p>Usuario o email</p></h4>
-                  <input class="form-control col-lg-12" type="text" placeholder="Usuario o email" name="correo">
+                  <h4 class="uk-text-center"><p>Correo electrónico</p></h4>
+                  <input class="form-control col-lg-12" type="text" placeholder="Usuario o email" name="correo" autocomplete='off'>
                   <br>
                   <br>
                   <br>
                   <h4 class="uk-text-center"><p>Contraseña</p></h4>
-                  <input class="form-control col-lg-12" type="password" placeholder="Contraseña" name="clave">
+                  <input class="form-control col-lg-12" type="password" placeholder="Contraseña" name="clave" autocomplete='off'>
                   <button class="btn btn-primary btn-iniciar-s col-lg-12" name="iniciar_sesion">Iniciar Sesión</button>
                   <!--OLVIDÉ LA CONTRASEÑA-->
                   <div class="uk-form-row uk-text-small">
@@ -255,15 +255,10 @@
          </div>
       </div>
       <br>
+      <br>
+      <br>
+      <br>
       <a class="uk-flex uk-flex-center uk-link uk-link-muted" href="#modal-registrer" data-uk-modal="" class="uk-modal-close uk-close">¡Registrarme ahora!</a>
-      <!--OTRAS OPCIONES DE INICIO DE SESIÓN-->
-      <hr class="uk-article-divider">
-      <h5 class="uk-text-center">INICIAR SESIÓN O REGISTRASE CON</h5>
-      <div class="uk-panel uk-flex uk-flex-center">
-         <a href="" data-uk-tooltip="pos:'bottom'" title="Iniciar sesión con Facebook" class="uk-icon-button uk-icon-facebook-square inicio-alter"></a>
-         <a href="" data-uk-tooltip="pos:'bottom'" title="Iniciar sesion con Twitter" class="uk-icon-button uk-icon-twitter inicio-alter"></a>
-         <a href="" data-uk-tooltip="pos:'bottom'" title="Iniciar sesion con Google Plus " class="uk-icon-button uk-icon-google-plus inicio-alter"></a>
-      </div>
       <!--PARTE FINAL DEL MODAL-->
       <div class="uk-modal-caption">
          Punto Print - Soluciones en impresiones
@@ -272,7 +267,7 @@
 </div>
 <!--MODAL PARA RECUPERAR CONTRASEÑA-->
 <div id="modal-recuperar" class="uk-modal modal">
-   <div class="uk-modal-dialog">
+   <div class="uk-modal-dialog modal-sm">
       <a href="" class="uk-modal-close uk-close"></a>
       <div class="uk-modal-header">
          <h5>BIENVENIDO A PUNTO PRINT</h5>
@@ -280,17 +275,17 @@
       <div class="uk-flex uk-flex-center">
          <div class="uk-vertical-align uk-text-center uk-height-1-1">
             <div class="uk-vertical-align-middle">
-               <form class="uk-form">
-                  <h5><p>Por favor, ingrese su email o nombre de usuario</p></h5>
+              <form action="../privado/procesos/pass/recuperar.php" method="post" id="form">
+                  <h4><p>Correo electrónico</p></h4>
+                  <input type="text" class="form-control input-md paste" name="correo" required autocomplete="off" id="correol">
                   <br>
-                  <h5 class="uk-text-center"><p>Usuario o email</p></h5>
-                  <div class="uk-form-row">
-                     <input class="uk-width-1-1 uk-form-large" type="text" placeholder="Usuario o email">
-                  </div>
-                  <div class="uk-form-row">
-                     <button class="uk-button uk-button-primary uk-button-large uk-modal-close uk-width-1-1"  data-message="<i class='uk-icon-check'></i> Revisa tu email por favor." data-pos="top-center">Recuperar</button>
-                  </div>
-               </form>
+                  <h5><p>Se envirá una contraseña a tu correo electrónico para recuperar la cuenta.</p></h5>
+                  <br>
+                  <br>
+                  <button class="btn btn-buy btn-sm col-lg-12 col-md-12" name="iniciar_sesion">RECUPERAR CONTRASEÑA</button>
+                  <br>
+                  <br>
+              </form>
             </div>
          </div>
       </div>
@@ -330,7 +325,7 @@
                   <p>Contraseña:</p>
                   <div class="uk-form-icon uk-width-1-1">
                      <i class="uk-icon-key"></i>
-                     <input class="form-control" type="password" placeholder="Contraseña">
+                     <input class="form-control" type="password" placeholder="Contraseña" autocomplete='off'>
                   </div>
                </div>
                <div class="col-lg-6">
@@ -338,13 +333,13 @@
                   <p>Confirmar:</p>
                   <div class="uk-form-icon uk-width-1-1">
                      <i class="uk-icon-check"></i>
-                     <input class="form-control omitir" type="password" placeholder="Confirmar contraseña">
+                     <input class="form-control omitir" type="password" placeholder="Confirmar contraseña" id="txtClaveR" autocomplete='off'>
                   </div>
                </div>
             </div>
          </div>
          <div class="modal-footer">
-            <button class="uk-button uk-button-success uk-button-large btn-block btn-regc omitir" data-message="<i class='uk-icon-check'></i> REGISTRO COMPLETO." data-pos="top-center">REGISTRARME</button>
+            <button class="uk-button uk-button-success uk-button-large btn-block btn-regc omitir">REGISTRARME</button>
          </div>
       </div>
    </div>

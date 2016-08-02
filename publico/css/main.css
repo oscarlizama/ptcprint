@@ -1,6 +1,12 @@
 *{
 	font-family: 'Arimo', sans-serif;	
 }
+.estira{
+    max-width: 100%;
+    min-width: 80%;
+    max-height: 112px;
+    min-height: 80%;
+}
 #boton-terminos{
 	background-color: deepskyblue;
 }

@@ -21,12 +21,12 @@
 			<div class="col-lg-12" id="frm">
 				<div class="col-lg-6 col-md-6">
 					<p id="id_reg" class="hide"></p>
-					<input type="text" class="hide omitir" name="usauarios[]" value="22" id="tbl">
+					<input type="text" class="hide omitir" name="usauarios[]" value="22" id="tbl" autocomplete='off'>
 					<label for="" class="labels">Nombre Equipo</label>
-                    <input type="text" class="form-control input" name="usuarios[]" id="equipo">
+                    <input type="text" class="form-control input" name="usuarios[]" id="equipo" autocomplete='off'>
                     <br>
                     <label for="" class="labels">Costo Click Equipo</label>
-                    <input type="text" class="form-control input" name="usuarios[]" id="costo_click_equipo">
+                    <input type="text" class="form-control input" name="usuarios[]" id="costo_click_equipo" autocomplete='off'>
                     <br>
 				</div>
 				<div class="col-lg-12">
@@ -54,7 +54,7 @@
 		<div class="row">
 		<div class="col-lg-12">
 				<label for="" class="labels">Buscar</label>
-                <input type="text" class="form-control" id="buscar">
+                <input type="text" class="form-control" id="buscar" autocomplete='off'>
                 <br>
 			</div>
 			<div class="col-lg-12" id="tabla_div">
@@ -67,8 +67,10 @@
 							"<th><strong>Costo Click Equipo</strong></th>".
 							"<th><strong></strong></th>".
 						"</tr>";
-				$sql = "SELECT * FROM equipos WHERE estado_equipo=1";
-				foreach ($con->query($sql) as $datos) {
+				$sql = "SELECT * FROM equipos WHERE estado_equipo=?";
+				$stmt = $con->prepare($sql);
+			    $stmt->execute(array(1));
+				while ($datos = $stmt->fetch(PDO::FETCH_BOTH)){
 					$tabla .= 
 						"<tr>".
 							"<td>$datos[0]</td>".

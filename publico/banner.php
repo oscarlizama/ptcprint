@@ -24,12 +24,16 @@
     $descripcion = "";
     $foto_producto = "";
     $calificacion_promedio = 0;
-    $maximo = "SELECT p.id_producto FROM productos p WHERE p.id_tipo_producto=4 AND p.calificacion_promedio = (SELECT MAX(p.calificacion_promedio) FROM productos) LIMIT 1";
-    foreach ($con->query($maximo) as $maximos) {
+    $maximo = "SELECT p.id_producto FROM productos p WHERE p.id_tipo_producto=? AND p.calificacion_promedio = (SELECT MAX(p.calificacion_promedio) FROM productos) LIMIT 1";
+    $stmt = $con->prepare($maximo);
+    $stmt->execute(array(4));
+    while ($maximos = $stmt->fetch(PDO::FETCH_BOTH)){
       $id_max = $maximos[0];
     }
-    $producto = "SELECT p.nombre_producto, p.descripcion_producto, p.calificacion_promedio,f.foto_producto FROM productos p INNER JOIN fotos_productos f ON f.id_producto = p.id_producto WHERE p.id_producto=$id_max";
-    foreach ($con->query($producto) as $productoa) {
+    $producto = "SELECT p.nombre_producto, p.descripcion_producto, p.calificacion_promedio,f.foto_producto FROM productos p INNER JOIN fotos_productos f ON f.id_producto = p.id_producto WHERE p.id_producto=?";
+    $stmt = $con->prepare($producto);
+    $stmt->execute(array($id_max));
+    while ($productoa = $stmt->fetch(PDO::FETCH_BOTH)){
       $descripcion = $productoa[1];
       $calificacion_promedio = $productoa[2];
       $foto_producto = $productoa[3];
@@ -50,7 +54,9 @@
                 $divin .= "<p>Medida:</p>";
                   $divin .= "<form class='uk-form' id='medidassl'>";
                     $medidas = "SELECT m.medida FROM medidas_producto m INNER JOIN productos p ON m.id_producto = p.id_producto WHERE p.id_producto=$id_max";
-                    foreach ($con->query($medidas) as $medidasa) {
+                    $stmt = $con->prepare($medidas);
+                    $stmt->execute(array($id_max));
+                    while ($medidasa = $stmt->fetch(PDO::FETCH_BOTH)){
                     $divin .= "<input type='radio' id='form-s-r' name='radio'><label for='form-s-r'>$medidasa[0]</label><br>";
                     }
                   $divin .= "</form>";
@@ -121,8 +127,8 @@
               <p class=" uk-hidden-small uk-hidden-medium">Mi comentario:</p>
                 <form class="uk-form uk-hidden-small uk-hidden-medium">
                   <div class="uk-form-row">
-                    <textarea cols="40" rows="3" placeholder="Danos tu opinón" class="uk-hidden-large"></textarea>
-                    <textarea cols="75" rows="3" placeholder="Danos tu opinón" class="uk-hidden-medium uk-hidden-small"></textarea>
+                    <textarea cols="40" rows="3" placeholder="Danos tu opinón" class="uk-hidden-large estira"></textarea>
+                    <textarea cols="75" rows="3" placeholder="Danos tu opinón" class="uk-hidden-medium uk-hidden-small estira"></textarea>
                     <br>
                     <br>
                     <button class="btn btn-default uk-width-4-10 uk-push-6-10">PUNTUAR</button>
@@ -162,8 +168,10 @@
           <?php 
             $row = 1;
             $divoep = "";
-            $sqlep = "SELECT DISTINCT productos.id_producto,foto_producto,nombre_producto FROM ((productos INNER JOIN tipos_producto ON productos.id_tipo_producto = tipos_producto.id_tipo_producto) INNER JOIN fotos_productos ON fotos_productos.id_producto = productos.id_producto) INNER JOIN medidas_producto ON medidas_producto.id_producto = productos.id_producto WHERE productos.id_tipo_producto=4 AND estado_producto=1 AND estado_foto_producto=1";
-              foreach ($con->query($sqlep) as $datos) {
+            $sqlep = "SELECT DISTINCT productos.id_producto,foto_producto,nombre_producto FROM ((productos INNER JOIN tipos_producto ON productos.id_tipo_producto = tipos_producto.id_tipo_producto) INNER JOIN fotos_productos ON fotos_productos.id_producto = productos.id_producto) INNER JOIN medidas_producto ON medidas_producto.id_producto = productos.id_producto WHERE productos.id_tipo_producto=? AND estado_producto=? AND estado_foto_producto=?";
+              $stmt = $con->prepare($sqlep);
+              $stmt->execute(array(4,1));
+              while ($datos = $stmt->fetch(PDO::FETCH_BOTH)){
                 $divoep .= "<div class='col-lg-3 col-md-4 col-sm-6 col-xs-12 imagenesael' id='imagenel".$datos[0]."'>";
                   $divoep .= "<a href='javascript:elegido($datos[0])'><img src='data:image/*;base64,$datos[1]' class='img-responsive' id='img$datos[0]'></a>";
                 $divoep .= "</div>";
@@ -190,8 +198,10 @@
         $slidenavb .= "<div class='uk-slidenav-position' data-uk-slider>";
           $slidenavb .= "<div class='uk-slider-container'>";
             $slidenavb .= "<ul class='uk-slider uk-grid-small uk-grid-width-small-1-2 uk-grid-width-medium-1-4 uk-grid-width-large-1-4'>";
-                $sql = "SELECT productos.id_producto,foto_producto,nombre_producto FROM (productos INNER JOIN tipos_producto ON productos.id_tipo_producto = tipos_producto.id_tipo_producto) INNER JOIN fotos_productos ON fotos_productos.id_producto = productos.id_producto WHERE productos.id_tipo_producto=4 AND estado_producto=1 AND estado_foto_producto=1";
-                foreach ($con->query($sql) as $datos) {
+                $sql = "SELECT productos.id_producto,foto_producto,nombre_producto FROM (productos INNER JOIN tipos_producto ON productos.id_tipo_producto = tipos_producto.id_tipo_producto) INNER JOIN fotos_productos ON fotos_productos.id_producto = productos.id_producto WHERE productos.id_tipo_producto=? AND estado_producto=? AND estado_foto_producto=?";
+                $stmt = $con->prepare($sql);
+                $stmt->execute(array(4,1,1));
+                while ($datos = $stmt->fetch(PDO::FETCH_BOTH)){
                   $slidenavb .= "<a href='#'><li><img src='data:image/*;base64,$datos[1]' alt='$datos[2]' id='$datos[0]'></li></a>";
                 }
               $slidenavb .= "</ul>";
@@ -212,8 +222,10 @@
             <?php 
               $row = 1;
               $divoep = "";
-              $sqlep = "SELECT productos.id_producto,foto_producto,nombre_producto FROM (productos INNER JOIN tipos_producto ON productos.id_tipo_producto = tipos_producto.id_tipo_producto) INNER JOIN fotos_productos ON fotos_productos.id_producto = productos.id_producto WHERE productos.id_tipo_producto=4 AND estado_producto=1 AND estado_foto_producto=1";
-                foreach ($con->query($sqlep) as $datos) {
+              $sqlep = "SELECT productos.id_producto,foto_producto,nombre_producto FROM (productos INNER JOIN tipos_producto ON productos.id_tipo_producto = tipos_producto.id_tipo_producto) INNER JOIN fotos_productos ON fotos_productos.id_producto = productos.id_producto WHERE productos.id_tipo_producto=? AND estado_producto=? AND estado_foto_producto=?";
+                $stmt = $con->prepare($sqlep);
+                $stmt->execute(array(4,1,1));
+                while ($datos = $stmt->fetch(PDO::FETCH_BOTH)){
                   $divoep .= "<div class='col-lg-3 col-md-4 col-sm-6 col-xs-12 imagenesael' id='imagenel".$datos[0]."'>";
                     $divoep .= "<a href='javascript:elegido($datos[0])'><img src='data:image/*;base64,$datos[1]' class='img-responsive'></a>";
                   $divoep .= "</div>";

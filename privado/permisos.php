@@ -25,7 +25,7 @@
 					<div class="panel-heading"><h5>ADMINISTRACIÓN DE PERMISOS</h5></div>
 					<div class="panel-body">
                         <label for="" class="labels">Nombre del permiso</label>
-                        <input type="text" class="form-control input omitir" name="usuarios[]" id="nombre_permiso">
+                        <input type="text" class="form-control input omitir" name="usuarios[]" id="nombre_permiso" autocomplete='off'>
                         <br>
 						<div class="row">
 							<div class="col-lg-3">
@@ -414,7 +414,7 @@
 		<div class="row">
             <div class="col-lg-12">
                 <label for="" class="labels">Buscar</label>
-                <input type="text" class="form-control" id="buscar">
+                <input type="text" class="form-control" id="buscar" autocomplete='off'>
                 <br>
             </div>
 			<div class="col-lg-12" id="tabla_div">
@@ -426,8 +426,10 @@
 							"<th><strong>Nombre permiso</strong></th>".
 							"<th><strong></strong></th>".
 						"</tr>";
-				$sql = "SELECT id_permiso,nombre_permiso FROM permisos WHERE estado_permiso=1";
-				foreach ($con->query($sql) as $datos) {
+				$sql = "SELECT id_permiso,nombre_permiso FROM permisos WHERE estado_permiso=?";
+				$stmt = $con->prepare($sql);
+                $stmt->execute(array(1));
+                while ($datos = $stmt->fetch(PDO::FETCH_BOTH)) {
 					$tabla .= 
 						"<tr>".
 							"<td>$datos[0]</td>".

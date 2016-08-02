@@ -29,3 +29,4 @@
 <script src="js/vendor/acciones_front.js"></script>
 <script src="js/vendor/canvas.js"></script>
 <script type="text/javascript" src="js/vendor/sweetalert.min.js"></script>
+<script type="text/javascript" src="js/vendor/perfilusr.js"></script>
