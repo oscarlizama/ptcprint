@@ -1,7 +1,8 @@
 var img = "";
-function insertar(tabla,valores){
-	var url = '../privado/procesos/puente.php';
-	var parametros = {"valores": valores,"tabla":tabla, "accion":1};
+function insertar_usr(valores){
+	var repetida = $("#claver").val();
+	var url = '../privado/procesos/registrarusr.php';
+	var parametros = {"valores": valores,"repetida":repetida};
 	$.ajax({
 		type:'POST',
 		url:url,
@@ -16,15 +17,53 @@ function insertar(tabla,valores){
 					limpiar();
 					selec_tbl($("#tbl").val(),1);
 				break;
+				case "mala": // Cuando todo funcione excelente
+					swal("Error", "Las contraseñas no coinciden. Es posible que intente ingresar su nombre o correo como contraseña.", "info");
+				break;
+				case "validacion": // Cuando todo funcione excelente
+					swal("Error", "Por favor revise los campos", "info");
+				break;
 				default: // Cuando ocurra un error en el server (no sea error del usuario)
-					swal("¡HUY!", "Lo sentimos estamos experimentando problemas con nuestro servidor", "warning");
-					//alert(d);
+					swal("¡HUY!", d, "warning");
+					
 				break;
 			}
 			//vista_tabla(vista);
 		}
 	});
 	return false;
+}
+
+function insertar(tabla,valores){
+	if (tabla != 1) {
+		var url = '../privado/procesos/puente.php';
+		var parametros = {"valores": valores,"tabla":tabla, "accion":1};
+		$.ajax({
+			type:'POST',
+			url:url,
+			data:parametros,
+			success:function(d){
+				switch (d) {
+					case "invalid": // Cuando algun campo sea invalido
+						swal("¡UPS!", "Revise todos los campos", "warning");
+					break;
+					case "success": // Cuando todo funcione excelente
+						swal("¡EXITOSO!", "El registro se ha agregado con exito", "success");
+						limpiar();
+						selec_tbl($("#tbl").val(),1);
+					break;
+					default: // Cuando ocurra un error en el server (no sea error del usuario)
+						swal("¡HUY!", "Lo sentimos estamos experimentando problemas con nuestro servidor", "warning");
+						//alert(d);
+					break;
+				}
+				//vista_tabla(vista);
+			}
+		});
+		return false;
+	}else{
+		insertar_usr(valores);
+	}
 }
 
 function editar(tabla,valores){
