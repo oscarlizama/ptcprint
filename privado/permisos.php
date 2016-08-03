@@ -1,6 +1,21 @@
 <?php 
 	require 'procesos/conexion.php';
 	include 'procesos/autenticar.php';
+    $button = "";
+    if(!empty($_SESSION['autenticadop'])){
+        $nombre = $_SESSION['autenticadop'];
+        require '../privado/procesos/conexion.php';
+        $sql = "SELECT id_permiso FROM usuarios WHERE id_usuario=?";
+        $id = $_SESSION['idusr'];
+        $stmt = $con->prepare($sql);
+        $stmt->execute(array($id));
+        $permiso = $stmt->fetch(PDO::FETCH_BOTH);
+        $sql = "SELECT tbl_permisos FROM permisos WHERE id_permiso=?";
+        $id = $_SESSION['idusr'];
+        $stmt = $con->prepare($sql);
+        $stmt->execute(array($permiso[0]));
+        $valor = $stmt->fetch(PDO::FETCH_BOTH);
+    }
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -96,7 +111,7 @@
 							</div>
 							<div class="col-lg-3">
 								<div class="panel panel-primary">
-									<div class="panel-heading">Comentarios</div>
+									<div class="panel-heading">Fotos de productos</div>
 									<div class="panel-body">
 										<div class="checkbox">
                                             <label class="labels"><input type="checkbox" value="0" name="comentarios[]" checked id="ng_coment">Ninguno</label>
@@ -276,7 +291,7 @@
 							</div>
 							<div class="col-lg-3">
 								<div class="panel panel-primary">
-									<div class="panel-heading">Precios de productos</div>
+									<div class="panel-heading">Tipos de contactos</div>
 									<div class="panel-body">
 										<div class="checkbox">
                                             <label class="labels"><input type="checkbox" value="0" name="precios[]" checked id="ng_pp">Ninguno</label>
@@ -300,7 +315,7 @@
 						<div class="row">
 							<div class="col-lg-3">
 								<div class="panel panel-primary">
-									<div class="panel-heading">Cantidades de productos</div>
+									<div class="panel-heading">Tipos de productos</div>
 									<div class="panel-body">
 										<div class="checkbox">
                                             <label class="labels"><input type="checkbox" value="0" name="cantidadp[]" checked id="ng_cp">Ninguno</label>
@@ -344,7 +359,7 @@
 							</div>
 							<div class="col-lg-3">
 								<div class="panel panel-primary">
-									<div class="panel-heading">Recursos</div>
+									<div class="panel-heading">Contactos de proveedor</div>
 									<div class="panel-body">
 										<div class="checkbox">
                                             <label class="labels"><input type="checkbox" value="0" name="recursos[]" checked id="ng_rec">Ninguno</label>
@@ -390,23 +405,52 @@
 					</div>
 				</div>
 				<div class="col-lg-12">
-					<button class="btn btn-ag-pr btn-scrud col-lg-3 col-md-3 col-sm-3">
-						AGREGAR
-						<span class="flaticon-correct icon-ag icon-button"></span>
-						</button>
-					<button class="btn btn-ed-pr btn-scrud col-lg-3 col-md-3 col-sm-3 disabled" disabled="">
-						EDITAR
-						<span class="flaticon-new-file icon-button icon-ed"></span>
-					</button>
-					<button class="btn btn-el-pr btn-scrud col-lg-3 col-md-3 col-sm-3 disabled" disabled="">
-						ELIMINAR
-						<span class="flaticon-cancel icon-button icon-el"></span>
-					</button>
-					<button class="btn btn-nv-pr btn-scrud col-lg-2 col-md-2 col-sm-2">
-						LIMPIAR
-						<span class="flaticon-circular-arrow icon-button icon-nv"></span>
-					</button>
-				</div>
+                    <?php  
+                        if ($valor[0] >= 4) {
+                            $button = 
+                            "<button class='btn btn-ag-pr btn-scrud col-lg-3 col-md-3 col-sm-3'>
+                                    AGREGAR
+                                    <span class='flaticon-correct icon-ag icon-button'></span>
+                                </button>";
+                        }
+                        print($button);
+                        $button = "";
+                    ?>
+                    <?php 
+                        if ($valor[0] == 2 || $valor[0] == 3 || $valor[0] == 6 || $valor[0] == 7) {
+                            $button = "
+                            <button class='btn btn-ed-pr btn-scrud col-lg-3 col-md-3 col-sm-3 disabled' disabled=''>
+                                EDITAR
+                                <span class='flaticon-new-file icon-button icon-ed'></span>
+                            </button>";
+                            
+                        }
+                        print($button);
+                        $button = "";
+                    ?>
+                    <?php 
+                        if ($valor[0] == 1 || $valor[0] == 3 || $valor[0] == 5 || $valor[0] == 7) {
+                            $button = 
+                            "<button class='btn btn-el-pr btn-scrud col-lg-3 col-md-3 col-sm-3 disabled' disabled=''>
+                                ELIMINAR
+                                <span class='flaticon-cancel icon-button icon-el'></span>
+                            </button>";
+                        }
+                        print($button);
+                        $button = "";
+                    ?>
+                    <?php 
+                        if ($valor[0] > 0) {
+                            $button = 
+                            "<button class='btn btn-nv-pr btn-scrud col-lg-2 col-md-2 col-sm-2'>
+                                LIMPIAR
+                                <span class='flaticon-circular-arrow icon-button icon-nv'></span>
+                            </button>";
+                        }
+                        print($button);
+                        $button = "";
+                    ?>
+                </div>
 			</div>
 		</div>
 		<br>

@@ -46,8 +46,8 @@
 		$tabla = "permisos";
 		$estado = "estado_permiso=0";
 		$where = "id_permiso=?";
-		$campos_tabla = array('nombre_permiso','tbl_configuraciones','tbl_usuarios','tbl_permisos','tbl_comentarios',
-			'tbl_clientes','tbl_informacion_corporativa','tbl_redes_sociales','tbl_proveedores','tbl_facturacion','tbl_productos','tbl_medidas_productos','tbl_precios_productos','tbl_cantidades_precios','tbl_mano_obra','tbl_recursos','tbl_equipos','estado_permiso');
+		$campos_tabla = array('nombre_permiso','tbl_configuraciones','tbl_usuarios','tbl_permisos','tbl_fotospr',
+			'tbl_clientes','tbl_informacion_corporativa','tbl_redes_sociales','tbl_proveedores','tbl_facturacion','tbl_productos','tbl_medidas_productos','tbl_tipo_contactos','tbl_tipo_productos','tbl_mano_obra','tbl_contactos_proveedor','tbl_equipos','estado_permiso');
 
 		if($_POST['accion'] == 1){
 			include 'insertar.php';

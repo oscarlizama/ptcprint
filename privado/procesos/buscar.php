@@ -4,11 +4,11 @@
 
 	if($_POST['sql'] == 1){
 		$buscar = $_POST['buscar'];
-		$sql = "SELECT * FROM usuarios WHERE (usuarios.nombre_usuario LIKE ? OR usuarios.apellido_usuario LIKE ?) AND estado_usuario=1";
+		$sql = "SELECT * FROM usuarios WHERE (usuarios.nombre_usuario LIKE ? OR usuarios.apellido_usuario LIKE ?) AND estado_usuario=1 AND id_usuario !=?";
 		$i = 0;
 		$b = "%".$buscar."%";
 		$stmt = $con->prepare($sql);
-	    $stmt->execute(array($b,$b));
+	    $stmt->execute(array($b,$b,$_POST['id_reg']));
 		while ($datos = $stmt->fetch(PDO::FETCH_BOTH)) {
 			$valores[$i] = array(
 				0 => $datos['id_usuario'], 

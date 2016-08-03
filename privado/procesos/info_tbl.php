@@ -2,9 +2,9 @@
 	require 'conexion.php';
 	if($_POST['sql'] == 1){
 		$i = 0;
-		$sql = "SELECT id_usuario,nombre_usuario,apellido_usuario,correo_usuario FROM usuarios WHERE estado_usuario=?";
+		$sql = "SELECT id_usuario,nombre_usuario,apellido_usuario,correo_usuario FROM usuarios WHERE estado_usuario=? AND id_usuario!=?";
 		$stmt = $con->prepare($sql);
-	    $stmt->execute(array(1));
+	    $stmt->execute(array(1,$_POST['id_reg']));
 		while ($datos = $stmt->fetch(PDO::FETCH_BOTH)){
 			$valores[$i] = array(
 				0 => $datos['id_usuario'], 

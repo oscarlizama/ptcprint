@@ -40,14 +40,15 @@ function selec_tbl(tbl,ruta){
 function tbl_usuarios(ruta){
 	var url = "";
 	var parametros = "";
+	var id_rg = $("#id_reglog").text();
 	var texto = $("#buscar").val();
 	if (ruta == 1) {
 		url = '../privado/procesos/info_tbl.php';
-		parametros = {"sql": 1};
+		parametros = {"sql": 1,"id_reg":id_rg};
 	}
 	if (ruta == 2){
 		url = '../privado/procesos/buscar.php';	
-		parametros = {"sql": 1, "buscar": texto};
+		parametros = {"sql": 1, "buscar": texto,"id_reg":id_rg};
 	}
 	$.ajax({
 		type:'POST',

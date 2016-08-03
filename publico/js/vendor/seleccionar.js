@@ -13,8 +13,6 @@ function seleccionar_usuario(id){
 				$('#id_reg').text(id);
 				$('#nombre').val(datos[0]);
 				$('#apellido').val(datos[1]);
-				$('#clave').val(datos[2]);
-				$('#claver').val(datos[2]);
 				$('#correo').val(datos[3]);
 				$('#permiso').val(datos[4]);
 			return false;

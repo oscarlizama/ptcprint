@@ -48,7 +48,7 @@
 	    	array_push($ids_conver, $idsc[0]);
 	    }
         //CONUSLTA PARA OBTENER TODOS LOS ASUNTOS DE LAS CONVERSACIONES SI ES QUE HAY
-        $conversaciones = "SELECT DISTINCT asunto,conversaciones.id_conversacion FROM conversaciones INNER JOIN mensajes ON conversaciones.id_conversacion = mensajes.id_conversacion";
+        $conversaciones = "SELECT DISTINCT asunto,conversaciones.id_conversacion,CONCAT(clientes.nombre_cliente,' ',clientes.apellido_cliente) FROM (conversaciones INNER JOIN mensajes ON conversaciones.id_conversacion = mensajes.id_conversacion) INNER JOIN clientes ON clientes.id_cliente = conversaciones.id_conversacion";
         if($cntcvr[0] > 0){
           	//CREO LA LISTA QUE ME AYUDARA A ORGNIZAR LOS MENSAJES
         	$ul_tabs .= "<div class='panel panel-default'>";
@@ -62,10 +62,10 @@
   		        $stmtb->execute(array($ids_conver[$m],0,0));
   		        $msjbool = $stmtb->fetch(PDO::FETCH_BOTH);
       				if($msjbool[0] > 0){
-      					 $ul_tabs .= "<li id='$asunto[1]'><a data-toggle='tab' href='#msj".$i."'>$asunto[0] (NO LEIDO)</a></li>";
+      					 $ul_tabs .= "<li id='$asunto[1]'><a data-toggle='tab' href='#msj".$i."'>$asunto[2] - $asunto[0] (NO LEIDO)</a></li>";
       					 $no_leidos = true;
       		  		}else{
-      		  			$ul_tabs .= "<li><a data-toggle='tab' href='#msj".$i."'>$asunto[0]</a></li>";
+      		  			$ul_tabs .= "<li><a data-toggle='tab' href='#msj".$i."'>$asunto[2] - $asunto[0]</a></li>";
       		  		}
       		  		$m = $m + 1;
                 $i = $i + 1;
@@ -163,8 +163,8 @@
           $tablas_div .= "<div class='tab-content'>";
             $tablas_div .= "<div class='col-lg-6'>";
             $tablas_div .= "<div id='bandeja' class='tab-pane fade in active'>";
-            	if($no_leidos == true){
-            		$tablas_div .= "<h1 class='h-negro'>NO HAY MENSAJES NUEVOS QUE LEER</h1>";
+            	if($no_leidos == false){
+            		$tablas_div .= "<h1 class='h-negro text-center'>NO HAY MENSAJES NUEVOS QUE LEER</h1>";
             	}else{
             		$tablas_div .= "<h1 class='h-negro'>TIENES MENSAJES NUEVOS QUE LEER</h1>";
             	}

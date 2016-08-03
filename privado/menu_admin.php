@@ -11,7 +11,9 @@
 	<div class="col-lg-7 col-md-6 col-sm-4"></div>
 	<div class="col-lg-2 col-md-2 col-sm-3">
 		<p class="texto-mb">
-			<span class="flaticon-loupe iconos-acc pull-right"></span>
+			<a href="perfil.php">
+				<span class="flaticon-cogwheel iconos-acc pull-right"></span>
+			</a>
 		</p>
 	</div>
 </div>
@@ -110,7 +112,7 @@
 				<div class="dv-sub">
 					<ul>
 						<li>
-							<a href="productos.php"></a>
+							<a href="productos.php">
 								<div class="glyph">
 									<span class="glyph-icon flaticon-menu-1"></span>
 									<p class="nombre-opcion">Administrar</p>
@@ -125,12 +127,6 @@
 									<p class="nombre-opcion">Medidas</p>
 								</div>
 							</a>
-						</li>
-						<li>							
-							<div class="glyph">
-								<span class="glyph-icon flaticon-coin"></span>
-								<p class="nombre-opcion">Precios</p>
-							</div>
 						</li>
 					</ul>
 				</div>
@@ -164,14 +160,14 @@
 					</ul>
 				</div>
 			</li>
-			<li>
+			<!--<li>
 				<div class="texto">
 					<div class="glyph">
 						<span class="glyph-icon flaticon-id-card"></span>
 						<p class="nombre-opcion">Punto Club</p>
 					</div>
 				</div>
-			</li>
+			</li>-->
 			<li>
 				<a href="configuraciones.php">
 					<div class="texto">

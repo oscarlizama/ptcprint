@@ -10,7 +10,6 @@ function valores_check(num){
 		var $inputs = $('#frm :input[name="'+checkboxes[i]+'"]:checked').not(".btn-scrud").not(".omitir");
 		$inputs.each(function() {
 			sum = (parseInt($(this).val())) + sum;
-			alert(sum);
 		});
 		val.push(sum);
 	}

@@ -132,7 +132,7 @@
                 //SE CREAN LOS BOTONES PARA QUE EL USUARIO HAGA TODO
                   $tablas_div .= "</div>";
                   $tablas_div .= "<div class='col-lg-12'>";
-                    $tablas_div .= "<input class='col-lg-12 form-control disabled hide' id='idconver$ids_conver[$f]' value=$ids_conver[$f]>"; 
+                    $tablas_div .= "<input class='col-lg-12 form-control disabled hide' id='idconver$ids_conver[$f]' value=$ids_conver[$f] autocomplete='off'>"; 
                     $tablas_div .= "<textarea name='' id='mensaje$ids_conver[$f]' rows='4' class='col-lg-12 form-control estira' autocomplete='off'></textarea>";
                     $tablas_div .= "<div class='row'>";
                       $tablas_div .= "<div class='col-lg-12'>";
@@ -181,7 +181,7 @@
                 $tablas_div .= "<div class='col-lg-12'>";
                   $tablas_div .= "<form action='../privado/procesos/mensajeria.php' method='post' enctype='multipart/form-data'>";
                   //SE CREA LOS INPUTS NECESARIOS PARA EL USO DE LA MENSAJERIA
-                    $tablas_div .= "<input class='col-lg-12 form-control' placeholder='Asunto' name='asunto'>";
+                    $tablas_div .= "<input class='col-lg-12 form-control' placeholder='Asunto' name='asunto' autocomplete='off'>";
                     $tablas_div .= "<input class='col-lg-12 form-control hide disabled' name='id_cl' value=$id_cl>";
                     $tablas_div .= "<br>";
                     $tablas_div .= "<br>";
@@ -206,7 +206,7 @@
             $tablas_div .= "<div id='nuevo' class='tab-pane fade in active'>";
                 $tablas_div .= "<div class='col-lg-12'>";
                   $tablas_div .= "<form action='../privado/procesos/mensajeria.php' method='post' enctype='multipart/form-data'>";
-                    $tablas_div .= "<input class='col-lg-12 form-control' placeholder='Asunto' name='asunto'>";
+                    $tablas_div .= "<input class='col-lg-12 form-control' placeholder='Asunto' name='asunto' autocomplete='off'>";
                     $tablas_div .= "<input class='col-lg-12 form-control hide disabled' name='id_cl' value=$id_cl>";
                     $tablas_div .= "<br>";
                     $tablas_div .= "<br>";
