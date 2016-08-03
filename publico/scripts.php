@@ -30,3 +30,4 @@
 <script src="js/vendor/canvas.js"></script>
 <script type="text/javascript" src="js/vendor/sweetalert.min.js"></script>
 <script type="text/javascript" src="js/vendor/perfilusr.js"></script>
+<script type="text/javascript" src="js/vendor/sesion.js"></script>

@@ -1,3 +1,6 @@
+<?php 
+	include '../privado/procesos/lifetime.php';
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>

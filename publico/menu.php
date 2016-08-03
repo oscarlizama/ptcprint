@@ -1,25 +1,21 @@
 <?php 
    $id_cl = 0;
    $nombre = "Iniciar sesión";
-   if(!isset($_SESSION)) 
-   { 
-      session_start(); 
-      if(!empty($_SESSION['autenticado'])){       
-         $nombre = $_SESSION['autenticado'];
-         require '../privado/procesos/conexion.php';
-         $sql = "SELECT * FROM clientes WHERE correo_cliente=?";
-         $correo = $_SESSION['email'];
-         $stmt = $con->prepare($sql);
-         $stmt->execute(array($correo));
-         $nomb = $stmt->fetch(PDO::FETCH_BOTH);
-         $nombre = $nomb[1];
-         $id_cl = $nomb[0];
-         //$con = null;
-      }
-      else{
-         $nombre = "Iniciar sesión";
-      }
-   } 
+   if(!empty($_SESSION['autenticado'])){       
+      $nombre = $_SESSION['autenticado'];
+      require '../privado/procesos/conexion.php';
+      $sql = "SELECT * FROM clientes WHERE correo_cliente=?";
+      $correo = $_SESSION['email'];
+      $stmt = $con->prepare($sql);
+      $stmt->execute(array($correo));
+      $nomb = $stmt->fetch(PDO::FETCH_BOTH);
+      $nombre = $nomb[1];
+      $id_cl = $nomb[0];
+      //$con = null;
+   }
+   else{
+      $nombre = "Iniciar sesión";
+   }
 ?>
 <div id="menu">
    <div id="mobile">
@@ -237,15 +233,15 @@
          <div class="uk-vertical-align uk-text-center uk-height-1-1">
             <div class="uk-vertical-align-middle">
             <!--FORMULARIO DE INICO DE SESIÓN-->
-               <form action="../privado/procesos/logincliente.php" method="post">
+               <form action="../privado/procesos/logincliente.php" method="post" id="forml">
                   <h4 class="uk-text-center"><p>Correo electrónico</p></h4>
-                  <input class="form-control col-lg-12" type="text" placeholder="Usuario o email" name="correo" autocomplete='off'>
+                  <input class="form-control col-lg-12" type="text" placeholder="Usuario o email" name="correo" autocomplete='off' id="correolg">
                   <br>
                   <br>
                   <br>
                   <h4 class="uk-text-center"><p>Contraseña</p></h4>
                   <input class="form-control col-lg-12" type="password" placeholder="Contraseña" name="clave" autocomplete='off'>
-                  <button class="btn btn-primary btn-iniciar-s col-lg-12" name="iniciar_sesion">Iniciar Sesión</button>
+                  <button class="btn btn-primary btn-iniciar-s col-lg-12" name="iniciar_sesion" id="iniciar_sesion" type="button">Iniciar Sesión</button>
                   <!--OLVIDÉ LA CONTRASEÑA-->
                   <div class="uk-form-row uk-text-small">
                      <a class="uk-float-right uk-link uk-link-muted" href="#modal-recuperar" data-uk-modal="" class="uk-modal-close uk-close">¿Olvidaste la contraseña?</a>
@@ -282,7 +278,7 @@
                   <h5><p>Se envirá una contraseña a tu correo electrónico para recuperar la cuenta.</p></h5>
                   <br>
                   <br>
-                  <button class="btn btn-buy btn-sm col-lg-12 col-md-12" name="iniciar_sesion">RECUPERAR CONTRASEÑA</button>
+                  <button class="btn btn-buy btn-sm col-lg-12 col-md-12" name="recuperar">RECUPERAR CONTRASEÑA</button>
                   <br>
                   <br>
               </form>
