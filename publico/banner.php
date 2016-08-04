@@ -15,7 +15,7 @@
     <br>
 	<!--CREO EL HADER DE LA PAGINA-->
   <div class="uk-width-1-1 banners">
-		<h1 class="titulos titulos-sublim uk-text-center">BANNERS</h1>-->
+		<h1 class="titulos titulos-sublim uk-text-center">BANNERS</h1>
 	</div>
 	<!--CONTENEDOR DE LA INFORMACION-->
 	<br>
