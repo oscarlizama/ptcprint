@@ -238,4 +238,19 @@
 		$con = null;
 	}
 
+	if($tbl == 39){
+		$id = $_POST['id'];
+		$sql = "SELECT p.descripcion_producto, ROUND(c.calificacion,1) FROM productos p INNER JOIN comentarios c ON p.id_producto = c.id_producto WHERE p.id_producto=?";
+		$stmt = $con->prepare($sql);
+	    $stmt->execute(array($id));
+		while ($datos = $stmt->fetch(PDO::FETCH_BOTH)) {
+			$valores = array(
+				0 => $datos[0], 
+				1 => $datos[1]
+			);
+		}
+		echo json_encode($valores);
+		$con = null;
+	}
+
 ?>

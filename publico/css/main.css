@@ -12,7 +12,7 @@
 }
 /*ESTILOS DE H*/
 .titulos{
-	color: white;
+	color: black;
 	font-family: 'Roboto Condensed', sans-serif;
 }
 /*ESTILOS DE SLIDER*/
@@ -34,9 +34,9 @@
 }
 /*FOOTER*/
 #footer-print{	
-	background-color: #1565c0;
+	background-color: #1976d2;
 	margin-top: 50px;
-	color: white;
+	color: black;
 }
 .footer-info{
 	margin-top: 30px;
@@ -49,7 +49,7 @@
 .link-p, .link-p:hover{
 	cursor: pointer;
 	text-decoration: none;
-	color: white;
+	color: #222;
 }
 @media all and (max-width: 620px){
 	.link-p{
@@ -60,7 +60,7 @@
 	}
 }
 .link-p:hover{
-	color: #212121;
+	color: #e91e63;
 	-webkit-transition: all 0.25s ease-out;
   	-moz-transition: all 0.25s ease-out;
   	-ms-transition: all 0.25s ease-out;
@@ -69,8 +69,9 @@
 }
 #code-masters{
 	height: 40px;
-	background: #0d47a1;
+	background: #1565c0;
 	bottom: 0px;
+	box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 	font-family: 'Arimo', sans-serif;
 }
 .preguntas-t{
@@ -90,8 +91,10 @@
 	margin-top: 60px;
 	height: 100px;
 	font-family: 'Arimo', sans-serif;
-	background-image: url(../img/bg-menu.jpg);
-	background-size: 600px 300px;
+	/*background-image: url(../img/bg-menu.jpg);
+	background-size: 600px 300px;*/
+	background: #2196f3;
+	box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 .banners{
 	margin-top: 20px;

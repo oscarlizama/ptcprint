@@ -15,23 +15,31 @@
     <br>
 	<!--CREO EL HADER DE LA PAGINA-->
   <div class="uk-width-1-1 banners">
-		<h1 class="titulos titulos-sublim uk-text-center">BANNERS</h1>
+		<h1 class="titulos titulos-sublim uk-text-center">BANNERS</h1>-->
 	</div>
 	<!--CONTENEDOR DE LA INFORMACION-->
 	<br>
-  
+  <br>
   <?php 
     $id_max = 0;
     $descripcion = "";
     $foto_producto = "";
+    $pt_mx = 0;
+    $productoa = array();
     $calificacion_promedio = 0;
-    $maximo = "SELECT p.id_producto FROM productos p WHERE p.id_tipo_producto=? AND p.calificacion_promedio = (SELECT MAX(p.calificacion_promedio) FROM productos) LIMIT 1";
+    $puntuacion_max = "SELECT max(c.calificacion) from comentarios c";
+    $stmt = $con->prepare($puntuacion_max);
+    $stmt->execute(array());
+    while ($ptmx = $stmt->fetch(PDO::FETCH_BOTH)){
+      $pt_mx = $ptmx[0];
+    }
+    $maximo = "SELECT p.id_producto FROM productos p INNER JOIN comentarios c ON p.id_producto = c.id_producto WHERE p.id_tipo_producto=? AND c.calificacion = ? LIMIT 1";
     $stmt = $con->prepare($maximo);
-    $stmt->execute(array(4));
+    $stmt->execute(array(1,$pt_mx));
     while ($maximos = $stmt->fetch(PDO::FETCH_BOTH)){
       $id_max = $maximos[0];
     }
-    $producto = "SELECT p.nombre_producto, p.descripcion_producto, p.calificacion_promedio,f.foto_producto FROM productos p INNER JOIN fotos_productos f ON f.id_producto = p.id_producto WHERE p.id_producto=?";
+    $producto = "SELECT p.nombre_producto, p.descripcion_producto, ROUND(AVG(c.calificacion),1),f.foto_producto FROM (productos p INNER JOIN fotos_productos f ON f.id_producto = p.id_producto) INNER JOIN comentarios c ON c.id_producto = p.id_producto WHERE p.id_producto=?";
     $stmt = $con->prepare($producto);
     $stmt->execute(array($id_max));
     while ($productoa = $stmt->fetch(PDO::FETCH_BOTH)){
@@ -40,6 +48,7 @@
       $foto_producto = $productoa[3];
     }
     $divin = "";
+    $divin .= "<p class='uk-hidden' id='id_prod'>$id_max</p>";
     $divin .= "<div class='container-fluid'>";
       $divin .= "<div class='container-fluid'>";
         $divin .= "<div class='uk-grid row'>";
@@ -74,65 +83,68 @@
                 $divin .= "</div>";
                 $divin .=  "<div class='uk-hidden-small uk-width-medium-5-10 uk-width-large-5-10'>";
                   $divin .= "<p>DESCRIPCION:</p>";
-                  $divin .= "<p id='descripcion'>$productoa[1]</p>";
-                  $divin .= "<p class='uk-hidden-medium uk-hidden-small'>Puntuación:</p>";
+                  $divin .= "<p id='descripcion'>$descripcion</p>";
+                  $divin .= "<p class='uk-hidden-medium uk-hidden-small' id='calift'>Calificacion del producto ".$calificacion_promedio."</p>";
                   $divin .= "<div class='stars'>";
-                    if ($calificacion_promedio < 1) {
-                      for ($i=1; $i <=5 ; $i++) {
-                        $divin .= "<span class='uk-icon-star uk-icon-small uk-hidden-medium uk-hidden-small puntuar'></span>";
-                      }
-                    }
-                    if ($calificacion_promedio >= 1 && $calificacion_promedio < 2) {
+                    $divin .= "<span class='uk-icon-star uk-icon-small uk-hidden-medium uk-hidden-small puntuar' id='star1'></span>";
+                    $divin .= "<span class='uk-icon-star uk-icon-small uk-hidden-medium uk-hidden-small puntuar' id='star2'></span>";
+                    $divin .= "<span class='uk-icon-star uk-icon-small uk-hidden-medium uk-hidden-small puntuar' id='star3'></span>";
+                    $divin .= "<span class='uk-icon-star uk-icon-small uk-hidden-medium uk-hidden-small puntuar' id='star4'></span>";
+                    $divin .= "<span class='uk-icon-star uk-icon-small uk-hidden-medium uk-hidden-small puntuar' id='star5'></span>";
+                  /*if ($calificacion_promedio < 1) {
+                    for ($i=1; $i <=5 ; $i++) {
                       $divin .= "<span class='uk-icon-star uk-icon-small uk-hidden-medium uk-hidden-small puntuar'></span>";
-                      for ($i=1; $i <=4 ; $i++) {
-                        $divin .= "<span class='uk-icon-star uk-icon-small uk-hidden-medium uk-hidden-small puntuar'></span>";
-                      }
                     }
-                    if ($calificacion_promedio >= 2 && $calificacion_promedio < 3) {
-                      for ($i=1; $i <=2 ; $i++) { 
-                        $divin .= "<span class='uk-icon-star uk-icon-small uk-hidden-medium uk-hidden-small puntuar'></span>";
-                      }
-                      for ($i=1; $i <=3 ; $i++) {
-                        $divin .= "<span class='uk-icon-star uk-icon-small uk-hidden-medium uk-hidden-small puntuar'></span>";
-                      }
+                  }
+                  if ($calificacion_promedio >= 1 && $calificacion_promedio < 2) {
+                    $divin .= "<span class='uk-icon-star uk-icon-small uk-hidden-medium uk-hidden-small puntuar'></span>";
+                    for ($i=1; $i <=4 ; $i++) {
+                      $divin .= "<span class='uk-icon-star uk-icon-small uk-hidden-medium uk-hidden-small puntuar'></span>";
                     }
-                    if ($calificacion_promedio >= 3 && $calificacion_promedio < 4) {
-                      for ($i=1; $i <=3 ; $i++) { 
-                        $divin .= "<span class='uk-icon-star uk-icon-small uk-hidden-medium uk-hidden-small puntuar'></span>";
-                      }
-                      for ($i=1; $i <=2 ; $i++) {
-                        $divin .= "<span class='uk-icon-star uk-icon-small uk-hidden-medium uk-hidden-small puntuar'></span>";
-                      }
+                  }
+                  if ($calificacion_promedio >= 2 && $calificacion_promedio < 3) {
+                    for ($i=1; $i <=2 ; $i++) { 
+                      $divin .= "<span class='uk-icon-star uk-icon-small uk-hidden-medium uk-hidden-small puntuar'></span>";
                     }
-                    if ($calificacion_promedio >= 4 && $calificacion_promedio < 5) {
-                      for ($i=1; $i <=4 ; $i++) { 
-                        $divin .= "<span class='uk-icon-star uk-icon-small uk-hidden-medium uk-hidden-small puntuar'></span>";
-                      }
-                      for ($i=1; $i <=1 ; $i++) {
-                        $divin .= "<span class='uk-icon-star uk-icon-small uk-hidden-medium uk-hidden-small puntuar'></span>";
-                      }
+                    for ($i=1; $i <=3 ; $i++) {
+                      $divin .= "<span class='uk-icon-star uk-icon-small uk-hidden-medium uk-hidden-small puntuar'></span>";
                     }
-                    if ($calificacion_promedio == 5) {
-                      for ($i=1; $i <=5 ; $i++) { 
-                        $divin .= "<span class='uk-icon-star uk-icon-small uk-hidden-medium uk-hidden-small puntuar'></span>";
-                      }
+                  }
+                  if ($calificacion_promedio >= 3 && $calificacion_promedio < 4) {
+                    for ($i=1; $i <=3 ; $i++) { 
+                      $divin .= "<span class='uk-icon-star uk-icon-small uk-hidden-medium uk-hidden-small puntuar'></span>";
                     }
+                    for ($i=1; $i <=2 ; $i++) {
+                      $divin .= "<span class='uk-icon-star uk-icon-small uk-hidden-medium uk-hidden-small puntuar'></span>";
+                    }
+                  }
+                  if ($calificacion_promedio >= 4 && $calificacion_promedio < 5) {
+                    for ($i=1; $i <=4 ; $i++) { 
+                      $divin .= "<span class='uk-icon-star uk-icon-small uk-hidden-medium uk-hidden-small puntuar'></span>";
+                    }
+                    for ($i=1; $i <=1 ; $i++) {
+                      $divin .= "<span class='uk-icon-star uk-icon-small uk-hidden-medium uk-hidden-small puntuar'></span>";
+                    }
+                  }
+                  if ($calificacion_promedio == 5) {
+                    for ($i=1; $i <=5 ; $i++) { 
+                      $divin .= "<span class='uk-icon-star uk-icon-small uk-hidden-medium uk-hidden-small puntuar'></span>";
+                    }
+                  }*/
                 $divin .= "</div>";
               print($divin);
-  ?>
-					<!--AQUI SE PUNTUA-->						
-              
-              <br>
+            ?>
+					    <!--AQUI SE PUNTUA-->
               <br>
               <!--SECCION DE COMENTARIOS-->
+              <p class="uk-hidden" id="calificacionf"></p>
               <p class=" uk-hidden-small uk-hidden-medium">Mi comentario:</p>
                 <form class="uk-form uk-hidden-small uk-hidden-medium">
                   <div class="uk-form-row">
-                    <textarea cols="40" rows="3" placeholder="Danos tu opinón" class="uk-hidden-large estira"></textarea>
-                    <textarea cols="75" rows="3" placeholder="Danos tu opinón" class="uk-hidden-medium uk-hidden-small estira"></textarea>
+                    <textarea cols="75" rows="3" placeholder="Danos tu opinón" class="uk-hidden-medium uk-hidden-small estira" id="comentario"></textarea>
                     <br>
                     <br>
-                    <button class="btn btn-default uk-width-4-10 uk-push-6-10">PUNTUAR</button>
+                    <button class="btn btn-default uk-width-4-10 uk-push-6-10" id="enviar_comment" type="button">PUNTUAR</button>
                   </div>
                 </form>
 						</div>
@@ -171,7 +183,7 @@
             $divoep = "";
             $sqlep = "SELECT DISTINCT productos.id_producto,foto_producto,nombre_producto FROM ((productos INNER JOIN tipos_producto ON productos.id_tipo_producto = tipos_producto.id_tipo_producto) INNER JOIN fotos_productos ON fotos_productos.id_producto = productos.id_producto) INNER JOIN medidas_producto ON medidas_producto.id_producto = productos.id_producto WHERE productos.id_tipo_producto=? AND estado_producto=? AND estado_foto_producto=?";
               $stmt = $con->prepare($sqlep);
-              $stmt->execute(array(4,1,1));
+              $stmt->execute(array(1,1,1));
               while ($datos = $stmt->fetch(PDO::FETCH_BOTH)){
                 $divoep .= "<div class='col-lg-3 col-md-4 col-sm-6 col-xs-12 imagenesael' id='imagenel".$datos[0]."'>";
                   $divoep .= "<a href='javascript:elegido($datos[0])'><img src='data:image/*;base64,$datos[1]' class='img-responsive' id='img$datos[0]'></a>";

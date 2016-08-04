@@ -11,6 +11,7 @@ function elegido(id) {
 	$(".imagenesael"+imgel).css({"border":"2px solid #01579b"});
 	$(".imagenesael"+imgel).siblings().css("opacity","0.5");
 	id_el = id;
+	$("#id_prod").text(id_el);
 	medidas_el();
 }
 
@@ -87,6 +88,31 @@ function medidas_el(){
 			}
 			//alert(medida_select);
 			$("#medidassl").append(medida_select);
+			producto_descrip();
+		}
+	});
+	/*var val = [];
+	var $inputs = $('#medidassl :input');
+	var values = {};
+	$inputs.each(function() {
+		val.push(values[this.name] = $(this).val());
+		//alert(val[val.length-1]);
+	});*/
+	return false;
+}
+
+function producto_descrip(){
+	var url = '../privado/procesos/seleccionar.php';
+	var parametros = {"tbl":39,"id":id_el};
+	$.ajax({
+		type:'POST',
+		url:url,
+		data:parametros,
+		async:false,
+		success:function(d){
+			var data = eval(d);
+			$("#descripcion").text(data[0]);
+			$("#calift").text("Calificacion del producto " + data[1]);
 			input();
 		}
 	});
