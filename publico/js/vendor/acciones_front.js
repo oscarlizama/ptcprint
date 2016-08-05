@@ -1,5 +1,5 @@
 function insertar(tabla,valores,repetida){
-	var url = '../privado/procesos/puente.php';
+	var url = 'privado/procesos/puente.php';
 	var parametros = {"valores":valores,"tabla":tabla,"accion":1,"repetida":repetida};
 	//alert("entra al insertar")
 	$.ajax({
@@ -28,7 +28,7 @@ function insertar(tabla,valores,repetida){
 }
 
 function editar(tabla,valores,repetida){
-	var url = '../privado/procesos/puente.php';
+	var url = 'privado/procesos/puente.php';
 	var parametros = {"valores":valores,"tabla":tabla,"accion":2,"repetida":repetida};
 	$.ajax({
 		type:'POST',

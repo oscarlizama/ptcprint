@@ -87,16 +87,16 @@
                            $login_menu .= "<span class='uk-icon-user uk-icon-medium icons-user submenu-button'></span>";
                            $login_menu .= "<ul class='sub-menu-mv'>";
                               $login_menu .= "<li class='item-sb'>";
-                                 $login_menu .= "<a href='carrito.php'>Mi carrito<span class='cart-arrow-down uk-icon-medium icons-user'></a>";
+                                 $login_menu .= "<a href='compras.php'>Mi carrito<span class='cart-arrow-down uk-icon-medium icons-user'></a>";
                               $login_menu .= "</li>";
                               $login_menu .= "<li class='item-sb'>";
-                                 $login_menu .= "<a href='dashboardc.php'>Mi cuenta<span class='cart-arrow-down uk-icon-medium icons-user'></a>";
+                                 $login_menu .= "<a href='miperfil.php'>Mi cuenta<span class='cart-arrow-down uk-icon-medium icons-user'></a>";
                               $login_menu .= "</li>";
                               $login_menu .= "<li class='item-sb'>";
                                  $login_menu .= "<a href='cotizarcliente.php'>Mis cotizaciones<span class='cart-arrow-down uk-icon-medium icons-user'></a>";
                               $login_menu .= "</li>";
                               $login_menu .= "<li class='item-sb'>";
-                                 $login_menu .= "<a href='../privado/procesos/cerrarsesionc.php'>Cerrar Sesión<span class='cart-arrow-down uk-icon-medium icons-user'></a>";
+                                 $login_menu .= "<a href='privado/procesos/cerrarsesionc.php'>Cerrar Sesión<span class='cart-arrow-down uk-icon-medium icons-user'></a>";
                               $login_menu .= "</li>";
                            $login_menu .= "</ul>";
                         $login_menu .= "</li>";
@@ -128,7 +128,7 @@
    <div id="options">
       <nav id="nav-menu">
          <ul>
-            <li class="item"><a href="index.php">PUNTO PRINT</a></li>
+            <li class="item"><a href="inicio.php">PUNTO PRINT</a></li>
             <li class="item"><a href="banner.php">BANNERS</a></li>
             <li class="item">
                <a href="">TARJETAS<span class="uk-icon-chevron-down uk-icon-justify uk-float-right icon-down-menu"></span></a>
@@ -190,11 +190,11 @@
                      $login_menu .= "<span class='uk-icon-user uk-icon-medium icons-user'></span></a>";
                      $login_menu .= "<ul>";
                         $login_menu .= "<li>";
-                           $login_menu .= "<a href='carrito.php'>Mi carrito";
+                           $login_menu .= "<a href='compras.php'>Mi carrito";
                            $login_menu .= "<span class='uk-icon-cart-arrow-down uk-icon-medium uk-float-right'></a></span>";
                         $login_menu .= "</li>";
                         $login_menu .= "<li>";
-                           $login_menu .= "<a href='dashboardc.php'>Mi cuenta";
+                           $login_menu .= "<a href='miperfil.php'>Mi cuenta";
                            $login_menu .= "<span class='uk-icon-cog uk-icon-medium uk-float-right'></a></span>";
                         $login_menu .= "</li>";
                         $login_menu .= "<li>";
@@ -202,7 +202,7 @@
                            $login_menu .= "<span class='uk-icon-inbox uk-icon-medium uk-float-right'></a></span>";
                         $login_menu .= "</li>";
                         $login_menu .= "<li>";
-                           $login_menu .= "<a href='../privado/procesos/cerrarsesionc.php'>Cerrar sesión";
+                           $login_menu .= "<a href='privado/procesos/cerrarsesionc.php'>Cerrar sesión";
                            $login_menu .= "<span class='uk-icon-angle-double-left uk-icon-medium uk-float-right'></a></span>";
                         $login_menu .= "</li>";
                      $login_menu .= "</ul>";
@@ -233,7 +233,7 @@
          <div class="uk-vertical-align uk-text-center uk-height-1-1">
             <div class="uk-vertical-align-middle">
             <!--FORMULARIO DE INICO DE SESIÓN-->
-               <form action="../privado/procesos/logincliente.php" method="post" id="forml">
+               <form action="privado/procesos/logincliente.php" method="post" id="forml">
                   <h4 class="uk-text-center"><p>Correo electrónico</p></h4>
                   <input class="form-control col-lg-12" type="text" placeholder="Usuario o email" name="correo" autocomplete='off' id="correolg">
                   <br>
@@ -271,7 +271,7 @@
       <div class="uk-flex uk-flex-center">
          <div class="uk-vertical-align uk-text-center uk-height-1-1">
             <div class="uk-vertical-align-middle">
-              <form action="../privado/procesos/pass/recuperar.php" method="post" id="form">
+              <form action="privado/procesos/pass/recuperar.php" method="post" id="form">
                   <h4><p>Correo electrónico</p></h4>
                   <input type="text" class="form-control input-md paste" name="correo" required autocomplete="off" id="correol">
                   <br>

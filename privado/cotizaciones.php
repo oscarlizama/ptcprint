@@ -48,7 +48,7 @@
 	    	array_push($ids_conver, $idsc[0]);
 	    }
         //CONUSLTA PARA OBTENER TODOS LOS ASUNTOS DE LAS CONVERSACIONES SI ES QUE HAY
-        $conversaciones = "SELECT DISTINCT asunto,conversaciones.id_conversacion,CONCAT(clientes.nombre_cliente,' ',clientes.apellido_cliente) FROM (conversaciones INNER JOIN mensajes ON conversaciones.id_conversacion = mensajes.id_conversacion) INNER JOIN clientes ON clientes.id_cliente = conversaciones.id_conversacion";
+        $conversaciones = "SELECT DISTINCT asunto,id_conversacion,CONCAT(clientes.nombre_cliente,' ',clientes.apellido_cliente) FROM conversaciones,clientes WHERE conversaciones.id_cliente = clientes.id_cliente";
         if($cntcvr[0] > 0){
           	//CREO LA LISTA QUE ME AYUDARA A ORGNIZAR LOS MENSAJES
         	$ul_tabs .= "<div class='panel panel-default'>";

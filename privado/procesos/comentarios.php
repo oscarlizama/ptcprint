@@ -52,6 +52,18 @@
 		$ejecutar = true;
 		$respuesta = 4;
 	}
+	if ($accion == 5) {
+		$sql = "SELECT COUNT(id_comentario) FROM comentarios WHERE id_producto=? AND id_cliente=?";
+		array_push($array_valores, $valores[0],$valores[1]);
+		$stmt = $con->prepare($sql);
+		$stmt->execute($array_valores);
+		$datos = $stmt->fetch(PDO::FETCH_BOTH);
+		if ($datos[0] > 0) {
+			$respuesta = 5;
+		}else{
+			$respuesta = 6;
+		}
+	}
 	if ($ejecutar == true) {
 		$stmt = $con->prepare($sql);
 		$stmt->execute($array_valores);

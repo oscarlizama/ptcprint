@@ -1,6 +1,9 @@
 *{
 	font-family: 'Arimo', sans-serif;	
 }
+#comentariodiv{
+	display: none;
+}
 .estira{
     max-width: 100%;
     min-width: 80%;
@@ -180,6 +183,9 @@ div.banners-div{
 div.banner-info{
 	top: 0px;
 	background: white;
+}
+.stars{
+	display: none;
 }
 .stars > span{
 	cursor: pointer;

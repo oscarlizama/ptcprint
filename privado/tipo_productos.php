@@ -94,6 +94,7 @@
 		</div>
 	</div>
 	<br>
+	<div class="container-fluid">
 		<br>
 		<div class="row">
 			<div class="col-lg-12">
@@ -131,7 +132,7 @@
 				?>
 			</div>
 		</div>
-	
+	</div>
 	<?php include 'scripts.php';?>
 </body>
 </html>

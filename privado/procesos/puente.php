@@ -9,7 +9,7 @@
 		$campos_tabla = array('nombre_usuario','correo_usuario','clave_usuario','apellido_usuario','id_permiso');
 		// Verificar que cada campo (excepto el ID) sea valido
 		// Solo cuando no elimine, si elimino, no me importa como sean los campos
-		if ($_POST['accion'] != 3 && (
+		if ($_POST['accion'] == 1 &&  (
 
 			!validarNombrePersona($valores[0]) ||
 			!validarCorreo($valores[1]) ||
@@ -19,6 +19,10 @@
 
 			)) exit("invalid");
 
+		if ($_POST['accion'] == 2 &&  (
+			!validarNumeroEntero($valores[0])
+
+			)) exit("invalid");
 		// Validar ID, cuando no inserte (cuando modifique o elimine, solo en esos casos se pasa el id)
 		// El ID siempre es el ultimo elemento de $valores,
 		// Por tanto, esta linea no hace falta modificarla
@@ -33,6 +37,7 @@
 
 		if($_POST['accion'] == 2){
 			include 'actualizar.php';
+			$campos_tabla = array('id_permiso');
 			mthActualizar($tabla,$campos_tabla,$valores,$where);
 		}
 

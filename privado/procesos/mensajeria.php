@@ -17,7 +17,7 @@ require_once 'validaciones.php';
 			!validarNumeroEntero($id_cliente)
 
 			)) {
-				header('Location: ../../publico/cotizarcliente.php');
+				header('Location: ../../cotizarcliente.php');
 				exit;
 			}
 	//$asunto = "PRUEBA";

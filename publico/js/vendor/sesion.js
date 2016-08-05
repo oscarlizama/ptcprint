@@ -1,6 +1,6 @@
 function sesion_anterior(correo,tipo){
 	//envio la consulta aqui
-	var url = '../privado/procesos/iniciado.php';
+	var url = 'privado/procesos/iniciado.php';
 	//lleno los parametros
 	var parametros = {"correo":correo,"tipo":tipo};
 	$.ajax({

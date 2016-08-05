@@ -1,5 +1,6 @@
 <?php 
   include '../privado/procesos/conexion.php';
+  include '../privado/procesos/lifetime.php';
 ?>
 <html lang="es">
 <head>

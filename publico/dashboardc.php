@@ -1,3 +1,6 @@
+<?php 
+    include '../privado/procesos/lifetime.php';
+?>
 <html>
 	<head>
         <title>MI CUENTA | Punto Print</title>

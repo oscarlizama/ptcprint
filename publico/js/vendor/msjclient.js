@@ -25,7 +25,7 @@ function actualizarmsj(id){
 	var ntexto = texto.substring(0,(texto.length - 10));
 	//ACTUALZIAR
 	if(texto.substring((texto.length - 10),texto.length) == "(NO LEIDO)"){
-		var url = '../privado/procesos/puente.php';
+		var url = 'privado/procesos/puente.php';
 		var val = [];
 		val.push(1);
 		val.push(id);
@@ -50,7 +50,7 @@ function enviarmsjp(id,emisor){
 	//var ntexto = texto.substring(0,(texto.length - 10));
 	//archivo(id);
 	///ENVIO UN NUEVO MENSAJE
-	var url = '../privado/procesos/mensajeriapv.php';
+	var url = 'privado/procesos/mensajeriapv.php';
 	var valmsj = [];
 	var idtext = "#mensaje" + id;
 	//AGREGGO AL ARREGLO
@@ -89,7 +89,7 @@ function archivo(){
 	//OBTENGO LA FILA
 	var formData = new FormData($("#formulario")[0]);
 	//LO MANDO A BASE64
-    var ruta = "../privado/procesos/archivoct.php";
+    var ruta = "privado/procesos/archivoct.php";
     $.ajax({
         url: ruta,
         type: "POST",
@@ -124,7 +124,7 @@ function uploadfile(){
 	//PONGO EL ID DE LA CONVERSACON
 	val.push($("#conver").val());
 	//ENVIO A LA URL
-	var url = "../privado/procesos/puente.php";
+	var url = "privado/procesos/puente.php";
 	var parametros = {"valores":val,"tabla":31,"accion":1};
     $.ajax({
         type:'POST',
@@ -139,7 +139,7 @@ function uploadfile(){
 
 //CON ESTA FUNCION DESCARGO EL ARCHIVO
 function descargar_archivo(id){
-	var url = "../privado/procesos/descarga_archivo.php";
+	var url = "privado/procesos/descarga_archivo.php";
 	var parametros = {"id":id};
     $.ajax({
         type:'POST',
@@ -161,7 +161,7 @@ function pedidos(id){
 	val.push(id);
 	val.push(fecha);
 	///ENVIO A ESTA URL
-	var url = "../privado/procesos/puente.php";
+	var url = "privado/procesos/puente.php";
 	var parametros = {"valores":val,"tabla":34,"accion":1};
 	///EJECUTO TODO EL AJAX
     $.ajax({
@@ -181,7 +181,7 @@ function terminado(id){
 	//SOLO OBTENGO EL ID DEL CARRITO
 	var val = [];
 	val.push(id);
-	var url = "../privado/procesos/puente.php";
+	var url = "privado/procesos/puente.php";
 	var parametros = {"valores":val,"tabla":32,"accion":3};
 	//EJECUTO EL AJAX
     $.ajax({
@@ -202,7 +202,7 @@ function terminadop(id){
 	var val = [];
 	val.push(id);
 	//LO ENVIO A LA URL
-	var url = "../privado/procesos/puente.php";
+	var url = "privado/procesos/puente.php";
 	var parametros = {"valores":val,"tabla":34,"accion":3};
     $.ajax({
         type:'POST',

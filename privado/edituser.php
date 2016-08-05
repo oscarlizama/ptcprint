@@ -10,7 +10,7 @@
         $stmt = $con->prepare($sql);
         $stmt->execute(array($id));
         $permiso = $stmt->fetch(PDO::FETCH_BOTH);
-        $sql = "SELECT tbl_medidas_productos FROM permisos WHERE id_permiso=?";
+        $sql = "SELECT tbl_usuarios FROM permisos WHERE id_permiso=?";
         $id = $_SESSION['idusr'];
         $stmt = $con->prepare($sql);
         $stmt->execute(array($permiso[0]));
@@ -18,16 +18,16 @@
     }
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-	<meta charset="UTF-8">
-	<title>Medidas del Productos
-	</title>
+	<title>Punto Print - Soluciones en impresiones</title>
+	<!--Aqui incluyo los links de estilo, los links en general-->
 	<?php include 'links.php' ?>
 </head>
 <body>
 	<div class="container-fluid">
 		<div class="row">
+    		<!--incluyo el menu-->
 			<?php include 'menu_admin.php' ?>
 			<br>
 			<br>
@@ -35,43 +35,39 @@
 			<br>
 			<div class="col-lg-12" id="frm">
 				<div class="col-lg-6 col-md-6">
+					<p id="id_reglog" class="hide"><?php echo $id ?></p>
 					<p id="id_reg" class="hide"></p>
-					<input type="text" class="hide omitir" value="9" id="tbl" autocomplete='off'>
-					<label for="" class="labels">Producto</label>
-                    <select class="form-control" name="usuarios[]" id="prod">
-                    	<option value="0" selected="">SELECCIONE EL PRODUCTO AL QUE DESEA AGREGAR MEDIDA</option>
+					<input type="text" class="hide omitir" name="usuarios[]" value="1" id="tbl" autocomplete='off' disabled>
+					<label for="" class="labels">Nombres</label>
+                    <input type="text" class="form-control input omitir" name="usuarios[]" id="nombre" autocomplete='off' disabled>
+                    <br>
+                    <label for="" class="labels">Correo electrónico</label>
+                    <input type="text" class="form-control input omitir" name="usuarios[]" id="correo" autocomplete='off' disabled>
+                    <br>
+				</div>
+				<div class="col-lg-6 col-md-6">
+					<label for="" class="labels">Apellidos</label>
+                    <input type="text" class="form-control input omitir" name="usuarios[]" id="apellido" autocomplete='off' disabled>
+                    <br>
+                    <label for="" class="labels">Tipo de usuario</label>
+                    <select class="form-control" name="usuarios[]" id="permiso">
+                    	<option value="0" selected="">SELECCIONA UN PERMISO</option>
 						<?php 
-                            $sql = "SELECT * FROM productos where estado_producto=?";
+                            $sql = "SELECT * FROM permisos where estado_permiso=?";
                             $stmt = $con->prepare($sql);
 			    			$stmt->execute(array(1));
-							while ($datos = $stmt->fetch(PDO::FETCH_BOTH))  {
+							while ($datos = $stmt->fetch(PDO::FETCH_BOTH)){
                                 echo "<option value='$datos[0]'>$datos[1]</option>";
                             }
                         ?>
 					</select>
 					<br>
 				</div>
-				<div class="col-lg-6 col-md-6">
-					<label for="" class="labels">Medidas del producto</label>
-                    <input type="text" class="form-control input" id="medida" autocomplete='off'>
-                    <br>
-				</div>
 				<div class="col-lg-12">
-					<?php  
-						if ($valor[0] >= 4) {
-							$button = 
-							"<button class='btn btn-ag btn-scrud col-lg-3 col-md-3 col-sm-3'>
-									AGREGAR
-									<span class='flaticon-correct icon-ag icon-button'></span>
-								</button>";
-						}
-						print($button);
-						$button = "";
-					?>
 					<?php 
 						if ($valor[0] == 2 || $valor[0] == 3 || $valor[0] == 6 || $valor[0] == 7) {
 							$button = "
-							<button class='btn btn-ed btn-scrud col-lg-3 col-md-3 col-sm-3 disabled' disabled=''>
+							<button class='btn btn-ed btn-scrud col-lg-5 col-md-3 col-sm-3 disabled' disabled='' id='btn-ed-usr'>
 								EDITAR
 								<span class='flaticon-new-file icon-button icon-ed'></span>
 							</button>";
@@ -80,34 +76,10 @@
 						print($button);
 						$button = "";
 					?>
-					<?php 
-						if ($valor[0] == 1 || $valor[0] == 3 || $valor[0] == 5 || $valor[0] == 7) {
-							$button = 
-							"<button class='btn btn-el btn-scrud col-lg-3 col-md-3 col-sm-3 disabled' disabled=''>
-								ELIMINAR
-								<span class='flaticon-cancel icon-button icon-el'></span>
-							</button>";
-						}
-						print($button);
-						$button = "";
-					?>
-					<?php 
-						if ($valor[0] > 0) {
-							$button = 
-							"<button class='btn btn-nv btn-scrud col-lg-2 col-md-2 col-sm-2'>
-								LIMPIAR
-								<span class='flaticon-circular-arrow icon-button icon-nv'></span>
-							</button>";
-						}
-						print($button);
-						$button = "";
-					?>
 				</div>
 			</div>
 		</div>
-	</div>
-	<br>
-	<div class="container-fluid">
+		<br>
 		<br>
 		<div class="row">
 			<div class="col-lg-12">
@@ -121,21 +93,23 @@
 					"<table class='table-bk'>" .
 						"<tr class='tb-heading'>".
 							"<th><strong>#</strong></th>".
-							"<th><strong>Producto</strong></th>".
-							"<th><strong>Medida del producto</strong></th>".
+							"<th><strong>Nombre</strong></th>".
+							"<th><strong>Apellidos</strong></th>".
+							"<th><strong>Correo electrónico</strong></th>".
 							"<th><strong></strong></th>".
 						"</tr>";
-				$sql = "SELECT id_medida, P.nombre_producto, medida FROM medidas_producto M, productos P WHERE M.id_producto = P.id_producto AND estado_medida = ?";
+				$sql = "SELECT id_usuario,nombre_usuario,apellido_usuario,correo_usuario FROM usuarios WHERE estado_usuario=? AND id_usuario !=?";
 				$stmt = $con->prepare($sql);
-			    $stmt->execute(array(1));
+			    $stmt->execute(array(1,$id));
 				while ($datos = $stmt->fetch(PDO::FETCH_BOTH)) {
 					$tabla .= 
 						"<tr>".
 							"<td>$datos[0]</td>".
 							"<td>$datos[1]</td>".
 							"<td>$datos[2]</td>".
+							"<td>$datos[3]</td>".
 							"<td>".
-								"<button class='btn-table' onclick='seleccionar_medida_producto($datos[0])'>".
+								"<button class='btn-table' onclick='seleccionar_usuario($datos[0])'>".
 									"SELECCIONAR".
 									"<span class='flaticon-loupe'></span>".
 								"</button>".

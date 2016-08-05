@@ -47,7 +47,7 @@
 							</a>
 						</li>
 						<li>
-							<a href="mano_obra.php">
+							<a href="mobra.php">
 								<div class="glyph">
 									<span class="glyph-icon flaticon-money"></span>
 									<p class="nombre-opcion">Mano de obra</p>
@@ -84,7 +84,7 @@
 						</li>
 						<br>
 						<li>
-							<a href="contactos_proveedor.php">
+							<a href="contactos.php">
 								<div class="glyph">
 									<span class="glyph-icon flaticon-address-book"></span>
 									<p class="nombre-opcion">Contactos</p>
@@ -92,7 +92,7 @@
 							</a>
 						</li>
 						<li>
-							<a href="tipo_contactos.php">
+							<a href="tiposcontactos.php">
 								<div class="glyph">
 									<span class="glyph-icon flaticon-address-book-1"></span>
 									<p class="nombre-opcion">Tipos de contactos</p>
@@ -121,10 +121,18 @@
 						</li>
 						<br>
 						<li>
-							<a href="medidas_producto.php">
+							<a href="medidas.php">
 								<div class="glyph">
 									<span class="glyph-icon flaticon-rulers-on-axis-in-circular-button"></span>
 									<p class="nombre-opcion">Medidas</p>
+								</div>
+							</a>
+						</li>
+						<li>
+							<a href="tiposproductos.php">
+								<div class="glyph">
+									<span class="glyph-icon flaticon-open-box"></span>
+									<p class="nombre-opcion">Tipo de productos</p>
 								</div>
 							</a>
 						</li>
@@ -154,6 +162,14 @@
 								<div class="glyph">
 									<span class="glyph-icon flaticon-alarm-clock-security"></span>
 									<p class="nombre-opcion">Permisos</p>
+								</div>
+							</a>
+						</li>
+						<li>
+							<a href="edituser.php">
+								<div class="glyph">
+									<span class="glyph-icon flaticon-avatar"></span>
+									<p class="nombre-opcion">Editar usuarios</p>
 								</div>
 							</a>
 						</li>

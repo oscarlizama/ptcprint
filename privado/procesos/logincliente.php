@@ -15,10 +15,10 @@
 			$iniciado = "UPDATE clientes SET estado_sesion=? WHERE correo_cliente=?";
 			$stmt = $con->prepare($iniciado);
 			$stmt->execute(array(session_id(),$email));
-			header('Location: ../../publico/index.php');
+			header('Location: ../../inicio.php');
 		}
 		else{
-			header('Location: ../../publico/index.php');	
+			header('Location: ../../inicio.php');	
 		}
 	//}
 	$con = null;

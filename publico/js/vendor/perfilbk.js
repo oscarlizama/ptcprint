@@ -1,5 +1,5 @@
 function perfil(valores,repetida,accion){
-	var url = '../privado/procesos/editarperfilbk.php';
+	var url = 'privado/procesos/editarperfilbk.php';
 	var parametros = {"valores":valores,"repetida":repetida,"accion":accion};
 		$.ajax({
 		type:'POST',

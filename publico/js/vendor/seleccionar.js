@@ -2,7 +2,7 @@
 function seleccionar_usuario(id){
 	//swal("¡AHORA SE CARGA!", "El seleccionado es " + id, "success");
 	$('.input').val();
-	var url = '../privado/procesos/seleccionar.php';
+	var url = 'privado/procesos/seleccionar.php';
 	var parametros = {"id": id,"tbl": 1};
 		$.ajax({
 		type:'POST',
@@ -24,7 +24,7 @@ function seleccionar_usuario(id){
 function seleccionar_configuracion(id){
 	//swal("¡AHORA SE CARGA!", "El seleccionado es " + id, "success");
 	$('.input').val();
-	var url = '../privado/procesos/seleccionar.php';
+	var url = 'privado/procesos/seleccionar.php';
 	var parametros = {"id": id,"tbl": 15};
 		$.ajax({
 		type:'POST',
@@ -46,7 +46,7 @@ function seleccionar_configuracion(id){
 function seleccionar_contactos_proveedor(id){
 	//swal("¡AHORA SE CARGA!", "El seleccionado es " + id, "success");
 	$('.input').val();
-	var url = '../privado/procesos/seleccionar.php';
+	var url = 'privado/procesos/seleccionar.php';
 	var parametros = {"id": id,"tbl": 17};
 		$.ajax({
 		type:'POST',
@@ -67,7 +67,7 @@ function seleccionar_contactos_proveedor(id){
 function seleccionar_tipo_contacto(id){
 	//swal("¡AHORA SE CARGA!", "El seleccionado es " + id, "success");
 	$('.input').val();
-	var url = '../privado/procesos/seleccionar.php';
+	var url = 'privado/procesos/seleccionar.php';
 	var parametros = {"id": id,"tbl": 16};
 		$.ajax({
 		type:'POST',
@@ -89,7 +89,7 @@ function seleccionar_tipo_contacto(id){
 function seleccionar_red(id){
 	//swal("¡AHORA SE CARGA!", "El seleccionado es " + id, "success");
 	$('.input').val();
-	var url = '../privado/procesos/seleccionar.php';
+	var url = 'privado/procesos/seleccionar.php';
 	var parametros = {"id":id,"tbl":20};
 		$.ajax({
 		type:'POST',
@@ -111,7 +111,7 @@ function seleccionar_red(id){
 function seleccionar_producto(id){
 	//swal("¡AHORA SE CARGA!", "El seleccionado es " + id, "success");
 	$('.input').val();
-	var url = '../privado/procesos/seleccionar.php';
+	var url = 'privado/procesos/seleccionar.php';
 	var parametros = {"id": id,"tbl": 7};
 		$.ajax({
 		type:'POST',
@@ -135,7 +135,7 @@ function seleccionar_producto(id){
 function seleccionar_tipo_producto(id){
 	//swal("¡AHORA SE CARGA!", "El seleccionado es " + id, "success");
 	$('.input').val();
-	var url = '../privado/procesos/seleccionar.php';
+	var url = 'privado/procesos/seleccionar.php';
 	var parametros = {"id": id,"tbl": 8};
 		$.ajax({
 		type:'POST',
@@ -156,7 +156,7 @@ function seleccionar_tipo_producto(id){
 function seleccionar_medida_producto(id){
 	//swal("¡AHORA SE CARGA!", "El seleccionado es " + id, "success");
 	$('.input').val();
-	var url = '../privado/procesos/seleccionar.php';
+	var url = 'privado/procesos/seleccionar.php';
 	var parametros = {"id": id,"tbl": 9};
 		$.ajax({
 		type:'POST',
@@ -178,7 +178,7 @@ function seleccionar_medida_producto(id){
 function seleccionar_foto_producto(id){
 	//swal("¡AHORA SE CARGA!", "El seleccionado es " + id, "success");
 	$('.input').val();
-	var url = '../privado/procesos/seleccionar.php';
+	var url = 'privado/procesos/seleccionar.php';
 	var parametros = {"id":id,"tbl":10};
 		$.ajax({
 		type:'POST',
@@ -199,7 +199,7 @@ function seleccionar_foto_producto(id){
 function seleccionar_proveedor(id){
 	//swal("¡AHORA SE CARGA!", "El seleccionado es " + id, "success");
 	$('.input').val();
-	var url = '../privado/procesos/seleccionar.php';
+	var url = 'privado/procesos/seleccionar.php';
 	var parametros = {"id": id,"tbl": 21};
 		$.ajax({
 		type:'POST',
@@ -219,7 +219,7 @@ function seleccionar_proveedor(id){
 function seleccionar_equipo(id){
 	//swal("¡AHORA SE CARGA!", "El seleccionado es " + id, "success");
 	$('.input').val();
-	var url = '../privado/procesos/seleccionar.php';
+	var url = 'privado/procesos/seleccionar.php';
 	var parametros = {"id": id,"tbl": 22};
 		$.ajax({
 		type:'POST',
@@ -239,7 +239,7 @@ function seleccionar_equipo(id){
 function seleccionar_obra(id){
 	//swal("¡AHORA SE CARGA!", "El seleccionado es " + id, "success");
 	$('.input').val();
-	var url = '../privado/procesos/seleccionar.php';
+	var url = 'privado/procesos/seleccionar.php';
 	var parametros = {"id": id,"tbl": 23};
 		$.ajax({
 		type:'POST',
@@ -262,7 +262,7 @@ function seleccionar_permisos(id){
 	//swal("¡AHORA SE CARGA!", "El seleccionado es " + id, "success");
 	$('input[value!=0]').prop("checked","");
 	$('input[value=0]').prop("checked","checked");
-	var url = '../privado/procesos/seleccionar.php';
+	var url = 'privado/procesos/seleccionar.php';
 	var cp = ["configuraciones","usuarios","permisos","comentarios","clientes","informacion","redes","proveedores","facturacion","productos","medidas","precios","cantidadp","mano","recursos","equipo"];
 	var parametros = {"id": id,"tbl": 2};
 		$.ajax({

@@ -1,7 +1,7 @@
 var img = "";
 function insertar_usr(valores){
 	var repetida = $("#claver").val();
-	var url = '../privado/procesos/registrarusr.php';
+	var url = 'privado/procesos/registrarusr.php';
 	var parametros = {"valores": valores,"repetida":repetida};
 	$.ajax({
 		type:'POST',
@@ -36,7 +36,7 @@ function insertar_usr(valores){
 
 function insertar(tabla,valores){
 	if (tabla != 1) {
-		var url = '../privado/procesos/puente.php';
+		var url = 'privado/procesos/puente.php';
 		var parametros = {"valores": valores,"tabla":tabla, "accion":1};
 		$.ajax({
 			type:'POST',
@@ -67,7 +67,7 @@ function insertar(tabla,valores){
 }
 
 function editar(tabla,valores){
-	var url = '../privado/procesos/puente.php';
+	var url = 'privado/procesos/puente.php';
 	var parametros = {"valores":valores,"tabla":tabla, "accion":2};
 	$.ajax({
 		type:'POST',
@@ -95,7 +95,7 @@ function editar(tabla,valores){
 
 
 function eliminar(tabla,valores){
-	var url = '../privado/procesos/puente.php';
+	var url = 'privado/procesos/puente.php';
 	var parametros = {"valores":valores,"tabla":tabla, "accion":3};
 	$.ajax({
 		type:'POST',
@@ -122,9 +122,9 @@ function eliminar(tabla,valores){
 }
 
 function cerrarpv(){
-	$.ajax( "../privado/procesos/cerrarpv.php")
+	$.ajax( "privado/procesos/cerrarpv.php")
   	.done(function() {
-    	window.location = ("../privado/index.php"); 
+    	window.location = ("private.php"); 
   	});
 }
 
@@ -240,7 +240,7 @@ function msjEliminar(){
 $(function(){
     $("input[name='file']").on("change", function(){
         var formData = new FormData($("#formulario")[0]);
-        var ruta = "../privado/procesos/imagenb64.php";
+        var ruta = "privado/procesos/imagenb64.php";
         $.ajax({
             url: ruta,
             type: "POST",

@@ -40,13 +40,13 @@
 							$empresa_datos .= "<input type='text' class='form-control input' id='empresa' value='$datos[1]' autocomplete='off'>";
 							$empresa_datos .= "<br>";
 							$empresa_datos .= "<label for='' class='labels'>Misión</label>";
-                    		$empresa_datos .= "<textarea type='text' class='form-control input estira' id='mision'>$datos[2]</textarea autocomplete='off'>";
+                    		$empresa_datos .= "<textarea type='text' class='form-control input estira2' id='mision'>$datos[2]</textarea autocomplete='off'>";
                     		$empresa_datos .= "<br>";
                     		$empresa_datos .= "<label for='' class='labels'>Visión</label>";
-                    		$empresa_datos .= "<textarea type='text' class='form-control input estira' id='vision' autocomplete='off'>$datos[3]</textarea>";
+                    		$empresa_datos .= "<textarea type='text' class='form-control input estira2' id='vision' autocomplete='off'>$datos[3]</textarea>";
                     		$empresa_datos .= "<br>";
                     		$empresa_datos .= "<label for='' class='labels'>Valores</label>";
-                    		$empresa_datos .= "<textarea type='text' class='form-control input estira' id='valores'>$datos[4]</textarea autocomplete='off'>";
+                    		$empresa_datos .= "<textarea type='text' class='form-control input estira2' id='valores'>$datos[4]</textarea autocomplete='off'>";
                     		$empresa_datos .= '<br>';
                     	$empresa_datos .= "</div>";
                     	$empresa_datos .= "<div class='col-lg-3 col-md-3'>";
@@ -54,7 +54,7 @@
                     		$empresa_datos .= "<img src='data:image/*;base64,$datos[5]' class='img-responsive'>";
 							$empresa_datos .= "<label for='' class='labels'>Logo</label>";
 							$empresa_datos .= "<form method='post' id='formulario' enctype='multipart/form-data'>";
-								$empresa_datos .= "<input type='text' class='input hide omitir' id='imagenb64' name='antigua' value='ninguna' autocomplete='off'>"
+								$empresa_datos .= "<input type='text' class='input hide omitir' id='imagenb64' name='antigua' value='ninguna' autocomplete='off'>";
                     			$empresa_datos .= "<input type='file' class='input' id='imagen' name='file' autocomplete='off'>";
                     		$empresa_datos .= "</form>";
                     		$empresa_datos .= "<br>";

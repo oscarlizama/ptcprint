@@ -7,5 +7,5 @@
 	unset($_SESSION['autenticado']);
 	unset($_SESSION['email']);
 	$con = null;
-	header('Location: ../../publico/index.php');
+	header('Location: ../../inicio.php');
 ?>

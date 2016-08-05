@@ -117,7 +117,8 @@
 	</div>
 	<br>
 	<br>
-	<div class="row">
+	<div class="container-fluid">
+		<div class="row">
 		<div class="col-lg-12">
 			<label for="" class="labels">Buscar</label>
             <input type="text" class="form-control" id="buscar" autocomplete='off'>
@@ -156,6 +157,7 @@
 				print($tabla);
 			?>
 		</div>
+	</div>
 	</div>
 	<?php include 'scripts.php';?>
 </body>

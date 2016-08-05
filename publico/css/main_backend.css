@@ -226,3 +226,9 @@ div.scroll-div{
     background-color:#b0bec5;
     border:1px solid #b0bec5;
 } 
+.estira2{
+    max-width: 100%;
+    min-width: 80%;
+    max-height: 70px;
+    min-height: 70px;   
+}
