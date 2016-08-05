@@ -103,7 +103,7 @@
                         print($login_menu);
                      }else{
                         $login_menu .= "<li class='item-m' id='last'>";
-                           $login_menu .= "<a href='#modal-login' data-uk-modal=''>". $nombre;
+                           $login_menu .= "<a href='#' data-toggle='modal' data-target='#modal-login'>". $nombre;
                            $login_menu .= "<span class='uk-icon-user uk-icon-medium icons-user'></span></a>";
                         $login_menu .= "</li>";
                         /*$login_menu .= "<li class='item-m'>";
@@ -210,7 +210,7 @@
                   print($login_menu);
                }else{
                   $login_menu .= "<li class='item'>";
-                     $login_menu .= "<a href='#modal-login' data-uk-modal=''>". $nombre;
+                     $login_menu .= "<a href='#' data-toggle='modal' data-target='#modal-login'>". $nombre;
                      $login_menu .= "<span class='uk-icon-user uk-icon-medium icons-user'></span></a>";
                   $login_menu .= "</li>";
                   print($login_menu);
@@ -221,18 +221,18 @@
    </div>
 </div>
 <!--CREO UN MODAL DE LOGIN-->
-<div id="modal-login" class="uk-modal modal">
+<!-- <div id="modal-login" class="uk-modal modal">
    <div class="uk-modal-dialog modal-sm">
       <a href="" data-uk-modal="" class="uk-modal-close uk-close"></a>
-      <!--HEADER DEL LOGIN-->
+      HEADER DEL LOGIN
       <div class="uk-modal-header">
          <h5>BIENVENIDO A PUNTO PRINT</h5>
       </div>
-      <!--EL BODY DEL MODAL-->
+      EL BODY DEL MODAL
       <div class="uk-flex uk-flex-center">
          <div class="uk-vertical-align uk-text-center uk-height-1-1">
             <div class="uk-vertical-align-middle">
-            <!--FORMULARIO DE INICO DE SESIÓN-->
+            FORMULARIO DE INICO DE SESIÓN
                <form action="privado/procesos/logincliente.php" method="post" id="forml">
                   <h4 class="uk-text-center"><p>Correo electrónico</p></h4>
                   <input class="form-control col-lg-12" type="text" placeholder="Usuario o email" name="correo" autocomplete='off' id="correolg">
@@ -242,7 +242,7 @@
                   <h4 class="uk-text-center"><p>Contraseña</p></h4>
                   <input class="form-control col-lg-12" type="password" placeholder="Contraseña" name="clave" autocomplete='off'>
                   <button class="btn btn-primary btn-iniciar-s col-lg-12" name="iniciar_sesion" id="iniciar_sesion" type="button">Iniciar Sesión</button>
-                  <!--OLVIDÉ LA CONTRASEÑA-->
+                  OLVIDÉ LA CONTRASEÑA
                   <div class="uk-form-row uk-text-small">
                      <a class="uk-float-right uk-link uk-link-muted" href="#modal-recuperar" data-uk-modal="" class="uk-modal-close uk-close">¿Olvidaste la contraseña?</a>
                   </div>
@@ -255,87 +255,122 @@
       <br>
       <br>
       <a class="uk-flex uk-flex-center uk-link uk-link-muted" href="#modal-registrer" data-uk-modal="" class="uk-modal-close uk-close">¡Registrarme ahora!</a>
-      <!--PARTE FINAL DEL MODAL-->
+      PARTE FINAL DEL MODAL
       <div class="uk-modal-caption">
          Punto Print - Soluciones en impresiones
       </div>
    </div>
-</div>
-<!--MODAL PARA RECUPERAR CONTRASEÑA-->
-<div id="modal-recuperar" class="uk-modal modal">
-   <div class="uk-modal-dialog modal-sm">
-      <a href="" class="uk-modal-close uk-close"></a>
-      <div class="uk-modal-header">
-         <h5>BIENVENIDO A PUNTO PRINT</h5>
-      </div>
-      <div class="uk-flex uk-flex-center">
-         <div class="uk-vertical-align uk-text-center uk-height-1-1">
-            <div class="uk-vertical-align-middle">
-              <form action="privado/procesos/pass/recuperar.php" method="post" id="form">
-                  <h4><p>Correo electrónico</p></h4>
-                  <input type="text" class="form-control input-md paste" name="correo" required autocomplete="off" id="correol">
-                  <br>
-                  <h5><p>Se envirá una contraseña a tu correo electrónico para recuperar la cuenta.</p></h5>
-                  <br>
-                  <br>
-                  <button class="btn btn-buy btn-sm col-lg-12 col-md-12" name="recuperar">RECUPERAR CONTRASEÑA</button>
-                  <br>
-                  <br>
-              </form>
+</div> -->
+   <div class="modal fade" id="modal-login">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button class="close" aria-hidden="true" data-dismiss="modal" data-toggle="tooltip" data-placement="left" title="Cerrar">&times;</button>
+                    <h4 class="modal-title">Punto Print | Iniciar Sesión</h4>
+                </div>
+                <div class="modal-body">
+                    <h4 class="text-center">Bienvenido a Punto Print</h4>
+                    <br>
+                    <br>
+                    <form action="privado/procesos/logincliente.php" method="post" id="forml">
+                        <label for="">Correo electrónico</label>
+                        <input type="text" class="form-control input-md paste" name="correo" required autocomplete="off" id="correolg" placeholder="Correo electronico">
+                        <br>
+                        <br>
+                        <label for="">Contraseña</label>
+                        <input type="password" class="form-control input-md paste" name="clave" required autocomplete="off">
+                        <div class="uk-form-row uk-text-small">
+                           <a class="uk-float-right uk-link uk-link-muted" href="#modal-recuperar" data-uk-modal="" data-dismiss="modal" class="uk-modal-close uk-close">¿Olvidaste la contraseña?</a>
+                        </div>
+                        <br>
+                        <button class="btn btn-primary btn-sm col-lg-12" name="iniciar_sesion" id="iniciar_sesion" type="button">INICIAR SESIÓN</button>
+                        <br>
+                        <br>
+                        <a class="uk-flex uk-flex-center uk-link uk-link-muted" href="#modal-registrer" data-uk-modal="" data-dismiss="modal" class="uk-modal-close uk-close">¡Registrarme ahora!</a>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <h5>Punto Print - Soluciones en impresiones</h5>
+                </div>
             </div>
-         </div>
-      </div>
-      <div class="uk-modal-caption">
-         Punto Print - Soluciones en impresiones
-      </div>
+        </div>
    </div>
-</div>
-<!--CREO UN MODAL DE REGISTRO-->
-<div class="uk-modal" id="modal-registrer">
-   <div class="uk-modal-dialog modal-md">
-      <a href="" class="uk-modal-close uk-close"></a>
-      <div id="frm-u">
+   <!--MODAL PARA RECUPERAR CONTRASEÑA-->
+   <div id="modal-recuperar" class="uk-modal modal">
+      <div class="uk-modal-dialog">
+         <a href="" class="uk-modal-close uk-close"></a>
          <div class="uk-modal-header">
-            <h4 class="modal-tittle">Bienvenido a Punto Print: Registro</h4>
+            <h5>BIENVENIDO A PUNTO PRINT</h5>
          </div>
-         <div class="modal-body">
-            <div class="row" id="frm">
-               <div class="col-lg-6">
-                  <p>Nombres:</p>
-                  <input class="form-control col-lg-12" type="text" placeholder="Nombres">
-               </div>
-               <div class="col-lg-6">
-                  <p>Apellidos:</p>
-                  <input class="form-control col-lg-12" type="text" placeholder="Apellidos">
-               </div>
-               <div class="col-lg-12">
-                  <br>
-                  <p>Correo electrónico</p>
-                  <div class="uk-form-icon uk-width-1-1">
-                     <i class="uk-icon-envelope"></i>
-                     <input class="form-control" type="text" placeholder="Email">
-                  </div>
-               </div>
-               <div class="col-lg-6">
-                  <br>
-                  <p>Contraseña:</p>
-                  <div class="uk-form-icon uk-width-1-1">
-                     <i class="uk-icon-key"></i>
-                     <input class="form-control" type="password" placeholder="Contraseña" autocomplete='off'>
-                  </div>
-               </div>
-               <div class="col-lg-6">
-                  <br>
-                  <p>Confirmar:</p>
-                  <div class="uk-form-icon uk-width-1-1">
-                     <i class="uk-icon-check"></i>
-                     <input class="form-control omitir" type="password" placeholder="Confirmar contraseña" id="txtClaveR" autocomplete='off'>
-                  </div>
+         <div class="uk-flex uk-flex-center">
+            <div class="uk-vertical-align uk-text-center uk-height-1-1">
+               <div class="uk-vertical-align-middle">
+                 <form action="privado/procesos/pass/recuperar.php" method="post" id="form">
+                     <h4><p>Correo electrónico</p></h4>
+                     <input type="text" class="form-control input-md paste" name="correo" required autocomplete="off" id="correol">
+                     <br>
+                     <h5><p>Se envirá una contraseña a tu correo electrónico para recuperar la cuenta.</p></h5>
+                     <br>
+                     <br>
+                     <button class="btn btn-buy btn-sm col-lg-12 col-md-12" name="recuperar">RECUPERAR CONTRASEÑA</button>
+                     <br>
+                     <br>
+                 </form>
                </div>
             </div>
          </div>
-         <div class="modal-footer">
-            <button class="uk-button uk-button-success uk-button-large btn-block btn-regc omitir">REGISTRARME</button>
+         <div class="uk-modal-caption">
+            Punto Print - Soluciones en impresiones
+         </div>
+      </div>
+   </div>
+   <!--CREO UN MODAL DE REGISTRO-->
+   <div class="uk-modal" id="modal-registrer">
+      <div class="uk-modal-dialog modal-md">
+         <a href="" class="uk-modal-close uk-close"></a>
+         <div id="frm-u">
+            <div class="uk-modal-header">
+               <h4 class="modal-tittle">Bienvenido a Punto Print: Registro</h4>
+            </div>
+            <div class="modal-body">
+               <div class="row" id="frm">
+                  <div class="col-lg-6">
+                     <p>Nombres:</p>
+                     <input class="form-control col-lg-12" type="text" placeholder="Nombres">
+                  </div>
+                  <div class="col-lg-6">
+                     <p>Apellidos:</p>
+                     <input class="form-control col-lg-12" type="text" placeholder="Apellidos">
+                  </div>
+                  <div class="col-lg-12">
+                     <br>
+                     <p>Correo electrónico</p>
+                     <div class="uk-form-icon uk-width-1-1">
+                        <i class="uk-icon-envelope"></i>
+                        <input class="form-control" type="text" placeholder="Email">
+                     </div>
+                  </div>
+                  <div class="col-lg-6">
+                     <br>
+                     <p>Contraseña:</p>
+                     <div class="uk-form-icon uk-width-1-1">
+                        <i class="uk-icon-key"></i>
+                        <input class="form-control" type="password" placeholder="Contraseña" autocomplete='off'>
+                     </div>
+                  </div>
+                  <div class="col-lg-6">
+                     <br>
+                     <p>Confirmar:</p>
+                     <div class="uk-form-icon uk-width-1-1">
+                        <i class="uk-icon-check"></i>
+                        <input class="form-control omitir" type="password" placeholder="Confirmar contraseña" id="txtClaveR" autocomplete='off'>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="modal-footer">
+               <button class="btn btn-success uk-button-large btn-block btn-regc omitir">REGISTRARME</button>
+            </div>
          </div>
       </div>
    </div>

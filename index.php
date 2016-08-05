@@ -1,3 +1,3 @@
 <?php 
-	header('Location: publico/index.php');
+	header('Location: inicio.php');
 ?>

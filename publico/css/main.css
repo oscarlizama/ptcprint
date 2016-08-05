@@ -15,7 +15,7 @@
 }
 /*ESTILOS DE H*/
 .titulos{
-	color: black;
+	color: #e0f2f1;
 	font-family: 'Roboto Condensed', sans-serif;
 }
 /*ESTILOS DE SLIDER*/
@@ -39,7 +39,7 @@
 #footer-print{	
 	background-color: #1976d2;
 	margin-top: 50px;
-	color: black;
+	color: #e0f2f1;
 }
 .footer-info{
 	margin-top: 30px;
@@ -52,7 +52,7 @@
 .link-p, .link-p:hover{
 	cursor: pointer;
 	text-decoration: none;
-	color: #222;
+	color: #e0f2f1;
 }
 @media all and (max-width: 620px){
 	.link-p{

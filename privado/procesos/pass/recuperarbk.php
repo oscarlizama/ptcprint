@@ -53,7 +53,7 @@
     if (!$mail->send()) {
         echo $mail->ErrorInfo;
     } else {
-        header('Location: ../../index.php');
+        header('Location: ../private.php');
     }
 
 ?>

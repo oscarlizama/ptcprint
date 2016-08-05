@@ -2,22 +2,23 @@
   include '../privado/procesos/conexion.php';
   include '../privado/procesos/lifetime.php';
 ?>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-	<title>Banners | Punto Print</title>
-	<!--Aqui incluyo los links de estilo, los links en general-->
-	<?php include 'links.php' ?>
+  <title>Punto Print - Soluciones en impresiones</title>
+  <!--Aqui incluyo los links de estilo, los links en general-->
+  <?php include 'links.php' ?>
 </head>
 <body>
-	<!--Aqui incluyo el menú-->
+  <!--Aqui incluyo el menú-->
     <?php include 'menu.php' ?>
     <br>
     <br>
-	  <!--CREO EL HADER DE LA PAGINA-->
+    <!--CREO EL HADER DE LA PAGINA-->
     <div class="uk-width-1-1 banners">
-		  <h1 class="titulos titulos-sublim uk-text-center">BANNERS</h1>
-	  </div>
-	  <!--CONTENEDOR DE LA INFORMACION-->
+      <h1 class="titulos titulos-sublim uk-text-center">BANNERS</h1>
+    </div>
+    <!--CONTENEDOR DE LA INFORMACION-->
     <br>
     <br>
     <?php 
@@ -25,6 +26,7 @@
       $descripcion = "";
       $foto_producto = "";
       $pt_mx = 0;
+      $producto = "";
       $productoa = array();
       $calificacion_promedio = 0;
       $puntuacion_max = "SELECT max(c.calificacion) from comentarios c";
@@ -33,18 +35,27 @@
       while ($ptmx = $stmt->fetch(PDO::FETCH_BOTH)){
         $pt_mx = $ptmx[0];
       }
-      $maximo = "SELECT p.id_producto FROM productos p INNER JOIN comentarios c ON p.id_producto = c.id_producto WHERE p.id_tipo_producto=? AND c.calificacion = ? LIMIT 1";
-      $stmt = $con->prepare($maximo);
-      $stmt->execute(array(1,$pt_mx));
+      if($pt_mx != null){
+        $maximo = "SELECT p.id_producto FROM productos p INNER JOIN comentarios c ON p.id_producto = c.id_producto WHERE p.id_tipo_producto=? AND c.calificacion = ? LIMIT 1";
+        $stmt = $con->prepare($maximo);
+        $stmt->execute(array(1,$pt_mx));
+        $producto = "SELECT p.nombre_producto, p.descripcion_producto, ROUND(AVG(c.calificacion),1),f.foto_producto FROM (productos p INNER JOIN fotos_productos f ON f.id_producto = p.id_producto) INNER JOIN comentarios c ON c.id_producto = p.id_producto WHERE p.id_producto=?";
+      }else{
+        $maximo = "SELECT p.id_producto FROM productos p WHERE p.id_tipo_producto=? LIMIT 1";
+        $stmt = $con->prepare($maximo);
+        $stmt->execute(array(1));
+        $producto = "SELECT p.id_producto,p.nombre_producto, p.descripcion_producto,f.foto_producto FROM productos p INNER JOIN fotos_productos f ON f.id_producto = p.id_producto WHERE p.id_producto=?";
+      }
       while ($maximos = $stmt->fetch(PDO::FETCH_BOTH)){
         $id_max = $maximos[0];
       }
-      $producto = "SELECT p.nombre_producto, p.descripcion_producto, ROUND(AVG(c.calificacion),1),f.foto_producto FROM (productos p INNER JOIN fotos_productos f ON f.id_producto = p.id_producto) INNER JOIN comentarios c ON c.id_producto = p.id_producto WHERE p.id_producto=?";
       $stmt = $con->prepare($producto);
       $stmt->execute(array($id_max));
       while ($productoa = $stmt->fetch(PDO::FETCH_BOTH)){
         $descripcion = $productoa[1];
-        $calificacion_promedio = $productoa[2];
+        if ($pt_mx != null) {
+          $calificacion_promedio = $productoa[2];
+        }
         $foto_producto = $productoa[3];
       }
       $divin = "";
@@ -94,7 +105,7 @@
                   //$divin .= "</div>";
                   print($divin);
               ?>
-					    <!--AQUI SE PUNTUA-->
+              <!--AQUI SE PUNTUA-->
               <br>
               <!--SECCION DE COMENTARIOS-->
               <p class="uk-hidden" id="calificacionf"></p>
@@ -108,23 +119,23 @@
                 </form>
                 </div>
                 <button class="btn btn-default uk-width-4-10 uk-push-6-10 uk-hidden-medium" id="enviar_comment" type="button">PUNTUAR</button>
-						</div>
-					</div>
+            </div>
+          </div>
           <br>
           <!--BOTONES-->
           <div class="uk-grid">
             <div class="uk-width-1-1">
                 <div class="uk-grid">
-                  	<button class="btn btn-primary uk-width-small-5-10 uk-width-medium-4-10 uk-width-large-5-10 btn-sb-xs"onclick="window.location.href='cotizarcliente.php'">CARGAR</button>
-                  	<button class="btn btn-success uk-width-small-4-10 uk-width-medium-4-10 uk-width-large-4-10 btn-sb-xs"id="btn-el">ELEGIR DISEÑO</button>
-                  	<!--<button class="btn btn-default uk-width-small-9-10 uk-width-medium-3-10 btn-sb-xs uk-hidden-large">PUNTUAR</button>-->
+                    <button class="btn btn-primary uk-width-small-5-10 uk-width-medium-4-10 uk-width-large-5-10 btn-sb-xs"onclick="window.location.href='cotizarcliente.php'">CARGAR</button>
+                    <button class="btn btn-success uk-width-small-4-10 uk-width-medium-4-10 uk-width-large-4-10 btn-sb-xs"id="btn-el">ELEGIR DISEÑO</button>
+                    <!--<button class="btn btn-default uk-width-small-9-10 uk-width-medium-3-10 btn-sb-xs uk-hidden-large">PUNTUAR</button>-->
                 </div>
               </div>
           </div>
-				</div>
-			</div>
-		</div>
-	</div>
+        </div>
+      </div>
+    </div>
+  </div>
   <div class="container-fluid" id="elegir_div">
     <div class="row">
       <div class="panel panel-default">
@@ -156,17 +167,18 @@
       </div>
     </div>
   </div>
-	<!--FIN DE LA INFORMAICON PRINCIPAL-->
-	<!--INICIA EL CONTENDIO QUE POSEEN-->
-	<div class="uk-width-1-1 uk-text-center">
-			<div id="productos-solicitados">
-				<br>
-				<p class="productos-titulo">
-					<h2 class="titulos uk-hidden-small">NUESTROS PRODUCTOS</h2>
-					<h3 class="titulos uk-hidden-large uk-hidden-medium">NUESTROS PRODUCTOS</h3>
-				</p>
-			</div>
-			<!--slidenav de los productos-->
+  <!--FIN DE LA INFORMAICON PRINCIPAL-->
+  <!--INICIA EL CONTENDIO QUE POSEEN-->
+  <div class="uk-width-1-1 uk-text-center">
+      <div id="productos-solicitados">
+        <br>
+        <p class="productos-titulo">
+          <h2 class="titulos uk-hidden-small">NUESTROS PRODUCTOS</h2>
+          <h3 class="titulos uk-hidden-large uk-hidden-medium">NUESTROS PRODUCTOS</h3>
+        </p>
+      </div>
+      <br>
+      <!--slidenav de los productos-->
       <?php 
         $slidenavb = "";
         $slidenavb .= "<div class='uk-slidenav-position' data-uk-slider>";
@@ -174,7 +186,7 @@
             $slidenavb .= "<ul class='uk-slider uk-grid-small uk-grid-width-small-1-2 uk-grid-width-medium-1-4 uk-grid-width-large-1-4'>";
                 $sql = "SELECT productos.id_producto,foto_producto,nombre_producto FROM (productos INNER JOIN tipos_producto ON productos.id_tipo_producto = tipos_producto.id_tipo_producto) INNER JOIN fotos_productos ON fotos_productos.id_producto = productos.id_producto WHERE productos.id_tipo_producto=? AND estado_producto=? AND estado_foto_producto=?";
                 $stmt = $con->prepare($sql);
-                $stmt->execute(array(4,1,1));
+                $stmt->execute(array(1,1,1));
                 while ($datos = $stmt->fetch(PDO::FETCH_BOTH)){
                   $slidenavb .= "<a href='#'><li><img src='data:image/*;base64,$datos[1]' alt='$datos[2]' id='$datos[0]'></li></a>";
                 }
@@ -186,7 +198,7 @@
         //$con = null;
         print($slidenavb);
       ?>
-		</div>
+    </div>
     <br>
     <br>
     <div class="container-fluid" id="elegir_div">
@@ -196,9 +208,9 @@
             <?php 
               $row = 1;
               $divoep = "";
-              $sqlep = "SELECT productos.id_producto,foto_producto,nombre_producto FROM (productos INNER JOIN tipos_producto ON productos.id_tipo_producto = tipos_producto.id_tipo_producto) INNER JOIN fotos_productos ON fotos_productos.id_producto = productos.id_producto WHERE productos.id_tipo_producto=? AND estado_producto=? AND estado_foto_producto=?";
+              $sqlep = "SELECT productos.id_producto,foto_producto,nombre_producto FROM (productos INNER JOIN tipos_producto ON productos.id_tipo_producto = tipos_producto.id_tipo_producto) INNER JOIN fotos_productos ON fotos_productos.id_producto = productos.id_producto WHERE productos.id_tipo_producto=? AND estado_producto=? AND estado_foto_producto=? GROUP BY id_producto";
                 $stmt = $con->prepare($sqlep);
-                $stmt->execute(array(4,1,1));
+                $stmt->execute(array(1,1,1));
                 while ($datos = $stmt->fetch(PDO::FETCH_BOTH)){
                   $divoep .= "<div class='col-lg-3 col-md-4 col-sm-6 col-xs-12 imagenesael' id='imagenel".$datos[0]."'>";
                     $divoep .= "<a href='javascript:elegido($datos[0])'><img src='data:image/*;base64,$datos[1]' class='img-responsive'></a>";
@@ -210,8 +222,8 @@
         </div>
       </div>
     </div>
-    <!--INCLUYO LOS SCRIPTS Y EL FOOTER-->		
+    <!--INCLUYO LOS SCRIPTS Y EL FOOTER-->    
     <?php include 'footer.php' ?>
     <?php include 'scripts.php' ?>
-  </body>
+</body>
 </html>

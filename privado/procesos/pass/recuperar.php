@@ -52,7 +52,7 @@
     if (!$mail->send()) {
         echo $mail->ErrorInfo;
     } else {
-        header('Location: ../../../publico/index.php');
+        header('Location: ../../../inicio.php');
     }
 
 ?>
