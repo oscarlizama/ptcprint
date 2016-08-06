@@ -12,6 +12,7 @@ function elegido(id) {
 	$(".imagenesael"+imgel).siblings().css("opacity","0.5");
 	id_el = id;
 	$("#id_prod").text(id_el);
+	$("#mascid").val(id_el);
 	medidas_el();
 }
 

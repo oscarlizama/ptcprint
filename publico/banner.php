@@ -119,6 +119,9 @@
                 </form>
                 </div>
                 <button class="btn btn-default uk-width-4-10 uk-push-6-10 uk-hidden-medium" id="enviar_comment" type="button">PUNTUAR</button>
+                <form action="comentarios.php" id="mas_comentarios" method="post">
+                  <input type="text" name="idpd" class="hide" id="mascid" value="<?php echo $id_max?>">
+                </form>
             </div>
           </div>
           <br>
@@ -127,8 +130,8 @@
             <div class="uk-width-1-1">
                 <div class="uk-grid">
                     <button class="btn btn-primary uk-width-small-5-10 uk-width-medium-4-10 uk-width-large-5-10 btn-sb-xs"onclick="window.location.href='cotizarcliente.php'">CARGAR</button>
-                    <button class="btn btn-success uk-width-small-4-10 uk-width-medium-4-10 uk-width-large-4-10 btn-sb-xs"id="btn-el">ELEGIR DISEÑO</button>
-                    <!--<button class="btn btn-default uk-width-small-9-10 uk-width-medium-3-10 btn-sb-xs uk-hidden-large">PUNTUAR</button>-->
+                    <button class="btn btn-success uk-width-small-4-10 uk-width-medium-4-10 uk-width-large-4-10 btn-sb-xs" id="btn-el">ELEGIR DISEÑO</button>
+                    <button class="btn btn-default uk-width-small-9-10 uk-width-medium-8-10 btn-sb-xs uk-hidden-large">PUNTUAR</button>
                 </div>
               </div>
           </div>

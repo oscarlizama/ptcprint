@@ -10,6 +10,8 @@ $("#enviar_comment").click(function () {
 		}
 	}else if ($("#enviar_comment").text() == "ENVIAR") {
 		valores_comentario();
+	}else if ($("#enviar_comment").text() == "MÁS COMENTARIOS") {
+		$("#mas_comentarios").submit();
 	}
 });
 
@@ -166,7 +168,7 @@ function comentado(valores){
 			}else if (datos == 4) {
 				swal("¡ÉXITO!", "Esperemos que algún día lo vuelvas a calificar.", "success");
 			}else if (datos == 5) {
-				$("#enviar_comment").text("Ver más comentario");
+				$("#enviar_comment").text("MÁS COMENTARIOS");
 			}
 			else if (datos == 6) {
 				$("#enviar_comment").text("ENVIAR");
