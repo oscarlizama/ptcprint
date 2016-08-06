@@ -1,3 +1,4 @@
+<?php require 'procesos/loginpv.php';?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -34,7 +35,14 @@
 		</div>
 	</div>
 </div>
-	<?php include 'scripts.php';?>
-	<?php require 'procesos/loginpv.php';?>
+	<?php 
+		include 'scripts.php';
+		if ($activo == true) {
+			echo ("<script>swal('No se puede iniciar sesion','Parece que tienes una sesion activa','info');</script>");
+		}
+		if ($iniciar == false) {
+			echo ("<script>swal('No se puede iniciar sesion','Comprueba que los datos ingresados sean correctos','error');</script>");
+		}
+	?>
 </body>
 </html>

@@ -29,14 +29,15 @@
          <div id="inner">
             <nav id="nav-menu-mv">
                <ul>
-                  <li class="item-m">
+                  <!-- <li class="item-m">
                      <a href="">TARJETAS</a><span class="uk-icon-chevron-circle-down uk-icon-small uk-float-right submenu-button"></span>
                      <ul class="sub-menu-mv">
                         <li class="item-sb"><a href="tarjetas.php">sadsa</a></li>
                      </ul>
-                  </li>
+                  </li> -->
+                  <li class="item-m"><a href="inicio.php">INICIO</a></li>
                   <li class="item-m"><a href="banner.php">BANNERS</a></li>
-                  <li class="item-m">
+                  <!-- <li class="item-m">
                      <a href="">VYNILES</a><span class="uk-icon-chevron-circle-down uk-icon-small uk-float-right submenu-button"></span>
                      <ul class="sub-menu-mv">
                         <li class="item-sb"><a href="vyniles.php">Servicio de Vyniles</a></li>
@@ -78,7 +79,7 @@
                            </ul>
                         </li>
                      </ul>
-                  </li>
+                  </li> -->
                   <?php 
                      $login_menu = "";
                      if($nombre != "Iniciar sesión"){
@@ -130,7 +131,7 @@
          <ul>
             <li class="item"><a href="inicio.php">PUNTO PRINT</a></li>
             <li class="item"><a href="banner.php">BANNERS</a></li>
-            <li class="item">
+            <!-- <li class="item">
                <a href="">TARJETAS<span class="uk-icon-chevron-down uk-icon-justify uk-float-right icon-down-menu"></span></a>
                <ul>
                   <li><a href="tarjetas.php">Laminadas</a></li>
@@ -181,7 +182,7 @@
                   </li>
                   <li><a href="">Publicidad</a></li>
                </ul>
-            </li>
+            </li> -->
             <?php 
                $login_menu = "";
                if($nombre != "Iniciar sesión"){
