@@ -1,6 +1,7 @@
 <?php 
   require 'procesos/conexion.php';
   include 'procesos/autenticar.php';
+  include 'procesos/lifeprivate.php';
 ?>
 <html lang="es">
 <head>

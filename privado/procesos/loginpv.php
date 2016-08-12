@@ -20,6 +20,7 @@
 				$_SESSION['autenticadop'] = 'si';
 				$_SESSION['emailc'] = $email;
 				$_SESSION['idusr'] = $res_usuario[1];
+				$_SESSION["ultimoAccesoP"] = date("Y-n-j H:i:s"); 
 				$iniciado = "UPDATE usuarios SET estado_sesion=? WHERE correo_usuario=?";
 				$stmt = $con->prepare($iniciado);
 				$stmt->execute(array(session_id(),$email));

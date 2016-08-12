@@ -4,6 +4,7 @@
     if(!isset($_SESSION)) 
     { 
         session_start(); 
+        include 'procesos/lifeprivate.php';
         if(!empty($_SESSION['autenticadop'])){
             $nombre = $_SESSION['autenticadop'];
             require 'procesos/conexion.php';

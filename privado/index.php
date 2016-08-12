@@ -1,4 +1,14 @@
-<?php require 'procesos/loginpv.php';?>
+<?php
+	require 'procesos/conexion.php';
+	$sql = "SELECT * FROM usuarios";
+	$stmt = $con->prepare($sql);
+	$stmt->execute(array());
+	if ($stmt->fetch(PDO::FETCH_BOTH)) {
+		require 'procesos/loginpv.php';
+	}else{
+		header('Location: primero.php');
+	}
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>

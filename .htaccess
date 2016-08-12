@@ -1,6 +1,6 @@
-Options -Indexes
 ErrorDocument 404 /ptcprint/publico/error.php
-ErrorDocument 403 /ptcprint/publico/error.php
+ErrorDocument 403 /ptcprint/publico/errorc.php
+Options -Indexes
 Options +FollowSymLinks
 RewriteEngine on
 RewriteBase /ptcprint/
@@ -38,4 +38,4 @@ RewriteRule ^redessociales.php$ privado/redessociales.php [L,QSA,NC]
 RewriteRule ^edituser.php$ privado/edituser.php [L,QSA,NC]
 RewriteRule ^perfil.php$ privado/perfil.php [L,QSA,NC]
 RewriteRule ^comentarios.php$ privado/comentarios.php [L,QSA,NC]
-#RewriteRule ^facturas.php$ privado/facturas.php [L,QSA,NC]
+RewriteRule ^primero.php$ privado/primero.php [L,QSA,NC]

@@ -1,6 +1,7 @@
 <?php 
 	require 'procesos/conexion.php';
 	include 'procesos/autenticar.php';
+	include 'procesos/lifeprivate.php';
 	$registro = false;
 	$numero = 0;
 	$empresa = "SELECT COUNT(nombre_empresa) AS empresa FROM empresa";

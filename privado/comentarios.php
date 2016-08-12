@@ -1,6 +1,7 @@
 <?php 
   require 'procesos/conexion.php';
   include 'procesos/autenticar.php';
+  include 'procesos/lifeprivate.php';
   $ejecutar = false;
   $id_producto = 0;
   if(isset($_POST['ver'])){
