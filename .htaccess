@@ -1,12 +1,10 @@
-ErrorDocument 404 /ptcprint/publico/error.php
-ErrorDocument 403 /ptcprint/publico/errorc.php
-Options -Indexes
 Options +FollowSymLinks
 RewriteEngine on
 RewriteBase /ptcprint/
 RewriteCond %{REQUEST_FILENAME} !-f
 ##PARA EL PUBLICO
 RewriteRule ^inicio.php$ publico/index.php [L,QSA,NC]
+#RewriteRule ^publico/index.php$ inicio.php [L,QSA,NC]
 RewriteRule ^cotizarcliente.php$ publico/cotizarcliente.php [L,QSA,NC]
 RewriteRule ^compras.php$ publico/carrito.php [L,QSA,NC]
 RewriteRule ^banner.php$ publico/banner.php [L,QSA,NC]
@@ -14,7 +12,7 @@ RewriteRule ^banner.php$ publico/banner.php [L,QSA,NC]
 #RewriteRule ^favoritos_cliente.php$ publico/favoritos_cliente.php [L,QSA,NC]
 #RewriteRule ^misfacturas.php$ publico/misfacturas.php [L,QSA,NC]
 RewriteRule ^miperfil.php$ publico/dashboardc.php [L,QSA,NC]
-RewriteRule ^error.html$ publico/error.html [L,QSA,NC]
+#RewriteRule ^error.html$ publico/error.html [L,QSA,NC]
 RewriteRule ^comentarios.php$ publico/mascomentarios.php [L,QSA,NC]
 ##PARA EL PRIVADO
 RewriteRule ^private.php$ privado/index.php [L,QSA,NC]
@@ -39,3 +37,6 @@ RewriteRule ^edituser.php$ privado/edituser.php [L,QSA,NC]
 RewriteRule ^perfil.php$ privado/perfil.php [L,QSA,NC]
 RewriteRule ^comentarios.php$ privado/comentarios.php [L,QSA,NC]
 RewriteRule ^primero.php$ privado/primero.php [L,QSA,NC]
+Options -Indexes
+ErrorDocument 404 /ptcprint/publico/error.php
+ErrorDocument 403 /ptcprint/publico/error.php

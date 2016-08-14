@@ -10,13 +10,17 @@
 	if ($accion == 1) {
 		if(!(is_null($config[0])) && !(is_null($config[1]))){
 			if(trim($config[0])!=""){
-				require 'conexion.php';
-				$con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-				$sql = "UPDATE clientes SET nombres_cliente=?, apellidos_cliente=? WHERE id_cliente=?";
-				$stmt = $con->prepare($sql);
-				$stmt->execute($config);
-				$sql = null;
-				$respuesta = 1;	
+				if (validarNombrePersona($config[0]) && validarNombrePersona($config[1])) {
+					require 'conexion.php';
+					$con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+					$sql = "UPDATE clientes SET nombre_cliente=?, apellido_cliente=? WHERE id_cliente=?";
+					$stmt = $con->prepare($sql);
+					$stmt->execute($config);
+					$sql = null;
+					$respuesta = 1;	
+				}else{
+					$respuesta = 3;
+				}
 			}
 		}	
 	}

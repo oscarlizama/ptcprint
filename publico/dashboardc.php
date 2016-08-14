@@ -27,7 +27,6 @@
             <ul class="nav nav-tabs">
                 <li class="active"><a data-toggle="tab" href="#home">CONFIGURACIÓN</a></li>
                 <li><a data-toggle="tab" href="#menu1">MIS COMENTARIOS</a></li>
-                <li><a data-toggle="tab" href="#menu2">MIS FAVORITOS</a></li>
             </ul>
             <div class="tab-content">
                 <div id="home" class="tab-pane fade in active">
@@ -98,10 +97,10 @@
                                             $stmt->execute(array($resultado[0]));
                                             $coment = $stmt->fetch(PDO::FETCH_BOTH);
                                             if($coment[0] > 0){
-                                                $sql = "SELECT c.id_comentario,p.nombre_producto,c.comentario FROM comentarios c, productos p WHERE c.id_cliente=$resultado[0]";
+                                                $sql = "SELECT c.id_comentario,p.nombre_producto,c.comentario FROM comentarios c, productos p WHERE c.id_cliente=$resultado[0] and c.id_producto = p.id_producto";
                                                 foreach ($con->query($sql) as $datos) {
-                                                    $panelc .= "<label for='' class='labels'>Producto:</label>";
-                                                    $panelc .= "<textarea type='text' class='form-control input estira' id='nombre'>$datos[1]</textarea>";
+                                                    $panelc .= "<label for='' class='labels'>Producto:$datos[1]</label>";
+                                                    $panelc .= "<textarea type='text' class='form-control input estira' id='nombre' readonly>$datos[2]</textarea>";
                                                 }   
                                             }
                                             else{
@@ -115,8 +114,6 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <div id="menu2" class="tab-pane fade">
                 </div>
             </div>
         </div>

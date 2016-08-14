@@ -1,4 +1,4 @@
 <?php
-    header('location: ../../errorc.html');
+    header('location: errorc.html');
     die();
 ?>

@@ -15,7 +15,10 @@ function perfil(valores,repetida,accion){
 				swal("ERROR", "Hay un error, puede que las contraseñas no conicidan o que tu nombre y la contraseña son iguales", "error");
 			}else if (datos == 100) {
 				swal("ERROR", "asgdsajhsahhasdgsahgd asdhgsah gsah", "error");
-			}else{
+			}else if(datos == 3){
+				swal("ERROR", "Puede que tu nombre u apellido contenga carateres inválidos", "error");
+			}
+			else{
 				swal("ERROR", datos, "error");
 			}
 			return false;
