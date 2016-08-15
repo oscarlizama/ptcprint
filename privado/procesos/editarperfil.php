@@ -30,11 +30,19 @@
 				$passHash = password_hash($config[2],PASSWORD_BCRYPT);
 				require 'conexion.php';
 				$con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-				$sql = "UPDATE clientes SET clave_cliente=? WHERE id_cliente=?";
-				$stmt = $con->prepare($sql);
-				$stmt->execute(array($passHash,$config[3]));
-				$sql = null;
-				$respuesta = 1;	
+				$sqla = "SELECT clave_cliente FROM clientes WHERE id_cliente=?";
+				$stmta = $con->prepare($sqla);
+				$stmta->execute(array($config[3]));
+				$anterior = $stmta->fetch(PDO::FETCH_BOTH);
+				if (!password_verify($config[2],$anterior[0])) {
+					$sql = "UPDATE clientes SET clave_cliente=? WHERE id_cliente=?";
+					$stmt = $con->prepare($sql);
+					$stmt->execute(array($passHash,$config[3]));
+					$sql = null;
+					$respuesta = 1;	
+				}else{
+					$respuesta = 4;		
+				}
 			}else{
 				$respuesta = $error;
 			}

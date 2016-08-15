@@ -17,8 +17,9 @@ function perfil(valores,repetida,accion){
 				swal("ERROR", "asgdsajhsahhasdgsahgd asdhgsah gsah", "error");
 			}else if(datos == 3){
 				swal("ERROR", "Puede que tu nombre u apellido contenga carateres inválidos", "error");
-			}
-			else{
+			}else if(datos == 4){
+				swal("ERROR", "Ingresa una contraseña diferente a la actual", "info");
+			}else{
 				swal("ERROR", datos, "error");
 			}
 			return false;

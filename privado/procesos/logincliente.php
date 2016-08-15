@@ -1,5 +1,6 @@
 <?php 
 	require_once 'conexion.php';
+	require_once 'validaciones.php';
 	session_start();
 	//if (isset($_POST['iniciar_sesion'])) {
 		$email = !empty($_POST['correo']) ? trim($_POST['correo']) : null;
@@ -8,6 +9,7 @@
 		$stmt = $con->prepare($usuario);
 		$stmt->execute(array($email,1));
 		$res_usuario = $stmt->fetch(PDO::FETCH_BOTH);
+		if()
 		if (password_verify($pass,$res_usuario[0])) {
 			$_SESSION['autenticado'] = 'si';
 			$_SESSION['email'] = $email;
