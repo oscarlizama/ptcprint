@@ -10,8 +10,9 @@
 		$stmt = $con->prepare($iniciado);
 		$stmt->execute(array($email));
 		$estado = $stmt->fetch(PDO::FETCH_BOTH);
+		$correo = $email;
 		if ($estado[0] == "0") {
-			echo "holaaa";
+			//echo "holaaa";
 			$usuario = "SELECT clave_usuario,id_usuario FROM usuarios WHERE correo_usuario=? AND estado_usuario=?";
 			$stmt = $con->prepare($usuario);
 			$stmt->execute(array($email,1));
@@ -30,7 +31,7 @@
 				$iniciar = false;
 			}
 		}else{
-			$activo = true;	
+			$activo = true;
 		}
 	}
 	//echo $_SESSION['idusr'];

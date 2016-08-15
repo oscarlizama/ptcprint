@@ -1,4 +1,5 @@
 <?php
+	$correo = "";
 	require 'procesos/conexion.php';
 	$sql = "SELECT * FROM usuarios";
 	$stmt = $con->prepare($sql);
@@ -30,7 +31,7 @@
 					<br>
 					<br>
 					<label for="inputEmail" class="labels-blanco">CORREO ELECTRÓNICO</label>
-					<input type="email" name="email" placeholder="Email" class="form-control text-center input-lg" required autocomplete='off'>
+					<input id="correo" type="email" name="email" placeholder="Email" class="form-control text-center input-lg" required autocomplete='off' value='<?php echo $correo?>'>
 					<br>
 					<br>
 					<label for="inputEmail" class="labels-blanco">CONTRASEÑA</label>
@@ -48,7 +49,7 @@
 	<?php 
 		include 'scripts.php';
 		if ($activo == true) {
-			echo ("<script>swal('No se puede iniciar sesion','Parece que tienes una sesion activa','info');</script>");
+			echo ("<script>cerrar_sesion(2);</script>");
 		}
 		if ($iniciar == false) {
 			echo ("<script>swal('No se puede iniciar sesion','Comprueba que los datos ingresados sean correctos','error');</script>");

@@ -22,4 +22,5 @@
 		}
 	//}
 	$con = null;
+	echo session_id();
 ?>
