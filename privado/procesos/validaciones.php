@@ -72,4 +72,19 @@ function validar_clave($clave,&$error_clave){
         $error_clave = "";
         return true;
     }
+    function validarcaptcha($capchap){
+		if (isset($capchap)){				
+			$response = json_decode("https://www.google.com/recaptcha/api/siteverify?secret=6LeVzScTAAAAAMM7wQXkF1iRCL32wq_aw_QK2DJ-&response=".$capchap);
+			var_dump($response);	
+			if($response=="NULL")
+		        {
+		          // es un robot asi que no pasa xd
+		          return false;
+		        }else
+		        {
+		        	// es un HUMANO 
+		          return true;
+		        }	      
+		}
+	}
 ?>

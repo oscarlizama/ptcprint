@@ -367,6 +367,16 @@
                         <input class="form-control omitir" type="password" placeholder="Confirmar contraseña" id="txtClaveR" autocomplete='off'>
                      </div>
                   </div>
+                  <form method="post" id="formv">
+                     <div class="col-lg-12">
+                        <br>
+                        <div class="uk-grid">
+                           <div class="uk-container-center">
+                              <div class="g-recaptcha" data-sitekey="6LeVzScTAAAAAGhYA3ikaTrxUduK2ejq5Nf_0yV5"></div>
+                           </div>
+                        </div>
+                     </div>
+                  </form>
                </div>
             </div>
             <div class="modal-footer">
