@@ -3,7 +3,8 @@ Options +FollowSymLinks
 #PARA QUE REESCRIBA LAS REGLAS
 RewriteEngine on
 #ESPECIFICAMOS LA CARPETA
-RewriteBase /ptcprint/
+#RewriteBase /ptcprint/
+#RewriteBase /ptcprint/
 ##AQUI EMPIEZAA REESCRIBIR EL NAVEGADOR
 RewriteCond %{REQUEST_FILENAME} !-f
 ##PARA EL PUBLICO
