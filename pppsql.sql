@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 21-08-2016 a las 01:13:35
+-- Tiempo de generación: 21-08-2016 a las 01:33:28
 -- Versión del servidor: 10.1.10-MariaDB
 -- Versión de PHP: 5.6.19
 
@@ -604,7 +604,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `archivos`
 --
 ALTER TABLE `archivos`
-  MODIFY `id_archivo` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id_archivo` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT de la tabla `carritos`
 --
@@ -614,27 +614,27 @@ ALTER TABLE `carritos`
 -- AUTO_INCREMENT de la tabla `clientes`
 --
 ALTER TABLE `clientes`
-  MODIFY `id_cliente` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id_cliente` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 --
 -- AUTO_INCREMENT de la tabla `comentarios`
 --
 ALTER TABLE `comentarios`
-  MODIFY `id_comentario` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id_comentario` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT de la tabla `configuraciones`
 --
 ALTER TABLE `configuraciones`
-  MODIFY `id_configuracion` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id_configuracion` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `contactos_proveedor`
 --
 ALTER TABLE `contactos_proveedor`
-  MODIFY `id_contacto_proveedor` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id_contacto_proveedor` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `conversaciones`
 --
 ALTER TABLE `conversaciones`
-  MODIFY `id_conversacion` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id_conversacion` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT de la tabla `detalles_factura`
 --
@@ -644,12 +644,12 @@ ALTER TABLE `detalles_factura`
 -- AUTO_INCREMENT de la tabla `empresa`
 --
 ALTER TABLE `empresa`
-  MODIFY `id_empresa` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id_empresa` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT de la tabla `equipos`
 --
 ALTER TABLE `equipos`
-  MODIFY `id_equipo` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id_equipo` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT de la tabla `facturas`
 --
@@ -664,42 +664,42 @@ ALTER TABLE `favoritos`
 -- AUTO_INCREMENT de la tabla `fotos_productos`
 --
 ALTER TABLE `fotos_productos`
-  MODIFY `id_foto_producto` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id_foto_producto` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT de la tabla `mano_obra`
 --
 ALTER TABLE `mano_obra`
-  MODIFY `id_actividad` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id_actividad` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `medidas_producto`
 --
 ALTER TABLE `medidas_producto`
-  MODIFY `id_medida` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id_medida` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT de la tabla `mensajes`
 --
 ALTER TABLE `mensajes`
-  MODIFY `id_mensaje` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id_mensaje` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 --
 -- AUTO_INCREMENT de la tabla `pedidos`
 --
 ALTER TABLE `pedidos`
-  MODIFY `id_pedido` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id_pedido` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT de la tabla `permisos`
 --
 ALTER TABLE `permisos`
-  MODIFY `id_permiso` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id_permiso` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `id_producto` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id_producto` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT de la tabla `proveedores`
 --
 ALTER TABLE `proveedores`
-  MODIFY `id_proveedor` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id_proveedor` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `punto_club`
 --
@@ -714,22 +714,22 @@ ALTER TABLE `recursos`
 -- AUTO_INCREMENT de la tabla `redes_sociales`
 --
 ALTER TABLE `redes_sociales`
-  MODIFY `id_red_social` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id_red_social` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 --
 -- AUTO_INCREMENT de la tabla `tipos_contacto`
 --
 ALTER TABLE `tipos_contacto`
-  MODIFY `id_tipo_contacto` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id_tipo_contacto` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `tipos_producto`
 --
 ALTER TABLE `tipos_producto`
-  MODIFY `id_tipo_producto` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id_tipo_producto` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id_usuario` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id_usuario` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 --
 -- Restricciones para tablas volcadas
 --
