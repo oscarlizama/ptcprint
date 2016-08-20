@@ -832,5 +832,4 @@ ALTER TABLE `usuarios`
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-
-INSERT INTO permisos VALUES('Administrador',7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7);
+INSERT INTO `permisos` (`id_permiso`, `nombre_permiso`, `tbl_configuraciones`, `tbl_usuarios`, `tbl_permisos`, `tbl_fotospr`, `tbl_clientes`, `tbl_informacion_corporativa`, `tbl_redes_sociales`, `tbl_proveedores`, `tbl_facturacion`, `tbl_productos`, `tbl_medidas_productos`, `tbl_tipo_contactos`, `tbl_tipo_productos`, `tbl_mano_obra`, `tbl_contactos_proveedor`, `tbl_equipos`, `estado_permiso`) VALUES (NULL, 'Administrador', '7', '7', '7', '7', '7', '7', '7', '7', '7', '7', '7', '7', '7', '7', '7', '7', '1');
