@@ -17,7 +17,7 @@
 			<br>
 			<br>
 			<div class="col-lg-4 col-md-4 col-sm-6 col-sm-offset-3 col-lg-offset-4 col-md-offset-4 text-center" id="frm">
-				<form method="post" action="procesos/pass/recuperarbk.php">
+				<form method="post" action="privado/procesos/pass/recuperarbk.php">
 					<h2 class="h-negro">Ingrese el correo electrónico</h2>
 					<br>
 					<input name="correo" placeholder="Email" class="form-control text-center input-lg" autocomplete="off"required autocomplete='off'>

@@ -1,8 +1,13 @@
+#PARA QUE SIGA LOS ENLACE SIMBOLICOS
 Options +FollowSymLinks
+#PARA QUE REESCRIBA LAS REGLAS
 RewriteEngine on
+#ESPECIFICAMOS LA CARPETA
 RewriteBase /ptcprint/
+##AQUI EMPIEZAA REESCRIBIR EL NAVEGADOR
 RewriteCond %{REQUEST_FILENAME} !-f
 ##PARA EL PUBLICO
+#L = LAST, NC = NO CASE, QSA = DESCARTA EL QUERY Y GENERA UNA URL NUEVA
 RewriteRule ^inicio.php$ publico/index.php [L,QSA,NC]
 #RewriteRule ^publico/index.php$ inicio.php [L,QSA,NC]
 RewriteRule ^cotizarcliente.php$ publico/cotizarcliente.php [L,QSA,NC]
@@ -37,6 +42,8 @@ RewriteRule ^edituser.php$ privado/edituser.php [L,QSA,NC]
 RewriteRule ^perfil.php$ privado/perfil.php [L,QSA,NC]
 RewriteRule ^comentarios.php$ privado/comentarios.php [L,QSA,NC]
 RewriteRule ^primero.php$ privado/primero.php [L,QSA,NC]
+RewriteRule ^recuperar.php$ privado/recuperar.php [L,QSA,NC]
+##SE EVITA LISTAR LAS CARPETAS
 Options -Indexes
 ErrorDocument 404 /ptcprint/publico/error.php
 ErrorDocument 403 /ptcprint/publico/error.php

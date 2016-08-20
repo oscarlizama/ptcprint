@@ -28,23 +28,27 @@
     // Devuelve la respuesta en formato JSON
     echo $response;
     }*/
+    //REQUIRE LA LIBRERIA RECAPTCHA
     require_once "recaptchalib.php";
-    // tu clave secreta
+    // tu clave secreta que te da google
     $secret = "6LeVzScTAAAAAMM7wQXkF1iRCL32wq_aw_QK2DJ-";
      
     // respuesta vacía
     $response = null;
      
+    //LA RESPUESTA QUE VA A ARROJAR AJAX
     $respuestav = "malo";
 
-    // comprueba la clave secreta
+    ///CREAS UNA NUEVA INSTANCIA DE LA CLASSE ReCaptcha
     $reCaptcha = new ReCaptcha($secret);
-    // si se detecta la respuesta como enviada
+    //AQUI OBTIENE SI HA RESUELTO EL CAPTCHA
     if ($_POST["g-recaptcha-response"]) {
-    $response = $reCaptcha->verifyResponse(
+        $response = $reCaptcha->verifyResponse(
+            //GUARDA LA DIRECCION DEL USUARIO
             $_SERVER["REMOTE_ADDR"],
             $_POST["g-recaptcha-response"]
         );
+        ///AQUI COMPRUEBA QUE SI ENVIA EL CAPTCHA
     }if ($response != null && $response->success) {
         $respuestav = "bueno";
         //echo json_encode($respuestav);

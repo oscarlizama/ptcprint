@@ -49,6 +49,8 @@ function validarExistencia($n){
 		return false;
 }
 function validar_clave($clave,&$error_clave){
+		//SON EXPRESIONES REGULARES
+		//PREG_MATCH PREPARA UNA SENTENCIA PARA COINCIDA EL FORMATO
         if(strlen($clave) < 6){
             $error_clave = "La clave debe tener al menos 6 caracteres";
             return false;

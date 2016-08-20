@@ -17,7 +17,7 @@
 		<ul class="uk-slideshow uk-overlay-active">
 			<!--cada "li" es una imagen-->
 		    <li>
-		    	<img src="img/slider4.png" alt="">
+		    	<img src="publico/img/slider4.png" alt="">
 		    	<!--OVERLAY HACE QUE PODAMOS GREGAR TEXTO SOBRE LA IMAGEN, AGREGANDOLO SOBRE EL UN COLOR NEGRO CON TRANSPARENCIA-->
 		    	<!--overlay top indica que solo abarcarà la parte de arriba de la pantalla-->
 		    	<div class="uk-overlay-panel uk-overlay-background uk-overlay-fade uk-overlay-top uk-text-center">
@@ -27,7 +27,7 @@
 		    	</div>
 		    </li>
 		    <li>
-		    	<img src="img/slider5.png" alt="">
+		    	<img src="publico/img/slider5.png" alt="">
 		    	<!--OVERLAY HACE QUE PODAMOS GREGAR TEXTO SOBRE LA IMAGEN, AGREGANDOLO SOBRE EL UN COLOR NEGRO CON TRANSPARENCIA-->
 		    	<!--overlay top indica que solo abarcarà la parte de arriba de la pantalla-->
 		    	<div class="uk-overlay-panel uk-overlay-background uk-overlay-fade uk-overlay-top uk-text-center">
@@ -37,7 +37,7 @@
 		    	</div>
 		    </li>
 		    <li>
-		    	<img src="img/slider3.png" alt="">
+		    	<img src="publico/img/slider3.png" alt="">
 		    	<!--OVERLAY HACE QUE PODAMOS GREGAR TEXTO SOBRE LA IMAGEN, AGREGANDOLO SOBRE EL UN COLOR NEGRO CON TRANSPARENCIA-->
 		    	<!--overlay top indica que solo abarcarà la parte de arriba de la pantalla-->
 		    	<div class="uk-overlay-panel uk-overlay-background uk-overlay-fade uk-overlay-top uk-text-center">
@@ -75,7 +75,7 @@
 					<div class="img-product">
 						<div class="mostrar-product">
 							<a class="uk-button uk-button-danger uk-button-large quickview" href="img/taza1.png" data-uk-lightbox="" title="Taza sublimada"><span class="uk-icon-arrows-alt uk-icon-large"></span></a>
-							<img src="img/taza1.png" class="img-product-m" alt="">
+							<img src="publico/img/taza1.png" class="img-product-m" alt="">
 						</div>
 					</div>
 					<div class="info-img-p">
@@ -85,7 +85,7 @@
 					<div class="img-product">
 						<div class="mostrar-product">
 							<a class="uk-button uk-button-danger uk-button-large quickview" href="img/estampado2.png" data-uk-lightbox="" title="Camisa estampada"><span class="uk-icon-arrows-alt uk-icon-large"></span></a>
-							<img src="img/estampado2.png" alt="">
+							<img src="publico/img/estampado2.png" alt="">
 						</div>
 					</div>
 					<div class="info-img-p">
@@ -98,7 +98,7 @@
 					<div class="img-product">
 						<div class="mostrar-product">
 							<a class="uk-button uk-button-danger uk-button-large quickview" href="img/gorra1.png" data-uk-lightbox="" title="Gorra"><span class="uk-icon-arrows-alt uk-icon-large"></span></a>
-							<img src="img/gorra1.png" alt="">
+							<img src="publico/img/gorra1.png" alt="">
 						</div>
 					</div>
 					<div class="info-img-p">
@@ -108,7 +108,7 @@
 					<div class="img-product">
 						<div class="mostrar-product">
 							<a class="uk-button uk-button-danger uk-button-large quickview" href="img/gorra2.png" data-uk-lightbox="" title="Gorra"><span class="uk-icon-arrows-alt uk-icon-large"></span></a>
-							<img src="img/gorra2.png" alt="">
+							<img src="publico/img/gorra2.png" alt="">
 						</div>
 					</div>
 					<div class="info-img-p">
@@ -121,7 +121,7 @@
 					<div class="img-product">
 						<div class="mostrar-product">
 							<a class="uk-button uk-button-danger uk-button-large quickview" href="img/lapiceros1.png" data-uk-lightbox="" title="Lapiceros personalizados"><span class="uk-icon-arrows-alt uk-icon-large"></span></a>
-							<img src="img/lapiceros1.png" alt="">	
+							<img src="publico/img/lapiceros1.png" alt="">	
 						</div>
 					</div>
 					<div class="info-img-p">
@@ -131,7 +131,7 @@
 					<div class="img-product">
 						<div class="mostrar-product">
 							<a class="uk-button uk-button-danger uk-button-large quickview" href="img/cajas5.png" data-uk-lightbox="" title="Cajas personalizadas"><span class="uk-icon-arrows-alt uk-icon-large"></span></a>
-							<img src="img/cajas5.png" alt="">
+							<img src="publico/img/cajas5.png" alt="">
 						</div>
 					</div>
 					<div class="info-img-p">
@@ -144,7 +144,7 @@
 					<div class="img-product">
 						<div class="mostrar-product">
 							<a class="uk-button uk-button-danger uk-button-large quickview" href="img/estampado1.png" data-uk-lightbox="" title="Camisa estampada"><span class="uk-icon-arrows-alt uk-icon-large"></span></a>
-							<img src="img/estampado1.png" alt="">
+							<img src="publico/img/estampado1.png" alt="">
 						</div>
 					</div>
 					<div class="info-img-p">
@@ -154,7 +154,7 @@
 					<div class="img-product">
 						<div class="mostrar-product">
 							<a class="uk-button uk-button-danger uk-button-large quickview" href="img/cajas6.png" data-uk-lightbox="" title="Cajas personalizadas"><span class="uk-icon-arrows-alt uk-icon-large"></span></a>
-							<img src="img/cajas6.png" alt="">
+							<img src="publico/img/cajas6.png" alt="">
 						</div>
 					</div>
 					<div class="info-img-p">
@@ -167,10 +167,10 @@
 			<div class="uk-slidenav-position uk-hidden-large" data-uk-slider>
             	<div class="uk-slider-container">
                 	<ul class="uk-slider uk-grid-width-small-1-2 uk-grid-width-medium-1-3">
-                    	<li><img src="img/taza1.png" alt=""></li>
-                    	<li><img src="img/estampado1.png" alt=""></li>
-                    	<li><img src="img/gorra2.png" alt=""></li>
-                    	<li><img src="img/gorra1.png" alt=""></li>
+                    	<li><img src="publico/img/taza1.png" alt=""></li>
+                    	<li><img src="publico/img/estampado1.png" alt=""></li>
+                    	<li><img src="publico/img/gorra2.png" alt=""></li>
+                    	<li><img src="publico/img/gorra1.png" alt=""></li>
                 	</ul>
             	</div>
             	<!--CONTROLES DEL SLIDER-->
@@ -190,10 +190,10 @@
 			<div class="uk-slidenav-position uk-hidden-large" data-uk-slider>
             	<div class="uk-slider-container">
                 	<ul class="uk-slider  uk-grid-width-small-1-2 uk-grid-width-medium-1-3">
-                    	<li><img src="img/tarjetap1.png"alt=""></li>
-                    	<li><img src="img/tarjetap2.png" alt=""></li>
-                    	<li><img src="img/tarjetap3.png" alt=""></li>
-                    	<li><img src="img/tarjetap4.png" alt=""></li>
+                    	<li><img src="publico/img/tarjetap1.png"alt=""></li>
+                    	<li><img src="publico/img/tarjetap2.png" alt=""></li>
+                    	<li><img src="publico/img/tarjetap3.png" alt=""></li>
+                    	<li><img src="publico/img/tarjetap4.png" alt=""></li>
                 	</ul>
             	</div>
             	<a href="#" class="uk-slidenav uk-slidenav-contrast uk-slidenav-previous" data-uk-slider-item="previous"></a>
