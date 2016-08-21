@@ -163,11 +163,11 @@
                 <div class="row">
                     <div class="col-xs-6 col-sm-6 col-md-6 col-lgs-6">
                         <p>Nombre:</p>
-                        <input class="form-control" rows="5" type="text" name="nombre">
+                        <input class="form-control" rows="5" type="text" name="nombre" autocomplete="off">
                     </div>
                     <div class="col-xs-6 col-sm-6 col-md-6 col-lgs-6">
                         <p>Apellido:</p>
-                        <input class="form-control" rows="5" type="text" name="apellido">
+                        <input class="form-control" rows="5" type="text" name="apellido" autocomplete="off">
                     </div>
                 </div>
                 <div class="row">
@@ -175,16 +175,16 @@
                         <p>Email</p>
                         <div class="uk-form-icon uk-width-1-1">
                             <i class="uk-icon-envelope"></i>
-                            <input class="form-control" rows="5" type="text" name="correo">
+                            <input class="form-control" rows="5" type="text" name="correo" autocomplete="off">
                         </div>
                         <p>Asunto</p>
                         <div class="uk-form-icon uk-width-1-1">
                             <i class="uk-icon-info"></i>
-                            <input class="form-control" rows="5" type="text" name="asunto">
+                            <input class="form-control" rows="5" type="text" name="asunto" autocomplete="off">
                         </div>
                         <p>Comentario o mensaje</p>
                         <div class="uk-form-icon uk-width-1-1">
-                            <textarea class="form-control" rows="4" type="text" name="mensaje"></textarea>
+                            <textarea class="form-control" rows="4" type="text" name="mensaje" autocomplete="off"></textarea>
                         </div>
                         <br>
                         <button class="btn btn-primary btn-block">Enviar</button>
