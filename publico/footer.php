@@ -158,43 +158,40 @@
         <div class="uk-modal-header">
             <h4 class="modal-title">PUNTO PRINT | Contáctanos</h4>
         </div>
-        <div class="modal-body">
-            <div class="row">
-                <div class="col-xs-6 col-sm-6 col-md-6 col-lgs-6">
-                    <p>Nombre:</p>
-                    <input class="form-control" rows="5" type="text">
+        <form action="privado/procesos/contactanosc.php" method="post">
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-xs-6 col-sm-6 col-md-6 col-lgs-6">
+                        <p>Nombre:</p>
+                        <input class="form-control" rows="5" type="text" name="nombre">
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6 col-lgs-6">
+                        <p>Apellido:</p>
+                        <input class="form-control" rows="5" type="text" name="apellido">
+                    </div>
                 </div>
-                <div class="col-xs-6 col-sm-6 col-md-6 col-lgs-6">
-                    <p>Apellido:</p>
-                    <input class="form-control" rows="5" type="text">
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-xs-12 col-xsm12 col-xmd12 col-lg-12">
-                    <p>Número de teléfono</p>
-                    <div class="uk-form-icon uk-width-1-1">
-                        <i class="uk-icon-phone"></i>
-                        <input class="form-control" rows="5" type="text">
+                <div class="row">
+                    <div class="col-xs-12 col-xsm12 col-xmd12 col-lg-12">
+                        <p>Email</p>
+                        <div class="uk-form-icon uk-width-1-1">
+                            <i class="uk-icon-envelope"></i>
+                            <input class="form-control" rows="5" type="text" name="correo">
+                        </div>
+                        <p>Asunto</p>
+                        <div class="uk-form-icon uk-width-1-1">
+                            <i class="uk-icon-info"></i>
+                            <input class="form-control" rows="5" type="text" name="asunto">
+                        </div>
+                        <p>Comentario o mensaje</p>
+                        <div class="uk-form-icon uk-width-1-1">
+                            <textarea class="form-control" rows="4" type="text" name="mensaje"></textarea>
+                        </div>
+                        <br>
+                        <button class="btn btn-primary btn-block">Enviar</button>
                     </div>
-                    <p>Email</p>
-                    <div class="uk-form-icon uk-width-1-1">
-                        <i class="uk-icon-envelope"></i>
-                        <input class="form-control" rows="5" type="text">
-                    </div>
-                    <p>Asunto</p>
-                    <div class="uk-form-icon uk-width-1-1">
-                        <i class="uk-icon-info"></i>
-                        <input class="form-control" rows="5" type="text">
-                    </div>
-                    <p>Comentario o mensaje</p>
-                    <div class="uk-form-icon uk-width-1-1">
-                        <textarea class="form-control" rows="4" type="text"></textarea>
-                    </div>
-                    <br>
-                    <button class="uk-button uk-button-large uk-button-primary btn-block">Enviar</button>
                 </div>
             </div>
-        </div>
+        </form>
         <div class="uk-modal-footer">
             <h5 class="uk-text-right">Punto Print - Soluciones en impresiones</h5>
         </div>

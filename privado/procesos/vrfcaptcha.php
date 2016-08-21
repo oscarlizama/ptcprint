@@ -1,4 +1,5 @@
 <?php
+    //echo phpinfo();
     /*if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Creamos el enlace para solicitar la verificación con la API de Google.
     $params = array();  // Array donde almacenar los parámetros de la petición
@@ -38,7 +39,6 @@
      
     //LA RESPUESTA QUE VA A ARROJAR AJAX
     $respuestav = "malo";
-
     ///CREAS UNA NUEVA INSTANCIA DE LA CLASSE ReCaptcha
     $reCaptcha = new ReCaptcha($secret);
     //AQUI OBTIENE SI HA RESUELTO EL CAPTCHA
