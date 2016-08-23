@@ -137,7 +137,7 @@
                           $stmt = $con->prepare($archivosclm);
                           $stmt->execute(array($ids_conver[$f]));
                           while ($listaArchivos = $stmt->fetch(PDO::FETCH_BOTH)){
-                            $tablas_div .= "<li><a href='procesos/descarga_archivo.php?id=$listaArchivos[0]'>$listaArchivos[1]</a></li>";
+                            $tablas_div .= "<li><a href='privado/procesos/descarga_archivo.php?id=$listaArchivos[0]'>$listaArchivos[1]</a></li>";
                           }
                           $tablas_div .= "</ul>";
                         }
