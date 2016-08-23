@@ -69,7 +69,7 @@ function tbl_usuarios(ruta){
 				for (var i = 0; i < datos.length; i++) {
 					tabla += 
 						"<tr>"+
-							"<td>"+datos[i][0]+"</td>"+
+							"<td>"+(i+1)+"</td>"+
 							"<td>"+datos[i][1]+"</td>"+
 							"<td>"+datos[i][2]+"</td>"+
 							"<td>"+datos[i][3]+"</td>"+
@@ -118,7 +118,7 @@ function tbl_permisos(ruta){
 				for (var i = 0; i < datos.length; i++) {
 					tabla += 
 						"<tr>"+
-							"<td>"+datos[i][0]+"</td>"+
+							"<td>"+(i+1)+"</td>"+
 							"<td>"+datos[i][1]+"</td>"+
 							"<td>"+
 								"<button class='btn-table' onclick='seleccionar_usuario("+datos[i][0]+")'>"+
@@ -167,7 +167,7 @@ function tbl_configuraciones(ruta){
 				for (var i = 0; i < datos.length; i++) {
 					tabla += 
 						"<tr>"+
-							"<td>"+datos[i][0]+"</td>"+
+							"<td>"+(i+1)+"</td>"+
 							"<td>"+datos[i][1]+"</td>"+
 							"<td>"+datos[i][2]+"</td>"+
 							"<td>"+datos[i][3]+"</td>"+
@@ -218,7 +218,7 @@ function tbl_contactos_proveedor(ruta){
 				for (var i = 0; i < datos.length; i++) {
 					tabla += 
 						"<tr>"+
-							"<td>"+datos[i][0]+"</td>"+
+							"<td>"+(i+1)+"</td>"+
 							"<td>"+datos[i][1]+"</td>"+
 							"<td>"+datos[i][2]+"</td>"+
 							"<td>"+datos[i][3]+"</td>"+
@@ -267,7 +267,7 @@ function tbl_tipo_contacto(ruta){
 				for (var i = 0; i < datos.length; i++) {
 					tabla += 
 						"<tr>"+
-							"<td>"+datos[i][0]+"</td>"+
+							"<td>"+(i+1)+"</td>"+
 							"<td>"+datos[i][1]+"</td>"+
 							"<td>"+
 								"<button class='btn-table' onclick='seleccionar_tipo_contacto("+datos[i][0]+")'>"+
@@ -319,7 +319,7 @@ function tbl_tipo_productos(ruta){  //recargar la tabla del CRUD de tipo product
 				for (var i = 0; i < datos.length; i++) {
 					tabla += 
 						"<tr>"+
-							"<td>"+datos[i][0]+"</td>"+
+							"<td>"+(i+1)+"</td>"+
 							"<td>"+datos[i][1]+"</td>"+
 							"<td>"+
 								"<button class='btn-table' onclick='seleccionar_tipo_producto("+datos[i][0]+")'>"+
@@ -420,7 +420,7 @@ function tbl_medidas_productos(ruta){  //recargar la tabla del CRUD de tipo prod
 				for (var i = 0; i < datos.length; i++) {
 					tabla += 
 						"<tr>"+
-							"<td>"+datos[i][0]+"</td>"+
+							"<td>"+(i+1)+"</td>"+
 							"<td>"+datos[i][1]+"</td>"+
 							"<td>"+datos[i][2]+"</td>"+
 							"<td>"+
@@ -471,7 +471,7 @@ function tbl_fotos_productos(ruta){  //recargar la tabla del CRUD de fotos de pr
 				for (var i = 0; i < datos.length; i++) {
 					tabla += 
 						"<tr>"+
-							"<td>"+datos[i][0]+"</td>"+
+							"<td>"+(i+1)+"</td>"+
 							"<td>"+datos[i][1]+"</td>"+
 							"<td><img class='thumb img-responsive img-circle' src='data:image/*;base64, "+datos[i][2]+"' width='70' height='60'/></td>"+
 							"<td>"+
@@ -521,7 +521,7 @@ function tbl_proveedor(ruta){
 				for (var i = 0; i < datos.length; i++) {
 					tabla += 
 						"<tr>"+
-							"<td>"+datos[i][0]+"</td>"+
+							"<td>"+(i+1)+"</td>"+
 							"<td>"+datos[i][1]+"</td>"+
 							"<td>"+datos[i][2]+"</td>"+
 							"<td>"+
@@ -571,7 +571,7 @@ function tbl_equipos(ruta){
 				for (var i = 0; i < datos.length; i++) {
 					tabla += 
 						"<tr>"+
-							"<td>"+datos[i][0]+"</td>"+
+							"<td>"+(i+1)+"</td>"+
 							"<td>"+datos[i][1]+"</td>"+
 							"<td>"+datos[i][2]+"</td>"+
 							"<td>"+
@@ -622,7 +622,7 @@ function tbl_mano_obra(ruta){
 				for (var i = 0; i < datos.length; i++) {
 					tabla += 
 						"<tr>"+
-							"<td>"+datos[i][0]+"</td>"+
+							"<td>"+(i+1)+"</td>"+
 							"<td>"+datos[i][1]+"</td>"+
 							"<td>"+datos[i][2]+"</td>"+
 							"<td>"+datos[i][3]+"</td>"+
