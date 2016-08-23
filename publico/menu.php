@@ -50,6 +50,7 @@
                      }
                      print($itmen);
                   ?>
+                  <li class="item-m"><a href="canvas.php">CANVAS</a></li>
                   <!-- <li class="item-m">
                      <a href="">VYNILES</a><span class="uk-icon-chevron-circle-down uk-icon-small uk-float-right submenu-button"></span>
                      <ul class="sub-menu-mv">
@@ -158,6 +159,7 @@
                }
                print($itmen);
             ?>
+            <li class="item"><a href="canvas.php">EDICIÓN</a></li>
             <!-- <li class="item">
                <a href="">TARJETAS<span class="uk-icon-chevron-down uk-icon-justify uk-float-right icon-down-menu"></span></a>
                <ul>
