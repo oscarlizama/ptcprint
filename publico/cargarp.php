@@ -1,6 +1,19 @@
 <?php 
   include '../privado/procesos/conexion.php';
   include '../privado/procesos/lifetime.php';
+  if(!empty($_POST['producto']) || !empty($_SESSION['nombrep'])){
+    if ($_POST['producto'] != $_SESSION['nombrep']) {
+      $_SESSION['nombrep'] = $_POST['producto'];
+      $nombrep = $_SESSION['nombrep'];
+    }else{
+      if (!empty($_SESSION['nombrep'])) {
+        $nombrep = $_SESSION['nombrep'];
+      }else{
+        $_SESSION['nombrep'] = $_POST['producto'];
+        $nombrep = $_SESSION['nombrep'];
+      }
+    }
+  }
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -186,7 +199,7 @@
       <br>
       <!--slidenav de los productos-->
       <?php 
-        $slidenavb = "";
+        /*$slidenavb = "";
         $slidenavb .= "<div class='uk-slidenav-position' data-uk-slider>";
           $slidenavb .= "<div class='uk-slider-container'>";
             $slidenavb .= "<ul class='uk-slider uk-grid-small uk-grid-width-small-1-2 uk-grid-width-medium-1-4 uk-grid-width-large-1-4'>";
@@ -202,7 +215,8 @@
           $slidenavb .= "<a href='#' class='uk-slidenav uk-slidenav-contrast uk-slidenav-next' data-uk-slider-item='next'></a>";
         $slidenavb .= "</div>";
         //$con = null;
-        print($slidenavb);
+        print($slidenavb);*/
+        require_once ("slide.php");
       ?>
     </div>
     <br>

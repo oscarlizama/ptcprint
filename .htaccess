@@ -20,6 +20,7 @@ RewriteRule ^banner.php$ publico/banner.php [L,QSA,NC]
 RewriteRule ^miperfil.php$ publico/dashboardc.php [L,QSA,NC]
 #RewriteRule ^error.html$ publico/error.html [L,QSA,NC]
 RewriteRule ^comentarios.php$ publico/mascomentarios.php [L,QSA,NC]
+RewriteRule ^prodp.php$ publico/cargarp.php [L,QSA,NC]
 ##PARA EL PRIVADO
 RewriteRule ^private.php$ privado/index.php [L,QSA,NC]
 RewriteRule ^admin.php$ privado/admin.php [L,QSA,NC]

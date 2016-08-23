@@ -129,3 +129,7 @@ $(".btn-regc").click(function(event){
 	});
 	return false;
 });
+
+function cargar(id){
+	$("#formpr"+id).submit();
+}

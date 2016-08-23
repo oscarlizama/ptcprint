@@ -36,7 +36,20 @@
                      </ul>
                   </li> -->
                   <li class="item-m"><a href="inicio.php">INICIO</a></li>
-                  <li class="item-m"><a href="banner.php">BANNERS</a></li>
+                  <?php  
+                     require '../privado/procesos/conexion.php';
+                     $itmen = "";
+                     $sql2 = "SELECT * FROM tipos_producto WHERE estado_tipo_producto=?";
+                     $stmt2 = $con->prepare($sql2);
+                     $stmt2->execute(array(1));
+                     while ($datos2 = $stmt2->fetch(PDO::FETCH_BOTH)) {
+                        $itmen.= "<li class='item-m'><a href='javascript:cargar(".$datos2[0].")'>".$datos2[1]."</a></li>";
+                        $itmen.= "<form action='prodp.php' method='post' class='hide' id='formpr".$datos2[0]."'>";
+                           $itmen.= "<input type='text' name='producto' value='".$datos2[1]."'>";
+                        $itmen.= "</form>";
+                     }
+                     print($itmen);
+                  ?>
                   <!-- <li class="item-m">
                      <a href="">VYNILES</a><span class="uk-icon-chevron-circle-down uk-icon-small uk-float-right submenu-button"></span>
                      <ul class="sub-menu-mv">
@@ -130,7 +143,21 @@
       <nav id="nav-menu">
          <ul>
             <li class="item"><a href="inicio.php">PUNTO PRINT</a></li>
-            <li class="item"><a href="banner.php">BANNERS</a></li>
+            <!--<li class="item"><a href="banner.php">BANNERS</a></li>-->
+            <?php  
+               require '../privado/procesos/conexion.php';
+               $itmen = "";
+               $sql2 = "SELECT * FROM tipos_producto WHERE estado_tipo_producto=?";
+               $stmt2 = $con->prepare($sql2);
+               $stmt2->execute(array(1));
+               while ($datos2 = $stmt2->fetch(PDO::FETCH_BOTH)) {
+                  $itmen.= "<li class='item'><a href='javascript:cargar(".$datos2[0].")'>".$datos2[1]."</a></li>";
+                  $itmen.= "<form action='prodp.php' method='post' class='hide' id='formpr".$datos2[0]."'>";
+                     $itmen.= "<input type='text' name='producto' value='".$datos2[1]."'>";
+                  $itmen.= "</form>";
+               }
+               print($itmen);
+            ?>
             <!-- <li class="item">
                <a href="">TARJETAS<span class="uk-icon-chevron-down uk-icon-justify uk-float-right icon-down-menu"></span></a>
                <ul>
