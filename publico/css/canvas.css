@@ -1,0 +1,38 @@
+.maincanvas{
+	border: 10px;
+	border-style: solid;	
+}
+
+#colorpicker{
+	height: 50px;
+	width: 100px;
+	border:2px solid black;
+}
+.txtA-des{
+	width: 307px;
+	height: 50px;
+	background-color: black;
+}
+.centrado{
+	vertical-align: center;
+	padding-left: 10%;
+}
+
+.bloque{
+	width: 330px;
+	height: 280px;
+	border: 2px;
+	border-style: solid;	
+}
+.addte{
+	margin-left: 10px;
+}
+.centerbtn{
+	margin-left: 30%;
+}
+body{
+	background-color: rgb(255, 255, 64);
+}
+div.canvas{
+	background-color: rgb(254, 37, 140);
+}

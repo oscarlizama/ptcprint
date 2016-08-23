@@ -13,6 +13,7 @@ RewriteRule ^inicio.php$ publico/index.php [L,QSA,NC]
 #RewriteRule ^publico/index.php$ inicio.php [L,QSA,NC]
 RewriteRule ^cotizarcliente.php$ publico/cotizarcliente.php [L,QSA,NC]
 RewriteRule ^compras.php$ publico/carrito.php [L,QSA,NC]
+RewriteRule ^canvas.php$ publico/canvas.php [L,QSA,NC] #porGabrielxd
 RewriteRule ^banner.php$ publico/banner.php [L,QSA,NC]
 #RewriteRule ^kids.php$ publico/kids.php [L,QSA,NC]
 #RewriteRule ^favoritos_cliente.php$ publico/favoritos_cliente.php [L,QSA,NC]
