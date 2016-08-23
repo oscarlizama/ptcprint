@@ -86,15 +86,14 @@
 
 	if($_POST['sql'] == 7){
 		$i = 0;
-		$sql = "SELECT id_producto,nombre_producto,existencias, TP.nombre_tipo_producto FROM productos P, tipos_producto TP WHERE estado_producto = ? AND P.id_tipo_producto = TP.id_tipo_producto";
+		$sql = "SELECT id_producto,nombre_producto, TP.nombre_tipo_producto FROM productos P, tipos_producto TP WHERE estado_producto = ? AND P.id_tipo_producto = TP.id_tipo_producto";
 		$stmt = $con->prepare($sql);
 	    $stmt->execute(array(1));
 		while ($datos = $stmt->fetch(PDO::FETCH_BOTH)) {
 			$valores[$i] = array(
 				0 => $datos['id_producto'],
 				1 => $datos['nombre_producto'],
-				2 => $datos['existencias'], 
-				3 => $datos['nombre_tipo_producto'], 
+				2 => $datos['nombre_tipo_producto'], 
 			);
 			$i = $i + 1;
 		}

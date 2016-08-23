@@ -121,10 +121,9 @@ function seleccionar_producto(id){
 				var datos = eval(valores);
 				$('#id_reg').text(id);
 				$('#nombre').val(datos[0]);
-				$('#existencia').val(datos[1]);
-				$('#calificacion').val(datos[2]);
-				$('#descripcion').val(datos[3]);
-				$('#tipo-prod').val(datos[4]);
+				$('#calificacion').val(datos[1]);
+				$('#descripcion').val(datos[2]);
+				$('#tipo-prod').val(datos[3]);
 
 			return false;
 		}

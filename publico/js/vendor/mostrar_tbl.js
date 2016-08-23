@@ -363,17 +363,15 @@ function tbl_productos(ruta){  //recargar la tabla del CRUD de productos
 						"<tr class='tb-heading'>"+
 							"<th><strong>#</strong></th>"+
 							"<th><strong>Nombre</strong></th>"+
-							"<th><strong>Existencia</strong></th>"+
 							"<th><strong>Tipo de Producto</strong></th>"+
 							"<th><strong></strong></th>"+
 						"</tr>";
 				for (var i = 0; i < datos.length; i++) {
 					tabla += 
 						"<tr>"+
-							"<td>"+datos[i][0]+"</td>"+
+							"<td>"+(i+1)+"</td>"+
 							"<td>"+datos[i][1]+"</td>"+
 							"<td>"+datos[i][2]+"</td>"+
-							"<td>"+datos[i][3]+"</td>"+
 							"<td>"+
 								"<button class='btn-table' onclick='seleccionar_producto("+datos[i][0]+")'>"+
 									"SELECCIONAR"+

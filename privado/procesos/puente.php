@@ -301,15 +301,14 @@
 		$where = "id_producto=?";
 		$tabla = 'productos';
 		$estado = 'estado_producto=0';
-		$campos_tabla = array('nombre_producto','existencias','id_tipo_producto','descripcion_producto');
+		$campos_tabla = array('nombre_producto','id_tipo_producto','descripcion_producto');
 		// Verificar que cada campo (excepto el ID) sea valido
 		// Solo cuando no elimine, si elimino, no me importa como sean los campos
 		if ($_POST['accion'] != 3 && (
 
 			!validarNombrePersona($valores[0]) ||
 			!validarNumeroEntero($valores[1]) ||
-			!validarNumeroEntero($valores[2]) ||
-			!validarTexto($valores[3])
+			!validarTexto($valores[2])
 			)) exit("invalid");
 
 		// Validar ID, cuando no inserte (cuando modifique o elimine, solo en esos casos se pasa el id)

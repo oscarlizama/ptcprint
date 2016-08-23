@@ -120,10 +120,9 @@
 		while ($datos = $stmt->fetch(PDO::FETCH_BOTH)) {
 			$valores = array( //aqui se asigna el orden para utilizar luego
 				0 => $datos['nombre_producto'], 
-				1 => $datos['existencias'],
-				2 => $datos['calificacion_promedio'],
-				3 => $datos['descripcion_producto'],
-				4 => $datos['id_tipo_producto']
+				1 => $datos['calificacion_promedio'],
+				2 => $datos['descripcion_producto'],
+				3 => $datos['id_tipo_producto']
 			);
 		}
 		echo json_encode($valores);
