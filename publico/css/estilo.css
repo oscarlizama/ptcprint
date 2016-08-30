@@ -1,0 +1,265 @@
+#menu{
+	width: 100%;
+	height: 70px;
+	background-color: #ec407a;
+	position: fixed;
+	z-index: 1000;
+	/*-webkit-box-shadow: 1px 3px 67px -6px rgba(71,0,34,1);
+	-moz-box-shadow: 1px 3px 67px -6px rgba(71,0,34,1);
+	box-shadow: 1px 3px 67px -6px rgba(71,0,34,1);*/
+}
+.glyph {
+    display: inline-block;
+    text-align: center;
+    text-align: center;
+    vertical-align: top;
+    top: 50%;
+    left: 50%;
+    transform: translate(0%,5%);
+}
+.glyph .glyph-icon {
+    padding: 10px;
+    display: block;
+    font-family:"Flaticon";
+    font-size: 30px;
+    line-height: 1;
+    text-align: center;
+    cursor: hand;
+}
+.glyph .glyph-icon:before {
+    font-size: 30px;
+    color: white;
+    margin-left: 10px;
+    text-align: center;
+    transition: all .800s cubic-bezier(.190, 1, .220, 1);
+}
+.itemm-m .glyph .glyph-icon:before {
+    font-size: 45px;
+    color: black;
+    text-align: center;
+}
+.glyph .flaticon-menu-button:before{
+	color: white;
+}
+.class-name {
+	margin-top: -5px;
+	margin-left: 10px;
+    font-size: 1em;
+    color: white;
+}
+.itemm-m .class-name {
+	margin-top: -5px;
+	margin-left: 10px;
+    font-size: 1em;
+    color: black;
+}
+.mayor-name{
+	display: block;
+	z-index: 999 !important;
+}
+.itemm{
+	height: 100%;
+	float: left;
+	cursor: hand;
+	z-index: -11;
+}
+.itemm-m{
+	height: 100%;
+	width: 100px;
+	float: left;
+	cursor: hand;
+	z-index: 999;
+	margin-left: 5px;
+	margin-top: 25px;
+}
+.overlay{
+	width: 100%;
+	height: 70px;
+	opacity: 0.3;
+	background-color: black;
+    position: fixed !important;
+    z-index: -100;
+    top: 0%;
+}
+div.itemm:hover > div.glyph > div.glyph-icon:before{
+	color: #ffea00;
+	transition: all .800s cubic-bezier(.190, 1, .220, 1);
+}
+div.itemm:hover > div.glyph > div.class-name{
+	color: #ffea00;
+	transition: all .800s cubic-bezier(.190, 1, .220, 1);
+}
+div.item-head:hover  > div.glyph > div.glyph-icon:before{
+	color: #ffea00;
+	transition: all .800s cubic-bezier(.190, 1, .220, 1);
+}
+div.item-head:hover  > div.glyph > div.class-name{
+	color: #ffea00;
+	transition: all .800s cubic-bezier(.190, 1, .220, 1);
+}
+#headerm{
+	display: none;
+}
+#menu-mt{
+	display: none;
+}
+.movildiv{
+	margin-top: 60px;
+	display: none;
+}
+.opm{
+	float: left;
+	width: 100%;
+	display: none;
+}
+.overlym{
+	margin-top: 60px;
+	width: 95%;
+	height: 100%;
+	background-color: #f0f0f0;
+	float: left;
+	position: fixed;
+	display: none;
+	z-index: 999;
+}
+.overlym2{
+	height: 100%;
+	width: 100%;
+	position: fixed;
+	background-color: black;
+	z-index: 99;
+	opacity: 0.5;
+	display: none;
+}
+/*SLIDER*/
+#miSlider{
+	margin-top: 70.3px;
+}
+@media only screen and (max-width: 870px) {
+	#menu{
+		height: 60px;
+	}
+	.overlay{
+		height: 60px;
+	}
+	#headerm{
+		display: block;
+		margin-top: 7px;
+	}
+	#menu-mt{
+		display: block;
+		width: 12%;
+		height: 60px;
+		float: left;
+	}
+    #movilm{
+    	width: 100%;
+    	height: 60px;
+    	float: right;
+    	text-align: center;
+    	color: white;
+    	font-size: 2.3em;
+    }
+    #menubutton:before{
+		margin-left: 0px;
+		margin-top: 15px;
+		font-size: 1.3em;
+	}
+    .itemm{
+    	display: none;
+    }
+    .movildiv{
+    	width: 90%;
+    	height: 100%;
+    	position: absolute;
+    	float: left;
+    }
+    #miSlider{
+		margin-top: 60px;
+	}
+}
+@media only screen and (max-width: 500px) {
+	#headerm{
+		margin-top: 15px;
+		font-size: 0.7em;
+	}
+	.itemm{
+    	display: none;
+    }
+}
+@media only screen and (max-width: 400px) {
+	#menubutton:before{
+		margin-left: 0px;
+		margin-top: 15px;
+		font-size: 1.3em;
+	}
+	.itemm{
+    	display: none;
+    }
+}
+.color1{
+	background-color: red;
+}
+.color2{
+	background-color: orange;
+}
+.color3{
+	background-color: pink;
+}
+.color4{
+	background-color: blue;
+}
+#submenu{
+	float: left;
+}
+#submenu .itemsb{
+	margin-left: 20px;
+	background-color: #e0e0e0;
+	margin-top: 10px;
+	width: 180px;
+	height: 65px;
+	z-index: -100;
+	position: fixed;
+}
+#submenu .itemsb div{
+	float: left;
+}
+#submenu .itemsb .class-name{
+	margin-top: 20px;
+	margin-left: 10px;
+	text-align: right;
+	color: black;
+	display: block;
+}
+#submenu .itemsb .glyph-icon:before{
+	text-align: left;
+	color: black;
+	margin-left: 0px;
+}
+.sub{
+	float: left;
+}
+.itemsb{ 
+	float: left;
+	display: none;
+}
+.sub:hover .itemsb{
+	display : block;
+}
+.login{
+	display: none;
+}
+
+/*LOGIN*/
+#bodylogin{
+	background-color: #e0e0e0;
+}
+#volverh:before{
+	color: black;
+}
+#textovh{
+	color: black;
+}
+#homel,#homel:hover{
+	text-decoration: none;
+}

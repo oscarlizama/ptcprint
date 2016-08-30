@@ -1,0 +1,58 @@
+.btn-pink {
+  color: white;
+  background-color: #ec407a;
+  border-color: white;
+}
+.btn-pink:hover,
+.btn-pink:focus,
+.btn-pink.focus,
+.btn-pink:active,
+.btn-pink.active,
+.open > .dropdown-toggle.btn-pink {
+  color: white;
+  background-color: #e91e63;
+  border-color: white;
+}
+.btn-pink:active,
+.btn-pink.active,
+.open > .dropdown-toggle.btn-pink {
+  background-image: none;
+}
+.btn-pink.disabled,
+.btn-pink[disabled],
+fieldset[disabled] .btn-pink,
+.btn-pink.disabled:hover,
+.btn-pink[disabled]:hover,
+fieldset[disabled] .btn-pink:hover,
+.btn-pink.disabled:focus,
+.btn-pink[disabled]:focus,
+fieldset[disabled] .btn-pink:focus,
+.btn-pink.disabled.focus,
+.btn-pink[disabled].focus,
+fieldset[disabled] .btn-pink.focus,
+.btn-pink.disabled:active,
+.btn-pink[disabled]:active,
+fieldset[disabled] .btn-pink:active,
+.btn-pink.disabled.active,
+.btn-pink[disabled].active,
+fieldset[disabled] .btn-pink.active {
+  background-color: #ec407a;
+  border-color: white;
+}
+.btn-pink .badge {
+  color: #ec407a;
+  background-color: #fff;
+}
+
+.btn-registrarme{
+  text-decoration: none;
+  color: black;
+  text-align: center;
+  transition: all .800s cubic-bezier(.190, 1, .220, 1);
+}
+
+.btn-registrarme:hover{
+  text-decoration: none;
+  color: #ec407a;
+  transition: all .800s cubic-bezier(.190, 1, .220, 1);
+}

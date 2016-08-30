@@ -1,0 +1,75 @@
+.footer-print{
+	margin-top: 10px;
+	background-color: rgba(0, 0, 5, 1);;
+	color: white;
+	bottom: 0px;
+}
+.footer-slogan,.footer-info,.footer-codem,.footer-empresa{
+	margin-top: 0;
+	color: white;
+	background-color: black;
+}
+.footer-codem{
+	padding-top: 10px;
+	padding-bottom: 5px;
+	background-color: rgba(0, 0, 4, 1);
+}
+.footer-info,.footer-empresa{
+	padding-top: 20px;
+	height: 200px;
+}
+.texto-footer{
+	color: white;
+	text-decoration: none;
+}
+.linkf,.linkf:hover{
+	text-decoration: none;
+	color: white;
+	transition: all .800s cubic-bezier(.190, 1, .220, 1);
+}
+.linkf:hover{
+	color: #ffea00;
+	transition: all .800s cubic-bezier(.190, 1, .220, 1);
+}
+.footer-print h2{
+	margin-top: 20px;
+	color: white;
+}
+.footer-print h3{
+	display: none;
+}
+@media only screen and (max-width: 770px) {
+	.footer-empresa{
+		margin-top: -80px;
+	}
+	.footer-codem{
+		margin-top: -50px;
+	}
+}
+@media only screen and (max-width: 580px) {
+	.texto-footer{
+		font-size: 1em;
+	}
+	.footer-print h3{
+		display: block;
+		color: white;
+	}
+	.footer-print h2{
+		display: none;
+	}
+	.foooter-info{
+		padding-bottom: -100px;
+		margin-bottom: -100px;
+	}
+	.footer-empresa{
+		margin-top: -80px;
+	}
+}
+@media only screen and (max-width: 468px) {
+	.texto-footer{
+		font-size: 0.8em;
+	}
+	.footer-print h3{
+		color: white;
+	}
+}

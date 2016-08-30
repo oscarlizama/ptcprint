@@ -33,4 +33,7 @@
 <script type="text/javascript" src="publico/js/vendor/perfilusr.js"></script>
 <script type="text/javascript" src="publico/js/vendor/sesion.js"></script>
 <script type="text/javascript" src="publico/js/vendor/comentarios.js"></script>
+<script type="text/javascript" src="publico/js/siguiente.js"></script>
+<script type="text/javascript" src="publico/js/menu.js"></script>
+<script type="text/javascript" src="publico/js/vendor/errorreg.js"></script>
 <script src='https://www.google.com/recaptcha/api.js'></script>

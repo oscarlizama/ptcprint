@@ -1,0 +1,15 @@
+.titulo{
+	margin-top: 0px;
+	opacity: 0.9;
+	background-color: #01579b;
+	color: white;
+}
+.titulo h1{
+	margin-top: 20px;
+	color: white;
+}
+.titulo h2{
+	line-height: 2;
+	margin-top: 20px;
+	color: white;
+}

@@ -9,7 +9,11 @@ RewriteBase /ptcprint/
 RewriteCond %{REQUEST_FILENAME} !-f
 ##PARA EL PUBLICO
 #L = LAST, NC = NO CASE, QSA = DESCARTA EL QUERY Y GENERA UNA URL NUEVA
-RewriteRule ^inicio.php$ publico/index.php [L,QSA,NC]
+RewriteRule ^inicio$ publico/index.php [L,QSA,NC]
+#RewriteRule ^publico/index.php$ inicio.php [L,QSA,NC]
+RewriteRule ^iniciarsesion$ publico/login.php [L,QSA,NC]
+RewriteRule ^registrarme$ publico/registrarme.php [L,QSA,NC]
+#RewriteRule ^inicio$ publico/index.php [L,QSA,NC]
 #RewriteRule ^publico/index.php$ inicio.php [L,QSA,NC]
 RewriteRule ^cotizarcliente.php$ publico/cotizarcliente.php [L,QSA,NC]
 RewriteRule ^compras.php$ publico/carrito.php [L,QSA,NC]
