@@ -1,6 +1,6 @@
 <!--INDICA LA CODIFICACION DE CARACTERES A OCUPAR-->
 <meta charset="UTF-8">
-<meta name="theme-color" content="#0277bd">
+<meta name="theme-color" content="#ec407a">
 <!--INDICA COMO SE DEBE INTERPRETAR UNA PAGINA EN UN NAVEGADOR MOVIL-->
 <!--el user scalable indica que no se puede redimensionar-->
 <meta name="viewport" content="width=device-width">

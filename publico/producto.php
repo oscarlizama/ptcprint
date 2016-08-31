@@ -11,7 +11,7 @@
   ///OBTENER EL ID DEL TIPO DE PRODUCTO
   $idtip = "SELECT id_tipo_producto from tipos_producto WHERE nombre_tipo_producto=?";
   $stmt = $con->prepare($idtip);
-  $stmt->execute(array($nombrep));
+  $stmt->execute(array($nombrepr));
   $idtipf = $stmt->fetch(PDO::FETCH_BOTH);
   $idtipx = $idtipf[0];
 
@@ -19,30 +19,30 @@
   $stmt = $con->prepare($puntuacion_max);
   $stmt->execute(array());
   while ($ptmx = $stmt->fetch(PDO::FETCH_BOTH)){
-  $pt_mx = $ptmx[0];
+    $pt_mx = $ptmx[0];
   }
   if($pt_mx != null){
-  $maximo = "SELECT p.id_producto FROM productos p INNER JOIN comentarios c ON p.id_producto = c.id_producto WHERE p.id_tipo_producto=? AND c.calificacion = ? LIMIT 1";
-  $stmt = $con->prepare($maximo);
-  $stmt->execute(array($idtipx,$pt_mx));
-  $producto = "SELECT p.nombre_producto, p.descripcion_producto, ROUND(AVG(c.calificacion),1),f.foto_producto FROM (productos p INNER JOIN fotos_productos f ON f.id_producto = p.id_producto) INNER JOIN comentarios c ON c.id_producto = p.id_producto WHERE p.id_producto=?";
+    $maximo = "SELECT p.id_producto FROM productos p INNER JOIN comentarios c ON p.id_producto = c.id_producto WHERE p.id_tipo_producto=? AND c.calificacion = ? LIMIT 1";
+    $stmt = $con->prepare($maximo);
+    $stmt->execute(array($idtipx,$pt_mx));
+    $producto = "SELECT p.nombre_producto, p.descripcion_producto, ROUND(AVG(c.calificacion),1),f.foto_producto FROM (productos p INNER JOIN fotos_productos f ON f.id_producto = p.id_producto) INNER JOIN comentarios c ON c.id_producto = p.id_producto WHERE p.id_producto=?";
   }else{
-  $maximo = "SELECT p.id_producto FROM productos p WHERE p.id_tipo_producto=? LIMIT 1";
-  $stmt = $con->prepare($maximo);
-  $stmt->execute(array($idtipx));
-  $producto = "SELECT p.id_producto,p.nombre_producto, p.descripcion_producto,f.foto_producto FROM productos p INNER JOIN fotos_productos f ON f.id_producto = p.id_producto WHERE p.id_producto=?";
+    $maximo = "SELECT p.id_producto FROM productos p WHERE p.id_tipo_producto=? LIMIT 1";
+    $stmt = $con->prepare($maximo);
+    $stmt->execute(array($idtipx));
+    $producto = "SELECT p.id_producto,p.nombre_producto, p.descripcion_producto,f.foto_producto FROM productos p INNER JOIN fotos_productos f ON f.id_producto = p.id_producto WHERE p.id_producto=?";
   }
   while ($maximos = $stmt->fetch(PDO::FETCH_BOTH)){
-  $id_max = $maximos[0];
+    $id_max = $maximos[0];
   }
   $stmt = $con->prepare($producto);
   $stmt->execute(array($id_max));
   while ($productoa = $stmt->fetch(PDO::FETCH_BOTH)){
-  $descripcion = $productoa[1];
-  if ($pt_mx != null) {
-  $calificacion_promedio = $productoa[2];
-  }
-  $foto_producto = $productoa[3];
+    $descripcion = $productoa[1];
+    if ($pt_mx != null) {
+      $calificacion_promedio = $productoa[2];
+    }
+    $foto_producto = $productoa[3];
   }
   $divin = "";
   $divin .= "<p class='uk-hidden' id='id_prod'>$id_max</p>";

@@ -1,9 +1,13 @@
+<?php 
+	include "../privado/procesos/lifetime.php";
+?>
 <html>
 	<head>
 		<meta name="theme-color" content="#ec407a">
 		<?php 
 			include "links.php";
 		?>
+		<title>Punto Print | Soluciones en impresión</title>
 	</head>
 	<body>
 		<?php 
@@ -175,7 +179,7 @@
 			</div>
 		</div>
 		<!--EL FOOTER-->
-		<footer>
+		<!--<footer>
 			<div class="container-fluid">
 				<div class="row">
 					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 footer-print">
@@ -206,8 +210,9 @@
 				</div>
 			</div>
 		</footer>
-		<!--FIN DEL FOOTER-->
+		FIN DEL FOOTER-->
 		<?php 
+			include 'footer.php';
 			include "scripts.php";
 		?>
 	</body>

@@ -15,7 +15,7 @@
 					unset($_SESSION['autenticado']);
 					unset($_SESSION['email']);
 					$con = null;
-					header('Location: inicio.php');
+					header('Location: inicio');
 				}
 				else{
 					$fechaGuardada = $_SESSION["ultimoAcceso"]; 
@@ -29,7 +29,7 @@
 						unset($_SESSION['autenticado']);
 						unset($_SESSION['email']);
 						$con = null;
-						header('Location: ../publico/index.php');
+						header('Location: inicio');
 				      	//sino, actualizo la fecha de la sesión 
 				    }else { 
 				    	$_SESSION["ultimoAcceso"] = $ahora; 

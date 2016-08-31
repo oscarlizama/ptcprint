@@ -1,12 +1,12 @@
-<footer id="footer-print">
-    <!--el encabezado del footer-->
+<!--<footer id="footer-print">
+    el encabezado del footer
 	<div class="uk-width-1-1 uk-flex uk-flex-center uk-flex-middle">
 		<h3 class="uk-hidden-small">PUNTO PRINT - SOLUCIONES EN IMPRESIONES</h3>
         <h4 class="uk-visible-small">PUNTO PRINT</h4>
 	</div>
-    <!--INFORMACION DEL FOOTER-->
+    INFORMACION DEL FOOTER
 	<div class="uk-width-1-1">
-    <!--PRIMER BLOQUE DEL FOOTER-->
+    PRIMER BLOQUE DEL FOOTER
 		<div class="uk-grid">
 			<div class="uk-width-1-4 uk-text-left footer-info">
 				<p class="footer-text link-p uk-hidden-small"><a href="#modal-terminos" class="link-p" data-uk-modal>Terminos y Condiciones</a></p>
@@ -16,7 +16,7 @@
 				<p class="footer-text link-p uk-hidden-small"><a href="#modal-contact" class="link-p" data-uk-modal>Contáctanos</a></p>
                 <p class="footer-text link-p uk-visible-small"><a href="#modal-contact" class="link-p" data-uk-modal>Contáctanos</a></p>
 			</div>
-            <!--SEGUNDO BLOQUE DEL FOOTER-->
+            SEGUNDO BLOQUE DEL FOOTE
 			<div class="uk-width-1-5 uk-text-left footer-info">
 				<p class="footer-text">
 					<p class="footer-text uk-hidden-small"><a href="#" class="link-p" data-uk-modal>Misión</a></p>
@@ -27,7 +27,7 @@
                     <p class="footer-text uk-visible-small"><a href="#modal-quienes" class="link-p" data-uk-modal>¿Quiénes somos?</a></p>
 				</p>
 			</div>
-            <!--tercer bloque del footer-->
+            tercer bloque del footer
 			<div class="uk-width-1-2 uk-text-left footer-info">
 				<p class="footer-text">Teléfonos: 2274 3888</p>
 				<p class="footer-text">Dirección:Blvd. Constitución y Paseo Miralvalle, San Salvador</p>
@@ -35,10 +35,42 @@
 			</div>
 		</div>
 	</div>
-    <!--PARTE FINAL DEL FOOTER-->
+    PARTE FINAL DEL FOOTER
 	<div class="uk-width-1-1 uk-flex uk-flex-middle uk-flex-center" id="code-masters">
 		<p>Powered by Code Masters - 2016 <span class="uk-icon-copyright"></span></p>
 	</div>
+</footer>-->
+<br>
+<footer>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 footer-print">
+                <h2 class="text-center">PUNTO PRINT</h2>
+                <h3 class="text-center">PUNTO PRINT</h3>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 footer-slogan">
+                <p class="text-center texto-footer">SOLUCIONES EN IMPRESIONES</p>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6 footer-info">
+                <p class="texto-footer"><a href="" class="linkf">Terminos y condiciones</a></p>
+                <p class="texto-footer"><a href="" class="linkf">Preguntas frecuentes</a></p>
+                <p class="texto-footer"><a href="" class="linkf">Contáctanos</a></p>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6 footer-info">
+                <p class="texto-footer"><a href="" class="linkf">Misión</a></p>
+                <p class="texto-footer"><a href="" class="linkf">Visión</a></p>
+                <p class="texto-footer"><a href="" class="linkf">¿Quiénes somos?</a></p>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 footer-empresa">
+                <p class="texto-footer"><a href="" class="linkf">Teléfonos: 2274-3888</a></p>
+                <p class="texto-footer"><a href="" class="linkf">Blvd Consitición y Pasea Miralvalle, San Salvador</a></p>
+                <p class="texto-footer"><a href="" class="linkf">Correo: puntoprintsv@gmail.com</a></p>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 footer-codem">
+                <p id="code-masters" class="text-center">Powered by Code Master</p>
+            </div>
+        </div>
+    </div>
 </footer>
 <!--modal de preguntas frecuentes-->
 <div id="modal-preguntas" class="uk-modal">

@@ -1,17 +1,13 @@
 <?php 
   include '../privado/procesos/conexion.php';
   include '../privado/procesos/lifetime.php';
-  if(!empty($_POST['producto']) || !empty($_SESSION['nombrep'])){
-    if ($_POST['producto'] != $_SESSION['nombrep']) {
-      $_SESSION['nombrep'] = $_POST['producto'];
-      $nombrep = $_SESSION['nombrep'];
-    }else{
-      if (!empty($_SESSION['nombrep'])) {
-        $nombrep = $_SESSION['nombrep'];
-      }else{
-        $_SESSION['nombrep'] = $_POST['producto'];
-        $nombrep = $_SESSION['nombrep'];
-      }
+  if (trim($_GET['nombre'])) {
+    $nombrepr = $_GET['nombre'];
+    $valido = "SELECT * FROM tipos_producto WHERE nombre_tipo_producto=?";
+    $stmtex = $con->prepare($valido);
+    $stmtex->execute(array($nombrepr));
+    if (!$stmtex->fetch(PDO::FETCH_BOTH)) {
+      header('Location: error.php');
     }
   }
 ?>
@@ -29,7 +25,7 @@
     <br>
     <!--CREO EL HADER DE LA PAGINA-->
     <div class="uk-width-1-1 banners">
-      <h1 class="titulos titulos-sublim uk-text-center"><?php  echo ($_SESSION['nombrep']);?></h1>
+      <h1 class="titulos titulos-sublim uk-text-center"><?php  echo $nombrepr;?></h1>
     </div>
     <!--CONTENEDOR DE LA INFORMACION-->
     <br>

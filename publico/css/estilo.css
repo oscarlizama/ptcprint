@@ -81,6 +81,23 @@
     z-index: -100;
     top: 0%;
 }
+div.itemm:hover > a > div.glyph > div.glyph-icon:before{
+	color: #ffea00;
+	transition: all .800s cubic-bezier(.190, 1, .220, 1);
+}
+div.itemm:hover > a > div.glyph > div.class-name{
+	color: #ffea00;
+	transition: all .800s cubic-bezier(.190, 1, .220, 1);
+}
+div.item-head:hover > a > div.glyph > div.glyph-icon:before{
+	color: #ffea00;
+	transition: all .800s cubic-bezier(.190, 1, .220, 1);
+}
+div.item-head:hover > a > div.glyph > div.class-name{
+	color: #ffea00;
+	transition: all .800s cubic-bezier(.190, 1, .220, 1);
+}
+
 div.itemm:hover > div.glyph > div.glyph-icon:before{
 	color: #ffea00;
 	transition: all .800s cubic-bezier(.190, 1, .220, 1);
@@ -89,14 +106,15 @@ div.itemm:hover > div.glyph > div.class-name{
 	color: #ffea00;
 	transition: all .800s cubic-bezier(.190, 1, .220, 1);
 }
-div.item-head:hover  > div.glyph > div.glyph-icon:before{
+div.item-head:hover > div.glyph > div.glyph-icon:before{
 	color: #ffea00;
 	transition: all .800s cubic-bezier(.190, 1, .220, 1);
 }
-div.item-head:hover  > div.glyph > div.class-name{
+div.item-head:hover > div.glyph > div.class-name{
 	color: #ffea00;
 	transition: all .800s cubic-bezier(.190, 1, .220, 1);
 }
+
 #headerm{
 	display: none;
 }
@@ -129,6 +147,9 @@ div.item-head:hover  > div.glyph > div.class-name{
 	background-color: black;
 	z-index: 99;
 	opacity: 0.5;
+	display: none;
+}
+.loginmov{
 	display: none;
 }
 /*SLIDER*/
@@ -177,6 +198,9 @@ div.item-head:hover  > div.glyph > div.class-name{
     #miSlider{
 		margin-top: 60px;
 	}
+	.loginmov{
+		display: none;
+	}
 }
 @media only screen and (max-width: 500px) {
 	#headerm{
@@ -186,6 +210,9 @@ div.item-head:hover  > div.glyph > div.class-name{
 	.itemm{
     	display: none;
     }
+    .loginmov{
+		display: none;
+	}
 }
 @media only screen and (max-width: 400px) {
 	#menubutton:before{
@@ -249,7 +276,6 @@ div.item-head:hover  > div.glyph > div.class-name{
 .login{
 	display: none;
 }
-
 /*LOGIN*/
 #bodylogin{
 	background-color: #e0e0e0;

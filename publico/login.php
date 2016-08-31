@@ -62,7 +62,6 @@
 			}
 		}else{
 			if (!$error) {
-				echo "hilaaa";
 				$inicioanterior = true;
 			}
 		}
@@ -72,10 +71,10 @@
 ?>
 <html>
 	<head>
-		<meta name="theme-color" content="#ec407a">
 		<?php 
 			include "links.php";
 		?>
+		<title>Recuperar contraseña | Punto Print</title>
 	</head>
 	<body id="bodylogin">
 		<br>
@@ -93,7 +92,7 @@
 							<br>
 							<div class="uk-form-icon uk-width-1-1 uk-text-left">
 		                        <i class="uk-icon-envelope"></i>
-		                        <input class="form-control" type="text" placeholder="Correo electrónico" autocomplete="off" name="correo" value="<?php echo $email;?>">
+		                        <input class="form-control" type="text" placeholder="Correo electrónico" autocomplete="off" name="correo" value="<?php echo $email;?>" id="correolg">
 		                    </div>
 							<br>
 							<br>
@@ -107,7 +106,7 @@
 							<br>
 							<br>
 							<button class="btn btn-medium btn-pink btn-block" name="iniciar">Iniciar sesión</button>
-							<button class="btn btn-link pull-right">Olvidé mi contraseña</button>
+							<a class="btn btn-link pull-right" href="recuperar">Olvidé mi contraseña</a>
 							<br>
 							<br>
 							<br>
@@ -132,7 +131,7 @@
 				echo "<script>error_registrar('$errormsg');</script>";
 			}
 			if ($inicioanterior) {
-				echo "<script>error_registrar('YA ESTAS INICIADO');</script>";	
+				echo "<script>cerrar_sesion(1);</script>";	
 			}
 		?>
 	</body>

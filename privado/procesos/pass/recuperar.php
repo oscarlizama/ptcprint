@@ -1,7 +1,7 @@
 <?php
-    $correo=$_POST['correo'];
+    //$correo=$_POST['correo'];
     //$correo = 'oslizama@hotmail.com';
-    require '../conexion.php';
+    //require '../conexion.php';
     require_once 'PHPMailerAutoload.php';
     //echo $correo;
     //SE CREA UNA FUNCION PARA GENERAR UNA CLAVE RANDOM
@@ -66,7 +66,7 @@
     if (!$mail->send()) {
         echo $mail->ErrorInfo;
     } else {
-        header('Location: ../../../inicio.php');
+        header('Location: iniciarsesion');
     }
 
 ?>

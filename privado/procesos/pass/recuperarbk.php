@@ -36,7 +36,7 @@
     $mail->Password = 'osguillestyle';                          // SMTP password
     $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
     $mail->Port = 587;                                    // TCP port to connect to
-    $mail->setFrom('luxuryandstylesv@gmail.com', 'Luxury & Style');
+    $mail->setFrom('puntoprintsv@gmail.com', 'PUNTO PRINT SV');
     $mail->addAddress($correo,'');     // Add a recipient
     $mail->Subject = 'Recuperar Clave';
     $mail->Body    = 'Tu nueva contraseña es '.$pass;

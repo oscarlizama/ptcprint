@@ -7,22 +7,27 @@ RewriteEngine on
 RewriteBase /ptcprint/
 ##AQUI EMPIEZAA REESCRIBIR EL NAVEGADOR
 RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{SCRIPT_FILENAME} !-d
+RewriteCond %{SCRIPT_FILENAME} !-f
 ##PARA EL PUBLICO
 #L = LAST, NC = NO CASE, QSA = DESCARTA EL QUERY Y GENERA UNA URL NUEVA
 RewriteRule ^inicio$ publico/index.php [L,QSA,NC]
 #RewriteRule ^publico/index.php$ inicio.php [L,QSA,NC]
 RewriteRule ^iniciarsesion$ publico/login.php [L,QSA,NC]
 RewriteRule ^registrarme$ publico/registrarme.php [L,QSA,NC]
+RewriteRule ^miperfil$ publico/dashboardc.php [L,QSA,NC]
+RewriteRule ^compras$ publico/carrito.php [L,QSA,NC]
+RewriteRule ^cerrarsesion$ privado/procesos/cerrarsesionc.php [L,QSA,NC]
+RewriteRule ^recuperar$ publico/recuperar.php [L,QSA,NC]
+RewriteRule ^(\w+)/?$ publico/cargarp.php?nombre=$1
 #RewriteRule ^inicio$ publico/index.php [L,QSA,NC]
 #RewriteRule ^publico/index.php$ inicio.php [L,QSA,NC]
-RewriteRule ^cotizarcliente.php$ publico/cotizarcliente.php [L,QSA,NC]
-RewriteRule ^compras.php$ publico/carrito.php [L,QSA,NC]
+RewriteRule ^cotizar$ publico/cotizarcliente.php [L,QSA,NC]
 RewriteRule ^canvas.php$ publico/canvas.php [L,QSA,NC] #porGabrielxd
 RewriteRule ^banner.php$ publico/banner.php [L,QSA,NC]
 #RewriteRule ^kids.php$ publico/kids.php [L,QSA,NC]
 #RewriteRule ^favoritos_cliente.php$ publico/favoritos_cliente.php [L,QSA,NC]
 #RewriteRule ^misfacturas.php$ publico/misfacturas.php [L,QSA,NC]
-RewriteRule ^miperfil.php$ publico/dashboardc.php [L,QSA,NC]
 #RewriteRule ^error.html$ publico/error.html [L,QSA,NC]
 RewriteRule ^comentarios.php$ publico/mascomentarios.php [L,QSA,NC]
 RewriteRule ^prodp.php$ publico/cargarp.php [L,QSA,NC]
