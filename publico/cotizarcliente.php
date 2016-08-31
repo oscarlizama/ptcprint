@@ -79,10 +79,16 @@
           $ul_tabs .= "</ul>";
           $ul_tabs .= "<br>";
           $ul_tabs .= "<form method='post' id='formulario' enctype='multipart/form-data'>";
-            $ul_tabs .= "<input class='col-lg-1 form-control' placeholder='Archivo' id='filenombre' name='file' type='file'autocomplete='off'>";
+            //$ul_tabs .= "<input class='col-lg-1 form-control' placeholder='Archivo' id='filenombre' name='file' type='file'autocomplete='off'>";
+            $ul_tabs .= "<div id='upload-drop' class='uk-placeholder uk-text-center'>
+                          <i class='uk-icon-cloud-upload uk-icon-medium uk-text-muted uk-margin-small-right'></i>
+                Selecciona un archivo por favor <a class='uk-form-file'>aquí<input id='filenombre' name='file' type='file' autocomplete='off'></a>.
+              </div>
+              <div id='progressbar' class='uk-progress uk-hidden'>
+                <div class='uk-progress-bar' style='width: 0%;'>0%</div>
+              </div>";
+          $ul_tabs .= "<label id='lblseleccionado'>Ningún archivo seleccionado</label>";
           $ul_tabs .= "</form>";
-          $ul_tabs .= "<br>";
-          $ul_tabs .= "<br>";
           $ul_tabs .= "<label>Selecciona una conversacion para enviar el archivo</label>";
           $ul_tabs .= "<br>";
           $ul_tabs .= $selectc;

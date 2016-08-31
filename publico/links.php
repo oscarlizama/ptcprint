@@ -23,6 +23,3 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <!--ICONO DE LAP PAGINA-->
 <link rel="icon" type="image/png" href="publico/img/brocha.png"/>
-<!--FUENTES-->
-<link href='https://fonts.googleapis.com/css?family=Roboto+Condensed' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>

@@ -1,6 +1,12 @@
 var archivoblb = "";
 var nombreblb = "";
 var tipo = "";
+
+$("#filenombre").change(function(){
+	$("#lblseleccionado").empty();
+	$("#lblseleccionado").append("Se ha seleccionado un archivo");
+});
+
 //CUANDO DE CLICK AL MENSAJE QUITO EL NO LEIDO
 $("li").click(function(){
 	var id = $(this).attr("id");
@@ -108,6 +114,7 @@ function archivo(){
         	//OBTENGO EL TIPO
         	tipo = info[2];
         	//SUBO LA FILA
+        	//alert(nombreblb);
         	uploadfile();
         }
     });
@@ -121,6 +128,7 @@ function uploadfile(){
 	val.push(nombreblb);
 	val.push(archivoblb);
 	val.push(tipo);
+	//alert(nombreblb);
 	//PONGO EL ID DE LA CONVERSACON
 	val.push($("#conver").val());
 	//ENVIO A LA URL

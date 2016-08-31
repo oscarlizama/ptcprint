@@ -4,6 +4,7 @@
 			<a href="admin.php" id="indexa">PUNTO PRINT</a>
 			<span class="flaticon-avatar iconos-acc" id="icon-usuario" data-toggle="tooltip" data-placement="bottom" title="Cerrar sesión"></span>
 			<a href="cotizaciones.php"><span class="flaticon-chat iconos-acc" data-toggle="tooltip" data-placement="bottom" title="Abrir bandeja de entrada"></span></a>
+			<a href="carritos.php"><span class="flaticon-shopping-cart iconos-acc" data-toggle="tooltip" data-placement="bottom" title="Ver carritos"></span></a>
 			<span class="flaticon-menu iconos-acc" id="abrirmbk" data-toggle="tooltip" data-placement="bottom" title="Abrir el menú"></span>
 			<span class="flaticon-circular-arrow iconos-acc hide" id="cerrarmbk" data-toggle="tooltip" data-placement="right" title="Cerrar el menú"></span>
 		</p>
@@ -133,6 +134,14 @@
 								<div class="glyph">
 									<span class="glyph-icon flaticon-open-box"></span>
 									<p class="nombre-opcion">Tipo de productos</p>
+								</div>
+							</a>
+						</li>
+						<li>
+							<a href="fotos.php">
+								<div class="glyph">
+									<span class="glyph-icon flaticon-picture"></span>
+									<p class="nombre-opcion">Fotos de productos</p>
 								</div>
 							</a>
 						</li>

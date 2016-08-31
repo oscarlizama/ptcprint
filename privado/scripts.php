@@ -1,6 +1,8 @@
 <!--SCRIPT PARA EL JQUERY-->
 <script type="text/javascript" src="publico/js/vendor/jquery-1.11.2.min.js"></script>
 <!--ENLAZO EL SCRIPT DEL MENÚ-->
+<script type="text/javascript" src="publico/js/vendor/uikit.min.js"></script>
+<script type="text/javascript" src="publico/js/components/upload.js"></script>
 <script type="text/javascript" src="publico/js/vendor/menu_backend.js"></script>
 <script type="text/javascript" src="publico/js/vendor/acciones.js"></script>
 <script type="text/javascript" src="publico/js/vendor/checks.js"></script>
@@ -16,3 +18,4 @@
 <script type="text/javascript" src="publico/js/vendor/perfilbk.js"></script>
 <script type="text/javascript" src="publico/js/vendor/comentariobk.js"></script>
 <script type="text/javascript" src="publico/js/vendor/sesionpv.js"></script>
+<script type="text/javascript" src="publico/js/vendor/uploadjs.js"></script>

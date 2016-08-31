@@ -50,7 +50,6 @@
 
                     $this.element.removeClass($this.options.dragoverClass);
                     $this.element.trigger('dropped.uk.upload', [e.dataTransfer.files]);
-
                     xhrupload(e.dataTransfer.files, $this.options);
                 }
 
@@ -238,7 +237,7 @@
         'complete'        : function(){},
         'allcomplete'     : function(){},
         'readystatechange': function(){},
-        'notallowed'      : function(file, settings){ alert('Only the following file types are allowed: '+settings.allow); }
+        'notallowed'      : function(file, settings){ swal("UPS",'Solo las siguientes extensiones son admitidas: '+settings.allow,"info"); }
     };
 
     function matchName(pattern, path) {

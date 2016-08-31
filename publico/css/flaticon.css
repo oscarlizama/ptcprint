@@ -1,6 +1,6 @@
 	/*
   	Flaticon icon font: Flaticon
-  	Creation date: 15/05/2016 04:21
+  	Creation date: 31/08/2016 23:22
   	*/
 
 @font-face {
@@ -17,7 +17,7 @@
 @media screen and (-webkit-min-device-pixel-ratio:0) {
   @font-face {
     font-family: "Flaticon";
-    src: url("../fonts/Flaticon.svg#Flaticon") format("svg");
+    src: url("./Flaticon.svg#Flaticon") format("svg");
   }
 }
 
@@ -51,22 +51,27 @@ margin-left: 20px;
 .flaticon-house:before { content: "\f113"; }
 .flaticon-id-card:before { content: "\f114"; }
 .flaticon-info:before { content: "\f115"; }
-.flaticon-like:before { content: "\f116"; }
-.flaticon-loupe:before { content: "\f117"; }
-.flaticon-menu:before { content: "\f118"; }
-.flaticon-menu-1:before { content: "\f119"; }
-.flaticon-money:before { content: "\f11a"; }
-.flaticon-money-bag:before { content: "\f11b"; }
-.flaticon-new-file:before { content: "\f11c"; }
-.flaticon-new-label:before { content: "\f11d"; }
-.flaticon-open-box:before { content: "\f11e"; }
-.flaticon-profile:before { content: "\f11f"; }
-.flaticon-repair-tools:before { content: "\f120"; }
-.flaticon-rulers-on-axis-in-circular-button:before { content: "\f121"; }
-.flaticon-settings:before { content: "\f122"; }
-.flaticon-speech-bubble:before { content: "\f123"; }
-.flaticon-store:before { content: "\f124"; }
-.flaticon-task:before { content: "\f125"; }
-.flaticon-triptych-brochure:before { content: "\f126"; }
-.flaticon-truck:before { content: "\f127"; }
-.flaticon-user:before { content: "\f128"; }
+.flaticon-instagram-logo:before { content: "\f116"; }
+.flaticon-like:before { content: "\f117"; }
+.flaticon-loupe:before { content: "\f118"; }
+.flaticon-mail:before { content: "\f119"; }
+.flaticon-menu:before { content: "\f11a"; }
+.flaticon-menu-1:before { content: "\f11b"; }
+.flaticon-money:before { content: "\f11c"; }
+.flaticon-money-bag:before { content: "\f11d"; }
+.flaticon-new-file:before { content: "\f11e"; }
+.flaticon-new-label:before { content: "\f11f"; }
+.flaticon-open-box:before { content: "\f120"; }
+.flaticon-picture:before { content: "\f121"; }
+.flaticon-profile:before { content: "\f122"; }
+.flaticon-repair-tools:before { content: "\f123"; }
+.flaticon-rulers-on-axis-in-circular-button:before { content: "\f124"; }
+.flaticon-settings:before { content: "\f125"; }
+.flaticon-shopping-cart:before { content: "\f126"; }
+.flaticon-speech-bubble:before { content: "\f127"; }
+.flaticon-store:before { content: "\f128"; }
+.flaticon-task:before { content: "\f129"; }
+.flaticon-triptych-brochure:before { content: "\f12a"; }
+.flaticon-truck:before { content: "\f12b"; }
+.flaticon-twitter-logo:before { content: "\f12c"; }
+.flaticon-user:before { content: "\f12d"; }

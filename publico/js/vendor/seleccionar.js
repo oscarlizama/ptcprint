@@ -189,6 +189,8 @@ function seleccionar_foto_producto(id){
 				$('#prod').val(datos[0]);
 				$('#imagenb64').val(datos[1]);
 				$('#list').html("<img class='thumb img-responsive' src='data:image/*;base64," + datos[1]+ "'/>");
+				$("#uploaddiv").removeClass("col-lg-6");
+      			$("#uploaddiv").addClass("col-lg-3");
 			return false;
 		}
 	});

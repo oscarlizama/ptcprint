@@ -19,10 +19,10 @@ RewriteRule ^miperfil$ publico/dashboardc.php [L,QSA,NC]
 RewriteRule ^compras$ publico/carrito.php [L,QSA,NC]
 RewriteRule ^cerrarsesion$ privado/procesos/cerrarsesionc.php [L,QSA,NC]
 RewriteRule ^recuperar$ publico/recuperar.php [L,QSA,NC]
+RewriteRule ^cotizar$ publico/cotizarcliente.php [L,QSA,NC]
 RewriteRule ^(\w+)/?$ publico/cargarp.php?nombre=$1
 #RewriteRule ^inicio$ publico/index.php [L,QSA,NC]
 #RewriteRule ^publico/index.php$ inicio.php [L,QSA,NC]
-RewriteRule ^cotizar$ publico/cotizarcliente.php [L,QSA,NC]
 RewriteRule ^canvas.php$ publico/canvas.php [L,QSA,NC] #porGabrielxd
 RewriteRule ^banner.php$ publico/banner.php [L,QSA,NC]
 #RewriteRule ^kids.php$ publico/kids.php [L,QSA,NC]
@@ -57,5 +57,5 @@ RewriteRule ^primero.php$ privado/primero.php [L,QSA,NC]
 RewriteRule ^recuperar.php$ privado/recuperar.php [L,QSA,NC]
 ##SE EVITA LISTAR LAS CARPETAS
 Options -Indexes
-ErrorDocument 404 /ptcprint/publico/error.php
-ErrorDocument 403 /ptcprint/publico/error.php
+#ErrorDocument 404 /ptcprint/publico/error.php
+#ErrorDocument 403 /ptcprint/publico/error.php

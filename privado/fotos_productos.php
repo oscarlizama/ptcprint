@@ -52,11 +52,19 @@
 					</select>
 					<br>
 				</div>
-				<div class="col-lg-3 col-md-3">
+				<div class="col-lg-6 col-md-6" id="uploaddiv">
 					<output id="list"></output>
-					<label for="" class="labels">Imagen</label>
+					<img id="vistaPrevia" src="" alt="" />
+					<br>
 					<form method="post" id="formulario" enctype="multipart/form-data">
-                    	<input type="file" class="input" id="imagen" name="file" autocomplete='off'>
+                    	<!--<input type="file" class="input" id="imagen" name="file" autocomplete='off'>-->
+                    	<div id="upload-drop" class="uk-placeholder uk-text-center">
+                    		<i class="uk-icon-cloud-upload uk-icon-medium uk-text-muted uk-margin-small-right"></i>
+					    	<span id="textoup">Selecciona una imagen por favor</span> <a class="uk-form-file">aquí<input id="imagen" type="file" name="file"></a>.
+						</div>
+						<div id="progressbar" class="uk-progress uk-hidden">
+                            <div class="uk-progress-bar" style="width: 0%;">0%</div>
+                        </div>
                     	<input type="text" class="input hide omitir" id="imagenb64" name="antigua" value="ninguna" autocomplete='off'>
                     </form>
                     <br>

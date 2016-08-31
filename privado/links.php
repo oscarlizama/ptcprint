@@ -4,6 +4,8 @@
 <!--el user scalable indica que no se puede redimensionar-->
 <meta name="viewport" content="width=device-width">
 <!--enlazo bootstrap-->
+<link rel="stylesheet" href="publico/css/uikit.docs.min.css">
+<link rel="stylesheet" href="publico/css/docs.css">
 <link rel="stylesheet" href="publico/css/bootstrap.css">
 <link rel="stylesheet" href="publico/css/sweetalert.css">
 <!--ESTILOS PERSONALIZADOS-->
