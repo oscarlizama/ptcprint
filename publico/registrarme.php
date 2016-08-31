@@ -9,62 +9,74 @@
 	if (isset($_POST['registrarbtn'])) {
 		$errorclave = "";
 		include "../privado/procesos/validaciones.php";
+		include "../privado/procesos/vrfcaptcha.php";
+		//echo $respuestav;
 		$nombre = $_POST['nombre'];
 		$apellido = $_POST['apellido'];
 		$correo = $_POST['correo'];
 		$clave = $_POST['clave'];
 		$claver = $_POST['claver'];
-		if (validarNombrePersona($nombre) && trim($nombre)) {
-			if (validarNombrePersona($apellido) && trim($apellido)) {
-				if (validarCorreo($correo) && trim($correo)) {
-					if (validar_clave($clave,$errorclave) && validar_clave($claver,$errorclave) && trim($clave) && trim($claver)) {
-						if ($claver == $clave) {
-							require_once '../privado/procesos/conexion.php';
-							$sql = "SELECT * FROM clientes WHERE correo_cliente=?";
-							$stmt = $con->prepare($sql);
-							$stmt->execute(array($correo));
-							if (!$stmt->fetch(PDO::FETCH_BOTH)) {
-								$passHash = password_hash($claver,PASSWORD_BCRYPT);
-						        $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-						        //CONSTRUYO LA CONSULTA EN BASE AL FORMATO QUE LES DI EN EL FOREACH
-						        $sql = "INSERT INTO clientes(nombre_cliente,apellido_cliente,correo_cliente,clave_cliente,estado_cliente) VALUES (?,?,?,?,?);";
-						        $stmt = $con->prepare($sql);
-						        $stmt->execute(array($nombre,$apellido,$correo,$passHash,1));
-						        //LIMPIO LA CONSULTA Y CIERRO LA CONXION
-						        $sql = null;
-						        $con = null;
-						        $agregado = true;
+		if ($respuestav == "bueno") {
+			if (validarNombrePersona($nombre) && trim($nombre)) {
+				if (validarNombrePersona($apellido) && trim($apellido)) {
+					if (validarCorreo($correo) && trim($correo)) {
+						if (validar_clave($clave,$errorclave) && validar_clave($claver,$errorclave) && trim($clave) && trim($claver)) {
+							if ($claver == $clave) {
+								require_once '../privado/procesos/conexion.php';
+								$sql = "SELECT * FROM clientes WHERE correo_cliente=?";
+								$stmt = $con->prepare($sql);
+								$stmt->execute(array($correo));
+								if (!$stmt->fetch(PDO::FETCH_BOTH)) {
+									$passHash = password_hash($claver,PASSWORD_BCRYPT);
+							        $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+							        //CONSTRUYO LA CONSULTA EN BASE AL FORMATO QUE LES DI EN EL FOREACH
+							        $sql = "INSERT INTO clientes(nombre_cliente,apellido_cliente,correo_cliente,clave_cliente,estado_cliente) VALUES (?,?,?,?,?);";
+							        $stmt = $con->prepare($sql);
+							        $stmt->execute(array($nombre,$apellido,$correo,$passHash,1));
+							        //LIMPIO LA CONSULTA Y CIERRO LA CONXION
+							        $sql = null;
+							        $con = null;
+							        $agregado = true;
+							        $nombre = "";
+									$apellido = "";
+									$correo = "";
+									$clave = "";
+									$claver = "";
+								}else{
+									$errormsg = "Ya existe una cuenta con este correo. ¿Has olvidado la contraseña?";	
+									$error = true;
+									$nombre = "";
+									$apellido = "";
+									//$correo = "";
+									$clave = "";
+									$claver = "";
+								}
 							}else{
-								$errormsg = "Ya existe una cuenta con este correo. ¿Has olvidado la contraseña?";	
+								$errormsg = "Las contraseñas no coniciden.";	
 								$error = true;
-								$nombre = "";
-								$apellido = "";
-								$correo = "";
-								$clave = "";
-								$claver = "";
 							}
 						}else{
-							$errormsg = "Las contraseñas no coniciden.";	
+							$errormsg = $errorclave;	
 							$error = true;
 						}
 					}else{
-						$errormsg = $errorclave;	
+						$errormsg = "El correo contiene caractéres inválidos.";	
 						$error = true;
+						$correo = "";
 					}
 				}else{
-					$errormsg = "El correo contiene caractéres inválidos.";	
+					$errormsg = "El apellido contiene caractéres inválidos.";	
 					$error = true;
-					$correo = "";
+					$apellido = "";
 				}
 			}else{
-				$errormsg = "El apellido contiene caractéres inválidos.";	
+				$errormsg = "El nombre contiene caractéres inválidos.";	
 				$error = true;
-				$apellido = "";
+				$nombre = "";
 			}
 		}else{
-			$errormsg = "El nombre contiene caractéres inválidos.";	
+			$errormsg = "No se ha resuelto el catpcha. Por favor completalo para registrarte.";
 			$error = true;
-			$nombre = "";
 		}
 	}
 ?>
@@ -72,6 +84,7 @@
 	<head>
 		<meta name="theme-color" content="#ec407a">
 		<?php include "links.php" ?>
+		<title>Registrarme | Punto Print</title>
 	</head>
 	<body id="bodylogin">
 		<br>

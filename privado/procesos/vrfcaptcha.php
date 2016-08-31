@@ -57,5 +57,4 @@
         //echo json_encode("HOLAAAA");
         //var_dump("ESTA MAL");
       }
-      exit($respuestav);
 ?>

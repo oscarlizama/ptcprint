@@ -74,7 +74,7 @@
 		<?php 
 			include "links.php";
 		?>
-		<title>Recuperar contraseña | Punto Print</title>
+		<title>Iniciar sesión | Punto Print</title>
 	</head>
 	<body id="bodylogin">
 		<br>
