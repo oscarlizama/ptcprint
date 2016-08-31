@@ -136,7 +136,7 @@
 							"<th><strong>Miniatura</strong></th>".
 							"<th><strong></strong></th>".
 						"</tr>";
-				$sql = "SELECT id_foto_producto, P.nombre_producto, foto_producto FROM productos P, fotos_productos FP WHERE estado_foto_producto = ? AND P.id_producto = FP.id_producto";
+				$sql = "SELECT id_foto_producto, P.nombre_producto, foto_producto FROM productos P, fotos_productos FP WHERE estado_foto_producto = ? AND P.id_producto = FP.id_producto AND estado_producto=1";
 				$stmt = $con->prepare($sql);
 			    $stmt->execute(array(1));
 				while ($datos = $stmt->fetch(PDO::FETCH_BOTH)) {
