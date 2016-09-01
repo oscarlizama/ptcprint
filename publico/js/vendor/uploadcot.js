@@ -29,5 +29,5 @@ $(function(){
         }
     };
 
-    ///var select = UIkit.uploadSelect($("#filenombre"), settings);
+    var select = UIkit.uploadSelect($("#imagen"), settings);
 });

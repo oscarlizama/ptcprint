@@ -14,7 +14,6 @@
 <script type="text/javascript" src="publico/js/vendor/vista-previa.js"></script>
 <script type="text/javascript" src="publico/js/vendor/empresap.js"></script>
 <script type="text/javascript" src="publico/js/vendor/busqueda.js"></script>
-<script type="text/javascript" src="publico/js/vendor/msjclient.js"></script>
 <script type="text/javascript" src="publico/js/vendor/perfilbk.js"></script>
 <script type="text/javascript" src="publico/js/vendor/comentariobk.js"></script>
 <script type="text/javascript" src="publico/js/vendor/sesionpv.js"></script>

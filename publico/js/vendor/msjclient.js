@@ -114,7 +114,7 @@ function archivo(){
         	//OBTENGO EL TIPO
         	tipo = info[2];
         	//SUBO LA FILA
-        	//alert(nombreblb);
+        	alert(nombreblb);
         	uploadfile();
         }
     });

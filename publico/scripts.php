@@ -6,11 +6,12 @@
 <!--ENALZO EL JQUERY DEL FRAMEWORK-->
 <script type="text/javascript" src="publico/js/vendor/bootstrap.min.js"></script>
 <script type="text/javascript" src="publico/js/vendor/uikit.min.js"></script>
-<script type="text/javascript" src="publico/js/vendor/docs.js"></script>
+<!--<script type="text/javascript" src="publico/js/vendor/docs.js"></script>-->
 <!--ENLAZO MI SCRIPT-->
 <script type="text/javascript" src="publico/js/main.js"></script>
 <!--ENALZO LOS SCRIPTS PARA QUE LOS EFECTOS DE LA PAGINA FUNCIONEN-->
 <!--SON SCRIPTS QUE YA VENIAN CON EL FRAMEWORK-->
+<script type="text/javascript" src="publico/js/components/upload.js"></script>
 <script type="text/javascript" src="publico/js/components/slideshow.js"></script>
 <script type="text/javascript" src="publico/js/components/slider.js"></script>
 <script type="text/javascript" src="publico/js/components/slideshow-fx.js"></script>
@@ -21,9 +22,8 @@
 <script type="text/javascript" src="publico/js/components/form-password.js"></script>
 <script type="text/javascript" src="publico/js/components/notify.js"></script>
 <script type="text/javascript" src="publico/js/components/datepicker.js"></script>
-<script type="text/javascript" src="publico/js/components/upload.js"></script>
-<!--<script type="text/javascript" src="publico/js/vendor/uploadcot.js"></script>-->
 <script type="text/javascript" src="publico/js/vendor/msjclient.js"></script>
+<script type="text/javascript" src="publico/js/vendor/uploadcot.js"></script>
 <script type="text/javascript" src="publico/js/vendor/carrito.js"></script>
 <script type="text/javascript" src="publico/js/vendor/elegirp.js"></script>
 <!--ENLAZO EL SCRIPT DEL MENÚ-->
