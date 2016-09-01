@@ -3,7 +3,7 @@
   include '../privado/procesos/lifetime.php';
   if (trim($_GET['nombre'])) {
     $nombrepr = $_GET['nombre'];
-    $valido = "SELECT * FROM tipos_producto WHERE nombre_tipo_producto=?";
+    $valido = "SELECT * FROM tipos_producto WHERE nombre_tipo_producto=? AND estado_tipo_producto=1";
     $stmtex = $con->prepare($valido);
     $stmtex->execute(array($nombrepr));
     if (!$stmtex->fetch(PDO::FETCH_BOTH)) {

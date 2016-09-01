@@ -24,7 +24,8 @@ function selec_tbl(tbl,ruta){
 	    tbl_medidas_productos(ruta);
 	}
 	if (tbl == 10) {
-	    tbl_fotos_productos(ruta);
+		location.reload();
+	    //tbl_fotos_productos(ruta);
 	}
 	if (tbl == 21) {
 	    tbl_proveedor(ruta);
