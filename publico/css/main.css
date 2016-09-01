@@ -25,6 +25,7 @@
 .titulos{
 	color: #e0f2f1;
 	font-family: 'Roboto Condensed', sans-serif;
+	text-transform: uppercase;
 }
 /*ESTILOS DE SLIDER*/
 #slider-div{
@@ -272,6 +273,7 @@ img.img-servicios{
 }
 h1.titulos-sublim{
 	margin-top: 0px;
+	text-transform: uppercase;
 }
 @media all and (min-width: 400px){
 	.btn-sb-xs{
