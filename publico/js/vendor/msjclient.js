@@ -88,6 +88,12 @@ function enviarmsjp(id,emisor){
 	return false;
 }
 
+$(function(){
+    $("input[name='file']").on("change", function(){
+        archivo();
+    });
+ });
+
 ///AQUI HAGO EL ARCHIVO A BLOB
 function archivo(){
 	//var nombreinput = "#filenombre";
@@ -114,8 +120,8 @@ function archivo(){
         	//OBTENGO EL TIPO
         	tipo = info[2];
         	//SUBO LA FILA
-        	alert(nombreblb);
-        	uploadfile();
+        	//alert(nombreblb);
+        	//uploadfile();
         }
     });
 }

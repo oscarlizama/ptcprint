@@ -93,7 +93,7 @@
           $ul_tabs .= "<br>";
           $ul_tabs .= $selectc;
           $ul_tabs .= "<br>";
-          $ul_tabs .= "<button class='btn btn-primary col-lg-12' onclick='javascipt:archivo()'>Enviar archivo adjunto</button>";
+          $ul_tabs .= "<button class='btn btn-primary col-lg-12' onclick='javascipt:uploadfile()'>Enviar archivo adjunto</button>";
           $ul_tabs .= "</div>";
           $ul_tabs .= "</div>";
           $ul_tabs .= "</div>";
