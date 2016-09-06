@@ -4,8 +4,8 @@ Options +FollowSymLinks
 RewriteEngine on
 
 #ESPECIFICAMOS LA CARPETA
-#RewriteBase /
-RewriteBase /ptcprint/
+RewriteBase /
+#RewriteBase /ptcprint/
 
 ##AQUI EMPIEZAA REESCRIBIR EL NAVEGADOR
 RewriteCond %{REQUEST_FILENAME} !-f
