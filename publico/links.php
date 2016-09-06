@@ -6,9 +6,9 @@
 <meta name="viewport" content="width=device-width">
 <!--enlazo uikit-->
 <link rel="stylesheet" href="/publico/css/uikit.docs.min.css">
-<link rel="stylesheet" href="css/docs.css">
-<link rel="stylesheet" href="css/bootstrap.css">
-<link rel="stylesheet" href="css/sweetalert.css">
+<link rel="stylesheet" href="/publico/css/docs.css">
+<link rel="stylesheet" href="/publico/css/bootstrap.css">
+<link rel="stylesheet" href="/publico/css/sweetalert.css">
 <!--ESTILOS PERSONALIZADOS-->
 <link rel="stylesheet" type="text/css" href="css/main.css">
 <link rel="stylesheet" type="text/css" href="css/main_G.css">

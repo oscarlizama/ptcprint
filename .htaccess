@@ -56,13 +56,13 @@ RewriteRule ^timer.php$ privado/procesos/mensajesnotificacion.php [L,QSA,NC]
 RewriteRule ^timercliente.php$ privado/procesos/mensajesnotificacioncl.php [L,QSA,NC]
 
 ##PARA LAS CARPETAS DE LOS ARCHIVOS
-RewriteRule ^imgdefault/(.*)$ privado/img/$1 [L]
-RewriteRule ^imgmenu/(.*)$ publico/img/menu/$1 [L]
-RewriteRule ^css/(.*)$ publico/css/$1 [L]
-RewriteRule ^js/(.*)$ publico/js/$1 [L]
-RewriteRule ^vendor/(.*)$ publico/js/vendor/$1 [L]
-RewriteRule ^components/(.*)$ publico/js/components/$1 [L]
-RewriteRule ^fonts/(.*)$ publico/fonts/$1 [L]
+RewriteRule ^imgdefault/(.*)$ /privado/img/$1 [L]
+RewriteRule ^imgmenu/(.*)$ /publico/img/menu/$1 [L]
+RewriteRule ^css/(.*)$ /publico/css/$1 [L]
+RewriteRule ^js/(.*)$ /publico/js/$1 [L]
+RewriteRule ^vendor/(.*)$ /publico/js/vendor/$1 [L]
+RewriteRule ^components/(.*)$ /publico/js/components/$1 [L]
+RewriteRule ^fonts/(.*)$ /publico/fonts/$1 [L]
 
 ##PARA LOS ARCHIVOS NECESARIOS DE SCRUD
 RewriteRule ^registrarusr$ privado/procesos/registrarusr.php [L,QSA,NC]
