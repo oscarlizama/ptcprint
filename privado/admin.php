@@ -24,6 +24,7 @@
 			</div>
 		</div>	
 	</div>
+	<br>
 	<?php include 'scripts.php';?>
 </body>
 </html>

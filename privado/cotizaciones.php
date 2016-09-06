@@ -178,6 +178,9 @@
       ?>
     </div>
   </div>
+  <br>
+  <br>
+  <br>
 	<?php include 'scripts.php';?>
 </body>
 </html>

@@ -1,5 +1,5 @@
 function perfil(valores,repetida,accion){
-	var url = 'privado/procesos/editarperfil.php';
+	var url = 'editarperfil';
 	var parametros = {"valores":valores, "repetida":repetida,"accion":accion};
 		$.ajax({
 		type:'POST',

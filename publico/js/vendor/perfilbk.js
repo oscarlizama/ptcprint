@@ -1,5 +1,5 @@
 function perfil(valores,repetida,accion){
-	var url = 'privado/procesos/editarperfilbk.php';
+	var url = 'editarperfilbk';
 	var parametros = {"valores":valores,"repetida":repetida,"accion":accion};
 		$.ajax({
 		type:'POST',
@@ -16,7 +16,7 @@ function perfil(valores,repetida,accion){
 			}else if (datos == 100) {
 				swal("ERROR", "asgdsajhsahhasdgsahgd asdhgsah gsah", "error");
 			}else{
-				swal("ERROR", datos, "error");
+				swal("ERROR", datos, "info");
 			}
 			return false;
 		}
@@ -43,5 +43,5 @@ $("#guardar_contra").click(function(){
 });
 
 $("#cancelar").click(function(){
-	window.location.replace("index.php");
+	window.location.replace("private.php");
 });

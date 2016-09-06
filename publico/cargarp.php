@@ -130,7 +130,7 @@
                 </form>
                 </div>
                 <button class="btn btn-default uk-width-4-10 uk-push-6-10 uk-hidden-medium" id="enviar_comment" type="button">PUNTUAR</button>
-                <form action="comentarios.php" id="mas_comentarios" method="post">
+                <form action="mascomentarios" id="mas_comentarios" method="post">
                   <input type="text" name="idpd" class="hide" id="mascid" value="<?php echo $id_max?>">
                 </form>
             </div>

@@ -12,11 +12,11 @@ function cerrar_sesion(tipo){
 }
 
 function cerrar_sesionmth(tipo){
-	alert(tipo);
+	//alert(tipo);
 	var correo = $("#correo").val();
-	alert(correo);
+	///alert(correo);
 	//envio la consulta aqui
-	var url = 'privado/procesos/cerraranteriores.php';
+	var url = 'cerraranteriores';
 	//lleno los parametros
 	var parametros = {"correo":correo,"tipo":tipo};
 	$.ajax({

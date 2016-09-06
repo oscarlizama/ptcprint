@@ -74,7 +74,7 @@ $("#star5").click(function (){
 
 //la funcion del comentario
 function comentario(valores,accion){
-	var url = 'privado/procesos/comentarios.php';
+	var url = 'comentarios';
 	var parametros = {"valores": valores, "accion":accion};
 		$.ajax({
 		type:'POST',
@@ -100,7 +100,7 @@ function comentario(valores,accion){
 }
 
 function mascomentarios(id){
-	var url = 'privado/procesos/mascomentarios.php';
+	var url = 'mascomentarios';
 	var parametros = {"idp": id};
 		$.ajax({
 		type:'POST',
@@ -148,7 +148,7 @@ function valores_comentario(){
 	comentario(val,1);
 }
 function comentado(valores){
-	var url = 'privado/procesos/comentarios.php';
+	var url = 'comentarios';
 	var parametros = {"valores":valores, "accion":5};
 		$.ajax({
 		type:'POST',

@@ -17,7 +17,7 @@ require_once 'validaciones.php';
 			!validarNumeroEntero($id_cliente)
 
 			)) {
-				header('Location: cotizar');
+				header('Location: ../../cotizar');
 				exit;
 			}
 	//$asunto = "PRUEBA";
@@ -35,7 +35,7 @@ require_once 'validaciones.php';
 		//EL DOS SIGNIFICA QUE HA ESCRITO UN ASUNTO NO VALIDO
 		$respuesta = 2;
 	}
-	header('Location: cotizar');
+	header('Location: ../../cotizar');
 	//echo json_encode($respuesta);
 	$con = null;
 ?>

@@ -1,18 +1,19 @@
 <div id="menu-backend">
-	<div class="col-lg-3 col-md-4 col-sm-5">
+	<div class="col-lg-4 col-md-4 col-sm-5">
 		<p class="texto-mb">
-			<a href="admin.php" id="indexa">PUNTO PRINT</a>
-			<span class="flaticon-avatar iconos-acc" id="icon-usuario" data-toggle="tooltip" data-placement="bottom" title="Cerrar sesión"></span>
-			<a href="cotizaciones.php"><span class="flaticon-chat iconos-acc" data-toggle="tooltip" data-placement="bottom" title="Abrir bandeja de entrada"></span></a>
-			<a href="carritos.php"><span class="flaticon-shopping-cart iconos-acc" data-toggle="tooltip" data-placement="bottom" title="Ver carritos"></span></a>
+			<a href="admin" id="indexa">PUNTO PRINT</a>
 			<span class="flaticon-menu iconos-acc" id="abrirmbk" data-toggle="tooltip" data-placement="bottom" title="Abrir el menú"></span>
 			<span class="flaticon-circular-arrow iconos-acc hide" id="cerrarmbk" data-toggle="tooltip" data-placement="right" title="Cerrar el menú"></span>
+			<a href="cotizaciones"><span class="flaticon-chat iconos-acc" data-toggle="tooltip" data-placement="bottom" title="Abrir bandeja de entrada"></span></a>
+			<a href="carritos"><span class="flaticon-shopping-cart iconos-acc" data-toggle="tooltip" data-placement="bottom" title="Ver carritos"></span></a>
+			<a href="estadisticas"><span class="flaticon-statistics iconos-acc" data-toggle="tooltip" data-placement="bottom" title="Estadísticas"></span></a>
+			<span class="flaticon-avatar iconos-acc" id="icon-usuario" data-toggle="tooltip" data-placement="bottom" title="Cerrar sesión"></span>
 		</p>
 	</div>
 	<div class="col-lg-7 col-md-6 col-sm-4"></div>
-	<div class="col-lg-2 col-md-2 col-sm-3">
+	<div class="col-lg-1 col-md-2 col-sm-3">
 		<p class="texto-mb">
-			<a href="perfil.php">
+			<a href="perfil">
 				<span class="flaticon-cogwheel iconos-acc pull-right"></span>
 			</a>
 		</p>
@@ -31,7 +32,7 @@
 				<div class="dv-sub">
 					<ul>
 						<li>
-							<a href="redessociales.php">
+							<a href="redessociales">
 								<div class="glyph">
 									<span class="glyph-icon flaticon-facebook-logo"></span>
 									<p class="nombre-opcion">Redes sociales</p>
@@ -40,7 +41,7 @@
 						</li>
 						<br>
 						<li>
-							<a href="equipos.php">
+							<a href="equipos">
 								<div class="glyph">
 									<span class="glyph-icon flaticon-copy-machine"></span>
 									<p class="nombre-opcion">Equipos</p>
@@ -48,7 +49,7 @@
 							</a>
 						</li>
 						<li>
-							<a href="mobra.php">
+							<a href="mobra">
 								<div class="glyph">
 									<span class="glyph-icon flaticon-money"></span>
 									<p class="nombre-opcion">Mano de obra</p>
@@ -56,7 +57,7 @@
 							</a>
 						</li>
 						<li>
-							<a href="empresa.php">
+							<a href="empresa">
 								<div class="glyph">
 									<span class="glyph-icon flaticon-repair-tools"></span>
 									<p class="nombre-opcion">Ajustes</p>
@@ -76,7 +77,7 @@
 				<div class="dv-sub">
 					<ul>
 						<li>
-							<a href="proveedores.php">
+							<a href="proveedores">
 								<div class="glyph">
 									<span class="glyph-icon flaticon-clerk-with-tie"></span>
 									<p class="nombre-opcion text-center">Administración</p>
@@ -85,7 +86,7 @@
 						</li>
 						<br>
 						<li>
-							<a href="contactos.php">
+							<a href="contactos">
 								<div class="glyph">
 									<span class="glyph-icon flaticon-address-book"></span>
 									<p class="nombre-opcion">Contactos</p>
@@ -93,7 +94,7 @@
 							</a>
 						</li>
 						<li>
-							<a href="tiposcontactos.php">
+							<a href="tiposcontactos">
 								<div class="glyph">
 									<span class="glyph-icon flaticon-address-book-1"></span>
 									<p class="nombre-opcion">Tipos de contactos</p>
@@ -113,7 +114,7 @@
 				<div class="dv-sub">
 					<ul>
 						<li>
-							<a href="productos.php">
+							<a href="productos">
 								<div class="glyph">
 									<span class="glyph-icon flaticon-menu-1"></span>
 									<p class="nombre-opcion">Administrar</p>
@@ -122,7 +123,7 @@
 						</li>
 						<br>
 						<li>
-							<a href="medidas.php">
+							<a href="medidas">
 								<div class="glyph">
 									<span class="glyph-icon flaticon-rulers-on-axis-in-circular-button"></span>
 									<p class="nombre-opcion">Medidas</p>
@@ -130,7 +131,7 @@
 							</a>
 						</li>
 						<li>
-							<a href="tiposproductos.php">
+							<a href="tiposproductos">
 								<div class="glyph">
 									<span class="glyph-icon flaticon-open-box"></span>
 									<p class="nombre-opcion">Tipo de productos</p>
@@ -138,7 +139,7 @@
 							</a>
 						</li>
 						<li>
-							<a href="fotos.php">
+							<a href="fotos">
 								<div class="glyph">
 									<span class="glyph-icon flaticon-picture"></span>
 									<p class="nombre-opcion">Fotos de productos</p>
@@ -158,7 +159,7 @@
 				<div class="dv-sub">
 					<ul>
 						<li>
-							<a href="usuarios.php">
+							<a href="usuarios">
 								<div class="glyph">
 									<span class="glyph-icon flaticon-profile"></span>
 									<p class="nombre-opcion">Administrar</p>
@@ -167,7 +168,7 @@
 						</li>
 						<br>
 						<li>
-							<a href="permisos.php">
+							<a href="permisos">
 								<div class="glyph">
 									<span class="glyph-icon flaticon-alarm-clock-security"></span>
 									<p class="nombre-opcion">Permisos</p>
@@ -175,7 +176,7 @@
 							</a>
 						</li>
 						<li>
-							<a href="edituser.php">
+							<a href="edituser">
 								<div class="glyph">
 									<span class="glyph-icon flaticon-avatar"></span>
 									<p class="nombre-opcion">Editar usuarios</p>
@@ -194,7 +195,7 @@
 				</div>
 			</li>-->
 			<li>
-				<a href="configuraciones.php">
+				<a href="configuraciones">
 					<div class="texto">
 						<div class="glyph">
 							<span class="glyph-icon flaticon-cogwheel"></span>

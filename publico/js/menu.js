@@ -2,7 +2,7 @@ var i = 0;
 $("#menubutton").click(function () {
 	if(i == 0){
 		$("#menubutton").removeClass("flaticon-menu-button");
-		$("#menubutton").addClass("flaticon-arrows");
+		$("#menubutton").addClass("flaticon-back-arrow-circular-symbol");
 		$(".movildiv").css("display","block");
 		$(".itemm-m").css("display","block");
 		$(".opm").css("display","block");
@@ -14,7 +14,7 @@ $("#menubutton").click(function () {
 		i = 1;
 	}else{
 		$("#menubutton").addClass("flaticon-menu-button");
-		$("#menubutton").removeClass("flaticon-arrows");
+		$("#menubutton").removeClass("flaticon-back-arrow-circular-symbol");
 		$(".movildiv").css("display","none");
 		$(".itemm-m").css("display","none");
 		$(".opm").css("display","none");

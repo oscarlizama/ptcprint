@@ -1,5 +1,5 @@
 function insertar(tabla,valores,repetida){
-	var url = 'privado/procesos/puente.php';
+	var url = 'puente';
 	var parametros = {"valores":valores,"tabla":tabla,"accion":1,"repetida":repetida};
 	//alert("entra al insertar")
 	$.ajax({
@@ -28,7 +28,7 @@ function insertar(tabla,valores,repetida){
 }
 
 function editar(tabla,valores,repetida){
-	var url = 'privado/procesos/puente.php';
+	var url = 'puente';
 	var parametros = {"valores":valores,"tabla":tabla,"accion":2,"repetida":repetida};
 	$.ajax({
 		type:'POST',
@@ -106,7 +106,7 @@ $(".btn-regc").click(function(event){
 	    // Si la respuesta es true continuará el evento submit, de lo contrario será cancelado
 	    //	return $respuesta;
 	    return false;*/
-	var url = 'privado/procesos/vrfcaptcha.php';
+	var url = 'vrfcaptcha';
 	//alert("entra al insertar")
 	$.ajax({
 		type:'POST',

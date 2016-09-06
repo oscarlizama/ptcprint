@@ -6,7 +6,7 @@
 		$imagen_temporal = $imagen['tmp_name'];
 	}
 	else{
-		$imagen_temporal = "img/tw.jpg";
+		$imagen_temporal = "../img/default.jpg";
 	}
 	$fp = fopen($imagen_temporal, 'r+b');
 	$data = fread($fp, filesize($imagen_temporal));

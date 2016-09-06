@@ -1,6 +1,10 @@
 <?php 
   include '../privado/procesos/conexion.php';
   include '../privado/procesos/lifetime.php';
+  if($_SESSION['autenticado'] != 'si'){   
+    header('Location: inicio');
+    session_destroy();
+  }
 ?>
 <html lang="es">
 <head>

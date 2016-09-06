@@ -1,4 +1,5 @@
 <?php 
+  session_start();
   require '../privado/procesos/conexion.php';
   $ejecutar = false;
   $id_producto = $_POST['idpd'];

@@ -45,7 +45,7 @@ function agregar_carrito(){
 					valores.push(id_md);
 					valores.push(cantidad);
 					valores.push(fecha);
-					var url = 'privado/procesos/puente.php';
+					var url = 'puente';
 					var parametros = {"valores":valores,"tabla":32, "accion":1};
 					$.ajax({
 						type:'POST',
@@ -73,7 +73,7 @@ function agregar_carrito(){
 }
 
 function medidas_el(){
-	var url = 'privado/procesos/seleccionar.php';
+	var url = 'seleccionar';
 	var medida_select = "";
 	$("#medidassl").children().remove();
 	var parametros = {"valores":valores,"tbl":33,"id":id_el};
@@ -104,7 +104,7 @@ function medidas_el(){
 }
 
 function producto_descrip(){
-	var url = 'privado/procesos/seleccionar.php';
+	var url = 'seleccionar';
 	var parametros = {"tbl":39,"id":id_el};
 	$.ajax({
 		type:'POST',

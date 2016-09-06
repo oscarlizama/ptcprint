@@ -13,7 +13,7 @@ function eliminar_comentario(id){
 			 });    
 }
 function comentario(valores,accion){
-	var url = 'privado/procesos/comentarios.php';
+	var url = 'comentarios';
 	var parametros = {"valores": valores, "accion":accion};
 		$.ajax({
 		type:'POST',

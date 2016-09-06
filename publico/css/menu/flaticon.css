@@ -1,6 +1,6 @@
 	/*
   	Flaticon icon font: Flaticon
-  	Creation date: 31/08/2016 01:57
+  	Creation date: 05/09/2016 05:09
   	*/
 
 @font-face {
@@ -30,19 +30,26 @@ margin-left: 20px;
 }
 
 .flaticon-ads:before { content: "\f100"; }
-.flaticon-arrows:before { content: "\f101"; }
+.flaticon-back-arrow-circular-symbol:before { content: "\f101"; }
 .flaticon-balloons:before { content: "\f102"; }
-.flaticon-clothes:before { content: "\f103"; }
-.flaticon-download:before { content: "\f104"; }
-.flaticon-drawing:before { content: "\f105"; }
-.flaticon-logout:before { content: "\f106"; }
-.flaticon-mail:before { content: "\f107"; }
-.flaticon-menu-button:before { content: "\f108"; }
-.flaticon-paint-brush:before { content: "\f109"; }
-.flaticon-reward:before { content: "\f10a"; }
-.flaticon-settings:before { content: "\f10b"; }
-.flaticon-shopping-cart:before { content: "\f10c"; }
-.flaticon-tool:before { content: "\f10d"; }
-.flaticon-two-presentation-cards-with-text-and-photograph:before { content: "\f10e"; }
-.flaticon-upload:before { content: "\f10f"; }
-.flaticon-user:before { content: "\f110"; }
+.flaticon-billboard:before { content: "\f103"; }
+.flaticon-birthday-card:before { content: "\f104"; }
+.flaticon-clothes:before { content: "\f105"; }
+.flaticon-coffee-cup:before { content: "\f106"; }
+.flaticon-door:before { content: "\f107"; }
+.flaticon-download:before { content: "\f108"; }
+.flaticon-logout:before { content: "\f109"; }
+.flaticon-mail:before { content: "\f10a"; }
+.flaticon-menu:before { content: "\f10b"; }
+.flaticon-menu-button:before { content: "\f10c"; }
+.flaticon-mode-circular-button:before { content: "\f10d"; }
+.flaticon-multimedia:before { content: "\f10e"; }
+.flaticon-multimedia-1:before { content: "\f10f"; }
+.flaticon-rings:before { content: "\f110"; }
+.flaticon-round-add-button:before { content: "\f111"; }
+.flaticon-settings:before { content: "\f112"; }
+.flaticon-shopping-cart:before { content: "\f113"; }
+.flaticon-simple-house-thin:before { content: "\f114"; }
+.flaticon-two-presentation-cards-with-text-and-photograph:before { content: "\f115"; }
+.flaticon-user:before { content: "\f116"; }
+.flaticon-wanted:before { content: "\f117"; }

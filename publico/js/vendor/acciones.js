@@ -1,7 +1,7 @@
 var img = "";
 function insertar_usr(valores){
 	var repetida = $("#claver").val();
-	var url = 'privado/procesos/registrarusr.php';
+	var url = 'registrarusr';
 	var parametros = {"valores": valores,"repetida":repetida};
 	$.ajax({
 		type:'POST',
@@ -36,7 +36,7 @@ function insertar_usr(valores){
 
 function insertar(tabla,valores){
 	if (tabla != 1) {
-		var url = 'privado/procesos/puente.php';
+		var url = 'puente';
 		var parametros = {"valores": valores,"tabla":tabla, "accion":1};
 		$.ajax({
 			type:'POST',
@@ -67,7 +67,7 @@ function insertar(tabla,valores){
 }
 
 function editar(tabla,valores){
-	var url = 'privado/procesos/puente.php';
+	var url = 'puente';
 	var parametros = {"valores":valores,"tabla":tabla, "accion":2};
 	$.ajax({
 		type:'POST',
@@ -95,7 +95,7 @@ function editar(tabla,valores){
 
 
 function eliminar(tabla,valores){
-	var url = 'privado/procesos/puente.php';
+	var url = 'puente';
 	var parametros = {"valores":valores,"tabla":tabla, "accion":3};
 	$.ajax({
 		type:'POST',
@@ -122,15 +122,15 @@ function eliminar(tabla,valores){
 }
 
 function cerrarpv(){
-	$.ajax( "privado/procesos/cerrarpv.php")
+	$.ajax( "cerrarpv")
   	.done(function() {
-    	window.location = ("private.php"); 
+    	window.location = ("administracion"); 
   	});
 }
 
 function imagen(){
-	var ruta = "../privado/procesos/imgdefault64.php";
-	var parametros = {"default":"../img/default.jpg"};
+	var ruta = "imgdefault64";
+	var parametros = {"default":"imgdefault/default.jpg"};
     $.ajax({
         url: ruta,
         type: "POST",
@@ -240,7 +240,7 @@ function msjEliminar(){
 $(function(){
     $("input[name='file']").on("change", function(){
         var formData = new FormData($("#formulario")[0]);
-        var ruta = "privado/procesos/imagenb64.php";
+        var ruta = "imagenb64";
         $.ajax({
             url: ruta,
             type: "POST",
@@ -329,4 +329,7 @@ $(".btn-table-pr").click(function(event){
 
 $("#icon-usuario").click(function(event){
 	msjCerrar();
+});
+$(document).ready(function(){
+	$('.datepicker').datepicker();
 });

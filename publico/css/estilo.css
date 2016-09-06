@@ -289,3 +289,14 @@ div.item-head:hover > div.glyph > div.class-name{
 #homel,#homel:hover{
 	text-decoration: none;
 }
+.menuicon{
+	max-width: 40px;
+	max-height: 40px;
+	margin-top: 5px;
+	top: 50%;
+    left: 50%;
+    transform: translate(40%,5%);
+}
+.name-solo{
+	margin-top: 25px;
+}

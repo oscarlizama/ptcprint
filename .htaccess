@@ -2,13 +2,16 @@
 Options +FollowSymLinks
 #PARA QUE REESCRIBA LAS REGLAS
 RewriteEngine on
+
 #ESPECIFICAMOS LA CARPETA
-RewriteBase /
-#RewriteBase /ptcprint/
+#RewriteBase /
+RewriteBase /ptcprint/
+
 ##AQUI EMPIEZAA REESCRIBIR EL NAVEGADOR
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{SCRIPT_FILENAME} !-d
 RewriteCond %{SCRIPT_FILENAME} !-f
+
 ##PARA EL PUBLICO
 #L = LAST, NC = NO CASE, QSA = DESCARTA EL QUERY Y GENERA UNA URL NUEVA
 RewriteRule ^inicio$ publico/index.php [L,QSA,NC]
@@ -20,42 +23,80 @@ RewriteRule ^compras$ publico/carrito.php [L,QSA,NC]
 RewriteRule ^cerrarsesion$ privado/procesos/cerrarsesionc.php [L,QSA,NC]
 RewriteRule ^recuperar$ publico/recuperar.php [L,QSA,NC]
 RewriteRule ^cotizar$ publico/cotizarcliente.php [L,QSA,NC]
+RewriteRule ^canvas$ publico/canvas.php [L,QSA,NC] #porGabrielxd
+RewriteRule ^mascomentarios$ publico/mascomentarios.php [L,QSA,NC]
+RewriteRule ^prodp.php$ publico/cargarp.php [L,QSA,NC]
+
+##PARA EL PRIVADO
+RewriteRule ^administracion$ privado/index.php [L,QSA,NC]
+RewriteRule ^admin$ privado/admin.php [L,QSA,NC]
+RewriteRule ^carritos$ privado/carritos.php [L,QSA,NC]
+RewriteRule ^configuraciones$ privado/configuraciones.php [L,QSA,NC]
+RewriteRule ^contactos$ privado/contactos_proveedor.php [L,QSA,NC]
+RewriteRule ^cotizaciones$ privado/cotizaciones.php [L,QSA,NC]
+RewriteRule ^equipos$ privado/equipos.php [L,QSA,NC]
+RewriteRule ^empresa$ privado/empresa.php [L,QSA,NC]
+RewriteRule ^fotos$ privado/fotos_productos.php [L,QSA,NC]
+RewriteRule ^mobra$ privado/mano_obra.php [L,QSA,NC]
+RewriteRule ^productos$ privado/productos.php [L,QSA,NC]
+RewriteRule ^usuarios$ privado/usuarios.php [L,QSA,NC]
+RewriteRule ^tiposproductos$ privado/tipo_productos.php [L,QSA,NC]
+RewriteRule ^tiposcontactos$ privado/tipo_contactos.php [L,QSA,NC]
+RewriteRule ^permisos$ privado/permisos.php [L,QSA,NC]
+RewriteRule ^medidas$ privado/medidas_producto.php [L,QSA,NC]
+RewriteRule ^proveedores$ privado/proveedores.php [L,QSA,NC]
+RewriteRule ^redessociales$ privado/redessociales.php [L,QSA,NC]
+RewriteRule ^edituser$ privado/edituser.php [L,QSA,NC]
+RewriteRule ^perfil$ privado/perfil.php [L,QSA,NC]
+RewriteRule ^comentarios.php$ privado/comentarios.php [L,QSA,NC]
+RewriteRule ^primero$ privado/primero.php [L,QSA,NC]
+RewriteRule ^recuperar$ privado/recuperar.php [L,QSA,NC]
+RewriteRule ^estadisticas$ privado/estadisticas.php [L,QSA,NC]
+RewriteRule ^timer.php$ privado/procesos/mensajesnotificacion.php [L,QSA,NC]
+RewriteRule ^timercliente.php$ privado/procesos/mensajesnotificacioncl.php [L,QSA,NC]
+
+##PARA LAS CARPETAS DE LOS ARCHIVOS
+RewriteRule ^imgdefault/(.*)$ privado/img/$1 [L]
+RewriteRule ^imgmenu/(.*)$ publico/img/menu/$1 [L]
+RewriteRule ^css/(.*)$ publico/css/$1 [L]
+RewriteRule ^js/(.*)$ publico/js/$1 [L]
+RewriteRule ^vendor/(.*)$ publico/js/vendor/$1 [L]
+RewriteRule ^components/(.*)$ publico/js/components/$1 [L]
+RewriteRule ^fonts/(.*)$ publico/fonts/$1 [L]
+
+##PARA LOS ARCHIVOS NECESARIOS DE SCRUD
+RewriteRule ^registrarusr$ privado/procesos/registrarusr.php [L,QSA,NC]
+RewriteRule ^puente$ privado/procesos/puente.php [L,QSA,NC]
+RewriteRule ^cerrarpv$ privado/procesos/cerrarpv.php [L,QSA,NC]
+RewriteRule ^imgdefault64$ privado/procesos/imgdefault64.php [L,QSA,NC]
+RewriteRule ^imagenb64$ privado/procesos/imagenb64.php [L,QSA,NC]
+RewriteRule ^vrfcaptcha$ privado/procesos/vrfcaptcha.php [L,QSA,NC]
+RewriteRule ^comentarios$ privado/procesos/comentarios.php [L,QSA,NC]
+RewriteRule ^mascomentarios$ privado/procesos/mascomentarios.php [L,QSA,NC]
+RewriteRule ^seleccionar$ privado/procesos/seleccionar.php [L,QSA,NC]
+RewriteRule ^info_tbl$ privado/procesos/info_tbl.php [L,QSA,NC]
+RewriteRule ^buscar$ privado/procesos/buscar.php [L,QSA,NC]
+RewriteRule ^mensajeriapv$ privado/procesos/mensajeriapv.php [L,QSA,NC]
+RewriteRule ^mensajeria$ privado/procesos/mensajeria.php [L,QSA,NC]
+RewriteRule ^archivoct$ privado/procesos/archivoct.php [L,QSA,NC]
+RewriteRule ^descarga_archivo$ privado/procesos/descarga_archivo.php [L,QSA,NC]
+RewriteRule ^editarperfilbk$ privado/procesos/editarperfilbk.php [L,QSA,NC]
+RewriteRule ^editarperfil$ privado/procesos/editarperfil.php [L,QSA,NC]
+RewriteRule ^iniciado$ privado/procesos/iniciado.php [L,QSA,NC]
+RewriteRule ^cerraranteriores$ privado/procesos/cerraranteriores.php [L,QSA,NC]
+
+##PARA TODOS LOS PRODUCTOS
 RewriteRule ^(\w+)/?$ publico/cargarp.php?nombre=$1
+
 #RewriteRule ^inicio$ publico/index.php [L,QSA,NC]
 #RewriteRule ^publico/index.php$ inicio.php [L,QSA,NC]
-RewriteRule ^canvas.php$ publico/canvas.php [L,QSA,NC] #porGabrielxd
-RewriteRule ^banner.php$ publico/banner.php [L,QSA,NC]
+#RewriteRule ^banner.php$ publico/banner.php [L,QSA,NC]
 #RewriteRule ^kids.php$ publico/kids.php [L,QSA,NC]
 #RewriteRule ^favoritos_cliente.php$ publico/favoritos_cliente.php [L,QSA,NC]
 #RewriteRule ^misfacturas.php$ publico/misfacturas.php [L,QSA,NC]
 #RewriteRule ^error.html$ publico/error.html [L,QSA,NC]
-RewriteRule ^comentarios.php$ publico/mascomentarios.php [L,QSA,NC]
-RewriteRule ^prodp.php$ publico/cargarp.php [L,QSA,NC]
-##PARA EL PRIVADO
-RewriteRule ^private.php$ privado/index.php [L,QSA,NC]
-RewriteRule ^admin.php$ privado/admin.php [L,QSA,NC]
-RewriteRule ^carritos.php$ privado/carritos.php [L,QSA,NC]
-RewriteRule ^configuraciones.php$ privado/configuraciones.php [L,QSA,NC]
-RewriteRule ^contactos.php$ privado/contactos_proveedor.php [L,QSA,NC]
-RewriteRule ^cotizaciones.php$ privado/cotizaciones.php [L,QSA,NC]
-RewriteRule ^equipos.php$ privado/equipos.php [L,QSA,NC]
-RewriteRule ^empresa.php$ privado/empresa.php [L,QSA,NC]
-RewriteRule ^fotos.php$ privado/fotos_productos.php [L,QSA,NC]
-RewriteRule ^mobra.php$ privado/mano_obra.php [L,QSA,NC]
-RewriteRule ^productos.php$ privado/productos.php [L,QSA,NC]
-RewriteRule ^usuarios.php$ privado/usuarios.php [L,QSA,NC]
-RewriteRule ^tiposproductos.php$ privado/tipo_productos.php [L,QSA,NC]
-RewriteRule ^tiposcontactos.php$ privado/tipo_contactos.php [L,QSA,NC]
-RewriteRule ^permisos.php$ privado/permisos.php [L,QSA,NC]
-RewriteRule ^medidas.php$ privado/medidas_producto.php [L,QSA,NC]
-RewriteRule ^proveedores.php$ privado/proveedores.php [L,QSA,NC]
-RewriteRule ^redessociales.php$ privado/redessociales.php [L,QSA,NC]
-RewriteRule ^edituser.php$ privado/edituser.php [L,QSA,NC]
-RewriteRule ^perfil.php$ privado/perfil.php [L,QSA,NC]
-RewriteRule ^comentarios.php$ privado/comentarios.php [L,QSA,NC]
-RewriteRule ^primero.php$ privado/primero.php [L,QSA,NC]
-RewriteRule ^recuperar.php$ privado/recuperar.php [L,QSA,NC]
+
 ##SE EVITA LISTAR LAS CARPETAS
 Options -Indexes
-#ErrorDocument 404 /ptcprint/publico/error.php
-#ErrorDocument 403 /ptcprint/publico/error.php
+ErrorDocument 404 /ptcprint/publico/error.php
+ErrorDocument 403 /ptcprint/publico/error.php

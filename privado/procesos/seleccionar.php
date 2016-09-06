@@ -134,7 +134,8 @@
 		$sql = "SELECT * FROM tipos_producto WHERE id_tipo_producto =$id";
 		foreach ($con->query($sql) as $datos) {
 			$valores = array( //aqui se asigna el orden para utilizar luego
-				0 => $datos['nombre_tipo_producto']
+				0 => $datos['nombre_tipo_producto'],
+				1 => $datos['icono_producto']
 			);
 		}
 		echo json_encode($valores);

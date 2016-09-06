@@ -1,7 +1,7 @@
 <?php
 	session_start();
 	if($_SESSION['autenticadop'] != 'si'){		
-		header('Location: ../privado/index.php');
+		header('Location: administracion');
 		session_destroy();
 	}
 	else{

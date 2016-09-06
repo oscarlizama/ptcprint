@@ -1,6 +1,10 @@
 <?php 
   include '../privado/procesos/conexion.php';
   include '../privado/procesos/lifetime.php';
+  if($_SESSION['autenticado'] != 'si'){   
+    header('Location: inicio');
+    session_destroy();
+  }
 ?>
 <html lang="es">
 <head>
@@ -186,7 +190,7 @@
             $tablas_div .= "<div id='nuevo' class='tab-pane fade in active'>";
               $tablas_div .= "<div class='col-lg-6'>";
                 $tablas_div .= "<div class='col-lg-12'>";
-                  $tablas_div .= "<form action='privado/procesos/mensajeria.php' method='post' enctype='multipart/form-data'>";
+                  $tablas_div .= "<form action='mensajeria' method='post' enctype='multipart/form-data'>";
                   //SE CREA LOS INPUTS NECESARIOS PARA EL USO DE LA MENSAJERIA
                     $tablas_div .= "<input class='col-lg-12 form-control' placeholder='Asunto' name='asunto' autocomplete='off'>";
                     $tablas_div .= "<input class='col-lg-12 form-control hide disabled' name='id_cl' value=$id_cl>";

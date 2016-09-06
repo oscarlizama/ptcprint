@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 21-08-2016 a las 01:33:28
+-- Tiempo de generación: 06-09-2016 a las 01:49:39
 -- Versión del servidor: 10.1.10-MariaDB
 -- Versión de PHP: 5.6.19
 
@@ -75,6 +75,7 @@ CREATE TABLE `clientes` (
   `apellido_cliente` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `correo_cliente` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
   `clave_cliente` varchar(150) COLLATE utf8_unicode_ci NOT NULL,
+  `fecha_ingreso` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `estado_cliente` tinyint(1) NOT NULL DEFAULT '1',
   `estado_sesion` varchar(50) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -90,7 +91,8 @@ CREATE TABLE `comentarios` (
   `id_cliente` int(10) UNSIGNED NOT NULL,
   `id_producto` int(10) UNSIGNED NOT NULL,
   `comentario` varchar(256) COLLATE utf8_unicode_ci NOT NULL,
-  `calificacion` decimal(3,2) UNSIGNED NOT NULL
+  `calificacion` decimal(3,2) UNSIGNED NOT NULL,
+  `fecha_comentario` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -130,20 +132,8 @@ CREATE TABLE `contactos_proveedor` (
 CREATE TABLE `conversaciones` (
   `id_conversacion` int(11) UNSIGNED NOT NULL,
   `asunto` varchar(20) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'Ninguno',
-  `id_cliente` int(11) UNSIGNED NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `detalles_factura`
---
-
-CREATE TABLE `detalles_factura` (
-  `id_detalle` int(10) UNSIGNED NOT NULL,
-  `id_factura` int(10) UNSIGNED NOT NULL,
-  `id_carrito` int(10) UNSIGNED NOT NULL,
-  `precio_registro` decimal(6,2) UNSIGNED NOT NULL DEFAULT '0.00'
+  `id_cliente` int(11) UNSIGNED NOT NULL,
+  `fecha_conversacion` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -172,33 +162,6 @@ CREATE TABLE `equipos` (
   `equipo` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `costo_click_equipo` decimal(6,2) UNSIGNED NOT NULL DEFAULT '0.00',
   `estado_equipo` tinyint(1) NOT NULL DEFAULT '1'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `facturas`
---
-
-CREATE TABLE `facturas` (
-  `id_factura` int(10) UNSIGNED NOT NULL,
-  `id_cliente` int(10) UNSIGNED NOT NULL,
-  `subtotal` decimal(6,2) UNSIGNED NOT NULL DEFAULT '0.00',
-  `fecha` date NOT NULL,
-  `descuento` int(10) UNSIGNED NOT NULL,
-  `total` decimal(6,2) UNSIGNED NOT NULL DEFAULT '0.00'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `favoritos`
---
-
-CREATE TABLE `favoritos` (
-  `id_favorito` int(10) UNSIGNED NOT NULL,
-  `id_cliente` int(10) UNSIGNED NOT NULL,
-  `id_producto` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -305,7 +268,6 @@ CREATE TABLE `permisos` (
 CREATE TABLE `productos` (
   `id_producto` int(10) UNSIGNED NOT NULL,
   `nombre_producto` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `existencias` int(4) UNSIGNED NOT NULL DEFAULT '0',
   `calificacion_promedio` decimal(3,2) UNSIGNED NOT NULL DEFAULT '0.00',
   `descripcion_producto` varchar(256) COLLATE utf8_unicode_ci NOT NULL,
   `id_tipo_producto` int(10) UNSIGNED NOT NULL,
@@ -323,20 +285,6 @@ CREATE TABLE `proveedores` (
   `proveedor` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `direccion_proveedor` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
   `estado_proveedor` tinyint(1) NOT NULL DEFAULT '1'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `punto_club`
---
-
-CREATE TABLE `punto_club` (
-  `id_punto_club` int(10) UNSIGNED NOT NULL,
-  `id_cliente` int(10) UNSIGNED NOT NULL,
-  `codigo_tarjeta` int(8) UNSIGNED NOT NULL,
-  `sellos` int(2) UNSIGNED NOT NULL DEFAULT '0',
-  `carne_estudiante` int(20) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -386,6 +334,7 @@ CREATE TABLE `tipos_contacto` (
 CREATE TABLE `tipos_producto` (
   `id_tipo_producto` int(10) UNSIGNED NOT NULL,
   `nombre_tipo_producto` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `icono_producto` varchar(80) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'Ninguno',
   `estado_tipo_producto` tinyint(1) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -463,14 +412,6 @@ ALTER TABLE `conversaciones`
   ADD KEY `id_cliente` (`id_cliente`);
 
 --
--- Indices de la tabla `detalles_factura`
---
-ALTER TABLE `detalles_factura`
-  ADD PRIMARY KEY (`id_detalle`),
-  ADD KEY `id_factura` (`id_factura`),
-  ADD KEY `id_carrito` (`id_carrito`);
-
---
 -- Indices de la tabla `empresa`
 --
 ALTER TABLE `empresa`
@@ -481,21 +422,6 @@ ALTER TABLE `empresa`
 --
 ALTER TABLE `equipos`
   ADD PRIMARY KEY (`id_equipo`);
-
---
--- Indices de la tabla `facturas`
---
-ALTER TABLE `facturas`
-  ADD PRIMARY KEY (`id_factura`),
-  ADD KEY `id_cliente` (`id_cliente`);
-
---
--- Indices de la tabla `favoritos`
---
-ALTER TABLE `favoritos`
-  ADD PRIMARY KEY (`id_favorito`),
-  ADD KEY `id_cliente` (`id_cliente`),
-  ADD KEY `id_producto` (`id_producto`);
 
 --
 -- Indices de la tabla `fotos_productos`
@@ -551,15 +477,6 @@ ALTER TABLE `productos`
 ALTER TABLE `proveedores`
   ADD PRIMARY KEY (`id_proveedor`),
   ADD UNIQUE KEY `proveedor` (`proveedor`);
-
---
--- Indices de la tabla `punto_club`
---
-ALTER TABLE `punto_club`
-  ADD PRIMARY KEY (`id_punto_club`),
-  ADD UNIQUE KEY `codigo_tarjeta` (`codigo_tarjeta`),
-  ADD UNIQUE KEY `carne-estudiante` (`carne_estudiante`),
-  ADD KEY `id_cliente` (`id_cliente`);
 
 --
 -- Indices de la tabla `recursos`
@@ -636,11 +553,6 @@ ALTER TABLE `contactos_proveedor`
 ALTER TABLE `conversaciones`
   MODIFY `id_conversacion` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT de la tabla `detalles_factura`
---
-ALTER TABLE `detalles_factura`
-  MODIFY `id_detalle` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
---
 -- AUTO_INCREMENT de la tabla `empresa`
 --
 ALTER TABLE `empresa`
@@ -650,16 +562,6 @@ ALTER TABLE `empresa`
 --
 ALTER TABLE `equipos`
   MODIFY `id_equipo` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT de la tabla `facturas`
---
-ALTER TABLE `facturas`
-  MODIFY `id_factura` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT de la tabla `favoritos`
---
-ALTER TABLE `favoritos`
-  MODIFY `id_favorito` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `fotos_productos`
 --
@@ -700,11 +602,6 @@ ALTER TABLE `productos`
 --
 ALTER TABLE `proveedores`
   MODIFY `id_proveedor` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT de la tabla `punto_club`
---
-ALTER TABLE `punto_club`
-  MODIFY `id_punto_club` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `recursos`
 --
@@ -768,26 +665,6 @@ ALTER TABLE `conversaciones`
   ADD CONSTRAINT `fk_clientes_conversaciones` FOREIGN KEY (`id_cliente`) REFERENCES `clientes` (`id_cliente`);
 
 --
--- Filtros para la tabla `detalles_factura`
---
-ALTER TABLE `detalles_factura`
-  ADD CONSTRAINT `FK_facturas_detalles-factura` FOREIGN KEY (`id_factura`) REFERENCES `facturas` (`id_factura`),
-  ADD CONSTRAINT `fk_carritos_detalles-factura` FOREIGN KEY (`id_carrito`) REFERENCES `carritos` (`id_carrito`);
-
---
--- Filtros para la tabla `facturas`
---
-ALTER TABLE `facturas`
-  ADD CONSTRAINT `fk_clientes_facturas` FOREIGN KEY (`id_cliente`) REFERENCES `clientes` (`id_cliente`);
-
---
--- Filtros para la tabla `favoritos`
---
-ALTER TABLE `favoritos`
-  ADD CONSTRAINT `fk_clientes_favoritos` FOREIGN KEY (`id_cliente`) REFERENCES `clientes` (`id_cliente`),
-  ADD CONSTRAINT `fk_productos_favoritos` FOREIGN KEY (`id_producto`) REFERENCES `productos` (`id_producto`);
-
---
 -- Filtros para la tabla `fotos_productos`
 --
 ALTER TABLE `fotos_productos`
@@ -818,12 +695,6 @@ ALTER TABLE `productos`
   ADD CONSTRAINT `fk-tipo-productos-productos` FOREIGN KEY (`id_tipo_producto`) REFERENCES `tipos_producto` (`id_tipo_producto`);
 
 --
--- Filtros para la tabla `punto_club`
---
-ALTER TABLE `punto_club`
-  ADD CONSTRAINT `fk_clientes_punto-club` FOREIGN KEY (`id_cliente`) REFERENCES `clientes` (`id_cliente`);
-
---
 -- Filtros para la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
@@ -832,4 +703,3 @@ ALTER TABLE `usuarios`
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-INSERT INTO `permisos` (`id_permiso`, `nombre_permiso`, `tbl_configuraciones`, `tbl_usuarios`, `tbl_permisos`, `tbl_fotospr`, `tbl_clientes`, `tbl_informacion_corporativa`, `tbl_redes_sociales`, `tbl_proveedores`, `tbl_facturacion`, `tbl_productos`, `tbl_medidas_productos`, `tbl_tipo_contactos`, `tbl_tipo_productos`, `tbl_mano_obra`, `tbl_contactos_proveedor`, `tbl_equipos`, `estado_permiso`) VALUES (NULL, 'Administrador', '7', '7', '7', '7', '7', '7', '7', '7', '7', '7', '7', '7', '7', '7', '7', '7', '1');

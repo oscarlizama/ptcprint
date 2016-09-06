@@ -38,11 +38,64 @@
 				<div class="col-lg-6 col-md-6">
 					<p id="id_reg" class="hide"></p>
 					<input type="text" class="hide omitir" value="8" id="tbl" autocomplete='off'>
-					<label for="" class="labels">Nombre del Producto</label>
+					<label for="" class="labels">Nombre de del tipo de producto</label>
                     <input type="text" class="form-control input" id="nombre" autocomplete='off'>
+                    <input type="text" class="hide" value="" id="icono">
                     <br>
 				</div>
 				<div class="col-lg-6 col-md-6">
+                    <div class="panel panel-default">
+						<div class="panel-heading">
+							Selecciona un icono la producto
+						</div>
+                    	<div class="panel-body">
+                    		<div class="row">
+                    			<div class="col-lg-2">
+                    				<img src="imgmenu/ads.png" alt="" class="imgmenu" id="1">
+                    			</div>
+                    			<div class="col-lg-2">
+                    				<img src="imgmenu/balloons.png" alt="" class="imgmenu" id="2">
+                    			</div>
+                    			<div class="col-lg-2">
+                    				<img src="imgmenu/clothes.png" alt="" class="imgmenu" id="3">
+                    			</div>
+                    			<div class="col-lg-2">
+                    				<img src="imgmenu/tarjetas.png" alt="" class="imgmenu" id="4">
+                    			</div>
+                    			<div class="col-lg-2">
+                    				<img src="imgmenu/billboard.png" alt="" class="imgmenu" id="5">
+                    			</div>
+                    			<div class="col-lg-2">
+                    				<img src="imgmenu/birthday-card.png" alt="" class="imgmenu" id="6">
+                    			</div>
+                    			<div class="col-lg-2">
+                    				<br>
+                    				<img src="imgmenu/door.png" alt="" class="imgmenu" id="7">
+                    			</div>
+                    			<div class="col-lg-2">
+                    				<br>
+                    				<img src="imgmenu/menu.png" alt="" class="imgmenu" id="8">
+                    			</div>
+                    			<div class="col-lg-2">
+                    				<br>
+                    				<img src="imgmenu/mode-circular-button.png" alt="" class="imgmenu" id="9">
+                    			</div>
+                    			<div class="col-lg-2">
+                    				<br>
+                    				<img src="imgmenu/rings.png" alt="" class="imgmenu" id="10">
+                    			</div>
+                    			<div class="col-lg-2">
+                    				<br>
+                    				<img src="imgmenu/wanted.png" alt="" class="imgmenu" id="11">
+                    			</div>
+                    			<div class="col-lg-2">
+                    				<br>
+                    				<img src="imgmenu/round-add-button.png" alt="" class="imgmenu" id="12">
+                    			</div>
+                    		</div>
+                    	</div>
+                    </div>
+                    <br>
 				</div>
 				<div class="col-lg-12">
 					<?php  

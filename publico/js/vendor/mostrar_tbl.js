@@ -44,11 +44,11 @@ function tbl_usuarios(ruta){
 	var id_rg = $("#id_reglog").text();
 	var texto = $("#buscar").val();
 	if (ruta == 1) {
-		url = 'privado/procesos/info_tbl.php';
+		url = 'info_tbl';
 		parametros = {"sql": 1,"id_reg":id_rg};
 	}
 	if (ruta == 2){
-		url = 'privado/procesos/buscar.php';	
+		url = 'buscar';	
 		parametros = {"sql": 1, "buscar": texto,"id_reg":id_rg};
 	}
 	$.ajax({
@@ -95,11 +95,11 @@ function tbl_permisos(ruta){
 	var parametros = "";
 	var texto = $("#buscar").val();
 	if (ruta == 1) {
-		url = 'privado/procesos/info_tbl.php';
+		url = 'info_tbl';
 		parametros = {"sql": 2};
 	}
 	if (ruta == 2){
-		url = 'privado/procesos/buscar.php';	
+		url = 'buscar';	
 		parametros = {"sql": 2, "buscar": texto};
 	}
 	$.ajax({
@@ -142,11 +142,11 @@ function tbl_configuraciones(ruta){
 	var parametros = "";
 	var texto = $("#buscar").val();
 	if (ruta == 1) {
-		url = 'privado/procesos/info_tbl.php';
+		url = 'info_tbl';
 		parametros = {"sql": 15};
 	}
 	if (ruta == 2){
-		url = 'privado/procesos/buscar.php';	
+		url = 'buscar';	
 		parametros = {"sql": 15, "buscar": texto};
 	}
 		$.ajax({
@@ -193,11 +193,11 @@ function tbl_contactos_proveedor(ruta){
 	var parametros = "";
 	var texto = $("#buscar").val();
 	if (ruta == 1) {
-		url = 'privado/procesos/info_tbl.php';
+		url = 'info_tbl';
 		parametros = {"sql": 17};
 	}
 	if (ruta == 2){
-		url = 'privado/procesos/buscar.php';	
+		url = 'buscar';	
 		parametros = {"sql": 17, "buscar": texto};
 	}
 	$.ajax({
@@ -244,11 +244,11 @@ function tbl_tipo_contacto(ruta){
 	var parametros = "";
 	var texto = $("#buscar").val();
 	if (ruta == 1) {
-		url = 'privado/procesos/info_tbl.php';
+		url = 'info_tbl';
 		parametros = {"sql": 16};
 	}
 	if (ruta == 2){
-		url = 'privado/procesos/buscar.php';	
+		url = 'buscar';	
 		parametros = {"sql": 16, "buscar": texto};
 	}
 		$.ajax({
@@ -295,11 +295,11 @@ function tbl_tipo_productos(ruta){  //recargar la tabla del CRUD de tipo product
 	var parametros = "";
 	var texto = $("#buscar").val();
 	if (ruta == 1) {
-		url = 'privado/procesos/info_tbl.php';
+		url = 'info_tbl';
 		parametros = {"sql": 8};
 	}
 	if (ruta == 2){
-		url = 'privado/procesos/buscar.php';	
+		url = 'buscar';	
 		parametros = {"sql": 8, "buscar": texto};
 	}
 		$.ajax({
@@ -344,11 +344,11 @@ function tbl_productos(ruta){  //recargar la tabla del CRUD de productos
 	var parametros = "";
 	var texto = $("#buscar").val();
 	if (ruta == 1) {
-		url = 'privado/procesos/info_tbl.php';
+		url = 'info_tbl';
 		parametros = {"sql": 7};
 	}
 	if (ruta == 2){
-		url = 'privado/procesos/buscar.php';	
+		url = 'buscar';	
 		parametros = {"sql": 7, "buscar": texto};
 	}
 		$.ajax({
@@ -395,11 +395,11 @@ function tbl_medidas_productos(ruta){  //recargar la tabla del CRUD de tipo prod
 	var parametros = "";
 	var texto = $("#buscar").val();
 	if (ruta == 1) {
-		url = 'privado/procesos/info_tbl.php';
+		url = 'info_tbl';
 		parametros = {"sql": 9};
 	}
 	if (ruta == 2){
-		url = 'privado/procesos/buscar.php';	
+		url = 'buscar';	
 		parametros = {"sql": 9, "buscar": texto};
 	}
 		$.ajax({
@@ -446,11 +446,11 @@ function tbl_fotos_productos(ruta){  //recargar la tabla del CRUD de fotos de pr
 	var parametros = "";
 	var texto = $("#buscar").val();
 	if (ruta == 1) {
-		url = 'privado/procesos/info_tbl.php';
+		url = 'info_tbl';
 		parametros = {"sql": 10};
 	}
 	if (ruta == 2){
-		url = 'privado/procesos/buscar.php';	
+		url = 'buscar';	
 		parametros = {"sql": 10, "buscar": texto};
 	}
 		$.ajax({
@@ -497,11 +497,11 @@ function tbl_proveedor(ruta){
 	var parametros = "";
 	var texto = $("#buscar").val();
 	if (ruta == 1) {
-		url = 'privado/procesos/info_tbl.php';
+		url = 'info_tbl';
 		parametros = {"sql": 21};
 	}
 	if (ruta == 2){
-		url = 'privado/procesos/buscar.php';	
+		url = 'buscar';	
 		parametros = {"sql": 21, "buscar": texto};
 	}
 		$.ajax({
@@ -547,11 +547,11 @@ function tbl_equipos(ruta){
 	var parametros = "";
 	var texto = $("#buscar").val();
 	if (ruta == 1) {
-		url = 'privado/procesos/info_tbl.php';
+		url = 'info_tbl';
 		parametros = {"sql": 22};
 	}
 	if (ruta == 2){
-		url = 'privado/procesos/buscar.php';	
+		url = 'buscar';	
 		parametros = {"sql": 22, "buscar": texto};
 	}
 		$.ajax({
@@ -597,11 +597,11 @@ function tbl_mano_obra(ruta){
 	var parametros = "";
 	var texto = $("#buscar").val();
 	if (ruta == 1) {
-		url = 'privado/procesos/info_tbl.php';
+		url = 'info_tbl';
 		parametros = {"sql": 23};
 	}
 	if (ruta == 2){
-		url = 'privado/procesos/buscar.php';	
+		url = 'buscar';	
 		parametros = {"sql": 23, "buscar": texto};
 	}
 		$.ajax({

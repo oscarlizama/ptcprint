@@ -6,7 +6,7 @@ $(function(){
 
         action: '/', // upload url
 
-        allow : '*.(jpg|gif|png)', // allow only images
+        allow : '*.(jpg|gif|png|pdf)', // allow only images
 
         loadstart: function() {
             bar.css("width", "0%").text("0%");

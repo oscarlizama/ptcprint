@@ -89,4 +89,10 @@ function validar_clave($clave,&$error_clave){
 		        }	      
 		}
 	}
+	function validarFecha($fecha){
+		if (preg_match("/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/",$fecha))
+	        return true;
+	    else
+	        return false;
+	}
 ?>

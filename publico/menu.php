@@ -1,6 +1,8 @@
 <?php 
    require_once "../privado/procesos/logueado.php";
+   require_once "../privado/procesos/conexion.php";
 ?>
+<p class="hide" id="idclmj"><?php echo $id_cl; ?></p>
 <!--EL MENU-->
 <div class="container-fluid">
 	<div class="row">
@@ -15,12 +17,42 @@
 				<div class="movildiv"></div>
             <div class="itemm p">
                <a href="inicio">
-                  <div class="glyph"><div class="glyph-icon flaticon-paint-brush"></div>
+                  <div class="glyph"><div class="glyph-icon flaticon-simple-house-thin"></div>
                        <div class="class-name">Inicio</div>
                   </div>
                </a>
             </div>
+            <?php 
+              $menu = "";
+              $sqlmenu = "SELECT p.id_tipo_producto, tp.nombre_tipo_producto, tp.icono_producto FROM productos p, tipos_producto tp WHERE tp.id_tipo_producto = p.id_tipo_producto AND tp.estado_tipo_producto=1 GROUP BY p.id_tipo_producto;";
+              $stmtm = $con->prepare($sqlmenu);
+              $stmtm->execute();
+              while ($menus = $stmtm->fetch(PDO::FETCH_BOTH)) {
+                $menu .= "<div class='itemm p'>";
+                  $menu .= "<a href='".strtolower($menus[1])."''>";
+                    if ($menus[2] != "Ninguno") {
+                      ///echo $menus[2];
+                      $menu .= "<div class='glyph'><div class='glyph-icon $menus[2]'></div>";
+                        $menu .= "<div class='class-name'>".$menus[1]."</div>";
+                      $menu .= "</div>";
+                    }else{
+                      $menu .= "<div class='glyph'>";
+                        $menu .= "<div class='class-name name-solo'>".$menus[1]."</div>";
+                      $menu .= "</div>";
+                    }
+                  $menu .= "</a>";
+                $menu .= "</div>";
+              }
+              print($menu);
+            ?>
             <div class="itemm p">
+               <a href="canvas">
+                  <div class="glyph"><div class="glyph-icon flaticon-multimedia"></div>
+                       <div class="class-name">Edición</div>
+                  </div>
+               </a>
+            </div>
+            <!--<div class="itemm p">
                <a href="#">
                   <div class="glyph"><div class="glyph-icon flaticon-ads"></div>
                        <div class="class-name">Banner</div>
@@ -41,6 +73,13 @@
                   </div>
                </a>
             </div>
+            <div class="itemm p">
+               <a href="#">
+                  <div class="glyph">
+                       <div class="class-name name-solo">Tarjetas</div>
+                  </div>
+               </a>
+            </div>-->
             <?php  
                $loginop = "";
                if ($nombre == "Iniciar sesión") {
@@ -129,19 +168,56 @@
                </a>
 				</div>
 				<div class="itemm login" id="volver">
-					<div class="glyph"><div class="glyph-icon flaticon-upload"></div>
+					<div class="glyph"><div class="glyph-icon flaticon-back-arrow-circular-symbol"></div>
 				        <div class="class-name">Volver</div>
 					</div>
 				</div>
-
+        
 				<div class="col-sm-12 opm">
-               <div class="itemm-m pmov">
-                  <a href="inicio">
-                     <div class="glyph"><div class="glyph-icon flaticon-paint-brush"></div>
-                          <div class="class-name">Inicio</div>
-                     </div>
-                  </a>
-               </div>
+          <div class="itemm-m pmov">
+            <a href="inicio">
+              <div class="glyph"><div class="glyph-icon flaticon-simple-house-thin"></div>
+                <div class="class-name">Inicio</div>
+              </div>
+            </a>
+          </div>
+          <?php 
+            $menu_movil = "";
+            $sqlmenu = "SELECT p.id_tipo_producto, tp.nombre_tipo_producto, tp.icono_producto FROM productos p, tipos_producto tp WHERE tp.id_tipo_producto = p.id_tipo_producto AND tp.estado_tipo_producto=1 GROUP BY p.id_tipo_producto;";
+            $stmtm = $con->prepare($sqlmenu);
+            $stmtm->execute();
+            while ($menumvd = $stmtm->fetch(PDO::FETCH_BOTH)) {
+              $menu_movil .= "<div class='itemm-m pmov'>";
+                $menu_movil .= "<a href='".strtolower($menumvd[1])."''>";
+                if ($menumvd[2] != "Ninguno") {
+                  $menu_movil .= "<div class='glyph'><div class='glyph-icon $menumvd[2]'></div>";
+                    $menu_movil .= "<div class='class-name'>".$menumvd[1]."</div>";
+                  $menu_movil .= "</div>";
+                }else{
+                  $menu_movil .= "<div class='glyph'><div class='glyph-icon flaticon-mode-circular-button'></div>";
+                    $menu_movil .= "<div class='class-name'>".$menumvd[1]."</div>";
+                  $menu_movil .= "</div>";
+                }
+                $menu_movil .= "</a>";
+              $menu_movil .= "</div>";
+            }
+            print($menu_movil);
+          ?>
+          <div class="itemm-m pmov">
+            <a href="canvas">
+              <div class="glyph"><div class="glyph-icon flaticon-multimedia"></div>
+                <div class="class-name">Edición</div>
+              </div>
+            </a>
+          </div>
+          <!--
+          <div class="itemm-m pmov">
+            <a href="inicio">
+              <div class="glyph"><div class="glyph-icon flaticon-paint-brush"></div>
+                <div class="class-name">Inicio</div>
+              </div>
+            </a>
+          </div>
 					<div class="itemm-m pmov">
 						<div class="glyph"><div class="glyph-icon flaticon-ads"></div>
 					        <div class="class-name">Banners</div>
@@ -167,6 +243,11 @@
 					        <div class="class-name">Edición</div>
 						</div>
 					</div>
+          <div class="itemm-m pmov">
+            <div class="glyph"><div class="glyph-icon"></div>
+                  <div class="class-name namemv-solo">Edición</div>
+            </div>
+          </div>-->
                <?php 
                   if ($nombre == "Iniciar sesión") {
                      $loginm = "";
@@ -230,7 +311,7 @@
                   </a>
                </div>
 					<div class="itemm-m loginmov hide" id="volver-mov">
-						<div class="glyph"><div class="glyph-icon flaticon-upload"></div>
+						<div class="glyph"><div class="glyph-icon flaticon-back-arrow-circular-symbol"></div>
 					        <div class="class-name">Volver</div>
 						</div>
 					</div>

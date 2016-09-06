@@ -1,6 +1,5 @@
 <?php 
 	require_once 'validaciones.php';
-	
 	$valores = $_POST['valores'];
 	if($_POST['tabla'] == 1){
 		$where = "id_usuario=?";
@@ -271,8 +270,7 @@
 		if ($_POST['accion'] != 3 && (
 
 			!validarNombrePersona($valores[0]) ||
-			!validarTexto($valores[1]) ||
-			!validarTexto($valores[2])
+			!validarTexto($valores[1]) 
 			)) exit("invalid");
 
 		// Validar ID, cuando no inserte (cuando modifique o elimine, solo en esos casos se pasa el id)
@@ -337,12 +335,13 @@
 		$where = "id_tipo_producto=?";
 		$tabla = 'tipos_producto';
 		$estado = 'estado_tipo_producto=0';
-		$campos_tabla = array('nombre_tipo_producto'); //orden segun diseño en html
+		$campos_tabla = array('nombre_tipo_producto',"icono_producto"); //orden segun diseño en html
 		// Verificar que cada campo (excepto el ID) sea valido
 		// Solo cuando no elimine, si elimino, no me importa como sean los campos
 		if ($_POST['accion'] != 3 && (
 
-			!validarNombrePersona($valores[0])
+			!validarNombrePersona($valores[0]) ||
+			!validarTexto($valores[1])
 
 			)) exit("invalid");
 

@@ -232,3 +232,6 @@ div.scroll-div{
     max-height: 70px;
     min-height: 70px;   
 }
+.imgmenu{
+    cursor: pointer;
+}

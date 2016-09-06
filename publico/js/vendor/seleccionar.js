@@ -2,7 +2,7 @@
 function seleccionar_usuario(id){
 	//swal("¡AHORA SE CARGA!", "El seleccionado es " + id, "success");
 	$('.input').val();
-	var url = 'privado/procesos/seleccionar.php';
+	var url = 'seleccionar';
 	var parametros = {"id": id,"tbl": 1};
 		$.ajax({
 		type:'POST',
@@ -24,7 +24,7 @@ function seleccionar_usuario(id){
 function seleccionar_configuracion(id){
 	//swal("¡AHORA SE CARGA!", "El seleccionado es " + id, "success");
 	$('.input').val();
-	var url = 'privado/procesos/seleccionar.php';
+	var url = 'seleccionar';
 	var parametros = {"id": id,"tbl": 15};
 		$.ajax({
 		type:'POST',
@@ -46,7 +46,7 @@ function seleccionar_configuracion(id){
 function seleccionar_contactos_proveedor(id){
 	//swal("¡AHORA SE CARGA!", "El seleccionado es " + id, "success");
 	$('.input').val();
-	var url = 'privado/procesos/seleccionar.php';
+	var url = 'seleccionar';
 	var parametros = {"id": id,"tbl": 17};
 		$.ajax({
 		type:'POST',
@@ -67,7 +67,7 @@ function seleccionar_contactos_proveedor(id){
 function seleccionar_tipo_contacto(id){
 	//swal("¡AHORA SE CARGA!", "El seleccionado es " + id, "success");
 	$('.input').val();
-	var url = 'privado/procesos/seleccionar.php';
+	var url = 'seleccionar';
 	var parametros = {"id": id,"tbl": 16};
 		$.ajax({
 		type:'POST',
@@ -89,7 +89,7 @@ function seleccionar_tipo_contacto(id){
 function seleccionar_red(id){
 	//swal("¡AHORA SE CARGA!", "El seleccionado es " + id, "success");
 	$('.input').val();
-	var url = 'privado/procesos/seleccionar.php';
+	var url = 'seleccionar';
 	var parametros = {"id":id,"tbl":20};
 		$.ajax({
 		type:'POST',
@@ -111,7 +111,7 @@ function seleccionar_red(id){
 function seleccionar_producto(id){
 	//swal("¡AHORA SE CARGA!", "El seleccionado es " + id, "success");
 	$('.input').val();
-	var url = 'privado/procesos/seleccionar.php';
+	var url = 'seleccionar';
 	var parametros = {"id": id,"tbl": 7};
 		$.ajax({
 		type:'POST',
@@ -134,7 +134,7 @@ function seleccionar_producto(id){
 function seleccionar_tipo_producto(id){
 	//swal("¡AHORA SE CARGA!", "El seleccionado es " + id, "success");
 	$('.input').val();
-	var url = 'privado/procesos/seleccionar.php';
+	var url = 'seleccionar';
 	var parametros = {"id": id,"tbl": 8};
 		$.ajax({
 		type:'POST',
@@ -144,7 +144,43 @@ function seleccionar_tipo_producto(id){
 				var datos = eval(valores);
 				$('#id_reg').text(id);
 				$('#nombre').val(datos[0]);
-
+				$(".imgmenu").parent(".col-lg-2").css({"border":"none"});
+				if (datos[1] == "flaticon-ads") {
+					$(".imgmenu[id=1]").parent(".col-lg-2").css({"border":"2px solid #e91e63"});
+				}
+				if (datos[1] == "flaticon-balloons") {
+					$(".imgmenu[id=2]").parent(".col-lg-2").css({"border":"2px solid #e91e63"});
+				}
+				if (datos[1] == "flaticon-clothes") {
+					$(".imgmenu[id=3]").parent(".col-lg-2").css({"border":"2px solid #e91e63"});
+				}
+				if (datos[1] == "flaticon-two-presentation-cards-with-text-and-photograph") {
+					$(".imgmenu[id=4]").parent(".col-lg-2").css({"border":"2px solid #e91e63"});
+				}
+				if (datos[1] == "flaticon-billboard") {
+					$(".imgmenu[id=5]").parent(".col-lg-2").css({"border":"2px solid #e91e63"});
+				}
+				if (id == "flaticon-birthday-card") {
+					$(".imgmenu[id=6]").parent(".col-lg-2").css({"border":"2px solid #e91e63"});
+				}
+				if (id == "flaticon-door") {
+					$(".imgmenu[id=7]").parent(".col-lg-2").css({"border":"2px solid #e91e63"});
+				}
+				if (id == "flaticon-menu") {
+					$(".imgmenu[id=8]").parent(".col-lg-2").css({"border":"2px solid #e91e63"});
+				}
+				if (id == "flaticon-mode-circular-button") {
+					$(".imgmenu[id=9]").parent(".col-lg-2").css({"border":"2px solid #e91e63"});
+				}
+				if (id == "flaticon-rings") {
+					$(".imgmenu[id=10]").parent(".col-lg-2").css({"border":"2px solid #e91e63"});
+				}
+				if (id == "flaticon-wanted") {
+					$(".imgmenu[id=11]").parent(".col-lg-2").css({"border":"2px solid #e91e63"});
+				}
+				if (id == "flaticon-round-add-button") {
+					$(".imgmenu[id=12]").parent(".col-lg-2").css({"border":"2px solid #e91e63"});
+				}
 			return false;
 		}
 	});
@@ -155,7 +191,7 @@ function seleccionar_tipo_producto(id){
 function seleccionar_medida_producto(id){
 	//swal("¡AHORA SE CARGA!", "El seleccionado es " + id, "success");
 	$('.input').val();
-	var url = 'privado/procesos/seleccionar.php';
+	var url = 'seleccionar';
 	var parametros = {"id": id,"tbl": 9};
 		$.ajax({
 		type:'POST',
@@ -177,7 +213,7 @@ function seleccionar_medida_producto(id){
 function seleccionar_foto_producto(id){
 	//swal("¡AHORA SE CARGA!", "El seleccionado es " + id, "success");
 	$('.input').val();
-	var url = 'privado/procesos/seleccionar.php';
+	var url = 'seleccionar';
 	var parametros = {"id":id,"tbl":10};
 		$.ajax({
 		type:'POST',
@@ -200,7 +236,7 @@ function seleccionar_foto_producto(id){
 function seleccionar_proveedor(id){
 	//swal("¡AHORA SE CARGA!", "El seleccionado es " + id, "success");
 	$('.input').val();
-	var url = 'privado/procesos/seleccionar.php';
+	var url = 'seleccionar';
 	var parametros = {"id": id,"tbl": 21};
 		$.ajax({
 		type:'POST',
@@ -220,7 +256,7 @@ function seleccionar_proveedor(id){
 function seleccionar_equipo(id){
 	//swal("¡AHORA SE CARGA!", "El seleccionado es " + id, "success");
 	$('.input').val();
-	var url = 'privado/procesos/seleccionar.php';
+	var url = 'seleccionar';
 	var parametros = {"id": id,"tbl": 22};
 		$.ajax({
 		type:'POST',
@@ -240,7 +276,7 @@ function seleccionar_equipo(id){
 function seleccionar_obra(id){
 	//swal("¡AHORA SE CARGA!", "El seleccionado es " + id, "success");
 	$('.input').val();
-	var url = 'privado/procesos/seleccionar.php';
+	var url = 'seleccionar';
 	var parametros = {"id": id,"tbl": 23};
 		$.ajax({
 		type:'POST',
@@ -263,7 +299,7 @@ function seleccionar_permisos(id){
 	//swal("¡AHORA SE CARGA!", "El seleccionado es " + id, "success");
 	$('input[value!=0]').prop("checked","");
 	$('input[value=0]').prop("checked","checked");
-	var url = 'privado/procesos/seleccionar.php';
+	var url = 'seleccionar';
 	var cp = ["configuraciones","usuarios","permisos","comentarios","clientes","informacion","redes","proveedores","facturacion","productos","medidas","precios","cantidadp","mano","recursos","equipo"];
 	var parametros = {"id": id,"tbl": 2};
 		$.ajax({

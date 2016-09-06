@@ -25,7 +25,7 @@
 				$iniciado = "UPDATE usuarios SET estado_sesion=? WHERE correo_usuario=?";
 				$stmt = $con->prepare($iniciado);
 				$stmt->execute(array(session_id(),$email));
-				header('Location: admin.php');
+				header('Location: admin');
 				$iniciar = true;
 			}else{
 				$iniciar = false;
