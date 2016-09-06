@@ -7,7 +7,7 @@
 	if ($stmt->fetch(PDO::FETCH_BOTH)) {
 		require 'procesos/loginpv.php';
 	}else{
-		header('Location: primero.php');
+		header('Location: primero');
 	}
 ?>
 <!DOCTYPE html>
