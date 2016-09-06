@@ -41,7 +41,7 @@
 <script src='https://www.google.com/recaptcha/api.js'></script>
 <?php 
 	echo $_SERVER['REQUEST_URI'];
-	if ($_SERVER['REQUEST_URI'] == "/ptcprint/iniciarsesion" || $_SERVER['REQUEST_URI'] == "/ptcprint/registrarme") {
+	if ($_SERVER['REQUEST_URI'] == "/iniciarsesion" || $_SERVER['REQUEST_URI'] == "/registrarme") {
 	}else{
 		if ($nombre != "Iniciar sesión") {
 			echo "<script type='text/javascript' src='/publico/js/vendor/mensajestimer.js'></script>";	

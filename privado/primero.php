@@ -118,8 +118,8 @@
 		<br>
 		<br>
 	</div>
-	<script type="text/javascript" src="vendor/jquery-1.11.2.min.js"></script>
-	<script type="text/javascript" src="vendor/uikit.min.js"></script>
-	<script type="text/javascript" src="vendor/bootstrap.js"></script>
+	<script type="text/javascript" src="/publico/js/vendor/jquery-1.11.2.min.js"></script>
+	<script type="text/javascript" src="/publico/js/vendor/uikit.min.js"></script>
+	<script type="text/javascript" src="/publico/js/vendor/bootstrap.js"></script>
 </body>
 </html>
