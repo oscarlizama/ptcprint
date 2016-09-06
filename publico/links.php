@@ -5,7 +5,7 @@
 <!--el user scalable indica que no se puede redimensionar-->
 <meta name="viewport" content="width=device-width">
 <!--enlazo uikit-->
-<link rel="stylesheet" href="css/uikit.docs.min.css">
+<link rel="stylesheet" href="/publico/css/uikit.docs.min.css">
 <link rel="stylesheet" href="css/docs.css">
 <link rel="stylesheet" href="css/bootstrap.css">
 <link rel="stylesheet" href="css/sweetalert.css">
