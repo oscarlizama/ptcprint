@@ -4,7 +4,7 @@
 	$stmt = $con->prepare($sql);
 	$stmt->execute(array());
 	if ($stmt->fetch(PDO::FETCH_BOTH)) {
-		header('Location: private.php');
+		header('Location: administracion');
 	}
 	require 'procesos/validaciones.php';
 	$error = "";
@@ -34,6 +34,7 @@
 								$sql = "INSERT INTO usuarios(nombre_usuario,apellido_usuario,clave_usuario,correo_usuario,id_permiso) VALUES(?,?,?,?,?)";
 								$stmt = $con->prepare($sql);
 								$stmt->execute(array($nombre,$apellido,$passHash,$correo,$tipo));
+								header('Location: administracion');
 							}else{
 								$error = "Verifica tu correo electrónico";
 							}
@@ -68,7 +69,7 @@
 			<br>
 			
 			<br>
-			<form action="primero.php" method="post">
+			<form action="primero" method="post">
 			<div class="col-lg-12">
 				<div class="col-lg-6 col-md-6">
 					<label for="" class="labels">Nombres</label>
@@ -109,7 +110,7 @@
 					<button class='btn btn-ag btn-scrud col-lg-12 col-md-12 col-sm-12' name="agregar">
 						AGREGAR
 						<span class='flaticon-correct icon-ag icon-button'></span>
-					</button>";
+					</button>
 				</div>
 			</div>
 			</form>
@@ -117,8 +118,8 @@
 		<br>
 		<br>
 	</div>
-	<?php 
-		include 'scripts.php';
-	?>
+	<script type="text/javascript" src="vendor/jquery-1.11.2.min.js"></script>
+	<script type="text/javascript" src="vendor/uikit.min.js"></script>
+	<script type="text/javascript" src="vendor/bootstrap.js"></script>
 </body>
 </html>

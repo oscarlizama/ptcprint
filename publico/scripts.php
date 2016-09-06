@@ -40,6 +40,7 @@
 <script type="text/javascript" src="vendor/errorreg.js"></script>
 <script src='https://www.google.com/recaptcha/api.js'></script>
 <?php 
+	echo $_SERVER['REQUEST_URI'];
 	if ($_SERVER['REQUEST_URI'] == "/ptcprint/iniciarsesion" || $_SERVER['REQUEST_URI'] == "/ptcprint/registrarme") {
 	}else{
 		if ($nombre != "Iniciar sesión") {
