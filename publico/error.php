@@ -1,4 +1,4 @@
 <?php
-    header('location: /ptcprint/error.html');
+    header('location: /error.html');
     die();
 ?>

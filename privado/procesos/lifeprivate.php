@@ -13,7 +13,7 @@
 				unset($_SESSION['autenticadop']);
 				unset($_SESSION['emailc']);
 				$con = null;
-				header('Location: private.php');
+				header('Location: administracion');
 			}else{
 				$fechaGuardada = $_SESSION["ultimoAccesoP"]; 
 	    		$ahora = date("Y-n-j H:i:s"); 
@@ -26,7 +26,7 @@
 					unset($_SESSION['autenticadop']);
 					unset($_SESSION['emailc']);
 					$con = null;
-					header('Location: private.php');
+					header('Location: administracion');
 			      	//sino, actualizo la fecha de la sesión 
 			    }else { 
 			    	$_SESSION["ultimoAccesoP"] = $ahora; 

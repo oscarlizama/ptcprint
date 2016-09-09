@@ -76,7 +76,7 @@
 			<br>
 			<div class="panel panel-default col-lg-3">
 				<div class="panel-body">
-					<form action="estadisticas.php" method="post">
+					<form action="estadisticas" method="post">
 						<h4 class="h-negro">Seleccione una consulta</h4>
 						<select name="tipografico" id="" class="form-control">
 							<?php 
@@ -184,25 +184,27 @@
     </script>-->
     <?php //include 'graficos/graficos4.php' ?>
     <?php 
-	    if ($errorseleccionar) {
+    	if (isset($_POST['enviar'])){
+    		if ($errorseleccionar) {
 	    	echo ("<script>swal('Lo sentimos','".$errormsg."','info');</script>");
-	    }else{
-	    	if ($grafico == 1) {
-				include 'graficos/graficos1.php';
-			}
-			if ($grafico == 2) {
-				include 'graficos/graficos2.php';
-			}
-			if ($grafico == 3) {
-				include 'graficos/graficos3.php';
-			}
-			if ($grafico == 4) {
-				include 'graficos/graficos4.php';
-			}
-			if ($grafico == 5) {
-				include 'graficos/graficos5.php';
-			}
-	    }
+		    }else{
+		    	if ($grafico == 1) {
+					include 'graficos/graficos1.php';
+				}
+				if ($grafico == 2) {
+					include 'graficos/graficos2.php';
+				}
+				if ($grafico == 3) {
+					include 'graficos/graficos3.php';
+				}
+				if ($grafico == 4) {
+					include 'graficos/graficos4.php';
+				}
+				if ($grafico == 5) {
+					include 'graficos/graficos5.php';
+				}
+		    }
+    	}
     ?>
     <!--GRAFICO DE PASTEL-->
 	<!--<script type="text/javascript">

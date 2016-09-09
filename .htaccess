@@ -52,6 +52,7 @@ RewriteRule ^comentarios.php$ privado/comentarios.php [L,QSA,NC]
 RewriteRule ^primero$ privado/primero.php [L,QSA,NC]
 RewriteRule ^recuperar$ privado/recuperar.php [L,QSA,NC]
 RewriteRule ^estadisticas$ privado/estadisticas.php [L,QSA,NC]
+RewriteRule ^pruebareporte$ privado/reportes/pruebareporte.php [L,QSA,NC]
 RewriteRule ^timer.php$ privado/procesos/mensajesnotificacion.php [L,QSA,NC]
 RewriteRule ^timercliente.php$ privado/procesos/mensajesnotificacioncl.php [L,QSA,NC]
 
@@ -98,5 +99,5 @@ RewriteRule ^(\w+)/?$ publico/cargarp.php?nombre=$1
 
 ##SE EVITA LISTAR LAS CARPETAS
 Options -Indexes
-ErrorDocument 404 /ptcprint/publico/error.php
-ErrorDocument 403 /ptcprint/publico/error.php
+ErrorDocument 404 /publico/error.php
+ErrorDocument 403 /publico/error.php

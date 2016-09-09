@@ -22,7 +22,7 @@
 <script type="text/javascript" src="/publico/js/vendor/selecimg.js"></script>
 <script type="text/javascript" src="/publico/js/vendor/msjclient.js"></script>
 <?php 
-	echo $_SERVER['REQUEST_URI'];
+	//echo $_SERVER['REQUEST_URI'];
 	if ($_SERVER['REQUEST_URI'] != "/administracion") {
 		echo "<script type='text/javascript' src='/publico/js/vendor/mensajestimerback.js'></script>";
 	}
