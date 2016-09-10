@@ -210,11 +210,30 @@ function terminado(id){
 		data:parametros,
         success: function(datos)
         {
-        	swal("¡TERMINADO!","Se ha terminao el trabajo, se le notificará el cliente","success");
+        	swal("¡TERMINADO!","Se ha terminado el trabajo, se le notificará el cliente","success");
         }
     });	
 }
 
+
+///CUANDO TERMINA EL CARRITO EL ADMIN
+function recogido(id){
+	//SOLO OBTENGO EL ID DEL CARRITO
+	var val = [];
+	val.push(id);
+	var url = "puente";
+	var parametros = {"valores":val,"tabla":32,"accion":4};
+	//EJECUTO EL AJAX
+    $.ajax({
+        type:'POST',
+		url:url,
+		data:parametros,
+        success: function(datos)
+        {
+        	swal("¡TERMINADO!","Se ha recogido el trabajo.","success");
+        }
+    });	
+}
 
 //CUANDO TERMINA UN PEDIDO
 function terminadop(id){
@@ -230,7 +249,26 @@ function terminadop(id){
 		data:parametros,
         success: function(datos)
         {
-        	swal("¡TERMINADO!","Se ha terminao el trabajo, se le notificará el cliente","success");
+        	swal("¡TERMINADO!","Se ha terminado el trabajo, se le notificará el cliente","success");
+        }
+    });	
+}
+
+//CUANDO TERMINA UN PEDIDO
+function recogidop(id){
+	//HAGO EL ARREGLO
+	var val = [];
+	val.push(id);
+	//LO ENVIO A LA URL
+	var url = "puente";
+	var parametros = {"valores":val,"tabla":34,"accion":4};
+    $.ajax({
+        type:'POST',
+		url:url,
+		data:parametros,
+        success: function(datos)
+        {
+        	swal("¡RECOGIDO!","Se ha recogido el trabajo.","success");
         }
     });	
 }

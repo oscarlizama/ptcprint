@@ -53,6 +53,7 @@ RewriteRule ^primero$ privado/primero.php [L,QSA,NC]
 RewriteRule ^recuperar$ privado/recuperar.php [L,QSA,NC]
 RewriteRule ^estadisticas$ privado/estadisticas.php [L,QSA,NC]
 RewriteRule ^pruebareporte$ privado/reportes/pruebareporte.php [L,QSA,NC]
+RewriteRule ^reporte1$ privado/reportes/reporte1.php [L,QSA,NC]
 RewriteRule ^timer.php$ privado/procesos/mensajesnotificacion.php [L,QSA,NC]
 RewriteRule ^timercliente.php$ privado/procesos/mensajesnotificacioncl.php [L,QSA,NC]
 

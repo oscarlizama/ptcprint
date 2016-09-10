@@ -1,6 +1,7 @@
 <?php 
   include '../privado/procesos/conexion.php';
   include '../privado/procesos/lifetime.php';
+  include '../privado/procesos/logueado.php';
   if($_SESSION['autenticado'] != 'si'){   
     header('Location: inicio');
     session_destroy();
@@ -29,6 +30,7 @@
       <li class="active"><a data-toggle="tab" href="#home">CARRITO</a></li>
       <li><a data-toggle="tab" href="#menu1">PEDIDOS</a></li>
       <li><a data-toggle="tab" href="#menu2">MIS COMPRAS</a></li>
+      <li><a data-toggle="tab" href="#menu3">COMPROBANTES</a></li>
     </ul>
 
     <div class="tab-content">
@@ -64,6 +66,9 @@
                               $tabla .= "<td>$datos[1]</td>";
                               $tabla .= "<td>$datos[2]</td>";
                               $tabla .= "<td>$datos[3]</td>";
+                              if ($datos[4] == 0) {
+                                $tabla .= "<td>En proceso</td>";
+                              }
                           $tabla .= "<tr>";
                       }
                     $tabla .= "</tbody>";
@@ -96,6 +101,7 @@
                           $tabla .= "<tr>";
                               $tabla .= "<th class='tabla-info' id='description'>Nombre del archivo</th>";
                               $tabla .= "<th class='tabla-info' id='precio-unit'>Fecha del pedido</th>";
+                              $tabla .= "<th class='tabla-info' id='precio-unit'>Estado</th>";
                           $tabla .= "</tr>";
                       $tabla .= "</thead>";
                       $tabla .= "<tbody>";
@@ -104,6 +110,7 @@
                         $tabla .= "<tr>";
                               $tabla .= "<td>$datos[1]</td>";
                               $tabla .= "<td>$datos[2]</td>";
+                              $tabla .= "<td>En proceso</td>";
                           $tabla .= "<tr>";
                       }
                     $tabla .= "</tbody>";
@@ -153,13 +160,14 @@
                               $tabla .= "<th class='tabla-info' id='description'>Articulo</th>";
                               $tabla .= "<th class='tabla-info' id='precio-unit'>Fecha de la compra</th>";
                               $tabla .= "<th class='tabla-info' id='precio-unit'>Tipo de compra</th>";
+                              $tabla .= "<th class='tabla-info' id='precio-unit'>Recogido</th>";
                           $tabla .= "</tr>";
                       $tabla .= "</thead>";
                       $tabla .= "<tbody>";
                 if($pedidost){
                   //SI HAY PEDIDOS ENTONCES OBTENGO LOS DATOS QUE OCUPARE
                   //HAGO LA CONSULTA
-                  $sql = "SELECT a.nombre_archivo,p.fecha_pedido FROM (pedidos p INNER JOIN archivos a ON p.id_archivo = a.id_archivo) INNER JOIN conversaciones c ON c.id_conversacion = a.id_conversacion WHERE c.id_cliente=$id_cl AND p.estado_pedido=1 ORDER BY p.fecha_pedido ASC";
+                  $sql = "SELECT a.nombre_archivo,p.fecha_pedido,p.recogido FROM pedidos p, archivos a,conversaciones c WHERE p.id_archivo = a.id_archivo AND c.id_conversacion = a.id_conversacion AND c.id_cliente=$id_cl AND p.estado_pedido=1 ORDER BY p.fecha_pedido ASC";
                       //RECORRO LOS DATOS CON FOREACH
                       foreach ($con->query($sql) as $datos) {
                         //LOS IMPRIMO EN LA TABLA
@@ -167,19 +175,30 @@
                               $tabla .= "<td>$datos[0]</td>";
                               $tabla .= "<td>$datos[1]</td>";
                               $tabla .= "<td>Diseño personalizado</td>";
+                              if ($datos[2] == 0) {
+                                  $tabla .= "<td>Pendiente</td>";
+                                }else{
+                                  $tabla .= "<td>Sí</td>";
+                                }
+                              
                           $tabla .= "<tr>";
                       }
                 }
                 //SI HAY REGISTROS EN CARRITOS
                 if ($carritost) {
                   //HAGO LA CONSULTA
-                  $sql = "SELECT p.nombre_producto,c.fecha_solicitud FROM (productos p INNER JOIN medidas_producto md ON p.id_producto = md.id_producto) INNER JOIN carritos c ON c.id_medida = md.id_medida WHERE c.id_cliente = $id_cl AND c.estado_carrito=1 ORDER BY c.fecha_solicitud ASC";
+                  $sql = "SELECT p.nombre_producto,c.fecha_solicitud,c.recogido FROM productos p, medidas_producto md, carritos c WHERE p.id_producto = md.id_producto AND c.id_medida = md.id_medida AND c.id_cliente=$id_cl AND c.estado_carrito=1 ORDER BY c.fecha_solicitud ASC";
                     foreach ($con->query($sql) as $datos) {
                       //LLENO LOS CAMPOS EN LA TABLA
                         $tabla .= "<tr>";
                               $tabla .= "<td>$datos[0]</td>";
                               $tabla .= "<td>$datos[1]</td>";
                               $tabla .= "<td>Diseño predefinido</td>";
+                              if ($datos[2] == 0) {
+                                  $tabla .= "<td>Pendiente</td>";
+                                }else{
+                                  $tabla .= "<td>Sí</td>";
+                                }
                           $tabla .= "<tr>";
                       }
                 }
@@ -193,6 +212,38 @@
               print($tabla);
             ?>
           </div>
+      </div>
+      <div id="menu3" class="tab-pane fade">
+        <br>
+        <div class="col-lg-4">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h5>GENERACIÓN DE COMPROBANTES DE PEDIDOS</h5>
+            </div>
+            <div class="panel-body">
+              <form action="pruebareporte" method="post">
+              <div>
+                <label for="">Fecha de comprobante:</label>
+                <?php
+                  $seleccion = "";
+                  $fechassql = "SELECT c.fecha_solicitud FROM carritos c, clientes cl WHERE cl.id_cliente = c.id_cliente AND cl.id_cliente=? GROUP BY c.fecha_solicitud";
+                  $stmtfecha = $con->prepare($fechassql);
+                  $stmtfecha->execute(array($id_cl));
+                  $seleccion .= "<select name='fechacl' id='' class='form-control'>";
+                  while ($fechas = $stmtfecha->fetch(PDO::FETCH_BOTH)) {
+
+                      $seleccion .= "<option value='$fechas[0]'>".$fechas[0]."</option>";
+                  }
+                  $seleccion .= "</select>";
+                  print($seleccion);
+                ?>
+                <br>
+                <button class="btn-pink btn btn-block">Generar comprobante</button>
+              </div>
+              </form>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>

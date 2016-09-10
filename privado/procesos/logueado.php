@@ -2,7 +2,7 @@
    $id_cl = 0;
    $nombre = "Iniciar sesión";
    //session_start();
-   if(!empty($_SESSION['autenticado'])){       
+   if(!empty($_SESSION['autenticado'])){     
       $nombre = $_SESSION['autenticado'];
       require '../privado/procesos/conexion.php';
       $sql = "SELECT * FROM clientes WHERE correo_cliente=?";

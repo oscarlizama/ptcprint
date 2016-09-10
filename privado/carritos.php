@@ -44,7 +44,7 @@
               //SI HAY MAS DE UN CARRITO A RELIZAR
               if ($cnt[0] > 0) {
                 //HAGO LA CONSULYA
-                $sql = "SELECT c.id_carrito,CONCAT(cl.nombre_cliente,' ',cl.apellido_cliente),p.nombre_producto,cantidad,c.fecha_solicitud FROM ((productos p INNER JOIN medidas_producto md ON p.id_producto = md.id_producto) INNER JOIN carritos c ON c.id_medida = md.id_medida) INNER JOIN clientes cl ON cl.id_cliente = c.id_carrito WHERE c.estado_carrito=? ORDER BY c.fecha_solicitud ASC";
+                $sql = "SELECT c.id_carrito,CONCAT(cl.nombre_cliente,' ',cl.apellido_cliente),p.nombre_producto,cantidad,c.fecha_solicitud FROM productos p, clientes cl, carritos c, medidas_producto m WHERE c.estado_carrito=? AND p.id_producto AND m.id_producto AND cl.id_cliente = c.id_cliente AND m.id_medida = c.id_medida ORDER BY c.fecha_solicitud ASC";
                 //CREO EL MODELO DE LA TABLA
                 $tabla = "<table class='table table-striped table-responsive tabla-info'>";
                       $tabla .= "<thead>";
@@ -53,7 +53,7 @@
                               $tabla .= "<th class='tabla-info' id='articulo'>Articulo</th>";
                               $tabla .= "<th class='tabla-info' id='description'>Cantidad</th>";
                               $tabla .= "<th class='tabla-info' id='precio-unit'>Fecha</th>";
-                              $tabla .= "<th class='tabla-info'></th>";
+                              $tabla .= "<th class='tabla-info'>Terminar</th>";
                           $tabla .= "</tr>";
                       $tabla .= "</thead>";
                       $tabla .= "<tbody>";
@@ -93,7 +93,7 @@
               //SI HAY PEDIDOS ENTONCES PASO EL IF
               if ($cntp[0] > 0) {
                 //CREO LA CONSULTA PARA SABER QUE PEDIDOS HAY QUE HACER
-                $sql = "SELECT p.id_pedido,CONCAT(cl.nombre_cliente,' ',cl.apellido_cliente),a.nombre_archivo,p.fecha_pedido FROM (((pedidos p INNER JOIN archivos a ON p.id_archivo = a.id_archivo) INNER JOIN conversaciones c ON c.id_conversacion = a.id_conversacion) INNER JOIN conversaciones cv ON cv.id_conversacion = a.id_conversacion) INNER JOIN clientes cl ON cl.id_cliente = cv.id_cliente WHERE p.estado_pedido=? ORDER BY p.fecha_pedido ASC";
+                $sql = "SELECT p.id_pedido,CONCAT(cl.nombre_cliente,' ',cl.apellido_cliente),a.nombre_archivo,p.fecha_pedido FROM pedidos p, archivos a, conversaciones c, clientes cl WHERE p.id_archivo = a.id_archivo AND c.id_conversacion = a.id_conversacion AND cl.id_cliente = c.id_cliente AND p.estado_pedido=? ORDER BY p.fecha_pedido ASC";
                 //CREO EL MODELO DE LA TABLA
                 $tabla = "<table class='table table-striped table-responsive tabla-info'>";
                       $tabla .= "<thead>";
@@ -101,7 +101,7 @@
                               $tabla .= "<th class='tabla-info' id='description'>Cliente</th>";
                               $tabla .= "<th class='tabla-info' id='description'>Nombre del archivo</th>";
                               $tabla .= "<th class='tabla-info' id='precio-unit'>Fecha del pedido</th>";
-                              $tabla .= "<th class='tabla-info'></th>";
+                              $tabla .= "<th class='tabla-info'>Terminar</th>";
                           $tabla .= "</tr>";
                       $tabla .= "</thead>";
                       $tabla .= "<tbody>";
@@ -139,7 +139,7 @@
               //SI HAY MAS DE UNO ENTONCES PASA
               if ($cnt[0] > 0) {
                 //CREO LA CONSULTA PAR OBTENER
-                $sql = "SELECT c.id_carrito,CONCAT(cl.nombre_cliente,' ',cl.apellido_cliente),p.nombre_producto,cantidad,c.fecha_solicitud FROM ((productos p INNER JOIN medidas_producto md ON p.id_producto = md.id_producto) INNER JOIN carritos c ON c.id_medida = md.id_medida) INNER JOIN clientes cl ON cl.id_cliente = c.id_carrito WHERE c.estado_carrito=? ORDER BY c.fecha_solicitud ASC";
+                $sql = "SELECT c.id_carrito,CONCAT(cl.nombre_cliente,' ',cl.apellido_cliente),p.nombre_producto,cantidad,c.fecha_solicitud,c.recogido FROM productos p, clientes cl, carritos c, medidas_producto m WHERE c.estado_carrito=? AND p.id_producto AND m.id_producto AND cl.id_cliente = c.id_cliente AND m.id_medida = c.id_medida ORDER BY c.fecha_solicitud ASC";
                 //CREO EL MODELO DE LA TABLA
                 $tabla = "<table class='table table-striped table-responsive tabla-info'>";
                       $tabla .= "<thead>";
@@ -148,6 +148,7 @@
                               $tabla .= "<th class='tabla-info' id='articulo'>Articulo</th>";
                               $tabla .= "<th class='tabla-info' id='description'>Cantidad</th>";
                               $tabla .= "<th class='tabla-info' id='precio-unit'>Fecha</th>";
+                              $tabla .= "<th class='tabla-info' id='precio-unit'>Recogido</th>";
                           $tabla .= "</tr>";
                       $tabla .= "</thead>";
                       $tabla .= "<tbody>";
@@ -160,6 +161,11 @@
                               $tabla .= "<td>$datos[2]</td>";
                               $tabla .= "<td>$datos[3]</td>";
                               $tabla .= "<td>$datos[4]</td>";
+                              if ($datos[5] == 0) {
+                                $tabla .= "<td><button class='btn btn-buy eliminar_carrito' onclick='javascript:recogido($datos[0])'><span class='glyphicon glyphicon-ok'></span></button></td>";
+                              }else{
+                                $tabla .= "<td>Sí</td>";
+                              }
                           $tabla .= "<tr>";
                       }
                     $tabla .= "</tbody>";
@@ -185,7 +191,7 @@
               // SI HAY PEDIDOS HECHO ENTRA AL IF
               if ($cntp[0] > 0) {
                 //CREO LA CONSULTA
-                $sql = "SELECT p.id_pedido,CONCAT(cl.nombre_cliente,' ',cl.apellido_cliente),a.nombre_archivo,p.fecha_pedido FROM (((pedidos p INNER JOIN archivos a ON p.id_archivo = a.id_archivo) INNER JOIN conversaciones c ON c.id_conversacion = a.id_conversacion) INNER JOIN conversaciones cv ON cv.id_conversacion = a.id_conversacion) INNER JOIN clientes cl ON cl.id_cliente = cv.id_cliente WHERE p.estado_pedido=? ORDER BY p.fecha_pedido ASC";
+                $sql = "SELECT p.id_pedido,CONCAT(cl.nombre_cliente,' ',cl.apellido_cliente),a.nombre_archivo,p.fecha_pedido,p.recogido FROM pedidos p, archivos a, conversaciones c, clientes cl WHERE p.id_archivo = a.id_archivo AND c.id_conversacion = a.id_conversacion AND cl.id_cliente = c.id_cliente AND p.estado_pedido=? ORDER BY p.fecha_pedido ASC";
                 //CREO EL MODELO DE LA TABLA
                 $tabla = "<table class='table table-striped table-responsive tabla-info'>";
                       $tabla .= "<thead>";
@@ -193,7 +199,7 @@
                               $tabla .= "<th class='tabla-info' id='description'>Cliente</th>";
                               $tabla .= "<th class='tabla-info' id='description'>Nombre del archivo</th>";
                               $tabla .= "<th class='tabla-info' id='precio-unit'>Fecha del pedido</th>";
-                              $tabla .= "<th class='tabla-info'></th>";
+                              $tabla .= "<th class='tabla-info'>Recogido</th>";
                           $tabla .= "</tr>";
                       $tabla .= "</thead>";
                       $tabla .= "<tbody>";
@@ -205,6 +211,11 @@
                               $tabla .= "<td>$datos[1]</td>";
                               $tabla .= "<td>$datos[2]</td>";
                               $tabla .= "<td>$datos[3]</td>";
+                              if ($datos[4] == 0) {
+                                $tabla .= "<td><button class='btn btn-buy eliminar_carrito' onclick='javascript:recogidop($datos[0])'><span class='glyphicon glyphicon-ok'></span></button></td>";
+                              }else{
+                                $tabla .= "<td>Sí</td>";
+                              }
                           $tabla .= "<tr>";
                       }
                     $tabla .= "</tbody>";

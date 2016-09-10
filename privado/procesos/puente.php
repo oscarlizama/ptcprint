@@ -551,6 +551,11 @@
 			include 'eliminar.php';
 			mthEliminar($tabla,$where,$estado,$valores);
 		}
+		if($_POST['accion'] == 4){
+			include 'eliminar.php';
+			$estado = 'recogido=1';
+			mthEliminar($tabla,$where,$estado,$valores);
+		}
 	}
 	if($_POST['tabla'] == 34){
 		$tabla = "pedidos";
@@ -563,6 +568,11 @@
 		}
 		if($_POST['accion'] == 3){
 			include 'eliminar.php';
+			mthEliminar($tabla,$where,$estado,$valores);
+		}
+		if($_POST['accion'] == 4){
+			include 'eliminar.php';
+			$estado = 'recogido=1';
 			mthEliminar($tabla,$where,$estado,$valores);
 		}
 	}
