@@ -4,6 +4,8 @@
 	$fecha_cl = null;
 	if(isset($_POST['fechacl']))
 		$fecha_cl = $_POST['fechacl'];
+	else
+		$fecha_cl = date("Y-m-d");
 	if(!empty($_SESSION['autenticado'])){     
       $nombre = $_SESSION['autenticado'];
       $sql = "SELECT * FROM clientes WHERE correo_cliente=?";
@@ -13,9 +15,8 @@
       $nomb = $stmt->fetch(PDO::FETCH_BOTH);
       $nombre = $nomb[1];
       $id_cl = $nomb[0];
-    }else{
-      $nombre = "Iniciar sesión";
-   	}
+    }
+
 	require_once 'fpdf.php';
 
 	if ($fecha_cl == null) {
@@ -77,7 +78,7 @@
 
 	$pdf->SetFillColor(232,232,232);
  
-$pdf->SetFont('Arial','B',10);
+	$pdf->SetFont('Arial','B',10);
 	$pdf->Cell(70,6,'PRODUCTO',1,0,'C',1);
 	$pdf->Cell(35,6,'MEDIDA',1,0,'C',1);
 	$pdf->Cell(40,6,'TIPO',1,0,'C',1);
@@ -123,16 +124,14 @@ $pdf->SetFont('Arial','B',10);
 		}
 	}else{*/
 		//echo "HOLAA";
-	$pdf->Cell(70,10,"HASHAAH",1,0,'L',0);
+	/*$pdf->Cell(70,10,"HASHAAH",1,0,'L',0);
    	$pdf->Cell(35,10,"hsgdhasghjsgjsha",1,0,'R',1);
 	//Muestro la iamgen dentro de la celda GetX y GetY dan las coordenadas actuales de la fila
  	$pdf->Cell(40,10,"jsgdjhsadghas", 1, 0, 'C', false );
  	$pdf->Cell(40,10,"jsgdjhsadghas", 1, 0, 'C', false );
  
-	$pdf->Ln(15);
-	/*$sql = "SELECT p.nombre_producto,md.medida FROM productos p, carritos c, medidas_producto md WHERE c.id_cliente=? AND p.id_producto = md.id_producto AND c.id_medida = md.id_medida AND c.fecha_solicitud=?";
-	$stmt = $con->prepare($sql);
-	$stmt->execute(array($id_cl,$fecha_cl));
+	$pdf->Ln(15);*/
+	/*$
 	$pdf->Cell(50,5,'',0,1);
 	$pdf->SetFont('Arial','B',12);
 	$pdf->SetXY($pdf->GetX()+1, $pdf->GetY());
@@ -141,12 +140,16 @@ $pdf->SetFont('Arial','B',10);
 	$pdf->SetFont('Arial','',12);
 	$pdf->Cell(80,5,$fecha_cl,0,1,'L');
 	$pdf->Cell(80,2,'',0,1,'L');*/
+	$sql = "SELECT p.nombre_producto,md.medida,c.fecha_solicitud FROM productos p, carritos c, medidas_producto md WHERE c.id_cliente=? AND p.id_producto = md.id_producto AND c.id_medida = md.id_medida AND c.fecha_solicitud=? AND c.recogido=0";
+	$stmt = $con->prepare($sql);
+	$stmt->execute(array($id_cl,$fecha_cl));
+	$pdf->SetFont('Arial','',10);
 	while ($datos = $stmt->fetch(PDO::FETCH_BOTH)) {
-		$pdf->Cell(70,10,"HASHAAH",1,0,'L',0);
-	   	$pdf->Cell(35,10,"hsgdhasghjsgjsha",1,0,'R',1);
+		$pdf->Cell(70,10,$datos[0],1,0,'L',0);
+	   	$pdf->Cell(35,10,$datos[1],1,0,'C',0);
 		//Muestro la iamgen dentro de la celda GetX y GetY dan las coordenadas actuales de la fila
-	 	$pdf->Cell(40,10,"jsgdjhsadghas", 1, 0, 'C', false );
-	 	$pdf->Cell(40,10,"jsgdjhsadghas", 1, 0, 'C', false );
+	 	$pdf->Cell(40,10,utf8_decode("Diseño preestablecido"), 1, 0, 'C', false );
+	 	$pdf->Cell(40,10,$datos[2], 1, 0, 'C', false );
 		$pdf->Ln(10);
 		/*$pdf->Cell(80,5,'',0,1,'L');
 		$pdf->SetFont('Arial','B',12);
@@ -172,11 +175,16 @@ $pdf->SetFont('Arial','B',10);
 		$pdf->SetFont('Arial','',12);
 		$pdf->Cell(80,5,utf8_decode("Diseño preestablecido"),0,1,'L');*/
 	}
-	$sql = "SELECT a.nombre_archivo, p.fecha_pedido FROM archivos a, pedidos p, clientes cl, conversaciones c WHERE a.id_archivo = p.id_archivo AND cl.id_cliente=? AND p.fecha_pedido=? AND cl.id_cliente = c.id_cliente AND c.id_conversacion = a.id_conversacion";
+	$sql = "SELECT a.nombre_archivo, p.fecha_pedido FROM archivos a, pedidos p, clientes cl, conversaciones c WHERE a.id_archivo = p.id_archivo AND cl.id_cliente=? AND p.fecha_pedido=? AND cl.id_cliente = c.id_cliente AND c.id_conversacion = a.id_conversacion AND p.recogido=0";
 	$stmt = $con->prepare($sql);
 	$stmt->execute(array($id_cl,$fecha_cl));
 	while ($datos = $stmt->fetch(PDO::FETCH_BOTH)) {
-
+		$pdf->Cell(70,10,$datos[0],1,0,'L',0);
+	   	$pdf->Cell(35,10,"----------",1,0,'C',0);
+		//Muestro la iamgen dentro de la celda GetX y GetY dan las coordenadas actuales de la fila
+	 	$pdf->Cell(40,10,utf8_decode("Diseño personalizado"), 1, 0, 'C', false );
+	 	$pdf->Cell(40,10,$datos[1], 1, 0, 'C', false );
+		$pdf->Ln(10);
 		/*$pdf->Cell(80,5,'',0,1,'L');
 		$pdf->SetFont('Arial','B',12);
 		$pdf->SetXY($pdf->GetX()+1, $pdf->GetY());

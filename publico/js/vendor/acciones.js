@@ -331,5 +331,11 @@ $("#icon-usuario").click(function(event){
 	msjCerrar();
 });
 $(document).ready(function(){
-	$('.datepicker').datepicker();
+	$('.datepicker').datepicker({
+		maxViewMode: 2,
+	    clearBtn: true,
+	    language: "es",
+	    orientation: "bottom auto",
+	    autoclose: true
+	});
 });

@@ -7,6 +7,7 @@
 			<a href="cotizaciones"><span class="flaticon-chat iconos-acc" data-toggle="tooltip" data-placement="bottom" title="Abrir bandeja de entrada"></span></a>
 			<a href="carritos"><span class="flaticon-shopping-cart iconos-acc" data-toggle="tooltip" data-placement="bottom" title="Ver carritos"></span></a>
 			<a href="estadisticas"><span class="flaticon-statistics iconos-acc" data-toggle="tooltip" data-placement="bottom" title="Estadísticas"></span></a>
+			<a href="reporteria"><span class="flaticon-pdf iconos-acc" data-toggle="tooltip" data-placement="bottom" title="Reportes"></span></a>
 			<span class="flaticon-avatar iconos-acc" id="icon-usuario" data-toggle="tooltip" data-placement="bottom" title="Cerrar sesión"></span>
 		</p>
 	</div>

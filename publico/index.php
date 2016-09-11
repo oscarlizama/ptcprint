@@ -93,7 +93,32 @@
 				</div>
 			</div>
 			<div class="row hidden-xs" id="solicitados">
-				<div class="col-lg-4 col-md-4 col-sm-4">
+				<?php 
+					$div = "";
+					$sqlinfo = "SELECT p.id_producto,p.nombre_producto,p.descripcion_producto FROM productos p,fotos_productos fp WHERE p.estado_producto=? AND fp.id_producto = p.id_producto LIMIT 9";
+					$stmtinfo = $con->prepare($sqlinfo);
+					$stmtinfo->execute(array(1));
+					while ($informacion = $stmtinfo->fetch(PDO::FETCH_BOTH)) {
+						$div .= "<div class='col-lg-4 col-md-4 col-sm-6'>";
+							$div .= "<br>";
+							$div .= "<div class='panel panel-default'>";
+								$div .= "<div class='panel-body'>";
+								$sqlfoto = "SELECT fp.foto_producto FROM fotos_productos fp WHERE fp.estado_foto_producto=? AND fp.id_producto=? LIMIT 1";
+								$stmtfoto = $con->prepare($sqlfoto);
+								$stmtfoto->execute(array(1,$informacion[0]));
+								while ($foto = $stmtfoto->fetch(PDO::FETCH_BOTH)) {
+									$div .= "<img src='data:image/*;base64,$foto[0]' alt='Imagen' class='img-responsive imginicio'>";
+								}
+								$div .= "</div>";
+								$div .= "<div class='panel-footer'>";
+									$div .= "<p><strong>".$informacion[1]."</strong><br>".$informacion[2]."</p>";
+								$div .= "</div>";
+							$div .= "</div>";
+						$div .= "</div>";
+					}
+					print($div);
+				?>
+				<!--<div class="col-lg-4 col-md-4 col-sm-4">
 					<br>
 					<div class="panel panel-default">
 						<div class="panel-body">
@@ -158,18 +183,28 @@
 							<p><strong>HOLA</strong><br>Hola a todos como estan</p>
 						</div>
 					</div>
-				</div>
+				</div>-->
 			</div>
 		</div>
-		<div class="container-fluid hidden-lg hidden-md visible-sm visible-xs">
+		<div class="container-fluid hidden-lg hidden-md hidden-sm visible-xs">
 			<div class="row">
 				<div class="col-sm-12 col-xs-12 uk-text-center">
 					<div class="uk-slidenav-position" data-uk-slider>
 		            	<div class="uk-slider-container">
 		                	<ul class="uk-slider uk-grid-small uk-grid-width-small-1-2 uk-grid-width-medium-1-3">
-		                    	<li><img src="publico/img/banner1.png" alt=""></li>
+		                		<?php 
+		                			$li = "";
+			                		$sqlfoto = "SELECT fp.foto_producto FROM fotos_productos fp, productos p WHERE fp.estado_foto_producto=? AND p.id_producto = fp.id_producto";
+									$stmtfoto = $con->prepare($sqlfoto);
+									$stmtfoto->execute(array(1));
+									while ($foto = $stmtfoto->fetch(PDO::FETCH_BOTH)) {
+										$li .= "<li><img src='data:image/*;base64,$foto[0]' alt='Imagen' class='imgslide'></li>";
+									}
+									print($li);
+		                		?>
+		                    	<!--<li><img src="publico/img/banner1.png" alt=""></li>
 		                    	<li><img src="publico/img/tarjetap2.png" alt=""></li>
-		                    	<li><img src="publico/img/vynil1.png" alt=""></li>
+		                    	<li><img src="publico/img/vynil1.png" alt=""></li>-->
 		                	</ul>
 		            	</div>
 		            	<a href="#" class="uk-slidenav uk-slidenav-contrast uk-slidenav-previous" data-uk-slider-item="previous"></a>

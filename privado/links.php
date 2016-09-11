@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width">
 <!--enlazo bootstrap-->
 <link rel="stylesheet" href="/publico/css/uikit.docs.min.css">
+<link rel="stylesheet" href="/publico/css/bootstrap-datepicker3.css">
 <link rel="stylesheet" href="/publico/css/docs.css">
 <link rel="stylesheet" href="/publico/css/bootstrap.css">
 <link rel="stylesheet" href="/publico/css/sweetalert.css">
-<link rel="stylesheet" href="/publico/css/datepicker.css">
 <!--ESTILOS PERSONALIZADOS-->
 <link rel="stylesheet" type="text/css" href="/publico/css/main_backend.css">
 <link rel="stylesheet" type="text/css" href="/publico/css/menu_bk.css">

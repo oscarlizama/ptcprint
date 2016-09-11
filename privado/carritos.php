@@ -44,7 +44,7 @@
               //SI HAY MAS DE UN CARRITO A RELIZAR
               if ($cnt[0] > 0) {
                 //HAGO LA CONSULYA
-                $sql = "SELECT c.id_carrito,CONCAT(cl.nombre_cliente,' ',cl.apellido_cliente),p.nombre_producto,cantidad,c.fecha_solicitud FROM productos p, clientes cl, carritos c, medidas_producto m WHERE c.estado_carrito=? AND p.id_producto AND m.id_producto AND cl.id_cliente = c.id_cliente AND m.id_medida = c.id_medida ORDER BY c.fecha_solicitud ASC";
+                $sql = "SELECT c.id_carrito,CONCAT(cl.nombre_cliente,' ',cl.apellido_cliente),p.nombre_producto,c.cantidad,c.fecha_solicitud FROM carritos c, clientes cl, medidas_producto m, productos p WHERE c.id_cliente = cl.id_cliente AND m.id_medida = c.id_medida AND p.id_producto = m.id_producto AND c.estado_carrito=? ORDER BY c.fecha_solicitud ASC";
                 //CREO EL MODELO DE LA TABLA
                 $tabla = "<table class='table table-striped table-responsive tabla-info'>";
                       $tabla .= "<thead>";
@@ -139,7 +139,7 @@
               //SI HAY MAS DE UNO ENTONCES PASA
               if ($cnt[0] > 0) {
                 //CREO LA CONSULTA PAR OBTENER
-                $sql = "SELECT c.id_carrito,CONCAT(cl.nombre_cliente,' ',cl.apellido_cliente),p.nombre_producto,cantidad,c.fecha_solicitud,c.recogido FROM productos p, clientes cl, carritos c, medidas_producto m WHERE c.estado_carrito=? AND p.id_producto AND m.id_producto AND cl.id_cliente = c.id_cliente AND m.id_medida = c.id_medida ORDER BY c.fecha_solicitud ASC";
+                $sql = "SELECT c.id_carrito,CONCAT(cl.nombre_cliente,' ',cl.apellido_cliente),p.nombre_producto,cantidad,c.fecha_solicitud,c.recogido FROM productos p, clientes cl, carritos c, medidas_producto m WHERE c.estado_carrito=? AND p.id_producto = m.id_producto AND cl.id_cliente = c.id_cliente AND m.id_medida = c.id_medida ORDER BY c.fecha_solicitud ASC";
                 //CREO EL MODELO DE LA TABLA
                 $tabla = "<table class='table table-striped table-responsive tabla-info'>";
                       $tabla .= "<thead>";

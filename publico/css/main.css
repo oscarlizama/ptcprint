@@ -320,3 +320,17 @@ div.scroll-div{
     background-color:#b0bec5;
     border:1px solid #b0bec5;
 } 
+.imginicio{
+	width: 350px !important;
+	height: 350px !important;
+}
+.imgslide{
+	width: 300px !important;
+	height: 300px !important;	
+}
+@media all and (max-width: 545px){
+	.imgslide{
+		width: 200px !important;
+		height: 200px !important;	
+	}
+}

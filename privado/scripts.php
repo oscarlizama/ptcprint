@@ -18,7 +18,8 @@
 <script type="text/javascript" src="/publico/js/vendor/comentariobk.js"></script>
 <script type="text/javascript" src="/publico/js/vendor/sesionpv.js"></script>
 <script type="text/javascript" src="/publico/js/vendor/uploadjs.js"></script>
-<script type="text/javascript" src="/publico/js/vendor/bootstrap-datepicker.js"></script>
+<script type="text/javascript" src="/publico/js/vendor/bootstrap-datepicker.min.js"></script>
+<script type="text/javascript" src="/publico/js/vendor/bootstrap-datepicker.es.min.js"></script>
 <script type="text/javascript" src="/publico/js/vendor/selecimg.js"></script>
 <script type="text/javascript" src="/publico/js/vendor/msjclient.js"></script>
 <?php 

@@ -30,7 +30,7 @@
       <li class="active"><a data-toggle="tab" href="#home">CARRITO</a></li>
       <li><a data-toggle="tab" href="#menu1">PEDIDOS</a></li>
       <li><a data-toggle="tab" href="#menu2">MIS COMPRAS</a></li>
-      <li><a data-toggle="tab" href="#menu3">COMPROBANTES</a></li>
+      <li><a data-toggle="tab" href="#menu3">REPORTES</a></li>
     </ul>
 
     <div class="tab-content">
@@ -218,10 +218,10 @@
         <div class="col-lg-4">
           <div class="panel panel-default">
             <div class="panel-heading">
-              <h5>GENERACIÓN DE COMPROBANTES DE PEDIDOS</h5>
+              <h5>RESUMEN DE PRODUCTOS SIN RECOGER</h5>
             </div>
             <div class="panel-body">
-              <form action="pruebareporte" method="post">
+              <form action="norecogidos" method="post">
               <div>
                 <label for="">Fecha de comprobante:</label>
                 <?php
@@ -231,12 +231,79 @@
                   $stmtfecha->execute(array($id_cl));
                   $seleccion .= "<select name='fechacl' id='' class='form-control'>";
                   while ($fechas = $stmtfecha->fetch(PDO::FETCH_BOTH)) {
-
+                      $seleccion .= "<option value='$fechas[0]'>".$fechas[0]."</option>";
+                  }
+                  $fechassql = "SELECT p.fecha_pedido FROM pedidos p, clientes cl, archivos a, conversaciones c WHERE a.id_conversacion = c.id_conversacion AND c.id_cliente = cl.id_cliente AND p.id_archivo = a.id_archivo";
+                  $stmtfecha = $con->prepare($fechassql);
+                  $stmtfecha->execute(array($id_cl));
+                  while ($fechas = $stmtfecha->fetch(PDO::FETCH_BOTH)) {
                       $seleccion .= "<option value='$fechas[0]'>".$fechas[0]."</option>";
                   }
                   $seleccion .= "</select>";
                   print($seleccion);
                 ?>
+                <br>
+                <button class="btn-pink btn btn-block">Generar comprobante</button>
+                <br>
+                <br>
+                <br>
+                <br>
+              </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h5>HISTORIAL DE COMPRAS Y PEDIDOS</h5>
+            </div>
+            <div class="panel-body">
+              <form action="recogidos" method="post">
+              <div>
+                <label for="">Fecha de comprobante:</label>
+                <?php
+                  $seleccion = "";
+                  $fechassql = "SELECT c.fecha_solicitud FROM carritos c, clientes cl WHERE cl.id_cliente = c.id_cliente AND cl.id_cliente=? GROUP BY c.fecha_solicitud";
+                  $stmtfecha = $con->prepare($fechassql);
+                  $stmtfecha->execute(array($id_cl));
+                  $seleccion .= "<select name='fechacl' id='' class='form-control'>";
+                  while ($fechas = $stmtfecha->fetch(PDO::FETCH_BOTH)) {
+                      $seleccion .= "<option value='$fechas[0]'>".$fechas[0]."</option>";
+                  }
+                  $fechassql = "SELECT p.fecha_pedido FROM pedidos p, clientes cl, archivos a, conversaciones c WHERE a.id_conversacion = c.id_conversacion AND c.id_cliente = cl.id_cliente AND p.id_archivo = a.id_archivo";
+                  $stmtfecha = $con->prepare($fechassql);
+                  $stmtfecha->execute(array($id_cl));
+                  while ($fechas = $stmtfecha->fetch(PDO::FETCH_BOTH)) {
+                      $seleccion .= "<option value='$fechas[0]'>".$fechas[0]."</option>";
+                  }
+                  $seleccion .= "</select>";
+                  print($seleccion);
+                ?>
+                <br>
+                <button class="btn-pink btn btn-block">Generar comprobante</button>
+                <br>
+                <br>
+                <br>
+                <br>
+              </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h5>RESUMEN DE PRODUCTOS RECOGIDOS</h5>
+            </div>
+            <div class="panel-body">
+              <form action="historialcompras" method="post">
+              <div>
+                <label for="">Fecha de inicio:</label>
+                <input type="text" name="fecha_inicio" placeholder="Fecha de inicio" class="form-control datepicker" data-date-format="yyyy-mm-dd" autocomplete="off" value="">
+                <br>
+                <label for="">Fecha de finalización:</label>
+                <input type="text" name="fecha_fin" placeholder="Fecha de inicio" class="form-control datepicker" data-date-format="yyyy-mm-dd" autocomplete="off">
                 <br>
                 <button class="btn-pink btn btn-block">Generar comprobante</button>
               </div>

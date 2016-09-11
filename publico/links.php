@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="/publico/css/docs.css">
 <link rel="stylesheet" href="/publico/css/bootstrap.css">
 <link rel="stylesheet" href="/publico/css/sweetalert.css">
+<link rel="stylesheet" href="/publico/css/bootstrap-datepicker3.css">
 <!--ESTILOS PERSONALIZADOS-->
 <link rel="stylesheet" type="text/css" href="/publico/css/main.css">
 <link rel="stylesheet" type="text/css" href="/publico/css/main_G.css">
