@@ -52,14 +52,14 @@
                 <p class="text-center texto-footer">SOLUCIONES EN IMPRESIONES</p>
             </div>
             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6 footer-info">
-                <p class="texto-footer"><a href="" class="linkf">Terminos y condiciones</a></p>
-                <p class="texto-footer"><a href="" class="linkf">Preguntas frecuentes</a></p>
-                <p class="texto-footer"><a href="" class="linkf">Contáctanos</a></p>
+                <p class="texto-footer"><a href="#modal-terminos" class="linkf" data-uk-modal>Terminos y condiciones</a></p>
+                <p class="texto-footer"><a href="#modal-preguntas" class="linkf" data-uk-modal>Preguntas frecuentes</a></p>
+                <p class="texto-footer"><a href="#modal-contact" class="linkf" data-uk-modal>Contáctanos</a></p>
             </div>
             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6 footer-info">
-                <p class="texto-footer"><a href="" class="linkf">Misión</a></p>
-                <p class="texto-footer"><a href="" class="linkf">Visión</a></p>
-                <p class="texto-footer"><a href="" class="linkf">¿Quiénes somos?</a></p>
+                <!--<p class="texto-footer"><a href="" class="linkf">Misión</a></p>-->
+                <p class="texto-footer"><a href="#modal-valores" class="linkf" data-uk-modal>Valores</a></p>
+                <p class="texto-footer"><a href="#modal-quienes" class="linkf" data-uk-modal>¿Quiénes somos?</a></p>
             </div>
             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 footer-empresa">
                 <p class="texto-footer"><a href="" class="linkf">Teléfonos: 2274-3888</a></p>
@@ -179,7 +179,7 @@
             </p>
         </div>
         <div class="uk-modal-footer">
-            <button class="uk-button uk-width-1-1" id="boton-terminos"><h4>HE LEÍDO Y ACEPTO TODOS LOS TÉRMINOS</h4></button>
+            
         </div>
     </div>
 </div>
@@ -190,7 +190,7 @@
         <div class="uk-modal-header">
             <h4 class="modal-title">PUNTO PRINT | Contáctanos</h4>
         </div>
-        <form action="privado/procesos/contactanosc.php" method="post">
+        <form action="contactanosc" method="post">
             <div class="modal-body">
                 <div class="row">
                     <div class="col-xs-6 col-sm-6 col-md-6 col-lgs-6">
@@ -219,7 +219,8 @@
                             <textarea class="form-control" rows="4" type="text" name="mensaje" autocomplete="off"></textarea>
                         </div>
                         <br>
-                        <button class="btn btn-primary btn-block">Enviar</button>
+                        <br>
+                        <button class="btn btn-pink btn-block">Enviar</button>
                     </div>
                 </div>
             </div>

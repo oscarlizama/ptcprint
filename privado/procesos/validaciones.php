@@ -36,7 +36,9 @@ function validarTexto($n) {
 }
 
 function validarCorreo($n){
-	if (preg_match("/^[_a-z0-9-]+(.[_a-z0-9-]+)*@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,4})$/", $n))
+	//NUEVO VALIDACION = ^[_a-z0-9-]+(.[_a-z0-9-]+)*@((^|)(gmail|hotmail|yahoo|outlook|))*(.((^|)(com|es|ar|mx|)))$
+	//ANTIGUA VALIDACION = ^[_a-z0-9-]+(.[_a-z0-9-]+)*@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,4})$
+	if (preg_match("/^[_a-z0-9-]+(.[_a-z0-9-]+)*@((^|)(gmail|hotmail|yahoo|outlook|))*(.((^|)(com|es|ar|mx|)))$/", $n))
 		return true;
 	else
 		return false;

@@ -35,34 +35,48 @@
 			$errormsg = "El correo ingresado no está registrado.";
 		}
 
-		$iniciado = "SELECT estado_sesion FROM clientes WHERE correo_cliente=?";
+		$iniciado = "SELECT estado_sesion FROM clientes WHERE correo_cliente=? AND estado_cliente=1";
 		$stmt = $con->prepare($iniciado);
 		$stmt->execute(array($email));
 		$estado = $stmt->fetch(PDO::FETCH_BOTH);
 		
 		//$correo = $email;
-		if ($estado[0] == "0" && !$error) {
-			$usuario = "SELECT clave_cliente AS correo FROM clientes WHERE correo_cliente=? AND estado_cliente=?";
-			$stmt = $con->prepare($usuario);
-			$stmt->execute(array($email,1));
-			$res_usuario = $stmt->fetch(PDO::FETCH_BOTH);
-			if (password_verify($pass,$res_usuario[0])) {
-				///echo "hoñaaa";
-				$_SESSION['autenticado'] = 'si';
-				$_SESSION['email'] = $email;
-				$_SESSION["ultimoAcceso"] = date("Y-n-j H:i:s"); 
-				$iniciado = "UPDATE clientes SET estado_sesion=? WHERE correo_cliente=?";
-				$stmt = $con->prepare($iniciado);
-				$stmt->execute(array(session_id(),$email));
-				header('Location: inicio');
+		if ($stmt->fetch(PDO::FETCH_BOTH)) {
+			if ($estado[0] == "0" && !$error) {
+				$usuario = "SELECT clave_cliente AS correo FROM clientes WHERE correo_cliente=? AND estado_cliente=?";
+				$stmt = $con->prepare($usuario);
+				$stmt->execute(array($email,1));
+				$res_usuario = $stmt->fetch(PDO::FETCH_BOTH);
+				if (password_verify($pass,$res_usuario[0])) {
+					///echo "hoñaaa";
+					$_SESSION['autenticado'] = 'si';
+					$_SESSION['email'] = $email;
+					$_SESSION["ultimoAcceso"] = date("Y-n-j H:i:s"); 
+					$iniciado = "UPDATE clientes SET estado_sesion=? WHERE correo_cliente=?";
+					$stmt = $con->prepare($iniciado);
+					$stmt->execute(array(session_id(),$email));
+					header('Location: inicio');
+				}else{
+					//header('Location: iniciarsesion');
+					$errormsg = "El correo que ha ingresado no existe o su contraseña es errónea.";
+					$error = true;
+				}
 			}else{
-				//header('Location: iniciarsesion');
-				$errormsg = "El correo que ha ingresado no existe o su contraseña es errónea.";
-				$error = true;
+				if (!$error) {
+					$inicioanterior = true;
+				}
 			}
 		}else{
-			if (!$error) {
-				$inicioanterior = true;
+			$activo = "SELECT estado_cliente FROM clientes WHERE correo_cliente=?";
+			$stmt = $con->prepare($activo);
+			$stmt->execute(array($email));
+			$resactivo = $stmt->fetch(PDO::FETCH_BOTH);
+			if ($resactivo[0] == "2") {
+				$errormsg = "El correo que ha ingresado no ha sido comprobado. Revise su correo electrónico para verficar la cuenta.";
+				$error = true;
+			}else if($resactivo[0] == "0"){
+				$errormsg = "El correo que ha ingresado ha sido desactivado.";
+				$error = true;
 			}
 		}
 	//}

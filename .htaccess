@@ -25,6 +25,8 @@ RewriteRule ^recuperar$ publico/recuperar.php [L,QSA,NC]
 RewriteRule ^cotizar$ publico/cotizarcliente.php [L,QSA,NC]
 RewriteRule ^canvas$ publico/canvas.php [L,QSA,NC] #porGabrielxd
 RewriteRule ^mascomentarios$ publico/mascomentarios.php [L,QSA,NC]
+RewriteRule ^verificarcuenta$ publico/verificarcuenta.php [L,QSA,NC]
+RewriteRule ^contactanosc$ privado/procesos/contactanosc.php [L,QSA,NC]
 RewriteRule ^prodp.php$ publico/cargarp.php [L,QSA,NC]
 
 ##PARA EL PRIVADO
@@ -50,7 +52,8 @@ RewriteRule ^edituser$ privado/edituser.php [L,QSA,NC]
 RewriteRule ^perfil$ privado/perfil.php [L,QSA,NC]
 RewriteRule ^comentarios.php$ privado/comentarios.php [L,QSA,NC]
 RewriteRule ^primero$ privado/primero.php [L,QSA,NC]
-RewriteRule ^recuperar$ privado/recuperar.php [L,QSA,NC]
+RewriteRule ^recuperaradmin$ privado/recuperar.php [L,QSA,NC]
+RewriteRule ^recuperarbk$ privado/procesos/pass/recuperarbk.php [L,QSA,NC]
 RewriteRule ^estadisticas$ privado/estadisticas.php [L,QSA,NC]
 RewriteRule ^reporteria$ privado/reporteria.php [L,QSA,NC]
 RewriteRule ^norecogidos$ privado/reportes/norecogidos.php [L,QSA,NC]

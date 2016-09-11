@@ -3,7 +3,7 @@
 ?>
 <html>
 	<head>
-		<meta name="theme-color" content="#ec407a">
+		
 		<?php 
 			include "links.php";
 		?>

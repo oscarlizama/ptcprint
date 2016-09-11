@@ -37,7 +37,7 @@
 					<label for="inputEmail" class="labels-blanco">CONTRASEÑA</label>
 					<input type="password" name="pass" placeholder="Contraseña" class="form-control text-center input-lg" required autocomplete='off'>
 					<br>
-					<a href="recuperar.php">OLVIDÉ MI CONTRASENIA</a>
+					<a href="recuperaradmin">OLVIDÉ MI CONTRASEÑA</a>
 					<br>
 					<br>
 					<button class="btn btn-primary btn-lg col-md-12 col-lg-12 col-xs-12 col-sm-12" name="iniciar">INICIAR SESIÓN</button>

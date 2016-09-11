@@ -35,6 +35,6 @@
     if (!$mail->send()) {
         echo $mail->ErrorInfo;
     } else {
-        header('Location: ../../inicio.php');
+        header('Location: ../../inicio');
     }
 ?>
