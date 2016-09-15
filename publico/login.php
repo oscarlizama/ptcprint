@@ -39,9 +39,8 @@
 		$stmt = $con->prepare($iniciado);
 		$stmt->execute(array($email));
 		$estado = $stmt->fetch(PDO::FETCH_BOTH);
-		
 		//$correo = $email;
-		if ($stmt->fetch(PDO::FETCH_BOTH)) {
+		if ($estado[0] == 0) {
 			if ($estado[0] == "0" && !$error) {
 				$usuario = "SELECT clave_cliente AS correo FROM clientes WHERE correo_cliente=? AND estado_cliente=?";
 				$stmt = $con->prepare($usuario);
@@ -62,21 +61,31 @@
 					$error = true;
 				}
 			}else{
-				if (!$error) {
-					$inicioanterior = true;
+				if ($estado[0] != "") {
+					if (!$error) {
+						$inicioanterior = true;
+					}
+				}else{
+					$errormsg = "El correo que ha ingresado no ha sido comprobado. Revise su correo electrónico para verficar la cuenta.";
+					$error = true;
 				}
 			}
 		}else{
+			//echo "HOLAAA";
 			$activo = "SELECT estado_cliente FROM clientes WHERE correo_cliente=?";
 			$stmt = $con->prepare($activo);
 			$stmt->execute(array($email));
 			$resactivo = $stmt->fetch(PDO::FETCH_BOTH);
+			echo "HOLAAA";
 			if ($resactivo[0] == "2") {
 				$errormsg = "El correo que ha ingresado no ha sido comprobado. Revise su correo electrónico para verficar la cuenta.";
 				$error = true;
 			}else if($resactivo[0] == "0"){
 				$errormsg = "El correo que ha ingresado ha sido desactivado.";
 				$error = true;
+			}
+			if (!$error) {
+				$inicioanterior = true;
 			}
 		}
 	//}

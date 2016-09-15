@@ -86,6 +86,9 @@ function comentario(valores,accion){
 				swal("LO SENTIMOS", "Tu comentario es tan genial que sobrecargó nuestros servidores :C", "error");
 			}else if (datos == 1) {
 				swal("¡GENIAL!", "Gracias por calificar y comentar.", "success");
+				$("#comentario").css("display","none");
+				$(".stars").css("display","none");
+				$("#enviar_comment").text("MÁS COMENTARIOS");
 			}else if(datos == 2){
 				swal("¡OUCH!", "No podemos reconocer la calificación que le otorgaste. Por favor, revisa de nuevo. Gracias.", "error");
 			}else if(datos == 3){

@@ -25,6 +25,7 @@ RewriteRule ^recuperar$ publico/recuperar.php [L,QSA,NC]
 RewriteRule ^cotizar$ publico/cotizarcliente.php [L,QSA,NC]
 RewriteRule ^canvas$ publico/canvas.php [L,QSA,NC] #porGabrielxd
 RewriteRule ^mascomentarios$ publico/mascomentarios.php [L,QSA,NC]
+RewriteRule ^verificarcuenta&(\w+)$ publico/verificarcuenta.php?verificar=$1 [L,QSA,NC]
 RewriteRule ^verificarcuenta$ publico/verificarcuenta.php [L,QSA,NC]
 RewriteRule ^contactanosc$ privado/procesos/contactanosc.php [L,QSA,NC]
 RewriteRule ^prodp.php$ publico/cargarp.php [L,QSA,NC]
@@ -109,5 +110,5 @@ RewriteRule ^(\w+)/?$ publico/cargarp.php?nombre=$1
 
 ##SE EVITA LISTAR LAS CARPETAS
 Options -Indexes
-ErrorDocument 404 /publico/error.php
+#ErrorDocument 404 /publico/error.php
 ErrorDocument 403 /publico/error.php

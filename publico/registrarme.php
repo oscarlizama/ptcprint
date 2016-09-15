@@ -33,6 +33,7 @@
 							        $sql = "INSERT INTO clientes(nombre_cliente,apellido_cliente,correo_cliente,clave_cliente,estado_cliente) VALUES (?,?,?,?,?);";
 							        $stmt = $con->prepare($sql);
 							        $stmt->execute(array($nombre,$apellido,$correo,$passHash,2));
+							        require_once '../privado/procesos/pass/correoregistro.php';
 							        //$enlace = "https://www.puntoprintsv.com/verificarcuenta?vrf=".$
 							        //LIMPIO LA CONSULTA Y CIERRO LA CONXION
 							        $sql = null;

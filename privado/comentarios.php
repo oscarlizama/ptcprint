@@ -71,7 +71,7 @@
                     while ($comentario = $stmt->fetch(PDO::FETCH_BOTH)){
                       $comentariopa .= "<div class='panel panel-default'>";
                         $comentariopa .= "<div class='panel-heading'>";
-                          $comentariopa .= "<h4 class='h-negro text-center'>CLIENTE: $comentario[1] - CALIFICACION: $comentario[0]</h4>";
+                          $comentariopa .= "<h4 class='h-negro text-center'>CLIENTE: $comentario[1] - CALIFICACION: $comentario[3]</h4>";
                         $comentariopa .= "</div>";
                         $comentariopa .= "<div class='panel-body'>";
                           $comentariopa .= "<div class='col-lg-9'>";

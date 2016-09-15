@@ -140,8 +140,8 @@
           <div class="uk-grid">
             <div class="uk-width-1-1">
                 <div class="uk-grid">
-                    <button class="btn btn-primary uk-width-small-5-10 uk-width-medium-4-10 uk-width-large-5-10 btn-sb-xs"onclick="window.location.href='cotizarcliente.php'">CARGAR</button>
-                    <button class="btn btn-success uk-width-small-4-10 uk-width-medium-4-10 uk-width-large-4-10 btn-sb-xs" id="btn-el">ELEGIR DISEÑO</button>
+                    <button class="btn btn-pink uk-width-small-5-10 uk-width-medium-4-10 uk-width-large-5-10 btn-sb-xs"onclick="window.location.href='cotizar'">CARGAR</button>
+                    <button class="btn btn-black uk-width-small-4-10 uk-width-medium-4-10 uk-width-large-4-10 btn-sb-xs" id="btn-el">ELEGIR DISEÑO</button>
                     <button class="btn btn-default uk-width-small-9-10 uk-width-medium-8-10 btn-sb-xs uk-hidden-large">PUNTUAR</button>
                 </div>
               </div>
