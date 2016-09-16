@@ -30,6 +30,44 @@
     <!--CONTENEDOR DE LA INFORMACION-->
     <br>
     <br>
+    <div class="container-fluid" id="elegir_div">
+    <div class="row">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <div class="row">
+            <div class="col-lg-11 text-center">
+              <h4>¡ELIGE TU DISEÑO!</h4>
+            </div>
+            <div class="col-lg-1 col-md-4 col-sm-4 col-xs-4">
+              <button class="btn btn-default btn-small" id="btn-crrel">Cerrar</button>
+            </div>
+          </div>
+        </div>
+        <div class="panel-body">
+          <?php 
+            /*$row = 1;
+            $divoep = "";
+            $sqlep = "SELECT DISTINCT productos.id_producto,foto_producto,nombre_producto FROM ((productos INNER JOIN tipos_producto ON productos.id_tipo_producto = tipos_producto.id_tipo_producto) INNER JOIN fotos_productos ON fotos_productos.id_producto = productos.id_producto) INNER JOIN medidas_producto ON medidas_producto.id_producto = productos.id_producto WHERE productos.id_tipo_producto=? AND estado_producto=? AND estado_foto_producto=?";
+              $stmt = $con->prepare($sqlep);
+              $stmt->execute(array(1,1,1));
+              while ($datos = $stmt->fetch(PDO::FETCH_BOTH)){
+                $divoep .= "<div class='col-lg-3 col-md-4 col-sm-6 col-xs-6 imagenesael' id='imagenel".$datos[0]."'>";
+                  $divoep .= "<a href='javascript:elegido($datos[0])'><img src='data:image/*;base64,$datos[1]' class='img-responsive' id='img$datos[0]'></a>";
+                $divoep .= "</div>";
+              }
+              print($divoep);*/
+                ///OBTENER EL ID DEL TIPO DE PRODUCTO
+              $idtip = "SELECT id_tipo_producto from tipos_producto WHERE nombre_tipo_producto=? AND estado_tipo_producto=1";
+              $stmt = $con->prepare($idtip);
+              $stmt->execute(array($nombrepr));
+              $idtipf = $stmt->fetch(PDO::FETCH_BOTH);
+              $idtipx = $idtipf[0];
+              require_once ("elegir.php");
+          ?>
+        </div>
+      </div>
+    </div>
+  </div>
     <?php
     /* 
       $id_max = 0;
@@ -150,38 +188,7 @@
       </div>
     </div>
   </div>
-  <div class="container-fluid" id="elegir_div">
-    <div class="row">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <div class="row">
-            <div class="col-lg-11 text-center">
-              <h4>¡ELIGE TU DISEÑO!</h4>
-            </div>
-            <div class="col-lg-1 col-md-4 col-sm-4 col-xs-4">
-              <button class="btn btn-default btn-small" id="btn-crrel">Cerrar</button>
-            </div>
-          </div>
-        </div>
-        <div class="panel-body">
-          <?php 
-            /*$row = 1;
-            $divoep = "";
-            $sqlep = "SELECT DISTINCT productos.id_producto,foto_producto,nombre_producto FROM ((productos INNER JOIN tipos_producto ON productos.id_tipo_producto = tipos_producto.id_tipo_producto) INNER JOIN fotos_productos ON fotos_productos.id_producto = productos.id_producto) INNER JOIN medidas_producto ON medidas_producto.id_producto = productos.id_producto WHERE productos.id_tipo_producto=? AND estado_producto=? AND estado_foto_producto=?";
-              $stmt = $con->prepare($sqlep);
-              $stmt->execute(array(1,1,1));
-              while ($datos = $stmt->fetch(PDO::FETCH_BOTH)){
-                $divoep .= "<div class='col-lg-3 col-md-4 col-sm-6 col-xs-6 imagenesael' id='imagenel".$datos[0]."'>";
-                  $divoep .= "<a href='javascript:elegido($datos[0])'><img src='data:image/*;base64,$datos[1]' class='img-responsive' id='img$datos[0]'></a>";
-                $divoep .= "</div>";
-              }
-              print($divoep);*/
-              require_once ("elegir.php");
-          ?>
-        </div>
-      </div>
-    </div>
-  </div>
+  
   <!--FIN DE LA INFORMAICON PRINCIPAL-->
   <!--INICIA EL CONTENDIO QUE POSEEN-->
   <div class="uk-width-1-1 uk-text-center">

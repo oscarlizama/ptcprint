@@ -33,7 +33,7 @@
 			}
 		}
 		if ($caducado) {
-			//header('Location: inicio');
+			header('Location: inicio');
 		}
 		//echo $nuevo;
 		/*$estadoverif = "SELECT estado_cliente FROM clientes WHERE id_cliente=?";
@@ -46,7 +46,7 @@
 			$correcto = true;
 		}*/
 	}else{
-		//header('Location: inicio');
+		header('Location: inicio');
 	}
 	if (isset($_POST['btnverificar'])) {
 		include "../privado/procesos/validaciones.php";
