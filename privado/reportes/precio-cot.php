@@ -68,7 +68,7 @@
 	$actividadNombre = $datosActv['actividad'];
 	$actividadprecio = $datosActv['costop60m'];
 	$preciob = $_POST['PrecioBase'];
-	$clicks = 3;
+	$clicks = $_POST['clicks'];
 	//fin
 	$pdf->SetFont('Arial','BUI',14);
 	$pdf->Cell(190,20,'COTIZACION DE PRODUCTO',0,1,'C');

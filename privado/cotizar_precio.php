@@ -34,9 +34,6 @@
 		            ?>
 				</select>
 				<br>
-				<label for="" class="labels">Tiempo de elaboración</label>
-	            <input type="text" class="form-control input" name="tiempo" id="tiempo" autocomplete='off' data-toggle="tooltip" data-placement="right" title="tiempo en minutos">
-	            <br>
 	            <label for="" class="labels">Equipo utilizado</label>
 	            <select class="form-control" name="equipo" id="equipo" >
 		        	<option value="0" selected="">SELECCIONE EL EQUIPO</option>
@@ -50,6 +47,9 @@
 		            ?>
 				</select>
 				<br>
+				<label for="" class="labels">Clicks realizados</label>
+	            <input type="text" class="form-control input" name="clicks" id="clicks" autocomplete='off' data-toggle="tooltip" data-placement="right" title="Clicks que realizo el equipo">
+	            <br>
 				<label for="" class="labels">Actividad Realizada</label>
 	            <select class="form-control" name="actividad" id="actividad" >
 		        	<option value="0" selected="">ELIGA LA ACTIVIDAD</option>
@@ -62,10 +62,14 @@
 		                }
 		            ?>
 				</select>
+				<br>
+				<label for="" class="labels">Tiempo de elaboración</label>
+	            <input type="text" class="form-control input" name="tiempo" id="tiempo" autocomplete='off' data-toggle="tooltip" data-placement="right" title="tiempo en minutos">
+	            <br>
 			</div>
 			<div class="col-lg-6">
 				<div class="">
-					<center><img alt="Seleccione un producto" id="imgtoLoad" class="centro-img" style="width: 65%; height: 220px;"></center>
+					<center><img alt="Seleccione un producto" id="imgtoLoad" class="centro-img" style="width: 65%; height: 300px;"></center>
 				</div>
 				<br>
 				<label for="" class="labels">Precio Base</label>
