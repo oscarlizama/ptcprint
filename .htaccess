@@ -112,5 +112,5 @@ RewriteRule ^(\w+)/?$ publico/cargarp.php?nombre=$1
 
 ##SE EVITA LISTAR LAS CARPETAS
 Options -Indexes
-#ErrorDocument 404 /publico/error.php
+ErrorDocument 404 /publico/error.php
 ErrorDocument 403 /publico/error.php
