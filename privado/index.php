@@ -18,7 +18,7 @@
 	<?php include 'links.php' ?>
 </head>
 <body>
-	<div class="container-fluid" id="login-p">
+	<!--<div class="container-fluid" id="login-p">
 		<div class="overlay"></div>
 		<div class="row">
 			<br>
@@ -44,8 +44,46 @@
 				</form>
 			</div>
 		</div>
+	</div>-->
+	<div class="container-fluid" id="login-p">
+		<br>
+		<br>
+		<br>
+		<br>
+		<div class="col-xs-12 col-sm-8 col-md-6 col-lg-6 col-lg-offset-3 col-md-offset-3 col-sm-offset-2" id="logindiv">
+			<br>
+			<div id="formulariol">
+				<div class="panel-body">
+					<h1 class="text-center h-negro">INICIAR SESIÓN</h1>
+					<br>
+					<form action="" class="text-center" method="post">
+						<label for="">CORREO ELECTRÓNICO</label>
+						<br>
+						<br>
+						<div class="uk-form-icon uk-width-1-1 uk-text-left">
+	                        <i class="uk-icon-envelope"></i>
+	                        <input class="form-control" type="text" placeholder="Correo electrónico" autocomplete="off" name="email" value="<?php echo $correo;?>" id="correolg">
+	                    </div>
+						<br>
+						<br>
+						<label for="">CONTRASEÑA</label>
+						<br>
+						<br>
+						<div class="uk-form-icon uk-width-1-1 uk-text-left">
+	                        <i class="uk-icon-lock"></i>
+	                        <input class="form-control" type="password" autocomplete="off" name="pass">
+	                    </div>
+						<br>
+						<br>
+						<button class="btn btn-medium btn-primary btn-block" name="iniciar">Iniciar sesión</button>
+						<br>
+						<br>
+						<br>
+					</form>
+				</div>
+			</div>
+		</div>
 	</div>
-</div>
 	<?php 
 		include 'scripts.php';
 		if ($activo == true) {
