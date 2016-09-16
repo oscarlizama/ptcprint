@@ -455,7 +455,7 @@
 		// Solo cuando no elimine, si elimino, no me importa como sean los campos
 		if ($_POST['accion'] != 3 && (
 
-			!validarNombrePersona($valores[0]) ||
+			!validarTexto($valores[0]) ||
 			!validarPrecio($valores[1])
 
 			)) exit("invalid");

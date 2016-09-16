@@ -1,14 +1,1 @@
-$(function(){
-    $("body").on("click", ".uk-button[data-message]", function(){
-        UIkit.notify($(this).data());
-    });
-});
-$(document).ready(function(){
-	$('.datepicker').datepicker({
-		maxViewMode: 2,
-	    clearBtn: true,
-	    language: "es",
-	    orientation: "top auto",
-	    autoclose: true
-	});
-});
+eval(function(p,a,c,k,e,r){e=function(c){return c.toString(a)};if(!''.replace(/^/,String)){while(c--)r[e(c)]=k[c]||e(c);k=[function(e){return r[e]}];e=function(){return'\\w+'};c=1};while(c--)if(k[c])p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c]);return p}('$(0(){$("d").e("h",".5-6[1-8]",0(){9.a($(b).1())})});$(c).n(0(){$(\'.3\').3({f:2,g:4,i:"j",k:"l m",7:4})});',24,24,'function|data||datepicker|true|uk|button|autoclose|message|UIkit|notify|this|document|body|on|maxViewMode|clearBtn|click|language|es|orientation|top|auto|ready'.split('|'),0,{}))

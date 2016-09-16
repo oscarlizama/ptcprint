@@ -1,8 +1,1 @@
-function error_registrar(error) {
-	UIkit.notify({
-	    message : error,
-	    status  : 'info',
-	    timeout : 5000,
-	    pos     : 'top-center'
-	});
-}
+eval(function(p,a,c,k,e,r){e=function(c){return c.toString(a)};if(!''.replace(/^/,String)){while(c--)r[e(c)]=k[c]||e(c);k=[function(e){return r[e]}];e=function(){return'\\w+'};c=1};while(c--)if(k[c])p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c]);return p}('1 5(a){2.3({4:a,0:\'6\',7:8,9:\'b-c\'})}',13,13,'status|function|UIkit|notify|message|error_registrar|info|timeout|5000|pos||top|center'.split('|'),0,{}))
