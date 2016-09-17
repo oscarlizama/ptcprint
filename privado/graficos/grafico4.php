@@ -30,7 +30,7 @@
 		11 => "Noviembre",
 		12 => "Diciembre",
 		);
-	for ($i=0; $i <= $mff; $i++) { 
+	for ($i=0; $i < $mff; $i++) { 
 		/*require_once 'procesos/conexion.php';
 		*/
 		//echo $i;

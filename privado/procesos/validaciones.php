@@ -1,7 +1,7 @@
 <?php
 
 function validarNombrePersona($n) {
-	if (preg_match("/^[a-zA-ZáéíóúÁÉÍÓÚüÜ ]+$/", $n))
+	if (preg_match("/^[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ]+$/", $n))
 		return true;
 	else
 		return false;

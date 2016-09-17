@@ -1,5 +1,1 @@
-function cargar(){
-	var image = document.getElementById("imgtoLoad");
-	var img = document.getElementById("producto");
-	image.src = 'data:image/*;base64,' + img.options[img.selectedIndex].value;
-};
+eval(function(p,a,c,k,e,r){e=function(c){return c.toString(a)};if(!''.replace(/^/,String)){while(c--)r[e(c)]=k[c]||e(c);k=[function(e){return r[e]}];e=function(){return'\\w+'};c=1};while(c--)if(k[c])p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c]);return p}('5 6(){0 a=1.2("4");0 b=1.2("3");a.7=\'8:9/*;c,\'+b.d[b.e].f};',16,16,'var|document|getElementById|producto|imgtoLoad|function|cargar|src|data|image|||base64|options|selectedIndex|value'.split('|'),0,{}))

@@ -25,7 +25,6 @@
 <script type="text/javascript" src="/publico/js/components/notify.js"></script>
 <script type="text/javascript" src="/publico/js/vendor/msjclient.js"></script>
 <script type="text/javascript" src="/publico/js/vendor/uploadcot.js"></script>
-<script type="text/javascript" src="/publico/js/vendor/carrito.js"></script>
 <script type="text/javascript" src="/publico/js/vendor/elegirp.js"></script>
 <!--ENLAZO EL SCRIPT DEL MENÚ-->
 <script type="text/javascript" src="/publico/js/vendor/menu-print.js"></script>
