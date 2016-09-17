@@ -167,7 +167,7 @@
 	</body>
 	<?php 
 		if ($agregado) {
-			echo "<script>error_registrar('¡REGISTRO EXITOSO!');</script>";
+			echo "<script>error_registrar('¡REGISTRO EXITOSO! Por favor, sigue el enlace que enviamos a tu correo para completar el registro.');</script>";
 		}
 		if($error){
 			echo "<script>error_registrar('$errormsg');</script>";
