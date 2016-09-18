@@ -18,23 +18,27 @@
 		$nombre = $_POST['nombre'];
 		$apellido = $_POST['apellido'];
 		$correo = $_POST['correo'];
-		$tipo = $_POST['tipo'];
+		//$tipo = $_POST['tipo'];
 		$clave = $_POST['clave'];
 		$claver = $_POST['claver'];
 		if ($clave == $claver) {
 			if(validar_clave($clave,$error)){
-				if (validarNombrePersona($nombre) || validarNombrePersona($apellido)) {
+				if (validarNombrePersona($nombre) && validarNombrePersona($apellido)) {
 					if ($claver != $correo && $claver != $nombre && $claver != $apellido) {
 						if (!validarTexto($clave) ||
 							!validarTexto($claver)) {
 							$error = "La contraseña tiene caracteres inválidos";
 						}else{
 							if (validarCorreo($correo)) {
+								$sqlpermiso = "INSERT INTO permisos(nombre_permiso,tbl_configuraciones,tbl_usuarios,tbl_permisos,tbl_fotospr,tbl_clientes,tbl_informacion_corporativa,tbl_redes_sociales,tbl_proveedores,tbl_facturacion,tbl_productos,tbl_medidas_productos,tbl_tipo_contactos,tbl_tipo_productos,tbl_mano_obra,tbl_contactos_proveedor,tbl_equipos,estado_permiso) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+								$stmtpermiso = $con->prepare($sqlpermiso);
+								$stmtpermiso->execute(array('Administrador',7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,1));
+
 								$passHash = password_hash($claver,PASSWORD_BCRYPT);
 								$sql = "INSERT INTO usuarios(nombre_usuario,apellido_usuario,clave_usuario,correo_usuario,id_permiso) VALUES(?,?,?,?,?)";
 								$stmt = $con->prepare($sql);
-								$stmt->execute(array($nombre,$apellido,$passHash,$correo,$tipo));
-								header('Location: administracion');
+								$stmt->execute(array($nombre,$apellido,$passHash,$correo,1));
+								//header('Location: administracion');
 							}else{
 								$error = "Verifica tu correo electrónico";
 							}
@@ -43,7 +47,7 @@
 						$error = "La clave coincide con algún dato personal como: nombre, apellido o correo electrónico";
 					}
 				}else{
-					$error = "Hay errores en los datos ingresados";
+					$error = "El nombre o apellido contiene caracteres inválidos.";
 				}
 			}else{
 				$error = $error;
@@ -70,37 +74,31 @@
 			
 			<br>
 			<form action="primero" method="post">
-			<div class="col-lg-12">
-				<div class="col-lg-6 col-md-6">
+				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 					<label for="" class="labels">Nombres</label>
-                    <input type="text" class="form-control input" name="nombre" id="nombre" autocomplete='off' value="<?php echo $nombre?>">
+                    <input type="text" class="form-control input" name="nombre" id="nombre" autocomplete='off' value="<?php echo $nombre?>" tabindex="1">
+				</div>
+				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+					<label for="" class="labels">Apellidos</label>
+                    <input type="text" class="form-control input" name="apellido" id="apellido" autocomplete='off' value="<?php echo $apellido?>" tabindex="2">
+				</div>
+				<div class="col-lg-12 col-md-12">
                     <br>
                     <label for="" class="labels">Correo electrónico</label>
                     <input type="text" class="form-control input" name="correo" id="correo" autocomplete='off' value="<?php echo $correo?>">
                     <br>
-                    <label for="" class="labels">Contraseña</label>
+				</div>
+				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+					<label for="" class="labels">Contraseña</label>
                     <input type="password" class="form-control input" name="clave" id="clave" autocomplete='off' >
                     <br>
-                    <label for="" class="labels">Repita contraseña</label>
-                    <input type="password" class="form-control omitir input" name="claver" id="claver" autocomplete='off'>
-                    <br>
 				</div>
-				<div class="col-lg-6 col-md-6">
-					<label for="" class="labels">Apellidos</label>
-                    <input type="text" class="form-control input" name="apellido" id="apellido" autocomplete='off' value="<?php echo $apellido?>">
+				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+					<label for="" class="labels">Repita contraseña</label>
+                    <input type="password" class="form-control omitir input" name="claver" id="claver" autocomplete='off'>
+				</div>
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <br>
-                    <label for="" class="labels">Tipo de usuario</label>
-                    <select class="form-control" name="tipo" id="permiso">
-                    	<option value="0" selected="">SELECCIONA UN PERMISO</option>
-						<?php 
-                            $sql = "SELECT * FROM permisos where estado_permiso=?";
-                            $stmt = $con->prepare($sql);
-			    			$stmt->execute(array(1));
-							while ($datos = $stmt->fetch(PDO::FETCH_BOTH)){
-                                echo "<option value='$datos[0]'>$datos[1]</option>";
-                            }
-                        ?>
-					</select>
 					<br>
 					<div class="error">
 						<h3 class="h-negro text-center"><?php echo $error; ?></h3>
@@ -112,7 +110,6 @@
 						<span class='flaticon-correct icon-ag icon-button'></span>
 					</button>
 				</div>
-			</div>
 			</form>
 		</div>
 		<br>

@@ -62,7 +62,7 @@
 						<br>
 						<div class="uk-form-icon uk-width-1-1 uk-text-left">
 	                        <i class="uk-icon-envelope"></i>
-	                        <input class="form-control" type="text" placeholder="Correo electrónico" autocomplete="off" name="email" value="<?php echo $correo;?>" id="correolg">
+	                        <input class="form-control" type="text" placeholder="Correo electrónico" autocomplete="off" name="email" value="<?php echo $correo;?>" id="correo">
 	                    </div>
 						<br>
 						<br>

@@ -44,6 +44,16 @@
 			include 'eliminar.php';
 			mthEliminar($tabla,$where,$estado,$valores);
 		}
+
+		if($_POST['accion'] == 4){
+			require 'conexion.php';
+			$sql = "UPDATE usuarios SET id_permiso=? WHERE id_usuario=?";
+			$stmt = $con->prepare($sql);
+			if ($stmt->execute($valores)) {
+				$resp = "success";
+				echo $resp;	
+			}
+		}
 	}
 
 	if($_POST['tabla'] == 2){

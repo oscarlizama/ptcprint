@@ -3,6 +3,8 @@
 	require 'conexion.php';
 	$respuesta = 0;
 	///OBTENGO LAS VARIABLES
+	//$correo = 'oslizama@gmail.com';
+	//$tipo = 1;
 	$correo = $_POST['correo'];
 	$tipo = $_POST['tipo'];
 	//VEO SI TRATA DE INGRESAR UN USUARIO O UN CLIENTE

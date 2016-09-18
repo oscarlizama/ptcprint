@@ -74,7 +74,7 @@
 					<?php  
 						if ($valor[0] >= 4) {
 							$button = 
-							"<button class='btn btn-ag btn-scrud col-lg-4 col-md-3 col-sm-3'>
+							"<button class='btn btn-ag btn-scrud col-lg-3 col-md-3 col-sm-3'>
 									AGREGAR
 									<span class='flaticon-correct icon-ag icon-button'></span>
 								</button>";
@@ -83,9 +83,21 @@
 						$button = "";
 					?>
 					<?php 
+						if ($valor[0] == 2 || $valor[0] == 3 || $valor[0] == 6 || $valor[0] == 7) {
+							$button = "
+							<button class='btn btn-edusr btn-scrud col-lg-3 col-md-3 col-sm-3 disabled' disabled=''>
+								EDITAR
+								<span class='flaticon-new-file icon-button icon-ed'></span>
+							</button>";
+							
+						}
+						print($button);
+						$button = "";
+					?>
+					<?php 
 						if ($valor[0] == 1 || $valor[0] == 3 || $valor[0] == 5 || $valor[0] == 7) {
 							$button = 
-							"<button class='btn btn-el btn-scrud col-lg-4 col-md-3 col-sm-3 disabled' disabled=''>
+							"<button class='btn btn-el btn-scrud col-lg-3 col-md-3 col-sm-3 disabled' disabled=''>
 								ELIMINAR
 								<span class='flaticon-cancel icon-button icon-el'></span>
 							</button>";
@@ -96,7 +108,7 @@
 					<?php 
 						if ($valor[0] > 0) {
 							$button = 
-							"<button class='btn btn-nv btn-scrud col-lg-3 col-md-2 col-sm-2'>
+							"<button class='btn btn-nv btn-scrud col-lg-2 col-md-2 col-sm-2'>
 								LIMPIAR
 								<span class='flaticon-circular-arrow icon-button icon-nv'></span>
 							</button>";
