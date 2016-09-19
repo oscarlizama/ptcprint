@@ -43,46 +43,32 @@
 		</div>-->
 		<div class="uk-slidenav-position" id="miSlider" data-uk-slideshow="{autoplay:true, kenburns:true}">
 			<ul class="uk-slideshow uk-overlay-active">
-				<!--cada "li" es una imagen-->
-			    <li>
-			    	<img src="/resources/img/slider4.png" alt="">
-			    	<!--OVERLAY HACE QUE PODAMOS GREGAR TEXTO SOBRE LA IMAGEN, AGREGANDOLO SOBRE EL UN COLOR NEGRO CON TRANSPARENCIA-->
-			    	<!--overlay top indica que solo abarcarà la parte de arriba de la pantalla-->
-			    	<div class="uk-overlay-panel uk-overlay-background uk-overlay-fade uk-overlay-top uk-text-center">
-			    		<div>
-			    			<h1 class="titulos">PUNTO PRINT | SOLUCIONES EN IMPRESIONES</h1>
-			    		</div>
-			    	</div>
-			    </li>
-			    <li>
-			    	<img src="/resources/img/slider5.png" alt="">
-			    	<!--OVERLAY HACE QUE PODAMOS GREGAR TEXTO SOBRE LA IMAGEN, AGREGANDOLO SOBRE EL UN COLOR NEGRO CON TRANSPARENCIA-->
-			    	<!--overlay top indica que solo abarcarà la parte de arriba de la pantalla-->
-			    	<div class="uk-overlay-panel uk-overlay-background uk-overlay-fade uk-overlay-top uk-text-center">
-			    		<div>
-			    			<h1 class="titulos">SI LO QUE QUIERES ES CALIDAD, NO BUSQUES MÁS</h1>
-			    		</div>
-			    	</div>
-			    </li>
-			    <li>
-			    	<img src="/resources/img/slider3.png" alt="">
-			    	<!--OVERLAY HACE QUE PODAMOS GREGAR TEXTO SOBRE LA IMAGEN, AGREGANDOLO SOBRE EL UN COLOR NEGRO CON TRANSPARENCIA-->
-			    	<!--overlay top indica que solo abarcarà la parte de arriba de la pantalla-->
-			    	<div class="uk-overlay-panel uk-overlay-background uk-overlay-fade uk-overlay-top uk-text-center">
-			    		<div>
-			    			<h3 class="titulos">LOS MEJORES BANNERS PARA TI</h3>
-			    			<button class="uk-button uk-button-primary uk-button-large">¡LLÉVAME AHORA!</button>
-			    		</div>
-			    	</div>
-			    </li>
+				<?php 
+					$totalimg = 0;
+					$sqlimagenes = "SELECT * FROM imagenes";
+					$stmtimagen = $con->prepare($sqlimagenes);
+					$stmtimagen->execute(array());
+					$li = "";
+					while ($datos  = $stmtimagen->fetch(PDO::FETCH_NUM)) {
+						$li .= "<li>";
+							$li .= "<img src='data:image/*;base64,$datos[1]' alt=''>";
+						$li .= "</li>";
+						$totalimg = $totalimg + 1;
+					}
+					print($li);
+				?>
 			</ul>
 			<!--AQUI SE AGREGA LOS CONTROLES PARA NAVEGAR EN EL SLIDESHOW-->
 			<a href="" class="uk-slidenav uk-slidenav-contrast uk-slidenav-previous" data-uk-slideshow-item="previous"></a>
 			<a href="" class="uk-slidenav uk-slidenav-contrast uk-slidenav-next" data-uk-slideshow-item="next"></a>
 			<ul class="uk-dotnav uk-dotnav-contrast uk-position-bottom uk-flex-center">
-				<li data-uk-slideshow-item="0"><a href=""></a></li>
-				<li data-uk-slideshow-item="1"><a href=""></a></li>
-				<li data-uk-slideshow-item="2"><a href=""></a></li>
+				<?php 
+					$lidat = "";
+					for ($i=0; $i < $totalimg; $i++) { 
+						$lidat .= "<li data-uk-slideshow-item='$i'><a href=''></a></li>";
+					}
+					print($lidat);
+				?>
 			</ul>
 		</div>
 		<div class="container-fluid">

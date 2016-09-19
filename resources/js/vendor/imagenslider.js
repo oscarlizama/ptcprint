@@ -1,0 +1,3 @@
+$("#nuevaimg").click(function () {
+	
+});

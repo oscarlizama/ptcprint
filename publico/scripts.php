@@ -48,7 +48,7 @@
 	if ($_SERVER['REQUEST_URI'] == "/iniciarsesion" || $_SERVER['REQUEST_URI'] == "/registrarme" || $_SERVER['REQUEST_URI'] == "/verificarcuenta") {
 	}else{
 		if ($nombre != "Iniciar sesión") {
-			echo "<script type='text/javascript' src='/resources/js/vendor/mensajestimer.js'></script>";	
+			//echo "<script type='text/javascript' src='/resources/js/vendor/mensajestimer.js'></script>";	
 		}
 	}
 ?>

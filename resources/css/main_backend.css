@@ -238,3 +238,10 @@ div.scroll-div{
 .imgmenu{
     cursor: pointer;
 }
+#nuevaimg{
+    cursor: pointer;
+}
+.imagendivslide{
+    width: 600px;
+    height: 237px;
+}
