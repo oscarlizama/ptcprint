@@ -41,7 +41,7 @@
 		$pdf->SetFont('Arial','',12);
 		$pdf->Cell(80,5,utf8_decode($nombre),0,1,'L');
 	//}
-	$pdf->Image("../img/tw.jpg",175,16,26,24);
+	$pdf->Image("../../resources/img/pplogo-provisional.png",175,16,26,24);
 
 	$pdf->SetFont('Arial','B',12);
 	$pdf->Cell(190,20,'LISTADO DE PRODUCTOS ACTIVOS',0,1,'C');
