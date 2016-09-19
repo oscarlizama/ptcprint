@@ -84,6 +84,6 @@
 	</div>
 	<br>
 	<?php include 'scripts.php';?>
-	<script type="text/javascript" src="/publico/js/vendor/cotizar_cliente.js"></script>
+	<script type="text/javascript" src="/resources/js/vendor/cotizar_cliente.js"></script>
 </body>
 </html>
