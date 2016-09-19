@@ -45,7 +45,7 @@
 			<ul class="uk-slideshow uk-overlay-active">
 				<!--cada "li" es una imagen-->
 			    <li>
-			    	<img src="publico/img/slider4.png" alt="">
+			    	<img src="/resources/img/slider4.png" alt="">
 			    	<!--OVERLAY HACE QUE PODAMOS GREGAR TEXTO SOBRE LA IMAGEN, AGREGANDOLO SOBRE EL UN COLOR NEGRO CON TRANSPARENCIA-->
 			    	<!--overlay top indica que solo abarcarà la parte de arriba de la pantalla-->
 			    	<div class="uk-overlay-panel uk-overlay-background uk-overlay-fade uk-overlay-top uk-text-center">
@@ -55,7 +55,7 @@
 			    	</div>
 			    </li>
 			    <li>
-			    	<img src="publico/img/slider5.png" alt="">
+			    	<img src="/resources/img/slider5.png" alt="">
 			    	<!--OVERLAY HACE QUE PODAMOS GREGAR TEXTO SOBRE LA IMAGEN, AGREGANDOLO SOBRE EL UN COLOR NEGRO CON TRANSPARENCIA-->
 			    	<!--overlay top indica que solo abarcarà la parte de arriba de la pantalla-->
 			    	<div class="uk-overlay-panel uk-overlay-background uk-overlay-fade uk-overlay-top uk-text-center">
@@ -65,7 +65,7 @@
 			    	</div>
 			    </li>
 			    <li>
-			    	<img src="publico/img/slider3.png" alt="">
+			    	<img src="/resources/img/slider3.png" alt="">
 			    	<!--OVERLAY HACE QUE PODAMOS GREGAR TEXTO SOBRE LA IMAGEN, AGREGANDOLO SOBRE EL UN COLOR NEGRO CON TRANSPARENCIA-->
 			    	<!--overlay top indica que solo abarcarà la parte de arriba de la pantalla-->
 			    	<div class="uk-overlay-panel uk-overlay-background uk-overlay-fade uk-overlay-top uk-text-center">
