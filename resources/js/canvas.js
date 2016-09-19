@@ -64,10 +64,10 @@ function cargarFondo(identificador){
 	var Editando = document.getElementById("editando").value;	
 	switch (Editando){
 		case "Camisa":  //Editando una camisa
-		canvas.setBackgroundImage("publico/img/camisablanca3.png");
+		canvas.setBackgroundImage("resources/img/camisablanca3.png");
 		break;
 		case "Taza": //Editando una taza
-		canvas.setBackgroundImage("publico/img/taza3-bak.png");
+		canvas.setBackgroundImage("resources/img/taza3-bak.png");
 		break;
 		default:		
 		alert("Escoga algo que editar");
@@ -189,9 +189,65 @@ function crearLinea(){
 
 $("#Saves").click(function(){
 	$("#maincanvas").get(0).toBlob(function(blob){
-		saveAs(blob,"Diseño_Personalizado_" + document.getElementById("editando").value +".png");
+		var reader = new window.FileReader();
+		 reader.readAsDataURL(blob); 
+		 reader.onloadend = function() {
+		                base64data = reader.result;                
+		                inputhide = document.getElementById("blobimg");
+						inputhide.value = base64data;
+		  }
+		  swal({   
+		  	title: "¿Terminado?",   
+		  	text: "¿Ya has terminado de editar tu diseño?",   
+		  	type: "success",   
+		  	showCancelButton: true,   
+		  	confirmButtonColor: "#DD6B55",   
+		  	confirmButtonText: "Si",   
+		  	cancelButtonText: "No",   
+		  	closeOnConfirm: false,   
+		  	closeOnCancel: true }, 
+		  	function(isConfirm){   
+		  		if (isConfirm) { 
+		  				swal({   
+					  	title: "Formato",   
+					  	text: "¡en qué formato desea su diseño?",   
+					  	type: "info",   
+					  	showCancelButton: true,   
+					  	confirmButtonColor: "#DD6B55",   
+					  	confirmButtonText: "PDF",   
+					  	cancelButtonText: "Imagen",   
+					  	closeOnConfirm: false,   
+					  	closeOnCancel: false }, 
+					  	function(isConfirm){   
+					  		if (isConfirm) {     
+					  			document.getElementById("formurep").submit();	  
+					  		} else {     
+					  			png();
+					  		} 
+					  	});	 
+		  		} else {     
+		  			
+		  		} 
+		  	});
+
+		  	
+		
 	});
 });
+
+function png(){
+	$("#maincanvas").get(0).toBlob(function(blob){
+		var reader = new window.FileReader();
+		 reader.readAsDataURL(blob); 
+		 reader.onloadend = function() {
+		                base64data = reader.result;                
+		                inputhide = document.getElementById("blobimg");
+						inputhide.value = base64data;
+		  }		
+		saveAs(blob,"Diseño_Personalizado_" + document.getElementById("editando").value +".png");		
+		window.location = "canvas";	//ne?
+	});
+}
 
 function onChange(options) { //interponer las figuras/imagenes
     options.target.setCoords();

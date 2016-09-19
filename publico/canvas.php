@@ -1,14 +1,18 @@
 <!DOCTYPE html>
+<?php 
+	include '../privado/procesos/conexion.php';
+  	include '../privado/procesos/lifetime.php'; 
+?>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
 	<title>Prueba del Canvas</title>
 	<?php include 'links.php'; ?>
-	<link rel="stylesheet" type="text/css" href="publico/css/canvas.css">
-	<script src="publico/js/fabric.min.js"></script>	
-	<script src="publico/js/jscolor.min.js"></script>	
-	<script src="publico/js/FileSaver.min.js"></script>
-	<script src="publico/js/canvas-toBlob.js"></script>
+	<link rel="stylesheet" type="text/css" href="resources/css/canvas.css">
+	<script src="resources/js/fabric.min.js"></script>	
+	<script src="resources/js/jscolor.min.js"></script>	
+	<script src="resources/js/FileSaver.min.js"></script>
+	<script src="resources/js/canvas-toBlob.js"></script>
 </head>
 <body>
 	<?php include 'menu.php' ?>
@@ -21,11 +25,17 @@
 		<div class="uk-width-7-10">
 			<div class="uk-grid"> <!--Primera fila de botones superiores-->
 				<div class="uk-width-2-3  ">
-					<form action="" class="uk-form">
+					<form action="canvasrep" class="uk-form" id="formurep" name="formurep" method="post">
 						<fieldset data-uk-margin>
 							<label for="editando">Editando:</label> <!--Seccion determinante del fondo del canvas-->
 							<input id="editando" type="text" placeholder="" disabled class="uk-form-width-large uk-form-help-inline uk-form-horizontal" value="Camisa"> <!--El value determinará lo que se editara-->
-							<input type="hidden" class="" name="emailUser" value="<?php echo $_SESSION['email'];?>">
+							
+							<input id="blobimg" type="hidden" name="blobimg">
+							<input id="blobimg" type="hidden" name="blobimgraw">
+							<button class="btn btn-scrud btn-block hidden" id="genpdf">
+							GENERAR REPORTE
+							<span class='flaticon-pdf icon-buttons'></span>
+			</button>
 						</fieldset>
 					</form>
 				</div> <!--Para informacion de lo que se esta editando-->
@@ -42,7 +52,12 @@
 					</div>
 				</div> <!--Para el boton de cambiar lo que estoy editando-->
 				<br>
-				<div class="uk-width-1-4 "><a class="uk-icon-hover uk-icon-save uk-icon-large" id="Saves"> Guardar</a></div>
+				<div class="uk-width-1-4 ">
+					<div class="uk-button-dropdown" data-uk-dropdown="{pos: 'right-top'}">
+						<a class="uk-icon-hover uk-icon-save uk-icon-large" id="Saves"> Guardar</a>
+						
+					</div>					
+				</div>
 				<div class="uk-width-1-4 ">
 					<div class="uk-button-dropdown" data-uk-dropdown="{pos: 'right-top'}">
 						<a class="uk-icon-hover uk-icon-pencil uk-icon-large" onclick="habilitarDibujo('69')"> Dibujo</a>
@@ -130,6 +145,6 @@
 	</div>		
 	<?php include 'footer.php' ?>
 	<?php include 'scripts.php' ?>
-	<script type="text/javascript" src="publico/js/canvas.js"></script>
+	<script type="text/javascript" src="resources/js/canvas.js"></script>
 </body>
 </html>

@@ -25,6 +25,7 @@
 <script type="text/javascript" src="/resources/js/components/notify.js"></script>
 <script type="text/javascript" src="/resources/js/vendor/msjclient.js"></script>
 <script type="text/javascript" src="/resources/js/vendor/uploadcot.js"></script>
+<script type="text/javascript" src="/resources/js/vendor/carrito.js"></script>
 <script type="text/javascript" src="/resources/js/vendor/elegirp.js"></script>
 <!--ENLAZO EL SCRIPT DEL MENÚ-->
 <script type="text/javascript" src="/resources/js/vendor/menu-print.js"></script>
@@ -41,6 +42,7 @@
 <script type="text/javascript" src="/resources/js/vendor/bootstrap-datepicker.min.js"></script>
 <script type="text/javascript" src="/resources/js/vendor/bootstrap-datepicker.es.min.js"></script>
 <script src='https://www.google.com/recaptcha/api.js'></script>
+<script type="text/javascript" src="/resources/js/vendor/cotizar_cliente.js"></script>
 <?php 
 	//echo $_SERVER['REQUEST_URI'];
 	if ($_SERVER['REQUEST_URI'] == "/iniciarsesion" || $_SERVER['REQUEST_URI'] == "/registrarme" || $_SERVER['REQUEST_URI'] == "/verificarcuenta") {
