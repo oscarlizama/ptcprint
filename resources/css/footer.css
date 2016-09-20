@@ -1,6 +1,6 @@
 .footer-print{
 	margin-top: 10px;
-	background-color: rgba(0, 0, 5, 1);;
+	background-color: rgba(0, 0, 5, 1);
 	color: white;
 	bottom: 0px;
 }
@@ -37,6 +37,12 @@
 }
 .footer-print h3{
 	display: none;
+}
+.footer-redes{
+	text-align: center !important;
+	margin-top: -50px;
+	color: white;
+	background-color: black;
 }
 @media only screen and (max-width: 770px) {
 	.footer-empresa{

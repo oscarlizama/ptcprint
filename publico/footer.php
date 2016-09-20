@@ -66,6 +66,23 @@
                 <p class="texto-footer"><a href="" class="linkf">Blvd Consitición y Pasea Miralvalle, San Salvador</a></p>
                 <p class="texto-footer"><a href="" class="linkf">Correo: puntoprintsv@gmail.com</a></p>
             </div>
+            <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 footer-redes">
+                <?php 
+                    $sqlred = "SELECT * FROM redes_sociales WHERE estado_red=?";
+                    $stmtred = $con->prepare($sqlred);
+                    $stmtred->execute(array(1));
+                    while ($red = $stmtred->fetch(PDO::FETCH_NUM)) {
+                        $reddiv = "<a href='".$red[2]."' class='linkf'>";
+                            $reddiv .= "<div class='glyph'>";
+                                $reddiv .= "<div class='glyph-icon ".$red[3]."'></div>";
+                            $reddiv .= "</div>";
+                        $reddiv .= "</a>";
+                        printf($reddiv);
+                    }
+                ?>
+                <br>
+                <br>
+            </div>
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 footer-codem">
                 <p id="code-masters" class="text-center">Powered by Code Master</p>
             </div>

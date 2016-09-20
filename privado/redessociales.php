@@ -41,18 +41,39 @@
 					<label for="" class="labels">Nombre</label>
                     <input type="text" class="form-control input" id="nombre" autocomplete='off'>
                     <br>
-                    <label for="" class="labels">Enlace de la red social</label>
+                    <label for="" class="labels">Enlace de la red social (http://www.ejemplo.com ó https://www.ejemplo.com)</label>
                     <input type="text" class="form-control input" id="enlace" autocomplete='off'>
                     <br>
-                    
+                    <input type="text" class="form-control input hide" id="logo" autocomplete='off'>
 				</div>
-				<div class="col-lg-3 col-md-3">
-					<output id="list"></output>
-					<label for="" class="labels">Logo</label>
-					<form method="post" id="formulario" enctype="multipart/form-data">
-                    	<input type="file" class="input" id="imagen" name="file" autocomplete='off'>
-                    	<input type="text" class="input hide omitir" id="imagenb64" name="antigua" value="ninguna" autocomplete='off'>
-                    </form>
+				<div class="col-lg-6 col-md-6">
+                    <div class="panel panel-default">
+						<div class="panel-heading">
+							Selecciona un icono la producto
+						</div>
+                    	<div class="panel-body">
+                    		<div class="row">
+                    			<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                    				<img src="/resources/img/menu/facebook-logo.png" alt="" class="imgred" id="1">
+                    			</div>
+                    			<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                    				<img src="/resources/img/menu/snapchat.png" alt="" class="imgred" id="2">
+                    			</div>
+                    			<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                    				<img src="/resources/img/menu/instagram-logo.png" alt="" class="imgred" id="3">
+                    			</div>
+                    			<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                    				<img src="/resources/img/menu/twitter-logo.png" alt="" class="imgred" id="4">
+                    			</div>
+                    			<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                    				<img src="/resources/img/menu/whatsapp-logo.png" alt="" class="imgred" id="5">
+                    			</div>
+                    			<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                    				<img src="/resources/img/menu/pinterest.png" alt="" class="imgred" id="6">
+                    			</div>
+                    		</div>
+                    	</div>
+                    </div>
                     <br>
 				</div>
 				<div class="col-lg-12">

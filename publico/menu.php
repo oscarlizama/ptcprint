@@ -47,7 +47,7 @@
             ?>
             <div class="itemm p">
                <a href="canvas">
-                  <div class="glyph"><div class="glyph-icon flaticon-multimedia"></div>
+                  <div class="glyph"><div class="glyph-icon flaticon-multimedia-1"></div>
                        <div class="class-name">Edición</div>
                   </div>
                </a>

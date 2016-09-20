@@ -22,7 +22,7 @@
 <script type="text/javascript" src="/resources/js/vendor/bootstrap-datepicker.es.min.js"></script>
 <script type="text/javascript" src="/resources/js/vendor/selecimg.js"></script>
 <script type="text/javascript" src="/resources/js/vendor/msjclient.js"></script>
-<script type="text/javascript" src="/resources/js/vendor/imagenslider.js"></script>
+<script type="text/javascript" src="/resources/js/vendor/redessociales.js"></script>
 <?php 
 	//echo $_SERVER['REQUEST_URI'];
 	if ($_SERVER['REQUEST_URI'] != "/administracion") {

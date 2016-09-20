@@ -280,7 +280,8 @@
 		if ($_POST['accion'] != 3 && (
 
 			!validarNombrePersona($valores[0]) ||
-			!validarTexto($valores[1]) 
+			!validarURL($valores[1]) ||
+			!validarTexto($valores[2])
 			)) exit("invalid");
 
 		// Validar ID, cuando no inserte (cuando modifique o elimine, solo en esos casos se pasa el id)
