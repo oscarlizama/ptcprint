@@ -51,46 +51,46 @@
                     	<div class="panel-body">
                     		<div class="row">
                     			<div class="col-lg-2">
-                    				<img src="imgmenu/ads.png" alt="" class="imgmenu" id="1">
+                    				<img src="../resources/img/menu/ads.png" alt="" class="imgmenu" id="1">
                     			</div>
                     			<div class="col-lg-2">
-                    				<img src="imgmenu/balloons.png" alt="" class="imgmenu" id="2">
+                    				<img src="../resources/img/menu/balloons.png" alt="" class="imgmenu" id="2">
                     			</div>
                     			<div class="col-lg-2">
-                    				<img src="imgmenu/clothes.png" alt="" class="imgmenu" id="3">
+                    				<img src="../resources/img/menu/clothes.png" alt="" class="imgmenu" id="3">
                     			</div>
                     			<div class="col-lg-2">
-                    				<img src="imgmenu/tarjetas.png" alt="" class="imgmenu" id="4">
+                    				<img src="../resources/img/menu/tarjetas.png" alt="" class="imgmenu" id="4">
                     			</div>
                     			<div class="col-lg-2">
-                    				<img src="imgmenu/billboard.png" alt="" class="imgmenu" id="5">
+                    				<img src="../resources/img/menu/billboard.png" alt="" class="imgmenu" id="5">
                     			</div>
                     			<div class="col-lg-2">
-                    				<img src="imgmenu/birthday-card.png" alt="" class="imgmenu" id="6">
-                    			</div>
-                    			<div class="col-lg-2">
-                    				<br>
-                    				<img src="imgmenu/door.png" alt="" class="imgmenu" id="7">
+                    				<img src="../resources/img/menu/birthday-card.png" alt="" class="imgmenu" id="6">
                     			</div>
                     			<div class="col-lg-2">
                     				<br>
-                    				<img src="imgmenu/menu.png" alt="" class="imgmenu" id="8">
+                    				<img src="../resources/img/menu/door.png" alt="" class="imgmenu" id="7">
                     			</div>
                     			<div class="col-lg-2">
                     				<br>
-                    				<img src="imgmenu/mode-circular-button.png" alt="" class="imgmenu" id="9">
+                    				<img src="../resources/img/menu/menu.png" alt="" class="imgmenu" id="8">
                     			</div>
                     			<div class="col-lg-2">
                     				<br>
-                    				<img src="imgmenu/rings.png" alt="" class="imgmenu" id="10">
+                    				<img src="../resources/img/menu/mode-circular-button.png" alt="" class="imgmenu" id="9">
                     			</div>
                     			<div class="col-lg-2">
                     				<br>
-                    				<img src="imgmenu/wanted.png" alt="" class="imgmenu" id="11">
+                    				<img src="../resources/img/menu/rings.png" alt="" class="imgmenu" id="10">
                     			</div>
                     			<div class="col-lg-2">
                     				<br>
-                    				<img src="imgmenu/round-add-button.png" alt="" class="imgmenu" id="12">
+                    				<img src="../resources/img/menu/wanted.png" alt="" class="imgmenu" id="11">
+                    			</div>
+                    			<div class="col-lg-2">
+                    				<br>
+                    				<img src="../resources/img/menu/round-add-button.png" alt="" class="imgmenu" id="12">
                     			</div>
                     		</div>
                     	</div>
