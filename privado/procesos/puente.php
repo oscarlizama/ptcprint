@@ -415,8 +415,15 @@
 		}
 
 		if($_POST['accion'] == 3){
-			include 'eliminar.php';
-			mthEliminar($tabla,$where,$estado,$valores);
+			/*include 'eliminar.php';
+			mthEliminar($tabla,$where,$estado,$valores);*/
+			require 'conexion.php';
+			$sql = "DELETE FROM fotos_productos WHERE id_foto_producto=?";
+			$stmt = $con->prepare($sql);
+			if ($stmt->execute($valores)) {
+				$resp = "success";
+				echo $resp;	
+			}
 		}
 	}
 

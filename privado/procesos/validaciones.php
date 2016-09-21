@@ -98,7 +98,9 @@ function validar_clave($clave,&$error_clave){
 	        return false;
 	}
 	function validarURL($url){
-		if (preg_match("/(?:http|https)?(?:\:\/\/)(([A-Za-z0-9-]+\.)*[A-Za-z0-9-]+\.[A-Za-z]+)(?:\/.*)?/im", $url))
+		//
+		//(?:http|https)?(?:\:\/\/)(([A-Za-z0-9-]+\.)*[A-Za-z0-9-]+\.[A-Za-z]+)(?:\/.*)?
+		if (preg_match("/^(http|https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \?=.-]*)*\/?$/m", $url))
 			return true;
 		else
 			return false;
