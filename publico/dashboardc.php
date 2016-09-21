@@ -4,6 +4,25 @@
         header('Location: inicio');
         session_destroy();
     }
+    $error = false;
+    $errormsg = null;
+    if (isset($_POST['confirm'])) {
+        $ideliminar = $_POST['confirm'];
+        if (preg_match("/^[123456789]+\d*$/", $ideliminar)){
+            $sqleliminar = "UPDATE clientes SET estado_cliente=? WHERE id_cliente=?";
+            $stmteliminar = $con->prepare($sqleliminar);
+            if (!$stmteliminar->execute(array(0,$ideliminar))) {
+                $error = true;
+                $errormsg = "Hubo un error al tratar de eliminar la cuenta. Inténtalo más tarde.";
+            }
+            else{
+                header('Location: inicio');
+            }
+        }else{
+            $error = true;
+            $errormsg = "Hubo un error al tratar de eliminar la cuenta. Inténtalo más tarde.";
+        }
+    }
 ?>
 <html>
 	<head>
@@ -23,7 +42,6 @@
         $stmt = $con->prepare($sql);
         $stmt->execute(array($correo));
         $resultado = $stmt->fetch(PDO::FETCH_BOTH);
-        $con = null;
     ?>
     <div>
         <br>
@@ -53,7 +71,11 @@
                                                 <br>
                                                 <br>
                                                 <button class="btn btn-info btn-large pull-left col-lg-4 col-md-6 col-sm-12 col-xs-12 omitir col-lg-offset-1" id="guardar_perfil">ACTUALIZAR</button>
-                                                <button class="btn btn-danger btn-large col-lg-3 col-md-5 col-sm-12 col-xs-12 omitir col-lg-offset-2">CERRA MI CUENTA</button>
+                                                <form action="miperfil" method="post" id="eliminarmeform">
+                                                    <button class="btn btn-danger btn-large col-lg-4 col-md-5 col-sm-12 col-xs-12 omitir col-lg-offset-2" name="
+                                                    eliminarme" id="eliminarme" type="button">ELIMINAR CUENTA</button>
+                                                    <input type="text" class="hide" value="" name="confirm" id="cofirmelmi">
+                                                </form>
                                             </div>
                                         </div>
                                     </div>
@@ -113,7 +135,6 @@
                                         $panelc .= "</div>";
                                     $panelc .= "</div>";
                                     print($panelc);
-                                    $con = null;
                                 ?>
                             </div>
                         </div>
@@ -122,7 +143,12 @@
             </div>
         </div>
     </div>
-    <?php include 'footer.php' ?>
-    <?php include 'scripts.php' ?>
+    <?php include 'footer.php'; ?>
+    <?php include 'scripts.php'; ?>
+    <?php 
+        if ($error) {
+            echo("<script>swal('Error', '".$errormsg."', 'error')</script>");
+        }
+    ?>
 </body>
 </html>

@@ -15,29 +15,40 @@
 				if (validarFecha($_POST['fecha_inicio']) && validarFecha($_POST['fecha_fin'])) {
 					$fechai_mostrar = $_POST['fecha_inicio'];
 					$fechaf_mostrar = $_POST['fecha_fin'];
-					if ($grafico == 1) {
-						include 'graficos/grafico1.php';
-						$titulo3 = "Clientes registrados por mes";
-					}
-					if ($grafico == 2) {
-						include 'graficos/grafico2.php';
-						$titulo3 = "Productos más vendidos";
-					}
-					if ($grafico == 3) {
-						include 'graficos/grafico3.php';
-						$titulo3 = "Productos más vendidos por medida";
-					}
-					if ($grafico == 4) {
-						include 'graficos/grafico4.php';
-						$titulo3 = "Conversaciones iniciadas por mes";
-					}
-					if ($grafico == 5) {
-						include 'graficos/grafico5.php';
-						$titulo3 = "Productos con más comentarios al mes";
-					}
-					if ($grafico == 0) {
+					$fechai1 = new DateTime($_POST['fecha_inicio']);
+					$fechaf2 = new DateTime($_POST['fecha_fin']);
+					$fechavalidar = $fechai1->diff($fechaf2);
+					$mesesetotales = $fechavalidar->m + 1;
+					$ai = substr($fechai_mostrar,-10,4);
+					$af = substr($fechaf_mostrar,-10,4);
+					if ($mesesetotales <= 12 && ($fechavalidar->y) == 0 && $fechai1 < $fechaf2 && $ai = $af) {
+						if ($grafico == 1) {
+							include 'graficos/grafico1.php';
+							$titulo3 = "Clientes registrados por mes";
+						}
+						if ($grafico == 2) {
+							include 'graficos/grafico2.php';
+							$titulo3 = "Productos más vendidos";
+						}
+						if ($grafico == 3) {
+							include 'graficos/grafico3.php';
+							$titulo3 = "Productos más vendidos por medida";
+						}
+						if ($grafico == 4) {
+							include 'graficos/grafico4.php';
+							$titulo3 = "Conversaciones iniciadas por mes";
+						}
+						if ($grafico == 5) {
+							include 'graficos/grafico5.php';
+							$titulo3 = "Productos con más comentarios al mes";
+						}
+						if ($grafico == 0) {
+							$errorseleccionar = true;
+							$errormsg = "Eliga una consulta para graficar";
+						}
+					}else{
 						$errorseleccionar = true;
-						$errormsg = "Eliga una consulta para graficar";
+						$errormsg = "Por favor ingrese un rango menor o igual a 1 año. Además, comprueba que la fecha de inicio se mayor a la fecha final y estén en el mismo año.";
 					}
 				}else{
 					$errorseleccionar = true;

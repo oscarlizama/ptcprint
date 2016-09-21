@@ -14,7 +14,7 @@
 	}
 	//echo $fecha_fin;
 	$fecha = $fecha1->diff($fecha2);
-	$mff = $fecha->m + 1;	
+	$mff = $fecha->m + 1;
 	$numeros = array();
 	$nombres_meses = array(
 		1 => "Enero",

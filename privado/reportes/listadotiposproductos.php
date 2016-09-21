@@ -3,6 +3,7 @@
 	require_once '../procesos/autenticar.php';
 	require_once 'fpdf.php';
 	$nombre = "";
+	date_default_timezone_set("America/El_Salvador");
 	class PDF extends FPDF{
 	  function Footer(){
 	      $this->SetXY(0,-20);

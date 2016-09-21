@@ -81,7 +81,7 @@
 			<div class="row hidden-xs" id="solicitados">
 				<?php 
 					$div = "";
-					$sqlinfo = "SELECT p.id_producto,p.nombre_producto,p.descripcion_producto FROM productos p,fotos_productos fp WHERE p.estado_producto=? AND fp.id_producto = p.id_producto LIMIT 9";
+					$sqlinfo = "SELECT p.id_producto,p.nombre_producto,p.descripcion_producto FROM productos p,fotos_productos fp WHERE p.estado_producto=? AND fp.id_producto = p.id_producto ORDER BY  p.calificacion_promedio LIMIT 9";
 					$stmtinfo = $con->prepare($sqlinfo);
 					$stmtinfo->execute(array(1));
 					while ($informacion = $stmtinfo->fetch(PDO::FETCH_BOTH)) {

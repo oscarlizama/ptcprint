@@ -27,6 +27,7 @@
 <script type="text/javascript" src="/resources/js/vendor/uploadcot.js"></script>
 <script type="text/javascript" src="/resources/js/vendor/carrito.js"></script>
 <script type="text/javascript" src="/resources/js/vendor/elegirp.js"></script>
+<script type="text/javascript" src="/resources/js/vendor/eliminarme.js"></script>
 <!--ENLAZO EL SCRIPT DEL MENÚ-->
 <script type="text/javascript" src="/resources/js/vendor/menu-print.js"></script>
 <script type="text/javascript" src="/resources/js/vendor/acciones_front.js"></script>

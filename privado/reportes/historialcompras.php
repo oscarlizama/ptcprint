@@ -4,6 +4,7 @@
 	require_once '../procesos/validaciones.php';
 	$fecha_i = null;
 	$fecha_f = null;
+	date_default_timezone_set("America/El_Salvador");
 	if(isset($_POST['fecha_inicio'])){
 		$fecha_i = $_POST['fecha_inicio'];
 		$fecha_f = $_POST['fecha_fin'];

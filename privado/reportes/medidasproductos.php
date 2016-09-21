@@ -5,6 +5,7 @@
 	$nombre = "";
 	$producto = 0;
 	$nombreprod = array();
+	date_default_timezone_set("America/El_Salvador");
 	if (isset($_POST['productos']))
 		$producto = $_POST['productos'];
 	else

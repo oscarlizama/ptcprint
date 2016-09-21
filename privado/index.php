@@ -6,6 +6,9 @@
 	$stmt->execute(array());
 	if ($stmt->fetch(PDO::FETCH_BOTH)) {
 		require 'procesos/loginpv.php';
+		if (isset($_SESSION['autenticadop'])) {
+			header('Location: admin');	
+		}
 	}else{
 		header('Location: primero');
 	}

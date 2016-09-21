@@ -2,6 +2,7 @@
 	session_start();
 	require_once '../procesos/conexion.php';
 	$fecha_cl = null;
+	date_default_timezone_set("America/El_Salvador");
 	if(isset($_POST['fechacl']))
 		$fecha_cl = $_POST['fechacl'];
 	else
