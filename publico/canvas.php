@@ -14,7 +14,7 @@
 	<script src="resources/js/FileSaver.min.js"></script>
 	<script src="resources/js/canvas-toBlob.js"></script>
 </head>
-<body>
+<body id="bodyxd">
 	<?php include 'menu.php' ?>
 	<div class="uk-grid">
 		<div class="uk-width-1-1 titulo-f uk-text-center uk-text-large uk-text-middle header">
@@ -52,15 +52,15 @@
 					</div>
 				</div> <!--Para el boton de cambiar lo que estoy editando-->
 				<br>
-				<div class="uk-width-1-4 ">
+				<div class="uk-width-1-6 ">
 					<div class="uk-button-dropdown" data-uk-dropdown="{pos: 'right-top'}">
-						<a class="uk-icon-hover uk-icon-save uk-icon-large" id="Saves"> Guardar</a>
+						<a class="icocen uk-icon-hover uk-icon-save uk-icon-large" id="Saves"></a>
 						
 					</div>					
 				</div>
-				<div class="uk-width-1-4 ">
+				<div class="uk-width-1-6 ">
 					<div class="uk-button-dropdown" data-uk-dropdown="{pos: 'right-top'}">
-						<a class="uk-icon-hover uk-icon-pencil uk-icon-large" onclick="habilitarDibujo('69')"> Dibujo</a>
+						<a class="icocen uk-icon-hover uk-icon-pencil uk-icon-large" onclick="habilitarDibujo('69')"></a>
 						<div class="uk-dropdown">
 							<a onclick="habilitarDibujo('Pencil')" id="br1" class="uk-icon-large">Lapiz</a><br><br>
 							<a onclick="habilitarDibujo('Circle')" id="br2" class="uk-icon-large">Circulos</a><br><br>
@@ -69,23 +69,41 @@
 						</div>
 					</div>
 				</div>
-				<div class="uk-width-1-4 ">
+				<div class="uk-width-1-6 ">
 					<div class="uk-button-dropdown" data-uk-dropdown="{pos:'right-top'}">
-						<a class="uk-icon-hover uk-icon-close uk-icon-large"> Eliminar</a>
+						<a class="icocen uk-icon-hover uk-icon-close uk-icon-large"></a>
 						<div class="uk-dropdown">
 							<a class="uk-icon-large" onclick="eliminar()">Eliminar Elemento</a><br><br>
 							<a class="uk-icon-large" onclick="clearCanvas()">Limpiar</a><br><br>
 						</div>
 					</div>
 				</div>
-				<div class="uk-width-1-4 ">
+				<div class="uk-width-1-6 ">
 					<div class="uk-button-dropdown" data-uk-dropdown="{pos:'right-top'}">
-						<a class="uk-icon-hover uk-icon-cube uk-icon-large "> Formas</a>
+						<a class="icocen uk-icon-hover uk-icon-cube uk-icon-large "></a>
 						<div class="uk-dropdown">
 							<a onclick="crearCuadro()" class="uk-icon-hover uk-icon-square uk-icon-large">  Cuadrado</a><br><br>
 							<a onclick="crearTriangulo()" class="uk-icon-hover uk-icon-warning uk-icon-large"> Triangulo</a><br><br>
 							<a onclick="crearCirculo()" class="uk-icon-hover uk-icon-circle uk-icon-large">  Circulo</a><br><br>
 							<a onclick="crearLinea()" class="uk-icon-hover uk-icon-minus uk-icon-large">   Linea</a>
+						</div>
+					</div>
+				</div>
+				<div class="uk-width-1-6 ">
+					<div class="uk-button-dropdown" data-uk-dropdown="{pos:'right-top'}">
+						<a class="icocen uk-icon-hover uk-icon-caret-square-o-up uk-icon-large"></a>
+						<div class="uk-dropdown">
+							<a class="uk-icon-large" onclick="traeradelante()">Mover adelante</a><br><br>
+							<a class="uk-icon-large" onclick="traerfrente()">Traer al Frente</a><br><br>
+						</div>
+					</div>
+				</div>
+				<div class="uk-width-1-6 ">
+					<div class="uk-button-dropdown" data-uk-dropdown="{pos:'right-top'}">
+						<a class="icocen uk-icon-hover uk-icon-caret-square-o-down uk-icon-large"></a>
+						<div class="uk-dropdown">
+							<a class="uk-icon-large" onclick="enviaratras()">Mover atras</a><br><br>
+							<a class="uk-icon-large" onclick="enviarfondo()">Enviar al fondo</a><br><br>
 						</div>
 					</div>
 				</div>

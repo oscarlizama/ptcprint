@@ -47,8 +47,8 @@ function clearCanvas(){
 }
 function eliminar(){
 	if (canvas.getActiveGroup() != null){
-		alert("elimine los elementos uno por uno");
-		canvas.discardActiveGroup();
+		canvas.getActiveGroup().forEachObject(function(o){ canvas.remove(o) });
+      	canvas.discardActiveGroup().renderAll();
 	}
 	else{
 		canvas.remove(canvas.getActiveObject());
@@ -58,7 +58,12 @@ function eliminar(){
 function update(picker) {
     color_HEX = picker.toHEXString();
     color_RGB = picker.toRGBString(); 
-    actualizarBrush();   
+    actualizarBrush();
+    if (canvas.getActiveObject != null) //si se ha seleccionado algo
+    {
+    	canvas.getActiveObject().set("fill",color_HEX);
+    }   
+    render();
     }
 function cargarFondo(identificador){
 	var Editando = document.getElementById("editando").value;	
@@ -129,6 +134,7 @@ function añadirTexto(){
 			fontFamily: family, fill: "" + color_HEX, borderColor: 'black', cornerColor: 'purple',
 			cornerSize: 15, transparentCorners: true });
 		canvas.add(textTOadd);
+		document.getElementById("txtdes").value = "";
 	}		
 	render();
 }
@@ -186,6 +192,50 @@ function crearLinea(){
 	canvas.add(linea);
 	render();
 }
+function traeradelante(){ 
+	canvas.bringForward(canvas.getActiveObject());
+	render();
+}
+function enviaratras(){ 
+	canvas.sendBackwards(canvas.getActiveObject());
+	render();
+}
+function traerfrente(){ 
+	canvas.bringToFront(canvas.getActiveObject());
+	render();
+}
+function enviarfondo(){ 
+	canvas.sendToBack(canvas.getActiveObject());
+	render();
+}
+
+// canvas.on('object:selected',function (e){
+// 	if (canvas.getActiveObject != null && canvas.getActiveObject.isType('text')){
+// 		document.getElementById("txtdes").value = canvas.getActiveObject().get('text');
+// 	}
+// })
+// canvas.on('object:deselected',function (e){
+// 		alert("deseleccion");
+// 		document.getElementById("txtdes").value = "";
+// })
+
+var wage = document.getElementById("bodyxd"); //eventlistener
+wage.addEventListener("keydown", function (e) {
+    if (e.keyCode === 46) {  //Si se presiona la tecla suprimir
+        //chequear si canvas esta cargado y eso
+	    if (canvas.getActiveObject != null) //si hay un objeto seleccionado
+	    {
+	    	eliminar();
+	    }
+    }
+    if (e.keyCode === 27) //Si se presiona la tecla escape
+    {
+    	if (canvas.freeDrawingBrush != null){
+    		habilitarDibujo('69');
+    	}
+    }
+});
+
 
 $("#Saves").click(function(){
 	$("#maincanvas").get(0).toBlob(function(blob){
