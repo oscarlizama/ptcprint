@@ -38,7 +38,7 @@
 								$sql = "INSERT INTO usuarios(nombre_usuario,apellido_usuario,clave_usuario,correo_usuario,id_permiso) VALUES(?,?,?,?,?)";
 								$stmt = $con->prepare($sql);
 								$stmt->execute(array($nombre,$apellido,$passHash,$correo,1));
-								//header('Location: administracion');
+								header('Location: administracion');
 							}else{
 								$error = "Verifica tu correo electrónico";
 							}
