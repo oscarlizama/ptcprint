@@ -46,7 +46,7 @@
 <script type="text/javascript" src="/resources/js/vendor/cotizar_cliente.js"></script>
 <?php 
 	//echo $_SERVER['REQUEST_URI'];
-	if ($_SERVER['REQUEST_URI'] == "/iniciarsesion" || $_SERVER['REQUEST_URI'] == "/registrarme" || $_SERVER['REQUEST_URI'] == "/verificarcuenta") {
+	if ($_SERVER['REQUEST_URI'] == "/iniciarsesion" || $_SERVER['REQUEST_URI'] == "/registrarme" || $_SERVER['REQUEST_URI'] == "/verificarcuenta" || $_SERVER['REQUEST_URI'] == "/recuperar") {
 	}else{
 		if ($nombre != "Iniciar sesión") {
 			//echo "<script type='text/javascript' src='/resources/js/vendor/mensajestimer.js'></script>";	
