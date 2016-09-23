@@ -3,8 +3,14 @@
 	include 'procesos/autenticar.php';
 	include 'procesos/lifeprivate.php';
 	include 'procesos/validaciones.php';
-	$fechai_mostrar = "";
-	$fechaf_mostrar = "";
+	date_default_timezone_set("America/El_Salvador");
+	$meshoy = date('m');
+	$aniohoy = date('Y');
+	$ultimodiames = date("d",(mktime(0,0,0,$meshoy+1,1,$aniohoy)-1));
+	$fechaihoy = $aniohoy . "-" . $meshoy . "-1";
+	$fechafhoy = $aniohoy . "-" . $meshoy . "-" . $ultimodiames;
+	$fechai_mostrar = $aniohoy . "-" . $meshoy . "-01";;
+	$fechaf_mostrar = $aniohoy . "-" . $meshoy . "-" . $ultimodiames;
 	$errorseleccionar = false;
 	$errormsg = "";
 	$titulo3 = "";

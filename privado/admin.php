@@ -12,14 +12,20 @@
 		if (!empty($imagen['name'])) {
 			$imagen_temporal = $imagen['tmp_name'];
 			if ($imagen['type'] == "image/jpeg" || $imagen['type'] == "image/png" || $imagen['type'] == "image/gif" || $imagen['type'] == "image/bmp") {
+				$mTipo = exif_imagetype($imagen_temporal);
+				if (($mTipo != IMAGETYPE_JPEG) && ($mTipo != IMAGETYPE_PNG)) {
+					$error = true;
+					$errormsg = "La imagen tiene un formato inválido o un archivo enmascarado.";
+				}else{
+					$fp = fopen($imagen_temporal, 'r+b');
+					$data = fread($fp, filesize($imagen_temporal));
+					$final = base64_encode($data);
+					fclose($fp);
+				}
 			}else{
 				$error = true;
 				$errormsg = "La imagen tiene un formato inválido.";
 			}
-			$fp = fopen($imagen_temporal, 'r+b');
-			$data = fread($fp, filesize($imagen_temporal));
-			$final = base64_encode($data);
-			fclose($fp);
 		}
 		else{
 			$error = true;

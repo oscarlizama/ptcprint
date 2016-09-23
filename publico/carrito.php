@@ -145,10 +145,10 @@
               $tabla = "";
               //SI HAY AL MENOS UNO EN PEDIDOS
               if ($cntp[0] > 0) {
-                $pedidost = true;
+                  $pedidost = true;
               }
               //SI HAY AL MENOS UNO EN CARRITOS
-              if ($cnt > 0) {
+              if ($cnt[0] > 0) {
                 $carritost = true;
               }
               ///SI HAY EN ALGUNO DE LOS DOS PASA AQUI
@@ -167,40 +167,41 @@
                 if($pedidost){
                   //SI HAY PEDIDOS ENTONCES OBTENGO LOS DATOS QUE OCUPARE
                   //HAGO LA CONSULTA
-                  $sql = "SELECT a.nombre_archivo,p.fecha_pedido,p.recogido FROM pedidos p, archivos a,conversaciones c WHERE p.id_archivo = a.id_archivo AND c.id_conversacion = a.id_conversacion AND c.id_cliente=$id_cl AND p.estado_pedido=1 ORDER BY p.fecha_pedido ASC";
+                  $sql = "SELECT a.nombre_archivo,p.fecha_pedido,p.recogido FROM pedidos p, archivos a,conversaciones c WHERE p.id_archivo = a.id_archivo AND c.id_conversacion = a.id_conversacion AND c.id_cliente=? AND p.estado_pedido=1 ORDER BY p.fecha_pedido ASC";
+                    $stmt = $con->prepare($sql);
+                    $stmt->execute(array($id_cl));
                       //RECORRO LOS DATOS CON FOREACH
-                      foreach ($con->query($sql) as $datos) {
-                        //LOS IMPRIMO EN LA TABLA
+                    while ($datos =  $stmt->fetch(PDO::FETCH_BOTH)){
+                      $tabla .= "<tr>";
+                        $tabla .= "<td>$datos[0]</td>";
+                        $tabla .= "<td>$datos[1]</td>";
+                        $tabla .= "<td>Diseño personalizado</td>";
+                        if ($datos[2] == 0) {
+                            $tabla .= "<td>Pendiente</td>";
+                          }else{
+                            $tabla .= "<td>Sí</td>";
+                          }
                         $tabla .= "<tr>";
-                              $tabla .= "<td>$datos[0]</td>";
-                              $tabla .= "<td>$datos[1]</td>";
-                              $tabla .= "<td>Diseño personalizado</td>";
-                              if ($datos[2] == 0) {
-                                  $tabla .= "<td>Pendiente</td>";
-                                }else{
-                                  $tabla .= "<td>Sí</td>";
-                                }
-                              
-                          $tabla .= "<tr>";
-                      }
+                    }
                 }
                 //SI HAY REGISTROS EN CARRITOS
                 if ($carritost) {
                   //HAGO LA CONSULTA
-                  $sql = "SELECT p.nombre_producto,c.fecha_solicitud,c.recogido FROM productos p, medidas_producto md, carritos c WHERE p.id_producto = md.id_producto AND c.id_medida = md.id_medida AND c.id_cliente=$id_cl AND c.estado_carrito=1 ORDER BY c.fecha_solicitud ASC";
-                    foreach ($con->query($sql) as $datos) {
-                      //LLENO LOS CAMPOS EN LA TABLA
-                        $tabla .= "<tr>";
-                              $tabla .= "<td>$datos[0]</td>";
-                              $tabla .= "<td>$datos[1]</td>";
-                              $tabla .= "<td>Diseño predefinido</td>";
-                              if ($datos[2] == 0) {
-                                  $tabla .= "<td>Pendiente</td>";
-                                }else{
-                                  $tabla .= "<td>Sí</td>";
-                                }
-                          $tabla .= "<tr>";
-                      }
+                  $sql = "SELECT p.nombre_producto,c.fecha_solicitud,c.recogido FROM productos p, medidas_producto md, carritos c WHERE p.id_producto = md.id_producto AND c.id_medida = md.id_medida AND c.id_cliente=? AND c.estado_carrito=1 ORDER BY c.fecha_solicitud ASC";
+                  $stmt = $con->prepare($sql);
+                  $stmt->execute(array($id_cl));
+                  while ($datos =  $stmt->fetch(PDO::FETCH_BOTH)) {
+                    $tabla .= "<tr>";
+                      $tabla .= "<td>$datos[0]</td>";
+                      $tabla .= "<td>$datos[1]</td>";
+                      $tabla .= "<td>Diseño predefinido</td>";
+                      if ($datos[2] == 0) {
+                          $tabla .= "<td>Pendiente</td>";
+                        }else{
+                          $tabla .= "<td>Sí</td>";
+                        }
+                    $tabla .= "<tr>";
+                  }
                 }
                     $tabla .= "</tbody>";
                 $tabla .= "</table>";
@@ -223,27 +224,34 @@
             <div class="panel-body">
               <form action="norecogidos" method="post">
               <div>
-                <label for="">Fecha de comprobante:</label>
                 <?php
+                  $comrasm = false;
                   $seleccion = "";
                   $fechassql = "SELECT c.fecha_solicitud FROM carritos c, clientes cl WHERE cl.id_cliente = c.id_cliente AND cl.id_cliente=? GROUP BY c.fecha_solicitud";
                   $stmtfecha = $con->prepare($fechassql);
                   $stmtfecha->execute(array($id_cl));
                   $seleccion .= "<select name='fechacl' id='' class='form-control'>";
                   while ($fechas = $stmtfecha->fetch(PDO::FETCH_BOTH)) {
+                      $comrasm = true;
                       $seleccion .= "<option value='$fechas[0]'>".$fechas[0]."</option>";
                   }
-                  $fechassql = "SELECT p.fecha_pedido FROM pedidos p, clientes cl, archivos a, conversaciones c WHERE a.id_conversacion = c.id_conversacion AND c.id_cliente = cl.id_cliente AND p.id_archivo = a.id_archivo";
+                  $fechassql = "SELECT p.fecha_pedido FROM pedidos p, clientes cl, archivos a, conversaciones c WHERE a.id_conversacion = c.id_conversacion AND c.id_cliente = cl.id_cliente AND p.id_archivo = a.id_archivo AND cl.id_cliente=?";
                   $stmtfecha = $con->prepare($fechassql);
                   $stmtfecha->execute(array($id_cl));
                   while ($fechas = $stmtfecha->fetch(PDO::FETCH_BOTH)) {
+                      $comrasm = true;
                       $seleccion .= "<option value='$fechas[0]'>".$fechas[0]."</option>";
                   }
                   $seleccion .= "</select>";
-                  print($seleccion);
+                  if ($comrasm) {
+                    echo "<label for=''>Fecha de comprobante:</label>";
+                    print($seleccion);
+                    echo "<br>";
+                    echo "<button class='btn-pink btn btn-block'>Generar comprobante</button>";
+                  }else{
+                    echo "<h3 class='text-center'>No hay datos para mostrar.</h3>";
+                  }
                 ?>
-                <br>
-                <button class="btn-pink btn btn-block">Generar comprobante</button>
                 <br>
                 <br>
                 <br>
@@ -261,27 +269,34 @@
             <div class="panel-body">
               <form action="recogidos" method="post">
               <div>
-                <label for="">Fecha de comprobante:</label>
                 <?php
+                  $comprash = false;
                   $seleccion = "";
-                  $fechassql = "SELECT c.fecha_solicitud FROM carritos c, clientes cl WHERE cl.id_cliente = c.id_cliente AND cl.id_cliente=? GROUP BY c.fecha_solicitud";
+                  $fechassql = "SELECT c.fecha_solicitud FROM carritos c, clientes cl WHERE cl.id_cliente = c.id_cliente AND cl.id_cliente=? AND c.recogido=1 GROUP BY c.fecha_solicitud";
                   $stmtfecha = $con->prepare($fechassql);
                   $stmtfecha->execute(array($id_cl));
                   $seleccion .= "<select name='fechacl' id='' class='form-control'>";
                   while ($fechas = $stmtfecha->fetch(PDO::FETCH_BOTH)) {
+                      $comprash = true;
                       $seleccion .= "<option value='$fechas[0]'>".$fechas[0]."</option>";
                   }
-                  $fechassql = "SELECT p.fecha_pedido FROM pedidos p, clientes cl, archivos a, conversaciones c WHERE a.id_conversacion = c.id_conversacion AND c.id_cliente = cl.id_cliente AND p.id_archivo = a.id_archivo";
+                  $fechassql = "SELECT p.fecha_pedido FROM pedidos p, clientes cl, archivos a, conversaciones c WHERE a.id_conversacion = c.id_conversacion AND c.id_cliente = cl.id_cliente AND p.id_archivo = a.id_archivo AND cl.id_cliente=? AND p.recogido=1";
                   $stmtfecha = $con->prepare($fechassql);
                   $stmtfecha->execute(array($id_cl));
                   while ($fechas = $stmtfecha->fetch(PDO::FETCH_BOTH)) {
+                      $comprash = true;
                       $seleccion .= "<option value='$fechas[0]'>".$fechas[0]."</option>";
                   }
                   $seleccion .= "</select>";
-                  print($seleccion);
+                  if ($comprash){
+                      echo "<label for=''>Fecha de comprobante:</label>";
+                      print($seleccion);
+                      echo "<br>";
+                      echo "<button class='btn-pink btn btn-block'>Generar comprobante</button>";
+                  }else{
+                    echo "<h3 class='text-center'>No hay datos para mostrar.</h3>";
+                  }
                 ?>
-                <br>
-                <button class="btn-pink btn btn-block">Generar comprobante</button>
                 <br>
                 <br>
                 <br>
@@ -299,13 +314,20 @@
             <div class="panel-body">
               <form action="historialcompras" method="post">
               <div>
-                <label for="">Fecha de inicio:</label>
-                <input type="text" name="fecha_inicio" placeholder="Fecha de inicio" class="form-control datepicker" data-date-format="yyyy-mm-dd" autocomplete="off" value="">
-                <br>
-                <label for="">Fecha de finalización:</label>
-                <input type="text" name="fecha_fin" placeholder="Fecha de inicio" class="form-control datepicker" data-date-format="yyyy-mm-dd" autocomplete="off">
-                <br>
-                <button class="btn-pink btn btn-block">Generar comprobante</button>
+                <?php 
+                  if ($comprash) {
+                    printf("
+                  <label for=''>Fecha de inicio:</label>
+                  <input type='text' name='fecha_inicio' placeholder='Fecha de inicio' class='form-control datepicker' data-date-format='yyyy-mm-dd' autocomplete='off' value=''>
+                  <br>
+                  <label for=''>Fecha de finalización:</label>
+                  <input type='text' name='fecha_fin' placeholder='Fecha de inicio' class='form-control datepicker' data-date-format='yyyy-mm-dd' autocomplete='off'>
+                  <br>
+                  <button class='btn-pink btn btn-block'>Generar comprobante</button>");
+                  }else{
+                    echo "<h3 class='text-center'>No hay datos para mostrar.</h3>";
+                  }
+                ?>
               </div>
               </form>
             </div>
