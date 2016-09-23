@@ -5,6 +5,13 @@
 	include 'procesos/validaciones.php';
 	$error = false;
 	$errormsg = "";
+	set_error_handler(function($errno, $errstr, $errfile, $errline, array $errcontext) {
+    // error was suppressed with the @-operator
+    if (0 === error_reporting()) {
+        return false;
+    }
+    	throw new ErrorException($errstr, 0, $errno, $errfile, $errline);
+	});
 	if (isset($_POST['agregar'])) {
 		$imagen_temporal = "";
 		$final = "";
@@ -12,15 +19,22 @@
 		if (!empty($imagen['name'])) {
 			$imagen_temporal = $imagen['tmp_name'];
 			if ($imagen['type'] == "image/jpeg" || $imagen['type'] == "image/png" || $imagen['type'] == "image/gif" || $imagen['type'] == "image/bmp") {
-				$mTipo = exif_imagetype($imagen_temporal);
-				if (($mTipo != IMAGETYPE_JPEG) && ($mTipo != IMAGETYPE_PNG)) {
+				try {	
+					//$mTipo = exif_imagetype($imagen_temporal);
+					if (($mTipo != IMAGETYPE_JPEG) && ($mTipo != IMAGETYPE_PNG)) {
+						if (!@is_array(getimagesize($imagen['tmp_name']))) {
+							$error = true;
+							$errormsg = "La imagen tiene un formato inválido o un archivo enmascarado asdsa.";
+						}
+					}else{
+						$fp = fopen($imagen_temporal, 'r+b');
+						$data = fread($fp, filesize($imagen_temporal));
+						$final = base64_encode($data);
+						fclose($fp);
+					}	
+				} catch (Exception $e) {
 					$error = true;
-					$errormsg = "La imagen tiene un formato inválido o un archivo enmascarado.";
-				}else{
-					$fp = fopen($imagen_temporal, 'r+b');
-					$data = fread($fp, filesize($imagen_temporal));
-					$final = base64_encode($data);
-					fclose($fp);
+					$errormsg = "La imagen tiene un formato inválido.";
 				}
 			}else{
 				$error = true;

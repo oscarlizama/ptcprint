@@ -6,11 +6,12 @@
 	$datos = [];
 	///$archivo = "../img/slider4.png";
 	//OBTENGO EL ARCHIVO QUE EL CLIENTE SUBIRA
-	$archivo = $_FILES['file'];
+	//$archivo = $_FILES['file'];
 	$respuesta = 0;
-	//$archivo = "../img/default.jpg";
+	$archivo = "../img/default.jpg";
 	//VEO QUE NO ESTA VACIO
 	if (!empty($archivo['name'])) {
+		echo("jdjsh");
 		$nombreblb = $archivo['name'];
 		///OBTENGO EL TAMANIO
 		$tamanio = $archivo['size'];
@@ -43,5 +44,5 @@
 	array_push($datos, $tipo);
 	array_push($datos, $respuesta);
 	//ME REGRESA LOS DATOS
-    echo json_encode($datos);
+    //echo json_encode($datos);
 ?>
