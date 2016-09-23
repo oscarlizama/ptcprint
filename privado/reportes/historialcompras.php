@@ -8,7 +8,6 @@
 	if(isset($_POST['fecha_inicio'])){
 		$fecha_i = $_POST['fecha_inicio'];
 		$fecha_f = $_POST['fecha_fin'];
-
 	}
 	if(!empty($_SESSION['autenticado'])){     
       $nombre = $_SESSION['autenticado'];

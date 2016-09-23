@@ -91,6 +91,27 @@
 				</div>
 			</div>
 		</div>
+		<div class="row">
+			<div class="col-lg-4">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h5>COTIZACION DE UN PRODUCTO</h5>
+					</div>
+					<div class="panel-body">
+						<form action="" method="post">
+							<label for="">Realizar una cotizacion aproximada de un producto deseado, junto con otros parametros que se toman en cuenta para la obtención de un precio final.</label>
+							<br>
+							<br>
+							<br>
+							<a href="cotizarprecio" class="btn btn-scrud btn-block nodecor" style="">
+								GENERAR REPORTE
+								<span class='flaticon-pdf icon-buttons'></span>
+							</a>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 	<br>
 	<br>

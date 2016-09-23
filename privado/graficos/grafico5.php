@@ -45,7 +45,7 @@
 	}
 	for($g = 0; $g < count($idsf);$g++) {
 		$m = $original_m;
-		for ($i = 0; $i <= $mff; $i++) {
+		for ($i = 0; $i < $mff; $i++) {
 			//echo "string";
 			$fecha_fin = substr($_POST['fecha_inicio'],0,4) . "-" . $m . "-31";
 			$fecha_inicio = substr($_POST['fecha_inicio'],0,4) . "-" . $m . "-1";

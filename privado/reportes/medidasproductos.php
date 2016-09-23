@@ -73,9 +73,9 @@
 	$pdf->Cell(90,8,'CANTIDAD DE VECES COMPRADA',1,0,'C',1);
 	$pdf->Ln(8);
 	$pdf->SetFont('Arial','',10);
-	$sql = "SELECT md.id_medida,md.medida FROM productos p, medidas_producto md, carritos c WHERE p.id_producto = md.id_producto AND c.id_carrito = md.id_medida AND p.id_producto=1";
+	$sql = "SELECT md.id_medida,md.medida FROM productos p, medidas_producto md, carritos c WHERE p.id_producto = md.id_producto AND c.id_carrito = md.id_medida AND p.id_producto=?";
 	$stmt = $con->prepare($sql);
-	$stmt->execute(array());
+	$stmt->execute(array($producto));
 	while ($datos = $stmt->fetch(PDO::FETCH_BOTH)) {
 		$pdf->Cell(90,10,utf8_decode($datos[1]),1,0,'C',0);
 

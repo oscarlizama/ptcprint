@@ -235,7 +235,7 @@
                       $comrasm = true;
                       $seleccion .= "<option value='$fechas[0]'>".$fechas[0]."</option>";
                   }
-                  $fechassql = "SELECT p.fecha_pedido FROM pedidos p, clientes cl, archivos a, conversaciones c WHERE a.id_conversacion = c.id_conversacion AND c.id_cliente = cl.id_cliente AND p.id_archivo = a.id_archivo AND cl.id_cliente=?";
+                  $fechassql = "SELECT p.fecha_pedido FROM pedidos p, clientes cl, archivos a, conversaciones c WHERE a.id_conversacion = c.id_conversacion AND c.id_cliente = cl.id_cliente AND p.id_archivo = a.id_archivo AND cl.id_cliente=? GROUP BY c.fecha_solicitud";
                   $stmtfecha = $con->prepare($fechassql);
                   $stmtfecha->execute(array($id_cl));
                   while ($fechas = $stmtfecha->fetch(PDO::FETCH_BOTH)) {
@@ -280,7 +280,7 @@
                       $comprash = true;
                       $seleccion .= "<option value='$fechas[0]'>".$fechas[0]."</option>";
                   }
-                  $fechassql = "SELECT p.fecha_pedido FROM pedidos p, clientes cl, archivos a, conversaciones c WHERE a.id_conversacion = c.id_conversacion AND c.id_cliente = cl.id_cliente AND p.id_archivo = a.id_archivo AND cl.id_cliente=? AND p.recogido=1";
+                  $fechassql = "SELECT p.fecha_pedido FROM pedidos p, clientes cl, archivos a, conversaciones c WHERE a.id_conversacion = c.id_conversacion AND c.id_cliente = cl.id_cliente AND p.id_archivo = a.id_archivo AND cl.id_cliente=? AND p.recogido=1 GROUP BY c.fecha_solicitud";
                   $stmtfecha = $con->prepare($fechassql);
                   $stmtfecha->execute(array($id_cl));
                   while ($fechas = $stmtfecha->fetch(PDO::FETCH_BOTH)) {

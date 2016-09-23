@@ -19,6 +19,9 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `punto_print`
 --
+--
+CREATE DATABASE IF NOT EXISTS `punto_print` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+USE `punto_print`;
 
 DELIMITER $$
 --
