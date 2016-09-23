@@ -61,37 +61,37 @@
 	$pdf->Image("../../resources/img/pplogo-provisional.png",175,16,26,24);
 
 	$pdf->SetFont('Arial','B',12);
-	$pdf->Cell(190,20,'COMPROBANTE DE PEDIDO',0,1,'C');
+	$pdf->Cell(190,20,'PRODUCTOS RECOGIDOS',0,1,'C');
 
 	$pdf->SetFillColor(232,232,232);
  
 	$pdf->SetFont('Arial','B',10);
-	$pdf->Cell(70,6,'PRODUCTO',1,0,'C',1);
-	$pdf->Cell(35,6,'MEDIDA',1,0,'C',1);
+	$pdf->Cell(50,6,'PRODUCTO',1,0,'C',1);
+	$pdf->Cell(60,6,'MEDIDA',1,0,'C',1);
 	$pdf->Cell(40,6,'TIPO',1,0,'C',1);
-	$pdf->Cell(40,6,'FECHA',1,0,'C',1);
+	$pdf->Cell(35,6,'FECHA',1,0,'C',1);
 	$pdf->Ln(6);
 	$sql = "SELECT p.nombre_producto,md.medida,c.fecha_solicitud FROM productos p, carritos c, medidas_producto md WHERE c.id_cliente=? AND p.id_producto = md.id_producto AND c.id_medida = md.id_medida AND c.fecha_solicitud=? AND c.recogido=1";
 	$stmt = $con->prepare($sql);
 	$stmt->execute(array($id_cl,$fecha_cl));
 	$pdf->SetFont('Arial','',10);
 	while ($datos = $stmt->fetch(PDO::FETCH_BOTH)) {
-		$pdf->Cell(70,10,$datos[0],1,0,'L',0);
-	   	$pdf->Cell(35,10,$datos[1],1,0,'C',0);
+		$pdf->Cell(50,10,$datos[0],1,0,'L',0);
+	   	$pdf->Cell(60,10,$datos[1],1,0,'C',0);
 		//Muestro la iamgen dentro de la celda GetX y GetY dan las coordenadas actuales de la fila
 	 	$pdf->Cell(40,10,utf8_decode("Diseño preestablecido"), 1, 0, 'C', false );
-	 	$pdf->Cell(40,10,$datos[2], 1, 0, 'C', false );
+	 	$pdf->Cell(35,10,$datos[2], 1, 0, 'C', false );
 		$pdf->Ln(10);
 	}
 	$sql = "SELECT a.nombre_archivo, p.fecha_pedido FROM archivos a, pedidos p, clientes cl, conversaciones c WHERE a.id_archivo = p.id_archivo AND cl.id_cliente=? AND p.fecha_pedido=? AND cl.id_cliente = c.id_cliente AND c.id_conversacion = a.id_conversacion AND p.recogido=1";
 	$stmt = $con->prepare($sql);
 	$stmt->execute(array($id_cl,$fecha_cl));
 	while ($datos = $stmt->fetch(PDO::FETCH_BOTH)) {
-		$pdf->Cell(70,10,$datos[0],1,0,'L',0);
-	   	$pdf->Cell(35,10,"----------",1,0,'C',0);
+		$pdf->Cell(50,10,$datos[0],1,0,'L',0);
+	   	$pdf->Cell(60,10,"----------",1,0,'C',0);
 		//Muestro la iamgen dentro de la celda GetX y GetY dan las coordenadas actuales de la fila
 	 	$pdf->Cell(40,10,utf8_decode("Diseño personalizado"), 1, 0, 'C', false );
-	 	$pdf->Cell(40,10,$datos[1], 1, 0, 'C', false );
+	 	$pdf->Cell(35,10,$datos[1], 1, 0, 'C', false );
 		$pdf->Ln(10);
 	}
 	$pdf->SetFont('Arial','',12);

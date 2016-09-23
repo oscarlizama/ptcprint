@@ -316,12 +316,17 @@
               <div>
                 <?php 
                   if ($comprash) {
+                    $meshoy = date('m');
+                    $aniohoy = date('Y');
+                    $ultimodiames = date("d",(mktime(0,0,0,$meshoy+1,1,$aniohoy)-1));
+                    $fechai_mostrar = $aniohoy . "-" . $meshoy . "-01";;
+                    $fechaf_mostrar = $aniohoy . "-" . $meshoy . "-" . $ultimodiames;
                     printf("
                   <label for=''>Fecha de inicio:</label>
-                  <input type='text' name='fecha_inicio' placeholder='Fecha de inicio' class='form-control datepicker' data-date-format='yyyy-mm-dd' autocomplete='off' value=''>
+                  <input type='text' name='fecha_inicio' placeholder='Fecha de inicio' class='form-control datepicker' data-date-format='yyyy-mm-dd' autocomplete='off' value='$fechai_mostrar'>
                   <br>
                   <label for=''>Fecha de finalización:</label>
-                  <input type='text' name='fecha_fin' placeholder='Fecha de inicio' class='form-control datepicker' data-date-format='yyyy-mm-dd' autocomplete='off'>
+                  <input type='text' name='fecha_fin' placeholder='Fecha de inicio' class='form-control datepicker' data-date-format='yyyy-mm-dd' autocomplete='off' value='$fechaf_mostrar'>
                   <br>
                   <button class='btn-pink btn btn-block'>Generar comprobante</button>");
                   }else{

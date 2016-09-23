@@ -55,7 +55,7 @@
 	$pdf->Cell(45,6,'PROMEDIO GLOBAL',1,0,'C',1);
 	$pdf->Ln(6);
 	$pdf->SetFont('Arial','',10);
-	$sql = "SELECT tp.nombre_tipo_producto,COUNT(p.id_producto),ROUND(AVG(p.calificacion_promedio),2) FROM tipos_producto tp, productos p WHERE p.id_tipo_producto = tp.id_tipo_producto AND tp.estado_tipo_producto=1 AND p.estado_producto=1 GROUP BY tp.nombre_tipo_producto";
+	$sql = "SELECT tp.nombre_tipo_producto,COUNT(p.id_producto),ROUND(AVG(c.calificacion),2) FROM tipos_producto tp, productos p, comentarios c WHERE p.id_tipo_producto = tp.id_tipo_producto AND tp.estado_tipo_producto=1 AND c.id_producto = p.id_producto AND p.estado_producto=1 GROUP BY tp.nombre_tipo_producto";
 	$stmt = $con->prepare($sql);
 	$stmt->execute(array());
 	while ($datos = $stmt->fetch(PDO::FETCH_BOTH)) {

@@ -57,7 +57,7 @@
 	$pdf->Image("../../resources/img/pplogo-provisional.png",175,16,26,24);
 
 	$pdf->SetFont('Arial','B',12);
-	$pdf->Cell(190,20,'COMPROBANTE DE PEDIDO',0,1,'C');
+	$pdf->Cell(190,20,'HISTORIAL DE COMPRAS',0,1,'C');
 
 	$pdf->SetFillColor(232,232,232);
  

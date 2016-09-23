@@ -56,7 +56,7 @@
 	$pdf->Cell(30,8,utf8_decode('CALIFICACIÓN'),1,0,'C',1);
 	$pdf->Ln(8);
 	$pdf->SetFont('Arial','',10);
-	$sql = "SELECT p.nombre_producto,COUNT(md.id_medida),p.descripcion_producto,p.calificacion_promedio FROM productos p, medidas_producto md WHERE p.estado_producto=1 AND md.id_producto = p.id_producto GROUP BY p.id_producto";
+	$sql = "SELECT p.nombre_producto,COUNT(md.id_medida),p.descripcion_producto,ROUND(AVG(c.calificacion),1) FROM productos p, medidas_producto md, comentarios c WHERE p.estado_producto=1 AND md.id_producto = p.id_producto AND c.id_producto = p.id_producto GROUP BY p.id_producto";
 	$stmt = $con->prepare($sql);
 	$stmt->execute(array());
 	$pdf->Ln();
