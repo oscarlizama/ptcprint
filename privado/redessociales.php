@@ -38,7 +38,7 @@
 				<div class="col-lg-6 col-md-6">
 					<p id="id_reg" class="hide"></p>
 					<input type="text" class="hide omitir" value="20" id="tbl" autocomplete='off'>
-					<label for="" class="labels">Nombre</label>
+					<label for="" class="labels" data-toggle="tooltip" data-placement="right" title="No mayor a 20 caractéres.">Nombre</label>
                     <input type="text" class="form-control input" id="nombre" autocomplete='off'>
                     <br>
                     <label for="" class="labels">Enlace de la red social (http://www.ejemplo.com ó https://www.ejemplo.com)</label>

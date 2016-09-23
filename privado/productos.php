@@ -38,7 +38,7 @@
 				<div class="col-lg-6 col-md-6">
 					<p id="id_reg" class="hide"></p>
 					<input type="text" class="hide omitir" value="7" id="tbl" autocomplete='off'>
-					<label for="" class="labels">Nombre del Producto</label>
+					<label for="" class="labels" data-toggle="tooltip" data-placement="right" title="No mayor a 20 caractéres.">Nombre del Producto</label>
                     <input type="text" class="form-control input" id="nombre" autocomplete='off'>
                     <br>
                     <label for="" class="labels">Calificacion Promedio</label>
@@ -59,7 +59,7 @@
                         ?>
 					</select>
 					<br>
-					<label for="" class="labels">Descripcion del producto</label>
+					<label for="" class="labels" data-toggle="tooltip" data-placement="right" title="No mayor a 100 caractéres.">Descripcion del producto</label>
                     <textarea type="text" id="descripcion" class="form-control input estira" rows="5" autocomplete='off'></textarea>
                     <br>
 				</div>

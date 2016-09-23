@@ -38,10 +38,10 @@
 				<div class="col-lg-6 col-md-6">
 					<p id="id_reg" class="hide"></p>
 					<input type="text" class="hide omitir" name="usauarios[]" value="22" id="tbl" autocomplete='off'>
-					<label for="" class="labels">Nombre Equipo</label>
+					<label for="" class="labels" data-toggle="tooltip" data-placement="right" title="No mayor a 20 caractéres.">Nombre del equipo</label>
                     <input type="text" class="form-control input" name="usuarios[]" id="equipo" autocomplete='off'>
                     <br>
-                    <label for="" class="labels">Costo Click Equipo</label>
+                    <label for="" class="labels">Costo por click del equipo</label>
                     <input type="text" class="form-control input" name="usuarios[]" id="costo_click_equipo" autocomplete='off'>
                     <br>
 				</div>

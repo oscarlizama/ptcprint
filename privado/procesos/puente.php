@@ -280,6 +280,7 @@
 		if ($_POST['accion'] != 3 && (
 
 			!validarNombrePersona($valores[0]) ||
+			!longitudTextos($valores[0],1) ||
 			!validarURL($valores[1]) ||
 			!validarTexto($valores[2])
 			)) exit("invalid");
@@ -316,8 +317,10 @@
 		if ($_POST['accion'] != 3 && (
 
 			!validarNombrePersona($valores[0]) ||
+			!longitudTextos($valores[0],1) ||
 			!validarNumeroEntero($valores[1]) ||
-			!validarTexto($valores[2])
+			!validarTexto($valores[2]) ||
+			!longitudTextos($valores[2],2)
 			)) exit("invalid");
 
 		// Validar ID, cuando no inserte (cuando modifique o elimine, solo en esos casos se pasa el id)
@@ -352,6 +355,7 @@
 		if ($_POST['accion'] != 3 && (
 
 			!validarNombrePersona($valores[0]) ||
+			!longitudTextos($valores[0],1) ||
 			!validarTexto($valores[1])
 
 			)) exit("invalid");
@@ -438,6 +442,8 @@
 		if ($_POST['accion'] != 3 && (
 
 			!validarNombrePersona($valores[0]) ||
+			!longitudTextos($valores[0],1) ||
+			!longitudTextos($valores[1],2) ||
 			!validarTexto($valores[1])
 
 			)) exit("invalid");
@@ -474,6 +480,7 @@
 		if ($_POST['accion'] != 3 && (
 
 			!validarTexto($valores[0]) ||
+			!longitudTextos($valores[0],1) ||
 			!validarPrecio($valores[1])
 
 			)) exit("invalid");

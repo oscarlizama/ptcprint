@@ -105,4 +105,19 @@ function validar_clave($clave,&$error_clave){
 		else
 			return false;
 	}
+
+	function longitudTextos($texto,$tipo){
+		if ($tipo == 1){
+			if (strlen($texto)<=20)
+				return true;
+			else
+				return false;
+		}
+		if ($tipo == 2) {
+			if (strlen($texto)<=100)
+				return true;
+			else
+				return false;
+		}
+	}
 ?>
