@@ -1,0 +1,440 @@
+void crear_pdf(String nombre){
+        double entradat = 0, salidat = 0;
+        String fecha_completa = "";
+        Calendar fecha = Calendar.getInstance();
+        int a = fecha.get(Calendar.YEAR);
+        int m = fecha.get(Calendar.MONTH) + 1;
+        int d = fecha.get(Calendar.DAY_OF_MONTH);
+        int h = fecha.get(Calendar.HOUR);
+        int s = fecha.get(Calendar.MINUTE);
+        
+        if (m < 10) {
+            fecha_completa = a + "-0" + m + "-31" + " " + h +s;
+        }else{
+            fecha_completa = a + "-" + m + "-31" + " " + h +s;
+        }
+        try {
+            Document documento = new Document(PageSize.A4.rotate(),10,10,10,10);
+            //PdfWriter writer = new PdfWriter.getInstance(documento, new FileOutputStream("src/DynamicsReports/" + nombre_archivo + ".pdf"));
+            PdfWriter writer = PdfWriter.getInstance(documento, new FileOutputStream("src/Reportes/" + nombre + " - " + fecha_completa + ".pdf"));
+            documento.open();
+            
+            Paragraph espacio = new Paragraph("                         ");
+            PdfPCell espacioc = new PdfPCell(espacio);
+            espacioc.setBorder(PdfPCell.NO_BORDER);
+            
+            PdfPTable table = new PdfPTable(1);
+            PdfPCell cell = new PdfPCell(new Phrase ("REGISTRO DE CONTROL DE INVENTARIO"));
+            cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+            cell.setBorder(PdfPCell.NO_BORDER);
+            table.addCell(cell);
+            documento.add(table);
+            
+            table.setWidthPercentage(100);
+            table.getDefaultCell().setUseAscender(true);
+            table.getDefaultCell().setUseDescender(true);
+            
+            float[] columnWidths = {4, 6, 5, 5};
+            PdfPTable tbl1 = new PdfPTable(columnWidths);
+            tbl1.setWidthPercentage(100);
+            
+            Font negrita = new Font(Font.FontFamily.HELVETICA,11,Font.BOLD);
+            Font textor = new Font(Font.FontFamily.HELVETICA,9,Font.NORMAL);
+            Font encabezados = new Font(Font.FontFamily.HELVETICA,11,Font.NORMAL);
+            Chunk glue = new Chunk(new VerticalPositionMark());
+            
+            Paragraph pmet = new Paragraph("MÉTODO:",encabezados);
+            pmet.add(new Chunk(glue));
+            pmet.add(new Paragraph("COSTO PROMEDIO",negrita));
+            pmet.add(new Chunk(glue));
+            pmet.add(espacio);
+            pmet.add(new Chunk(glue));
+            pmet.add(espacio);
+            PdfPCell metc = new PdfPCell(pmet);
+            metc.setBorder(PdfPCell.NO_BORDER);
+            metc.setHorizontalAlignment(Element.ALIGN_CENTER);
+            tbl1.addCell(metc);
+            
+            Paragraph pet = new Paragraph("ENTRADAS",encabezados);
+            PdfPCell petc = new PdfPCell(pet);
+            petc.setBorder(PdfPCell.NO_BORDER);
+            petc.setHorizontalAlignment(Element.ALIGN_CENTER);
+            tbl1.addCell(petc);
+            
+            Paragraph psl = new Paragraph("SALIDAS",encabezados);
+            PdfPCell pslc = new PdfPCell(psl);
+            pslc.setBorder(PdfPCell.NO_BORDER);
+            pslc.setHorizontalAlignment(Element.ALIGN_CENTER);
+            tbl1.addCell(pslc);
+            
+            Paragraph pex = new Paragraph("EXISTENCIAS",encabezados);
+            PdfPCell pexc = new PdfPCell(pex);
+            pexc.setBorder(PdfPCell.NO_BORDER);
+            pexc.setHorizontalAlignment(Element.ALIGN_CENTER);
+            tbl1.addCell(pexc);
+            
+            
+            
+            String sql = "select e.nombre_contribuyente,e.nit,e.nrc,e.nacionalidad,e.razon,i.fecha_inicio,i.fecha_fin from empresa e, inventarios i where e.id_empresa = i.id_empresa and i.id_inventario="+id_inv;
+            Statement stmt = con.conectar().createStatement();
+            ResultSet empresa = stmt.executeQuery(sql);
+            PdfPTable datos = new PdfPTable(2);
+            datos.setWidthPercentage(100);
+            datos.getDefaultCell().setUseAscender(true);
+            datos.getDefaultCell().setUseDescender(true);
+            
+            while(empresa.next()){
+                Paragraph texto = new Paragraph("NOMBRE DEL CONTRIBUYENTE: " + empresa.getString(1),encabezados);
+                PdfPCell nombrep = new PdfPCell(texto);
+                nombrep.setHorizontalAlignment(Element.ALIGN_LEFT);
+                nombrep.setBorder(PdfPCell.NO_BORDER);
+                datos.addCell(nombrep);
+                
+                texto = new Paragraph("FECHA DE INICIO: " + empresa.getString(6) + "FECHA FIN: " + empresa.getString(7),encabezados);
+                PdfPCell fechasc = new PdfPCell(texto);
+                fechasc.setHorizontalAlignment(Element.ALIGN_LEFT);
+                fechasc.setBorder(PdfPCell.NO_BORDER);
+                datos.addCell(fechasc);
+                
+                texto = new Paragraph("NIT: " + empresa.getString(2), encabezados);
+                PdfPCell nit = new PdfPCell(texto);
+                nit.setHorizontalAlignment(Element.ALIGN_LEFT);
+                nit.setBorder(PdfPCell.NO_BORDER);
+                datos.addCell(nit);
+                
+                texto = new Paragraph("NRC: " + empresa.getString(3), encabezados);
+                PdfPCell nrc = new PdfPCell(texto);
+                nrc.setHorizontalAlignment(Element.ALIGN_LEFT);
+                nrc.setBorder(PdfPCell.NO_BORDER);
+                datos.addCell(nrc);
+                
+                texto = new Paragraph("NOMBRE, RAZÓN SOCIAL DEL PROVEEDOR: " + empresa.getString(5), encabezados);
+                PdfPCell razon = new PdfPCell(texto);
+                razon.setHorizontalAlignment(Element.ALIGN_LEFT);
+                razon.setBorder(PdfPCell.NO_BORDER);
+                datos.addCell(razon);
+                
+                texto = new Paragraph("NACIONALIDAD DEL PROVEEDOR: " + empresa.getString(4), encabezados);
+                PdfPCell nac = new PdfPCell(texto);
+                nac.setHorizontalAlignment(Element.ALIGN_LEFT);
+                nac.setBorder(PdfPCell.NO_BORDER);
+                datos.addCell(nac);
+                
+                //datos.addCell(espacioc);
+                
+            }
+            
+            String sql2 = "select * from articulos where id_articulo="+id_art;
+            Statement stmt3 = con.conectar().createStatement();
+            ResultSet articulod = stmt3.executeQuery(sql2);
+            while(articulod.next()){
+                Paragraph texto = new Paragraph("ARTÍCULO: " + articulod.getString(2),encabezados);
+                PdfPCell articulo = new PdfPCell(texto);
+                articulo.setHorizontalAlignment(Element.ALIGN_LEFT);
+                articulo.setBorder(PdfPCell.NO_BORDER);
+                datos.addCell(articulo);
+                
+                texto = new Paragraph("DESCRIPCIÓN: " + articulod.getString(3));
+                PdfPCell descripcion = new PdfPCell(texto);
+                descripcion.setHorizontalAlignment(Element.ALIGN_LEFT);
+                descripcion.setBorder(PdfPCell.NO_BORDER);
+                datos.addCell(descripcion);
+            }
+            documento.add(datos);
+            documento.add(espacio);
+            documento.add(tbl1);
+            
+            float[] columnReg = {1,5,5,5,5,5,5,5,5,5,5,5};
+            PdfPTable tblreg = new PdfPTable(columnReg);
+            tblreg.setWidthPercentage(100);
+           
+            
+            Paragraph nreg = new Paragraph("#",textor);
+            PdfPCell nregc = new PdfPCell(nreg);
+            nregc.setBorder(PdfPCell.NO_BORDER);
+            nregc.setHorizontalAlignment(Element.ALIGN_CENTER);
+            
+            Paragraph fechap = new Paragraph("FECHA",textor);
+            PdfPCell fechac = new PdfPCell(fechap);
+            fechac.setBorder(PdfPCell.NO_BORDER);
+            fechac.setHorizontalAlignment(Element.ALIGN_CENTER);
+            
+            Paragraph concepp = new Paragraph("CONCEPTO",textor);
+            PdfPCell concepc = new PdfPCell(concepp);
+            concepc.setBorder(PdfPCell.NO_BORDER);
+            concepc.setHorizontalAlignment(Element.ALIGN_CENTER);
+            
+            Paragraph cantp = new Paragraph("CANTIDAD",textor);
+            PdfPCell cantc = new PdfPCell(cantp);
+            cantc.setBorder(PdfPCell.NO_BORDER);
+            cantc.setHorizontalAlignment(Element.ALIGN_CENTER);
+            
+            Paragraph costop = new Paragraph("COSTO UNIT.",textor);
+            PdfPCell costoc = new PdfPCell(costop);
+            costoc.setBorder(PdfPCell.NO_BORDER);
+            costoc.setHorizontalAlignment(Element.ALIGN_CENTER);
+            Paragraph costotp = new Paragraph("COSTO TOT.",textor);
+            PdfPCell costotc = new PdfPCell(costotp);
+            costotc.setBorder(PdfPCell.NO_BORDER);
+            costotc.setHorizontalAlignment(Element.ALIGN_CENTER);
+            
+            
+            tblreg.addCell(nregc);
+            tblreg.addCell(fechac);
+            tblreg.addCell(concepc);
+            tblreg.addCell(cantc);
+            tblreg.addCell(costoc);
+            tblreg.addCell(costotc);
+            tblreg.addCell(cantc);
+            tblreg.addCell(costoc);
+            tblreg.addCell(costotc);
+            tblreg.addCell(cantc);
+            tblreg.addCell(costoc);
+            tblreg.addCell(costotc);
+            
+            int correlativo = 1;
+            boolean paso = false;
+            boolean entrada = false;
+            sql = "SELECT * FROM operaciones WHERE id_inventario=" + id_inv;
+            Statement stmt2 = con.conectar().createStatement();
+            ResultSet opr = stmt2.executeQuery(sql);
+            Paragraph nregbp1 = new Paragraph();
+            PdfPCell nregcbp1 = new PdfPCell();
+            Paragraph fechabp1 = new Paragraph();;
+            PdfPCell fechacbp1 = new PdfPCell();;
+            Paragraph concepbp1 = new Paragraph();;
+            PdfPCell concepcbp1 = new PdfPCell();;
+            //CANTIDAD CUANDO PASE 1 VEZ
+            Paragraph cantpbp1 = new Paragraph();;
+            PdfPCell cantcbp1 = new PdfPCell();;
+            //CANTIDAD CUANDO PASE LA SEGUNDA
+            Paragraph cantpbp2 = new Paragraph();;
+            PdfPCell cantcbp2 = new PdfPCell();;
+            //COSTO UNIT CAUDNO PASE 1
+            Paragraph costopbp1 = new Paragraph();;
+            PdfPCell costocbp1 = new PdfPCell();;
+            //COSTO UNIT CAUDNO PASE 2
+            Paragraph costopbp2 = new Paragraph();;
+            PdfPCell costocbp2 = new PdfPCell();;
+            //CUANDO PASE LA 1 VEZ
+            Paragraph costotpbp1 = new Paragraph();;
+            PdfPCell costotcbp1 = new PdfPCell();;
+            //CUANDO PASE LA 2 VEZ
+            Paragraph costotpbp2 = new Paragraph();;
+            PdfPCell costotcbp2 = new PdfPCell();;            
+            while(opr.next()){
+                if (opr.getString(3).equals("INVENTARIO INICIAL")) {
+                    Paragraph nregb = new Paragraph(String.valueOf(correlativo),textor);
+                    PdfPCell nregcb = new PdfPCell(nregb);
+                    nregcb.setBorder(PdfPCell.NO_BORDER);
+                    nregcb.setHorizontalAlignment(Element.ALIGN_CENTER);
+                    
+                    Paragraph fechab = new Paragraph(opr.getString(7),textor);
+                    PdfPCell fechacb = new PdfPCell(fechab);
+                    fechacb.setBorder(PdfPCell.NO_BORDER);
+                    fechacb.setHorizontalAlignment(Element.ALIGN_CENTER);
+                    
+                    Paragraph concepb = new Paragraph(opr.getString(3),textor);
+                    PdfPCell concepcb = new PdfPCell(concepb);
+                    concepcb.setBorder(PdfPCell.NO_BORDER);
+                    concepcb.setHorizontalAlignment(Element.ALIGN_CENTER);
+                    
+                    Paragraph cantpb = new Paragraph(opr.getString(4),textor);
+                    PdfPCell cantcb = new PdfPCell(cantpb);
+                    cantcb.setBorder(PdfPCell.NO_BORDER);
+                    cantcb.setHorizontalAlignment(Element.ALIGN_CENTER);
+                    
+                    Paragraph costopb = new Paragraph("$"+opr.getString(5),textor);
+                    PdfPCell costocb = new PdfPCell(costopb);
+                    costocb.setBorder(PdfPCell.NO_BORDER);
+                    costocb.setHorizontalAlignment(Element.ALIGN_CENTER);
+                    
+                    Paragraph costotpb = new Paragraph("$"+opr.getString(6),textor);
+                    PdfPCell costotcb = new PdfPCell(costotpb);
+                    costotcb.setBorder(PdfPCell.NO_BORDER);
+                    costotcb.setHorizontalAlignment(Element.ALIGN_CENTER);
+                    
+                    tblreg.addCell(nregcb);
+                    tblreg.addCell(fechacb);
+                    tblreg.addCell(concepcb);
+                    tblreg.addCell(espacioc);
+                    tblreg.addCell(espacioc);
+                    tblreg.addCell(espacioc);
+                    tblreg.addCell(espacioc);
+                    tblreg.addCell(espacioc);
+                    tblreg.addCell(espacioc);
+                    tblreg.addCell(cantcb);
+                    tblreg.addCell(costocb);
+                    tblreg.addCell(costotcb);
+                    
+                }
+                if (opr.getString(3).equals("ENTRADA")) {
+                    correlativo ++;
+                    nregbp1 = new Paragraph(String.valueOf(correlativo),textor);
+                    nregcbp1 = new PdfPCell(nregbp1);
+                    nregcbp1.setBorder(PdfPCell.NO_BORDER);
+                    nregcbp1.setHorizontalAlignment(Element.ALIGN_CENTER);
+                    
+                    fechabp1 = new Paragraph(opr.getString(7),textor);
+                    fechacbp1 = new PdfPCell(fechabp1);
+                    fechacbp1.setBorder(PdfPCell.NO_BORDER);
+                    fechacbp1.setHorizontalAlignment(Element.ALIGN_CENTER);
+                    
+                    concepbp1 = new Paragraph(opr.getString(3),textor);
+                    concepcbp1 = new PdfPCell(concepbp1);
+                    concepcbp1.setBorder(PdfPCell.NO_BORDER);
+                    concepcbp1.setHorizontalAlignment(Element.ALIGN_CENTER);
+                    
+                    cantpbp1 = new Paragraph(opr.getString(4),textor);
+                    cantcbp1 = new PdfPCell(cantpbp1);
+                    cantcbp1.setBorder(PdfPCell.NO_BORDER);
+                    cantcbp1.setHorizontalAlignment(Element.ALIGN_CENTER);
+                    
+                    costopbp1 = new Paragraph("$"+opr.getString(5),textor);
+                    costocbp1 = new PdfPCell(costopbp1);
+                    costocbp1.setBorder(PdfPCell.NO_BORDER);
+                    costocbp1.setHorizontalAlignment(Element.ALIGN_CENTER);
+                    
+                    costotpbp1 = new Paragraph("$"+opr.getString(6),textor);
+                    costotcbp1 = new PdfPCell(costotpbp1);
+                    costotcbp1.setBorder(PdfPCell.NO_BORDER);
+                    costotcbp1.setHorizontalAlignment(Element.ALIGN_CENTER);
+                    
+                    entradat += opr.getDouble(6);
+                    entrada = true;
+                    paso = true;
+                    
+                }
+                //System.out.println(opr.getString(3));
+                if (opr.getString(3).equals("SALIDA")) {
+                    correlativo ++;
+                    nregbp1 = new Paragraph(String.valueOf(correlativo),textor);
+                    nregcbp1 = new PdfPCell(nregbp1);
+                    nregcbp1.setBorder(PdfPCell.NO_BORDER);
+                    nregcbp1.setHorizontalAlignment(Element.ALIGN_CENTER);
+                    
+                    fechabp1 = new Paragraph(opr.getString(7),textor);
+                    fechacbp1 = new PdfPCell(fechabp1);
+                    fechacbp1.setBorder(PdfPCell.NO_BORDER);
+                    fechacbp1.setHorizontalAlignment(Element.ALIGN_CENTER);
+                    
+                    concepbp1 = new Paragraph(opr.getString(3),textor);
+                    concepcbp1 = new PdfPCell(concepbp1);
+                    concepcbp1.setBorder(PdfPCell.NO_BORDER);
+                    concepcbp1.setHorizontalAlignment(Element.ALIGN_CENTER);
+                    
+                    cantpbp1 = new Paragraph(opr.getString(4),textor);
+                    cantcbp1 = new PdfPCell(cantpbp1);
+                    cantcbp1.setBorder(PdfPCell.NO_BORDER);
+                    cantcbp1.setHorizontalAlignment(Element.ALIGN_CENTER);
+                    
+                    costopbp1 = new Paragraph("$"+opr.getString(5),textor);
+                    costocbp1 = new PdfPCell(costopbp1);
+                    costocbp1.setBorder(PdfPCell.NO_BORDER);
+                    costocbp1.setHorizontalAlignment(Element.ALIGN_CENTER);
+                    
+                    costotpbp1 = new Paragraph("$"+opr.getString(6),textor);
+                    costotcbp1 = new PdfPCell(costotpbp1);
+                    costotcbp1.setBorder(PdfPCell.NO_BORDER);
+                    costotcbp1.setHorizontalAlignment(Element.ALIGN_CENTER);
+                    
+                    paso = true;
+                    salidat += opr.getDouble(6);
+                    //System.out.println(paso);
+                }
+                if (opr.getString(3).equals("EXISTENCIAS")) {
+                    cantpbp2 = new Paragraph(opr.getString(4),textor);
+                    cantcbp2 = new PdfPCell(cantpbp2);
+                    cantcbp2.setBorder(PdfPCell.NO_BORDER);
+                    cantcbp2.setHorizontalAlignment(Element.ALIGN_CENTER);
+                    
+                    costopbp2 = new Paragraph("$"+opr.getString(5),textor);
+                    costocbp2 = new PdfPCell(costopbp2);
+                    costocbp2.setBorder(PdfPCell.NO_BORDER);
+                    costocbp2.setHorizontalAlignment(Element.ALIGN_CENTER);
+                    
+                    costotpbp2 = new Paragraph("$"+opr.getString(6),textor);
+                    costotcbp2 = new PdfPCell(costotpbp2);
+                    costotcbp2.setBorder(PdfPCell.NO_BORDER);
+                    costotcbp2.setHorizontalAlignment(Element.ALIGN_CENTER);
+                }
+                if(paso){
+                    tblreg.addCell(nregcbp1);
+                    tblreg.addCell(fechacbp1);
+                    tblreg.addCell(concepcbp1);
+                    if(entrada){
+                        tblreg.addCell(cantcbp1);
+                        tblreg.addCell(costocbp1);
+                        tblreg.addCell(costotcbp1);
+                        tblreg.addCell(espacioc);
+                        tblreg.addCell(espacioc);
+                        tblreg.addCell(espacioc);
+                    }else{
+                        tblreg.addCell(espacioc);
+                        tblreg.addCell(espacioc);
+                        tblreg.addCell(espacioc);
+                        tblreg.addCell(cantcbp1);
+                        tblreg.addCell(costocbp1);
+                        tblreg.addCell(costotcbp1);
+                        //System.out.println("holaaaaa");
+                    }
+                    tblreg.addCell(cantcbp2);
+                    tblreg.addCell(costocbp2);
+                    tblreg.addCell(costotcbp2);
+                    entrada = false;
+                    paso = false;
+                    
+                }
+            }
+            Paragraph entradaspt = new Paragraph("$"+String.valueOf(entradat),negrita);
+            PdfPCell entradastc = new PdfPCell(entradaspt);
+            entradastc.setBorder(PdfPCell.NO_BORDER);
+            entradastc.setHorizontalAlignment(Element.ALIGN_CENTER);
+            
+            Paragraph salidaspt = new Paragraph("$"+String.valueOf(salidat),negrita);
+            PdfPCell salidastc = new PdfPCell(salidaspt);
+            salidastc.setBorder(PdfPCell.NO_BORDER);
+            salidastc.setHorizontalAlignment(Element.ALIGN_CENTER);
+            
+            tblreg.addCell(espacioc);
+            tblreg.addCell(espacioc);
+            tblreg.addCell(espacioc);
+            tblreg.addCell(espacioc);
+            tblreg.addCell(espacioc);
+            tblreg.addCell(entradastc);
+            tblreg.addCell(espacioc);
+            tblreg.addCell(espacioc);
+            tblreg.addCell(salidastc);
+            tblreg.addCell(cantcbp2);
+            tblreg.addCell(costocbp2);
+            tblreg.addCell(costotcbp2);
+            documento.add(tblreg);
+            //Paragraph en = new Paragraph("                         ");
+            //documento.add(en);
+            //while(empresa.next()){
+                //Paragraph p = new Paragraph("NOMBRE DEL CONTRIBUYENTE: " + empresa.getString(2));
+                //p.add(new Chunk(glue));
+                //p.add("NIT: " + empresa.getString(3));
+                //Paragraph p2 = new Paragraph("NOMBRE, RAZON SOCIAL DEL PROVEEDOR: " + empresa.getString(5));
+                //p2.add(new Chunk(glue));
+                //p2.add("NRC: " + empresa.getString(4));
+                //Paragraph p3 = new Paragraph("NACIONALIDAD: " + empresa.getString(6));
+                //documento.add(p);
+                //documento.add(p2);
+                //documento.add(p3);
+            //}
+            
+            /*while(empresa.next()){
+                table.addCell("NOMBRE DEL CONTRIBUYENTE: " + empresa.getString(2));
+                table.addCell("NIT: " + empresa.getString(3));
+                table.addCell("NOMBRE, RAZON SOCIAL DEL PROVEEDOR: " + empresa.getString(5));
+                table.addCell("NRC: " + empresa.getString(4));
+                table.addCell("NACIONALIDAD: " + empresa.getString(6));
+                table.addCell("");
+            }*/
+            documento.close();
+            writer.close();
+        } catch (FileNotFoundException | DocumentException | SQLException ex) {
+            Logger.getLogger(revision.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }

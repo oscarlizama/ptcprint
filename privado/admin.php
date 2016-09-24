@@ -20,11 +20,11 @@
 			$imagen_temporal = $imagen['tmp_name'];
 			if ($imagen['type'] == "image/jpeg" || $imagen['type'] == "image/png" || $imagen['type'] == "image/gif" || $imagen['type'] == "image/bmp") {
 				try {	
-					//$mTipo = exif_imagetype($imagen_temporal);
+					$mTipo = exif_imagetype($imagen_temporal);
 					if (($mTipo != IMAGETYPE_JPEG) && ($mTipo != IMAGETYPE_PNG)) {
 						if (!@is_array(getimagesize($imagen['tmp_name']))) {
 							$error = true;
-							$errormsg = "La imagen tiene un formato inválido o un archivo enmascarado asdsa.";
+							$errormsg = "La imagen tiene un formato inválido o un archivo enmascarado.";
 						}
 					}else{
 						$fp = fopen($imagen_temporal, 'r+b');
