@@ -180,11 +180,11 @@
 	$stmt = $con->prepare($sql);
 	$stmt->execute(array($id_cl,$fecha_cl));
 	while ($datos = $stmt->fetch(PDO::FETCH_BOTH)) {
-		$pdf->Cell(70,10,$datos[0],1,0,'L',0);
-	   	$pdf->Cell(35,10,"----------",1,0,'C',0);
+		$pdf->Cell(50,10,$datos[0],1,0,'L',0);
+	   	$pdf->Cell(60,10,"----------",1,0,'C',0);
 		//Muestro la iamgen dentro de la celda GetX y GetY dan las coordenadas actuales de la fila
 	 	$pdf->Cell(40,10,utf8_decode("Diseño personalizado"), 1, 0, 'C', false );
-	 	$pdf->Cell(40,10,$datos[1], 1, 0, 'C', false );
+	 	$pdf->Cell(35,10,$datos[1], 1, 0, 'C', false );
 		$pdf->Ln(10);
 		/*$pdf->Cell(80,5,'',0,1,'L');
 		$pdf->SetFont('Arial','B',12);

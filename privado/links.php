@@ -15,6 +15,7 @@
 <link rel="stylesheet" type="text/css" href="/resources/css/flaticon.css">
 <link rel="stylesheet" type="text/css" href="/resources/css/component.css" />
 <link rel="stylesheet" type="text/css" href="/resources/css/iconomenu.css" />
+<link rel="stylesheet" type="text/css" href="/resources/css/iconosmenu.css" />
 <!--COMPATIBILIDAD CON IE Y DEMAS EXPLORADORES-->
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <!--ICONO DE LAP PAGINA-->

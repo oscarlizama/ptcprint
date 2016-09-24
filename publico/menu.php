@@ -15,13 +15,22 @@
 					<p class="text-center" id="headerm">PUNTO PRINT</p>
 				</div>
 				<div class="movildiv"></div>
-            <div class="itemm p">
+            <div class="itemm p uk-text-center">
                <a href="inicio">
                   <div class="glyph"><div class="glyph-icon flaticon-simple-house-thin"></div>
                        <div class="class-name">Inicio</div>
                   </div>
                </a>
             </div>
+            <!--<div class="itemm p uk-text-center">
+               <a href="inicio">
+                  <div class="glyph"><div class="glyph-icon flaticon-simple-house-thin"></div>
+                       <div class="class-name">Inicio</div>
+                  </div>
+                  <i class="uk-icon-laptop iconomenuf"></i>
+               </a>
+               <p class="textoiniciof">Estampado</p>
+            </div>-->
             <?php 
               $menu = "";
               $sqlmenu = "SELECT p.id_tipo_producto, tp.nombre_tipo_producto, tp.icono_producto FROM productos p, tipos_producto tp WHERE tp.id_tipo_producto = p.id_tipo_producto AND tp.estado_tipo_producto=1 GROUP BY p.id_tipo_producto;";

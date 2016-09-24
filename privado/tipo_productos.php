@@ -40,8 +40,12 @@
 					<input type="text" class="hide omitir" value="8" id="tbl" autocomplete='off'>
 					<label for="" class="labels" data-toggle="tooltip" data-placement="right" title="No mayor a 20 caractéres.">Nombre de del tipo de producto</label>
                     <input type="text" class="form-control input" id="nombre" autocomplete='off'>
-                    <input type="text" class="hide" value="" id="icono">
                     <br>
+                    <label for="" class="labels hide" data-toggle="tooltip" data-placement="right" title="No mayor a 20 caractéres.">Nombre de la fuente</label>
+                    <input type="text" class="form-control hide" id="icono">
+                    <a href="http://fontawesome.io/icons/" class="hide" id="linkfont" target="_blank">Ver iconos</a>
+                    <br>
+                    <p id="recom" class="hide">Copiar el nombre del icono e introducirlo en campo de texto.</p>
 				</div>
 				<div class="col-lg-6 col-md-6">
                     <div class="panel panel-default">
@@ -50,45 +54,45 @@
 						</div>
                     	<div class="panel-body">
                     		<div class="row">
-                    			<div class="col-lg-2">
+                    			<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
                     				<img src="../resources/img/menu/ads.png" alt="" class="imgmenu" id="1">
                     			</div>
-                    			<div class="col-lg-2">
+                    			<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
                     				<img src="../resources/img/menu/balloons.png" alt="" class="imgmenu" id="2">
                     			</div>
-                    			<div class="col-lg-2">
+                    			<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
                     				<img src="../resources/img/menu/clothes.png" alt="" class="imgmenu" id="3">
                     			</div>
-                    			<div class="col-lg-2">
+                    			<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
                     				<img src="../resources/img/menu/tarjetas.png" alt="" class="imgmenu" id="4">
                     			</div>
-                    			<div class="col-lg-2">
+                    			<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
                     				<img src="../resources/img/menu/billboard.png" alt="" class="imgmenu" id="5">
                     			</div>
-                    			<div class="col-lg-2">
+                    			<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
                     				<img src="../resources/img/menu/birthday-card.png" alt="" class="imgmenu" id="6">
                     			</div>
-                    			<div class="col-lg-2">
+                    			<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
                     				<br>
                     				<img src="../resources/img/menu/door.png" alt="" class="imgmenu" id="7">
                     			</div>
-                    			<div class="col-lg-2">
+                    			<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
                     				<br>
                     				<img src="../resources/img/menu/menu.png" alt="" class="imgmenu" id="8">
                     			</div>
-                    			<div class="col-lg-2">
+                    			<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
                     				<br>
                     				<img src="../resources/img/menu/mode-circular-button.png" alt="" class="imgmenu" id="9">
                     			</div>
-                    			<div class="col-lg-2">
+                    			<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
                     				<br>
                     				<img src="../resources/img/menu/rings.png" alt="" class="imgmenu" id="10">
                     			</div>
-                    			<div class="col-lg-2">
+                    			<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
                     				<br>
                     				<img src="../resources/img/menu/wanted.png" alt="" class="imgmenu" id="11">
                     			</div>
-                    			<div class="col-lg-2">
+                    			<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
                     				<br>
                     				<img src="../resources/img/menu/round-add-button.png" alt="" class="imgmenu" id="12">
                     			</div>

@@ -65,9 +65,9 @@
                     			<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
                     				<img src="/resources/img/menu/twitter-logo.png" alt="" class="imgred" id="4">
                     			</div>
-                    			<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                    			<!--<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
                     				<img src="/resources/img/menu/whatsapp-logo.png" alt="" class="imgred" id="5">
-                    			</div>
+                    			</div>-->
                     			<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
                     				<img src="/resources/img/menu/pinterest.png" alt="" class="imgred" id="6">
                     			</div>

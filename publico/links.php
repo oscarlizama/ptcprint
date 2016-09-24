@@ -20,6 +20,8 @@
 <link rel="stylesheet" type="text/css" href="/resources/css/footer.css">
 <link rel="stylesheet" type="text/css" href="/resources/css/titulos.css">
 <link rel="stylesheet" type="text/css" href="/resources/css/botones.css">
+<link rel="stylesheet" type="text/css" href="/resources/css/menuaw/fontawesome.css" />
+<link rel="stylesheet" type="text/css" href="/resources/css/iconosmenu.css" />
 <!--COMPATIBILIDAD CON IE Y DEMAS EXPLORADORES-->
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <!--ICONO DE LAP PAGINA-->

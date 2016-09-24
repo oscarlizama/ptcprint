@@ -30,7 +30,7 @@
 						<h5>LISTADO DE PRODUCTOS</h5>
 					</div>
 					<div class="panel-body">
-						<form action="listadotiposproductos" method="post">
+						<form action="listadotiposproductos" method="post" target="_blank">
 							<label for="">Muestra el listado de los tipos productos que están activos en el sistema.</label>
 							<br>
 							<br>
@@ -48,7 +48,7 @@
 						<h5>LISTADO DE PRODUCTOS</h5>
 					</div>
 					<div class="panel-body">
-						<form action="listadoproductos" method="post">
+						<form action="listadoproductos" method="post" target="_blank">
 							<label for="">Muestra el listado de los productos que están activos en el sistema.</label>
 							<br>
 							<br>
@@ -66,7 +66,7 @@
 						<h5>MEDIDAS DE PROUCTOS</h5>
 					</div>
 					<div class="panel-body">
-						<form action="medidasproductos" method="post">
+						<form action="medidasproductos" method="post" target="_blank">
 							<label for="">Muestra el listado de las medidas que poseen cada producto y que están activos en el sistema.</label>
 							<br>
 							<br>

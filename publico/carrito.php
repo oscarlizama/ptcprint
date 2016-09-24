@@ -222,7 +222,7 @@
               <h5>RESUMEN DE PRODUCTOS SIN RECOGER</h5>
             </div>
             <div class="panel-body">
-              <form action="norecogidos" method="post">
+              <form action="norecogidos" method="post" target="_blank">
               <div>
                 <?php
                   $comrasm = false;
@@ -267,7 +267,7 @@
               <h5>HISTORIAL DE COMPRAS Y PEDIDOS</h5>
             </div>
             <div class="panel-body">
-              <form action="recogidos" method="post">
+              <form action="recogidos" method="post" target="_blank">
               <div>
                 <?php
                   $comprash = false;
@@ -312,7 +312,7 @@
               <h5>RESUMEN DE PRODUCTOS RECOGIDOS</h5>
             </div>
             <div class="panel-body">
-              <form action="historialcompras" method="post">
+              <form action="historialcompras" method="post" target="_blank">
               <div>
                 <?php 
                   if ($comprash) {
