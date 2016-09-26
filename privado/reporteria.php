@@ -103,7 +103,7 @@
 							<br>
 							<br>
 							<br>
-							<a href="cotizarprecio" class="btn btn-scrud btn-block nodecor" style="">
+							<a href="cotizarprecio" class="btn btn-scrud btn-block nodecor" id="nodecor" style="color:black;">
 								GENERAR REPORTE
 								<span class='flaticon-pdf icon-buttons'></span>
 							</a>

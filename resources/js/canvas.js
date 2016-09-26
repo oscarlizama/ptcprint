@@ -17,18 +17,70 @@ var canvas = new fabric.Canvas("maincanvas",{hoverCursor: 'pointer'});
 canvas.selectionColor = 'rgba(0,255,0,0.3)';
   canvas.selectionBorderColor = 'red';
   canvas.selectionLineWidth = 2;
+  var iden = 0;
 canvas.on({
     'object:moving': function(e) {
-      e.target.opacity = 0.5;
+      	e.target.opacity = 0.5;
+      	if (inden = 0)
+      	{
+			var top = canvas.getActiveObject().top;
+			var left = canvas.getActiveObject().left;
+			var obhe = canvas.getActiveObject().height;
+			var bottom = top + obhe;
+			var obwi = canvas.getActiveObject().width;
+			var right = left + obwi;
+			canvas.getActiveObject().setLeft(Math.min(Math.max(left, leftm1), rightm1 - obwi));
+	      	canvas.getActiveObject().setTop(Math.min(Math.max(top, topm1), bottomm1 - obhe));
+	      	render();
+	      	
+      	}
+      	else{
+      		if (e.target.get('type') == "path")
+      		{
+      			console.log("es un camino tio");
+      			var top = canvas.getActiveObject().top;
+				var left = canvas.getActiveObject().left;
+				var obhe = canvas.getActiveObject().getHeight();
+				var obwi = canvas.getActiveObject().getWidth();
+				var bottom = top + obhe;
+				var right = left + obwi;
+				canvas.getActiveObject().setLeft(Math.min(Math.max(left, leftm1 ), rightm1 - obwi));
+		      	canvas.getActiveObject().setTop(Math.min(Math.max(top, topm1), bottomm1 - obhe));
+		      	render();  
+      		}
+      		else{
+	      		var top = canvas.getActiveObject().top;
+				var left = canvas.getActiveObject().left;
+				var obhe = canvas.getActiveObject().getHeight();
+				var obwi = canvas.getActiveObject().getWidth();
+				var bottom = top + obhe;
+				var right = left + obwi;
+				canvas.getActiveObject().setLeft(Math.min(Math.max(left, leftm1), rightm1 - obwi));
+		      	canvas.getActiveObject().setTop(Math.min(Math.max(top, topm1), bottomm1 - obhe));
+		      	render();      		
+	      	}
+      	}
       //onChange(e);
     },
     'object:modified': function(e) {
       e.target.opacity = 1;
+      right = 0;
+      bottom = 0;
+      inden = 1;
+      console.log("width" +canvas.getActiveObject().getWidth());
+      console.log("height" +canvas.getActiveObject().getHeight());
+      console.log("top" +canvas.getActiveObject().getTop());
+      console.log("left" + canvas.getActiveObject().getLeft());
+      console.log(e.target.get('type'));
+    },
+    'object:scaling': function(e){
+    	right = 0;
+    	bottom = 0;
     }
     //'object:scaling': onChange,
     //'object:rotating': onChange,
   });
-var color_HEX;
+var color_HEX = "#000000";
 var color_RGB;
 var edit_num;
 var dibujando = false;
@@ -192,6 +244,42 @@ function crearLinea(){
 	canvas.add(linea);
 	render();
 }
+var boundingBox = new fabric.Rect({
+  fill: "none",
+  width: 550,
+  height: 479,
+  left: 190,
+  top: 20,
+  hasBorders: false,
+  hasControls: false,
+  lockMovementX: true,
+  lockMovementY: true,
+  evented: false,
+  stroke: "red",
+  opacity: 0.2
+});
+canvas.add(boundingBox);
+var boundingBox2 = new fabric.Rect({
+  fill: "green",
+  width: 315,
+  height: 279,
+  left: 315,
+  top: 220,
+  hasBorders: false,
+  hasControls: false,
+  lockMovementX: true,
+  lockMovementY: true,
+  evented: false,
+  stroke: "red",
+  opacity: 0.2
+});
+canvas.add(boundingBox2);
+var topm1 = boundingBox.top; var topm2 = boundingBox2.top;
+var leftm1 = boundingBox.left; var leftm2 = boundingBox2.left;
+var bottomm1 = topm1 + boundingBox.height; var bottomm2 = topm2 + boundingBox2.height;
+var rightm1 = leftm1 + boundingBox.width; var rightm2 = leftm2 + boundingBox2.width;
+
+
 function traeradelante(){ 
 	canvas.bringForward(canvas.getActiveObject());
 	render();
