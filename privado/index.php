@@ -81,7 +81,7 @@
 						<button class="btn btn-medium btn-primary btn-block" name="iniciar">Iniciar sesión</button>
 						<br>
 						<br>
-						<br>
+						<a href="recuperaradmin">OLVIDÉ MI CONTRASEÑA</a>
 					</form>
 				</div>
 			</div>

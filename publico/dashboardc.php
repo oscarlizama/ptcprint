@@ -23,6 +23,19 @@
             $errormsg = "Hubo un error al tratar de eliminar la cuenta. Inténtalo más tarde.";
         }
     }
+    if (isset($_POST['elimcoment'])) {
+        if (preg_match("/^[123456789]+\d*$/", $_POST['idcom'])) {
+            $ideliminar = $_POST['idcom'];
+            $sqleliminar = "DELETE FROM comentarios WHERE id_comentario=?";
+            $stmteliminar = $con->prepare($sqleliminar);
+            if (!$stmteliminar->execute(array($ideliminar))) {
+                $error = true;
+                $errormsg = "Hubo un error al tratar de eliminar el comentario. Inténtalo más tarde.";
+            }else{
+                header('Location: miperfil');
+            }   
+        }
+    }
 ?>
 <html>
 	<head>
@@ -114,9 +127,11 @@
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="frm">
                         <div class="panel panel-default">
                             <div class="panel-body">
+
                                 <?php 
                                     $panelc = "<div class='panel panel-default'>";
                                         $panelc .= "<div class='panel-body'>";
+                                        $panelc .= "<br>";
                                             require '../privado/procesos/conexion.php';
                                             $comprobar = "SELECT COUNT(id_comentario) AS coment FROM comentarios WHERE id_cliente=?";
                                             $stmt = $con->prepare($comprobar);
@@ -125,6 +140,10 @@
                                             if($coment[0] > 0){
                                                 $sql = "SELECT c.id_comentario,p.nombre_producto,c.comentario FROM comentarios c, productos p WHERE c.id_cliente=$resultado[0] and c.id_producto = p.id_producto";
                                                 foreach ($con->query($sql) as $datos) {
+                                                    $panelc .= "<br><form action='miperfil' method='post'>
+                                                            <input type='text' name='idcom' class='hide' value='$datos[0]'>
+                                                            <button class='btn btn-pink pull-right' name='elimcoment'>Eliminar comentario</button>
+                                                        </form>";
                                                     $panelc .= "<label for='' class='labels'>Producto:$datos[1]</label>";
                                                     $panelc .= "<textarea type='text' class='form-control input estira' id='nombre' readonly>$datos[2]</textarea>";
                                                 }   

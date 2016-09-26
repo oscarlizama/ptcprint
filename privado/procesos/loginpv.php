@@ -1,17 +1,22 @@
 <?php 
 	$iniciar = true;
 	$activo = false;
+	$registrado = false;
+	$estadonum;
 	session_start();
 	require_once 'conexion.php';
 	if (isset($_POST['iniciar'])) {
 		$email = !empty($_POST['email']) ? trim($_POST['email']) : null;
 		$pass = !empty($_POST['pass']) ? trim($_POST['pass']) : null;
-		$iniciado = "SELECT estado_sesion FROM usuarios WHERE correo_usuario=?";
+		$iniciado = "SELECT estado_sesion FROM usuarios WHERE correo_usuario=? AND estado_usuario=1";
 		$stmt = $con->prepare($iniciado);
 		$stmt->execute(array($email));
-		$estado = $stmt->fetch(PDO::FETCH_BOTH);
 		$correo = $email;
-		if ($estado[0] == "0") {
+		$estado = $stmt->fetch(PDO::FETCH_BOTH);
+		if ($estado[0] != "") {
+			$registrado = true;
+		}
+		if ($registrado && $estado[0] == "0") {
 			//echo "holaaa";
 			$usuario = "SELECT clave_usuario,id_usuario FROM usuarios WHERE correo_usuario=? AND estado_usuario=?";
 			$stmt = $con->prepare($usuario);
@@ -31,7 +36,11 @@
 				$iniciar = false;
 			}
 		}else{
-			$activo = true;
+			if ($estado[0] != "") {
+				$activo = true;
+			}else{
+				$iniciar = false;
+			}
 		}
 	}
 	//echo $_SESSION['idusr'];
