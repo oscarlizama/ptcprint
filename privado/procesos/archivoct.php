@@ -26,7 +26,7 @@
 					$fp = fopen($temporal, "r");
 					fseek($fp, 0);
 					$dat = fread($fp, 5);
-					if (strcmp($dat, "%PDF-")==0 || strcmp($dat, "%PNG-")==0 || @exif_imagetype($temporal)) {
+					if (strcmp($dat, "%PDF-")==0 || strcmp($dat, "%PNG-")==0 || @exif_imagetype($temporal) || @is_array(getimagesize($temporal))) {
 						$data = fread($fp, filesize($temporal));
 						$final = base64_encode($data);
 						//CIERRO EL ARCHIVO

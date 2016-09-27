@@ -48,7 +48,7 @@
                             <body>
                                 <h3>BIENVENIDO A PUNTO PRINT</h3>
                                 <p>Hemos recibido la noticia que te registraste en nuestro sistema. Para confirmarlo por favor sigue el enlace para confirmar tu registro y empezar a utilizar la cuenta.</p>
-                                <a href=localhost/verificarcuenta&'.$correoHash.'>Enlace</a>
+                                <a href=https://www.puntoprintsv.com/verificarcuenta&'.$correoHash.'>Enlace</a>
                                 <h4>GRACIAS POR PREFERIRNOS</h4>
                             </body>
                         </html>';

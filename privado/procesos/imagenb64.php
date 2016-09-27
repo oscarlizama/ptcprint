@@ -8,12 +8,13 @@
 	});
 	$imagen_temporal = "";
 	$final = "";
-	//$imagen = $_FILES['file'];
+	$imagenarray = array();
+	$imagen = $_FILES['file'];
 	$errorimg = false;
-	if (true) {
+	if (!empty($imagen['name'])) {
+		$imagen_temporal = $imagen['tmp_name'];
 		try {
-			if (!empty($imagen['name'])) {
-				$imagen_temporal = $imagen['tmp_name'];
+			if (@is_array(getimagesize($imagen_temporal))) {
 				$mTipo = exif_imagetype($imagen_temporal);
 				if (($mTipo != IMAGETYPE_JPEG) && ($mTipo != IMAGETYPE_PNG)) {
 					$errorimg = true;	
@@ -30,6 +31,12 @@
 			$data = fread($fp, filesize($imagen_temporal));
 			$final = base64_encode($data);
 			fclose($fp);
+			$data = getimagesize($imagen_temporal);
+			if ($data[0]>800 || $data[0] > 600) {
+				array_push($imagenarray, 1);
+			}else{
+				array_push($imagenarray, 0);
+			}
 			/*$myfile = fopen($imagen_temporal, "r") or die("Unable to open file!");
 			//echo fread($myfile,filesize($imagen_temporal));
 			while ($trozo = fgets($imagen_temporal, 1024)){
@@ -46,5 +53,6 @@
 			}*/
 		}
 	}
-    echo json_encode($final);
+	array_push($imagenarray, $final);
+    echo json_encode($imagenarray);
 ?>
