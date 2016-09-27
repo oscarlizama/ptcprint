@@ -21,7 +21,16 @@
     $mail->setFrom('oslizama@gmail.com', 'PUNTO PRINT');
     $mail->addAddress('oslizama@gmail.com','');     // Add a recipient
     $mail->Subject = $asunto;
-    $mail->Body    = 'Tienes un nuevo correo de '.$correo .' Nombre: '.$nombre .' Apellido: '.$apellidos .' '.$mensaje;
+    $mail->Body    = '
+                    <html>
+                        <body>
+                            <h2>TIENES UN NUEVO CORREO</h2>
+                            <h3><strong>De: </strong>'.$nombre . ' '.$apellidos.'</h3>
+                            <h3>Correo: '.$correo.'</h3>
+                            <h3><strong>Mensaje:</strong></h3>
+                            <p style=font-size:1em>'.$mensaje.'</p>
+                        </body>
+                    </html>';
     $mail->AltBody = 'prueba';
     $mail->SMTPOptions = array(
         'ssl' => array(
