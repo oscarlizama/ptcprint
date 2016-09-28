@@ -99,7 +99,7 @@
 					<div class="panel panel-default">
 						<div class="panel-heading text-center">Añadir nueva imagen</div>
 						<div class="panel-body">
-							<img src="/resources/img/plus.png" alt="" class="center-block">
+							<img src="/resources/img/plus.png" alt="" class="center-block" id="vistaPrevia">
 							<div id="upload-drop" class="uk-placeholder uk-text-center">
 	                    		<i class="uk-icon-cloud-upload uk-icon-medium uk-text-muted uk-margin-small-right"></i>
 						    	<span id="textoup">Selecciona una imagen por favor</span> <a class="uk-form-file">aquí<input type="file" name="file"></a>.
