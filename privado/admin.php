@@ -15,7 +15,7 @@
 	if (isset($_POST['agregar'])) {
 		$imagen_temporal = "";
 		$final = "";
-		$imagen = $_FILES['file'];
+		$imagen = $_FILES['fileslide'];
 		if (!empty($imagen['name'])) {
 			$imagen_temporal = $imagen['tmp_name'];
 			if ($imagen['type'] == "image/jpeg" || $imagen['type'] == "image/png" || $imagen['type'] == "image/gif" || $imagen['type'] == "image/bmp") {
@@ -99,10 +99,10 @@
 					<div class="panel panel-default">
 						<div class="panel-heading text-center">Añadir nueva imagen</div>
 						<div class="panel-body">
-							<img src="/resources/img/plus.png" alt="" class="center-block">
+							<img src="/resources/img/plus.png" alt="" class="center-block" id="vistaPrevia">
 							<div id="upload-drop" class="uk-placeholder uk-text-center">
 	                    		<i class="uk-icon-cloud-upload uk-icon-medium uk-text-muted uk-margin-small-right"></i>
-						    	<span id="textoup">Selecciona una imagen por favor</span> <a class="uk-form-file">aquí<input type="file" name="file"></a>.
+						    	<span id="textoup">Selecciona una imagen por favor</span> <a class="uk-form-file">aquí<input type="file" name="fileslide" id="archivoslide"></a>.
 							</div>
 						</div>
 						<div class="panel-footer">
