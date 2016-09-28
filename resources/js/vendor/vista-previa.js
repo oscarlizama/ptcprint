@@ -1,1 +1,17 @@
-eval(function(p,a,c,k,e,r){e=function(c){return c.toString(a)};if(!''.replace(/^/,String)){while(c--)r[e(c)]=k[c]||e(c);k=[function(e){return r[e]}];e=function(){return'\\w+'};c=1};while(c--)if(k[c])p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c]);return p}('1 3(a){8(a.2&&a.2[0]){5 b=f 6();b.7=1(e){$(\'#9\').c(\'d\',e.4.g)}b.h(a.2[0])}}$("i[j=\'k\']").l(1(){3(m)});',23,23,'|function|files|mostrarImagen|target|var|FileReader|onload|if|vistaPrevia|||attr|src||new|result|readAsDataURL|input|name|file|change|this'.split('|'),0,{}))
+function mostrarImagen(input) {
+ if (input.files && input.files[0]) {
+  var reader = new FileReader();
+  reader.onload = function (e) {
+   $('#vistaPrevia').attr('src', e.target.result);
+  }
+  reader.readAsDataURL(input.files[0]);
+ }
+}
+ 
+$("input[name='file']").change(function(){
+ 	mostrarImagen(this);
+});
+
+$("input[name='fileslide']").change(function(){
+	mostrarImagen(this);
+});
