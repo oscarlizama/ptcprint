@@ -37,15 +37,15 @@ canvas.on({
       	else{
       		if (e.target.get('type') == "path")
       		{
-      			console.log("es un camino tio");
+      			console.log("es un camino tio");//considerar si limitar dibujo
       			var top = canvas.getActiveObject().top;
 				var left = canvas.getActiveObject().left;
 				var obhe = canvas.getActiveObject().getHeight();
 				var obwi = canvas.getActiveObject().getWidth();
 				var bottom = top + obhe;
 				var right = left + obwi;
-				canvas.getActiveObject().setLeft(Math.min(Math.max(left, leftm1 ), rightm1 - obwi));
-		      	canvas.getActiveObject().setTop(Math.min(Math.max(top, topm1), bottomm1 - obhe));
+				canvas.getActiveObject().setLeft(Math.min(Math.max(left, leftm1 ), rightm1 - obwi + 190));
+		      	canvas.getActiveObject().setTop(Math.min(Math.max(top, topm1), bottomm1 - obhe + 80));
 		      	render();  
       		}
       		else{
@@ -122,9 +122,55 @@ function cargarFondo(identificador){
 	switch (Editando){
 		case "Camisa":  //Editando una camisa
 		canvas.setBackgroundImage("resources/img/camisablanca3.png");
+		var boundingBox = new fabric.Rect({
+		  fill: "none",
+		  width: 550,
+		  height: 479,
+		  left: 190,
+		  top: 20,
+		  hasBorders: false,
+		  hasControls: false,
+		  hasRotatingPoint: false,
+		  lockRotation: false,
+		  selectable: false,
+		  lockMovementX: true,
+		  lockMovementY: true,
+		  evented: false,
+		  stroke: "red",
+		  opacity: 0.0
+		});
+		canvas.add(boundingBox);
+
+		var topm1 = boundingBox.top;
+		var leftm1 = boundingBox.left;
+		var bottomm1 = topm1 + boundingBox.height;
+		var rightm1 = leftm1 + boundingBox.width;
 		break;
 		case "Taza": //Editando una taza
 		canvas.setBackgroundImage("resources/img/taza3-bak.png");
+		var boundingBox = new fabric.Rect({
+		  fill: "none",
+		  width: 550,
+		  height: 479,
+		  left: 190,
+		  top: 20,
+		  hasBorders: false,
+		  hasControls: false,
+		  hasRotatingPoint: false,
+		  lockRotation: false,
+		  selectable: false,
+		  lockMovementX: true,
+		  lockMovementY: true,
+		  evented: false,
+		  stroke: "red",
+		  opacity: 0.0
+		});
+		canvas.add(boundingBox);
+
+		var topm1 = boundingBox.top;
+		var leftm1 = boundingBox.left;
+		var bottomm1 = topm1 + boundingBox.height;
+		var rightm1 = leftm1 + boundingBox.width;
 		break;
 		default:		
 		alert("Escoga algo que editar");
@@ -252,32 +298,21 @@ var boundingBox = new fabric.Rect({
   top: 20,
   hasBorders: false,
   hasControls: false,
+  hasRotatingPoint: false,
+  lockRotation: false,
+  selectable: false,
   lockMovementX: true,
   lockMovementY: true,
   evented: false,
   stroke: "red",
-  opacity: 0.2
+  opacity: 0.0
 });
 canvas.add(boundingBox);
-var boundingBox2 = new fabric.Rect({
-  fill: "green",
-  width: 315,
-  height: 279,
-  left: 315,
-  top: 220,
-  hasBorders: false,
-  hasControls: false,
-  lockMovementX: true,
-  lockMovementY: true,
-  evented: false,
-  stroke: "red",
-  opacity: 0.2
-});
-canvas.add(boundingBox2);
-var topm1 = boundingBox.top; var topm2 = boundingBox2.top;
-var leftm1 = boundingBox.left; var leftm2 = boundingBox2.left;
-var bottomm1 = topm1 + boundingBox.height; var bottomm2 = topm2 + boundingBox2.height;
-var rightm1 = leftm1 + boundingBox.width; var rightm2 = leftm2 + boundingBox2.width;
+
+var topm1 = boundingBox.top;
+var leftm1 = boundingBox.left;
+var bottomm1 = topm1 + boundingBox.height;
+var rightm1 = leftm1 + boundingBox.width;
 
 
 function traeradelante(){ 
