@@ -21,44 +21,39 @@ canvas.selectionColor = 'rgba(0,255,0,0.3)';
 canvas.on({
     'object:moving': function(e) {
       	e.target.opacity = 0.5;
-      	if (inden = 0)
+      	if (canvas.getActiveGroup() == null)
       	{
-			var top = canvas.getActiveObject().top;
-			var left = canvas.getActiveObject().left;
-			var obhe = canvas.getActiveObject().height;
-			var bottom = top + obhe;
-			var obwi = canvas.getActiveObject().width;
-			var right = left + obwi;
-			canvas.getActiveObject().setLeft(Math.min(Math.max(left, leftm1), rightm1 - obwi));
-	      	canvas.getActiveObject().setTop(Math.min(Math.max(top, topm1), bottomm1 - obhe));
-	      	render();
-	      	
-      	}
-      	else{
-      		if (e.target.get('type') == "path")
-      		{
-      			console.log("es un camino tio");//considerar si limitar dibujo
-      			var top = canvas.getActiveObject().top;
+	      	if (inden = 0)
+	      	{
+				var top = canvas.getActiveObject().top;
 				var left = canvas.getActiveObject().left;
-				var obhe = canvas.getActiveObject().getHeight();
-				var obwi = canvas.getActiveObject().getWidth();
+				var obhe = canvas.getActiveObject().height;
 				var bottom = top + obhe;
-				var right = left + obwi;
-				canvas.getActiveObject().setLeft(Math.min(Math.max(left, leftm1 ), rightm1 - obwi + 190));
-		      	canvas.getActiveObject().setTop(Math.min(Math.max(top, topm1), bottomm1 - obhe + 80));
-		      	render();  
-      		}
-      		else{
-	      		var top = canvas.getActiveObject().top;
-				var left = canvas.getActiveObject().left;
-				var obhe = canvas.getActiveObject().getHeight();
-				var obwi = canvas.getActiveObject().getWidth();
-				var bottom = top + obhe;
+				var obwi = canvas.getActiveObject().width;
 				var right = left + obwi;
 				canvas.getActiveObject().setLeft(Math.min(Math.max(left, leftm1), rightm1 - obwi));
 		      	canvas.getActiveObject().setTop(Math.min(Math.max(top, topm1), bottomm1 - obhe));
-		      	render();      		
+		      	render();
+		      	
 	      	}
+	      	else{
+	      		if (e.target.get('type') == "path")
+	      		{
+	      			console.log("es un camino tio");//considerar si limitar dibujo
+	      			
+	      		}
+	      		else{
+		      		var top = canvas.getActiveObject().top;
+					var left = canvas.getActiveObject().left;
+					var obhe = canvas.getActiveObject().getHeight();
+					var obwi = canvas.getActiveObject().getWidth();
+					var bottom = top + obhe;
+					var right = left + obwi;
+					canvas.getActiveObject().setLeft(Math.min(Math.max(left, leftm1), rightm1 - obwi));
+			      	canvas.getActiveObject().setTop(Math.min(Math.max(top, topm1), bottomm1 - obhe));
+			      	render();      		
+		      	}
+		      	}
       	}
       //onChange(e);
     },
@@ -67,11 +62,8 @@ canvas.on({
       right = 0;
       bottom = 0;
       inden = 1;
-      console.log("width" +canvas.getActiveObject().getWidth());
-      console.log("height" +canvas.getActiveObject().getHeight());
-      console.log("top" +canvas.getActiveObject().getTop());
-      console.log("left" + canvas.getActiveObject().getLeft());
       console.log(e.target.get('type'));
+      console.log("getActiveGroup " + canvas.getActiveGroup());
     },
     'object:scaling': function(e){
     	right = 0;
@@ -90,6 +82,7 @@ function render(){
 }
 function clearCanvas(){
 	//habilitar botones, limpiar canvas
+	localStorage.clear();
 	canvas.clear();
 	cargarFondo();
 	for (var i = 1; i <= 3; i++) {
@@ -298,6 +291,7 @@ var boundingBox = new fabric.Rect({
   top: 20,
   hasBorders: false,
   hasControls: false,
+  visible: false,
   hasRotatingPoint: false,
   lockRotation: false,
   selectable: false,
@@ -305,7 +299,8 @@ var boundingBox = new fabric.Rect({
   lockMovementY: true,
   evented: false,
   stroke: "red",
-  opacity: 0.0
+  opacity: 0.0,
+  selectable: false
 });
 canvas.add(boundingBox);
 
@@ -397,7 +392,8 @@ $("#Saves").click(function(){
 					  		} else {     
 					  			png();
 					  		} 
-					  	});	 
+					  	});
+					  	localStorage.clear();	 
 		  		} else {     
 		  			
 		  		} 
@@ -407,6 +403,45 @@ $("#Saves").click(function(){
 		
 	});
 });
+
+function saveState(){ //Revisa si estan habilitados los botones de las imagenes
+	var cst = 0;
+	for (var i = 1; i <= 3; i++) {
+		if (document.getElementById("btns" + i).disabled == true){cst += 1;}
+	};
+	var jsonls = JSON.stringify(canvas.toJSON(['selectable','evented','hasBorders','hasControls','hasRotatingPoint','lockRotation','lockMovementX','lockMovementY']));
+	localStorage.setItem('estadocanvas', jsonls);
+	localStorage.setItem('botonesH',"" + cst);
+
+}
+function loadState(){
+	var btnHab = localStorage.getItem('botonesH');
+	var jsonrec = localStorage.getItem('estadocanvas');
+	canvas.loadFromJSON(jsonrec);
+	switch(btnHab){
+		case "1":
+			document.getElementById("btns1").disabled = "true";
+			document.getElementById("btns1").title = "Se Habilita al Limpiar";
+			break;
+		case "2":
+			document.getElementById("btns1").disabled = "true";
+			document.getElementById("btns1").title = "Se Habilita al Limpiar";
+			document.getElementById("btns2").disabled = "true";
+			document.getElementById("btns2").title = "Se Habilita al Limpiar";
+			break;
+		case "3":
+			document.getElementById("btns1").disabled = "true";
+			document.getElementById("btns1").title = "Se Habilita al Limpiar";
+			document.getElementById("btns2").disabled = "true";
+			document.getElementById("btns2").title = "Se Habilita al Limpiar";
+			document.getElementById("btns3").disabled = "true";
+			document.getElementById("btns3").title = "Se Habilita al Limpiar";
+			break;
+		default:
+		break;
+	}
+	
+}
 
 function png(){
 	$("#maincanvas").get(0).toBlob(function(blob){
@@ -431,3 +466,9 @@ function onChange(options) { //interponer las figuras/imagenes
   }
 cargarFondo();
 render();
+window.onbeforeunload = function(){
+  saveState();
+};
+if (localStorage.length != 0){
+	loadState();
+}
