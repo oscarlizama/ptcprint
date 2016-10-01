@@ -172,11 +172,12 @@
                     foreach ($con->query($archivosclm) as $listaArchivos) {
                       $tablas_div .= "<li><a href='$listaArchivos[2]'>$listaArchivos[1]</a></li>";
                       $tablas_div .= "<ul class='btn-pds'>";
+
                       $archivoid = "SELECT id_archivo FROM archivos WHERE id_conversacion=?";
                       $stmtida = $con->prepare($archivoid);
                       $stmtida->execute(array($ids_conver[$f]));
                       $arid = $stmtida->fetch(PDO::FETCH_BOTH);
-                        $tablas_div .= "<li><button class='btn btn-default' onclick='javascipt:pedidos($arid[0])'>Agregar a pedidos</button></li>";
+                        $tablas_div .= "<li><button class='btn btn-default' onclick='javascipt:pedidos($listaArchivos[0])'>Agregar a pedidos</button></li>";
                       $tablas_div .= "</ul>";
                     }
                     $tablas_div .= "</ul>";
